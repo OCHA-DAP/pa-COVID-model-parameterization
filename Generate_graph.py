@@ -76,6 +76,11 @@ def initialize_with_mobility(main_dir, country_iso3):
     logger.info(f'Reading in mobility from {filename}')
     mobility = pd.read_csv(filename)
     mobility.set_index("ADM", inplace=True)
+
+    # set diagonal to 1 (should this be moved into code that produces mobility matrix?)
+    for adm in mobility.index:
+        mobility[adm].loc[adm] = 1
+
     G = nx.from_pandas_adjacency(mobility, nx.DiGraph)
     G.graph['country'] = country_iso3
     return G
