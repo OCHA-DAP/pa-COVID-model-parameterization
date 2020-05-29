@@ -103,6 +103,7 @@ def add_exposure(G, main_dir, country_iso3):
         'ADM2_EN',
         'ADM1_PCODE',
         'ADM2_PCODE',
+        'tot_sad',
         'group_pop_f',
         'group_pop_m'
     ]
@@ -110,6 +111,7 @@ def add_exposure(G, main_dir, country_iso3):
     # Rename some
     rename_dict = {
         'ADM2_EN': 'name',
+        'tot_sad': 'population',
     }
     exposure = exposure.rename(columns=rename_dict)
 
