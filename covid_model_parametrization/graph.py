@@ -1,4 +1,3 @@
-import argparse
 import os
 import logging
 import json
@@ -7,8 +6,8 @@ from pathlib import Path
 import pandas as pd
 import geopandas as gpd
 import networkx as nx
+import numpy as np
 
-from covid_model_parametrization import utils
 from covid_model_parametrization.config import Config
 
 
@@ -83,9 +82,9 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
         [c for c in exposure.columns if "f_" in c or "m_" in c]
     ].sum(axis=1)
     # Project to pseudo mercator to get meter units: https://epsg.io/3857
-    exposure["population_density"] = exposure["population"] / exposure[
+    exposure["population_density"] = np.round(exposure["population"] / exposure[
         "geometry"
-    ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6)
+    ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6), 10)
     # Only keep necessary columns
     columns = [
         "ADM2_{}".format(parameters["language"]),
