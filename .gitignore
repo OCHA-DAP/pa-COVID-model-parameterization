@@ -146,6 +146,5 @@ Inputs/*/WorldPop/*
 Inputs/ACAPS_NPIs/*
 Inputs/*/NPIs/*
 Outputs/*/COVID
-Outputs/*/Exposure_SADD
 Outputs/*/Vulnerability
 Outputs/*/Figures
