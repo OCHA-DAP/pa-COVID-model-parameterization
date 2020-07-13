@@ -1,6 +1,8 @@
 # script that pulls data from several sources and generate COVID-19 breakdown for subnational SEIR model
 
 import datetime
+from datetime import timedelta
+import numpy as np
 import pandas as pd
 import geopandas as gpd
 from pathlib import Path
@@ -198,8 +200,18 @@ def covid(country_iso3, download_covid=False, config=None):
             who_df=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv')
             who_df['date_epicrv']=pd.to_datetime(who_df['date_epicrv'])
             who_df=who_df[who_df['ISO_3_CODE']==country_iso3]
-            who_df=who_df.sort_values(by='date_epicrv').tail(1)
-            ADM0_CFR=who_df.iloc[0]['CumDeath']/who_df.iloc[0]['CumCase']
+            who_df=who_df.sort_values(by='date_epicrv')
+            who_df=who_df.set_index('date_epicrv')
+            latest_date=who_df.tail(1).index.values[0]
+            # get the CFR from the latest month, to account for recent reporting rate estimation
+            who_df=who_df.loc[latest_date-np.timedelta64(30,'D'):latest_date]
+            deaths=who_df.iloc[-1]['CumDeath']-who_df.iloc[0]['CumDeath']
+            cases=who_df.iloc[-1]['CumCase']-who_df.iloc[0]['CumCase']
+            if deaths<100:
+                # if it's less than 100 use the cumulative to reduce noise
+                deaths=who_df.iloc[-1]['CumDeath']
+                cases=who_df.iloc[-1]['CumCase']
+            ADM0_CFR=deaths/cases
             
         for _, row in df_covid.iterrows():
             adm2_pop_fractions = get_adm2_to_adm1_pop_frac(
