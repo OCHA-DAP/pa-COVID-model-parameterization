@@ -119,6 +119,26 @@ def covid(country_iso3, download_covid=False, config=None):
 
     ADM2_ADM1_pcodes = get_dict_pcodes(exposure_gdf, "ADM2_PCODE")
 
+    ADM0_CFR=0
+    if not parameters["covid"]["deaths"]:
+        # missing death data, getting it from WHO at the national level
+        logger.info(f"getting CFR at ADM0 from WHO for {country_iso3}")
+        who_df=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv')
+        who_df['date_epicrv']=pd.to_datetime(who_df['date_epicrv'])
+        who_df=who_df[who_df['ISO_3_CODE']==country_iso3]
+        who_df=who_df.sort_values(by='date_epicrv')
+        who_df=who_df.set_index('date_epicrv')
+        latest_date=who_df.tail(1).index.values[0]
+        # get the CFR from the latest month, to account for recent reporting rate estimation
+        who_df=who_df.loc[latest_date-np.timedelta64(30,'D'):latest_date]
+        deaths=who_df.iloc[-1]['CumDeath']-who_df.iloc[0]['CumDeath']
+        cases=who_df.iloc[-1]['CumCase']-who_df.iloc[0]['CumCase']
+        if deaths<100:
+            # if it's less than 100 use the cumulative to reduce noise
+            deaths=who_df.iloc[-1]['CumDeath']
+            cases=who_df.iloc[-1]['CumCase']
+        ADM0_CFR=deaths/cases
+
     if parameters["covid"]["admin_level"] == 2:
         ADM2_names = get_dict_pcodes(
             exposure_gdf, parameters["covid"]["adm2_name_exp"], "ADM2_PCODE"
@@ -152,6 +172,9 @@ def covid(country_iso3, download_covid=False, config=None):
             if parameters["covid"]["deaths"]
             else None
         )
+        if not parameters["covid"]["deaths"]:
+            adm2deaths=[cases*ADM0_CFR for cases in adm2cases]
+        
         raw_data = {
             config.HLX_TAG_ADM1_PCODE: adm1pcode,
             config.HLX_TAG_ADM2_PCODE: adm2pcodes,
@@ -193,25 +216,6 @@ def covid(country_iso3, download_covid=False, config=None):
             "{}_{}".format(gender_age_group[0], gender_age_group[1])
             for gender_age_group in gender_age_groups
         ]
-        ADM0_CFR=0
-        if not parameters["covid"]["deaths"]:
-            # missing death data, getting it from WHO at the national level
-            logger.info(f"getting CFR at ADM0 from WHO for {country_iso3}")
-            who_df=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv')
-            who_df['date_epicrv']=pd.to_datetime(who_df['date_epicrv'])
-            who_df=who_df[who_df['ISO_3_CODE']==country_iso3]
-            who_df=who_df.sort_values(by='date_epicrv')
-            who_df=who_df.set_index('date_epicrv')
-            latest_date=who_df.tail(1).index.values[0]
-            # get the CFR from the latest month, to account for recent reporting rate estimation
-            who_df=who_df.loc[latest_date-np.timedelta64(30,'D'):latest_date]
-            deaths=who_df.iloc[-1]['CumDeath']-who_df.iloc[0]['CumDeath']
-            cases=who_df.iloc[-1]['CumCase']-who_df.iloc[0]['CumCase']
-            if deaths<100:
-                # if it's less than 100 use the cumulative to reduce noise
-                deaths=who_df.iloc[-1]['CumDeath']
-                cases=who_df.iloc[-1]['CumCase']
-            ADM0_CFR=deaths/cases
             
         for _, row in df_covid.iterrows():
             adm2_pop_fractions = get_adm2_to_adm1_pop_frac(
@@ -268,6 +272,9 @@ def covid(country_iso3, download_covid=False, config=None):
             config.HLX_TAG_ADM2_PCODE,
             config.HLX_TAG_DATE,
         ]
+        # TODO check this was not numeric in the case of SSD
+        output_df_covid[config.HLX_TAG_TOTAL_CASES]=pd.to_numeric(output_df_covid[config.HLX_TAG_TOTAL_CASES])
+        output_df_covid[config.HLX_TAG_TOTAL_DEATHS]=pd.to_numeric(output_df_covid[config.HLX_TAG_TOTAL_DEATHS])
         # get sum by day (in case multiple reports per day)
         output_df_covid = (
             output_df_covid.groupby(groups).sum().sort_values(by=config.HLX_TAG_DATE)
