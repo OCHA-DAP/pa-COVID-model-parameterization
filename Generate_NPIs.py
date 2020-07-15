@@ -12,6 +12,7 @@ import numpy as np
 
 from covid_model_parametrization import utils
 from covid_model_parametrization.hdx_api import query_api
+from covid_model_parametrization.utils import config_logger
 
 CONFIG_FILE = 'config.yml'
 
@@ -32,8 +33,7 @@ MEASURE_EQUIVALENCE_FILENAME = 'NPIs - ACAPS NPIs.csv'
 
 SHAPEFILE_DIR = 'Shapefiles'
 
-TRIAGED_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/{body}/pub?gid={gid}&single=true&output=csv'
-
+config_logger()
 logger = logging.getLogger()
 
 
@@ -59,29 +59,59 @@ def main(update_npi_list_arg, create_final_list_arg):
 def update_npi_list(config, countries):
     # TODO: this is now very broken
     logger.info('Getting ACAPS data')
-    get_df_acaps()
-    logger.info('Done')
-    df_acaps =  pd.read_excel(RAW_DATA_FILEPATH, sheet_name='Database')
-    # Take only the countries of concern
-    df_acaps = df_acaps[df_acaps['ISO'].isin(countries)]
-    # Simplify LOG_TYPE
-    df_acaps = df_acaps.replace({'Introduction / extension of measures': 'add',
-                                'Phase-out measure': 'remove'})
-    # Get our measures equivalent, and drop any that we don't use
-    df_acaps['our_measures'] = df_acaps["MEASURE"].str.lower().map(get_measures_equivalence_dictionary())
-    df_acaps = df_acaps[df_acaps['our_measures'].notnull()]
-    df_acaps['category'] = df_acaps['our_measures'].map(get_measures_category_dictionary())
+    download_acaps()
+    df_acaps = get_df_acaps(countries)
     # Loop through countries
     for country_iso3 in countries:
-        boundaries = get_boundaries_file(country_iso3, config[country_iso3])
-        df_country = get_country_info(country_iso3, df_acaps, boundaries)
+        add_new_acaps_data(country_iso3, df_acaps[df_acaps['ISO3'] == country_iso3])
 
 
-def get_df_acaps():
+def download_acaps():
     # Get the ACAPS data from HDX
     Path(RAW_DATA_DIR).mkdir(parents=True, exist_ok=True)
     filename = list(query_api(ACAPS_HDX_ADDRESS, RAW_DATA_DIR).values())[0]
     os.rename(os.path.join(RAW_DATA_DIR, filename), RAW_DATA_FILEPATH)
+
+
+def get_df_acaps(countries):
+    # Open the file
+    df_acaps =  pd.read_excel(RAW_DATA_FILEPATH, sheet_name='Database')
+    # Take only the countries of concern
+    df_acaps = df_acaps[df_acaps['ISO'].isin(countries)]
+    # rename columns
+    column_name_dict = {
+        'ISO': 'ISO3',
+        'ID': 'ID',
+        'LOG_TYPE': 'add_or_remove',
+        'CATEGORY': 'acaps_category',
+        'MEASURE': 'acaps_measure',
+        'COMMENTS': 'acaps_comments',
+        'DATE_IMPLEMENTED': 'start_date',
+        'SOURCE': 'source',
+    }
+    df_acaps = df_acaps.rename(columns=column_name_dict)
+    # Combine columns
+    columns_to_combine = {
+        'acaps_comments': ['ADMIN_LEVEL_NAME', 'TARGETED_POP_GROUP', 'NON_COMPLIANCE'],
+        'source': ['SOURCE_TYPE', 'LINK', 'Alternative source']
+    }
+    for main_column, cnames in columns_to_combine.items():
+        for cname in cnames:
+            prefix = cname.lower().replace('_', ' ')
+            df_acaps[cname] = df_acaps[cname].apply(lambda x: f'{prefix}: {x}' if isinstance(x, str) else x)
+        df_acaps[main_column] = df_acaps[[main_column] + cnames].fillna('').agg('|'.join, axis=1)
+    # Simplify add_or_remove
+    df_acaps['add_or_remove'] = df_acaps['add_or_remove'].replace({'Introduction / extension of measures': 'add',
+                                'Phase-out measure': 'remove'})
+    # Get our measures equivalent, and drop any that we don't use
+    df_acaps['bucky_measure'] = df_acaps['acaps_measure'].str.lower().map(get_measures_equivalence_dictionary())
+    df_acaps = df_acaps[df_acaps['bucky_measure'].notnull()]
+    df_acaps['bucky_category'] = df_acaps['bucky_measure'].map(get_measures_category_dictionary())
+    # Keep only some columns, moving start date to end
+    cnames_to_keep = list(column_name_dict.values()) + ['bucky_measure', 'bucky_category']
+    cnames_to_keep.append(cnames_to_keep.pop(cnames_to_keep.index('start_date')))
+    df_acaps = df_acaps[cnames_to_keep]
+    return df_acaps
 
 
 def get_measures_equivalence_dictionary():
@@ -109,41 +139,53 @@ def get_boundaries_file(country_iso3, config):
     })
 
 
-def get_country_info(country_iso3, df_acaps, boundaries):
+def add_new_acaps_data(country_iso3, df_country):
     logger.info(f'Getting info for {country_iso3}')
-    df = df_acaps[df_acaps['ISO'] == country_iso3]
-    admin_regions = get_admin_regions(boundaries)
     # Check if JSON file already exists, if so read it in
     output_dir = os.path.join(INPUT_DIR, country_iso3, OUTPUT_DATA_DIR)
-    filename = os.path.join(output_dir, INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
-    new_cols = ['affected_pcodes',
+    new_cols = [
                 'end_date',
-                'add_npi_id',
-                'remove_npi_id',
-                'compliance',
-                'use_in_model']
-    if os.path.isfile(filename):
-        logger.info(f'Reading in input file {filename}')
-        df_manual = pd.read_csv(filename)
+                'affected_pcodes',
+                'compliance_level',
+                'can_be_modelled',
+                'final_input',
+                'npis_linked',
+                'OCHA_comments'
+    ]
+    old_cols = [
+        'ISO3',
+        'ID',
+        'add_or_remove',
+        'acaps_category',
+        'acaps_measure',
+        'acaps_comments',
+        'source',
+        'start_date'
+    ]
+    filename_manual = os.path.join(output_dir, TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
+    if os.path.isfile(filename_manual):
+        logger.info(f'Reading in input file {filename_manual}')
+        df_manual = pd.read_csv(filename_manual)
         # Fix the columns that are lists
-        for col in ['affected_pcodes', 'add_npi_id','remove_npi_id']:
+        for col in ['affected_pcodes']:
             df_manual[col] = df_manual[col].apply(lambda x: literal_eval(x))
         # Join the pcode info
-        df = df.merge(df_manual[['ID'] + new_cols], how='left', on='ID')
-        # Warn about any empty entries
-        empty_entries = df[df['affected_pcodes'].isna()]
-        if not empty_entries.empty:
-            logger.warning(f'The following NPIs for {country_iso3} need location info: {empty_entries["ID"].values}')
+        df_country = df_country[old_cols].merge(df_manual[['ID', 'start_date'] + new_cols], how='outer', on='ID')
+        # Prioritize start date from df_manual
+        df_country = df_country.rename(columns={'start_date_y': 'start_date'})
+        df_country['start_date'] = df_country['start_date'].fillna(df_country['start_date_x'])
+        df_country = df_country.drop('start_date_x', axis=1)
     else:
         # If it doesn't exist, add empty columns
-        logger.info(f'No input file {filename} found, creating one')
+        logger.info(f'No input file {filename_manual} found, creating one')
         for col in new_cols:
-            df[col] = None
-    # Write out to a JSON
+            df_country[col] = None
+    # Write out
+    filename = os.path.join(output_dir, INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     logger.info(f'Writing to {filename}')
-    df.to_csv(filename, index=False)
-    return df
+    df_country.to_csv(filename, index=False)
+    return df_country
 
 
 def literal_eval(val):
