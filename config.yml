@@ -14,7 +14,7 @@ AFG:
       Wardak: Maidan Wardak
   kochi:
     # East/South of country
-    # from CO: The main focus would be in east as the Kuchis spend winter primarily Kunar, Laghman, Nuristan, Nangahar
+    # from CO: The main focus would be in east as the Kochis spend winter primarily Kunar, Laghman, Nuristan, Nangahar
     total: 2000000
     adm1:
       - AF15
@@ -55,8 +55,10 @@ AFG:
     skiprows: 0
     cases: True
     deaths: True
+    individual_case_data: False
     cumulative: True
     admin_level: 1
+    federal_state_dict: False
     adm1_name_exp: ADM1_EN
     date_format: "%Y-%m-%d"
     replace_dict:
@@ -76,6 +78,8 @@ AFG:
   contact_matrix:
     country: Pakistan
     file_number: 2
+  NPIs:
+    url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQcZaUnsrDX5hVTfoGfbRZZRsuQetgotXjo4f7BdzNtWlMyq9b7Stg3XmLwfI69Q5nQ_Nj217qbTPx3/pub?gid=1114937196&single=true&output=csv
 COD:
   admin:
     # https://data.humdata.org/dataset/drc-administrative-boundaries-levels-0-2
@@ -134,8 +138,10 @@ COD:
     skiprows: 0
     cases: True
     deaths: False
+    individual_case_data: False
     cumulative: True
     admin_level: 1
+    federal_state_dict: False
     adm1_name_exp: ADM1_FR
     date_format: "%Y-%m-%d"
     replace_dict:
@@ -147,6 +153,8 @@ COD:
   contact_matrix:
     country: Zambia
     file_number: 2
+  NPIs:
+    url: https://docs.google.com/spreadsheets/d/e/2PACX-1vSommoUZUX9Spyg3JzC2n9oKQ9SB2jO4XoeI0T3rgFlND6rMh3MvX_Ysiq-rWKJVKujwj1XyFjVquub/pub?gid=1686966978&single=true&output=csv
 SDN:
   admin:
     # https://data.humdata.org/dataset/sudan-administrative-boundaries-levels-0-2
@@ -199,8 +207,10 @@ SDN:
     skiprows: 0
     cases: True
     deaths: False
+    individual_case_data: False
     cumulative: True
     admin_level: 1
+    federal_state_dict: False
     adm1_name_exp: ADM1_EN
     date_format: "%m/%d/%Y"
     replace_dict:
@@ -210,6 +220,8 @@ SDN:
   contact_matrix:
     country: Ethiopia
     file_number: 1
+  NPIs:
+    url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQe2N9oGZLd-oICiX2k1B2lfIdyBhZc32QmVu8q8XGVURPw8EpcnsS-XE2bqoAuoxWkcSMZ8Y-L5OGL/pub?gid=345422459&single=true&output=csv
 SSD:
   admin:
     # https://data.humdata.org/dataset/south-sudan-administrative-boundaries
@@ -257,20 +269,47 @@ SSD:
     skiprows: False
     cases: True
     deaths: False
+    individual_case_data: True
     cumulative: False
     admin_level: 2
+    federal_state_dict: False
     adm2_name_exp: ADM2_EN
-    date_format: "%B %d, %Y"
+    date_format: "%Y-%m-%d"
     replace_dict:
+      JUba: Juba
+      juba: Juba
+      'Juba ': Juba
+      Winjook: Aweil East
+      Nimule: Magwi
       Abyei: Abyei Region
+      Rumamer: Abyei Region
+      Roumamier: Abyei Region
+      Aniek: Abyei Region
+      Agok: Abyei Region
+      Ameit: Abyei Region
+      South Bor: Bor South
+      Bor: Bor South
+      Aweil: Aweil West
+      Aweil Center: Aweil Centre
+      Rumbek: Rumbek Centre
+      Rumbek Center: Rumbek Centre
+      Bentiu: Rubkona
+      Twich: Twic
+      Turalei: Twic
+      Kuajok: Gogrial West
+      Rajaf: Juba
+      Yirol: Yirol West
+      Lankien: Nyirol
+      Pageri: Magwi
     hlx_dict:
-      State: "#adm1+name"
+      'State ': "#adm1+name"
       County: "#adm2+name"
-      No. of confirmed cases: "#affected+infected+confirmed+total"
-      Confirmation date: "#date"
+      Reporting date/Notification date/Sample collection date: "#date"
   contact_matrix:
     country: Uganda
     file_number: 2
+  NPIs:
+    url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQSj3APyX0xsQhVLhlt3nV7SOAZPO5umf2mjrYZRHHQUgJiQ0y74jHIKy0esbAxqRjncd59wzX6hLdD/pub?gid=863998455&single=true&output=csv
 SOM:
   admin:
     # https://data.humdata.org/dataset/somalia-administrative-boundaries
@@ -316,6 +355,7 @@ SOM:
     skiprows: 0
     cases: True
     deaths: True
+    individual_case_data: False
     cumulative: True
     admin_level: 1
     federal_state_dict:
@@ -345,10 +385,12 @@ SOM:
     hlx_dict:
       '#affected+infected+confirmed': "#affected+infected+confirmed+total"
       '#affected+infected+dead': "#affected+infected+dead+total"
-      "Unnamed: 1": "#adm1+name"
+      "#loc+name": "#adm1+name"
   contact_matrix:
     country: Kenya
     file_number: 1
+  NPIs:
+    url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQSwkx2eOoeQXEiyp_QjcP71mbIiMTg0Bnyd0pU113XyTP8VoQVxWQjefhM-u8Rsm2uuXZNW2w3dDeH/pub?gid=1334301503&single=true&output=csv
 HTI:
   admin:
     # https://data.humdata.org/dataset/hti-polbndl-adm1-cnigs-zip
