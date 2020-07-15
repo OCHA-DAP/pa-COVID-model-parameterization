@@ -2,7 +2,6 @@ import shutil
 import os
 import logging
 
-from hdx.utilities.easy_logging import setup_logging
 from hdx.hdx_configuration import Configuration
 from hdx.data.dataset import Dataset
 
@@ -10,8 +9,6 @@ from hdx.data.dataset import Dataset
 HDX_SITE = "prod"
 USER_AGENT = "MapAction"
 
-
-setup_logging()
 logger = logging.getLogger()
 Configuration.create(hdx_site=HDX_SITE, user_agent=USER_AGENT, hdx_read_only=True)
 
