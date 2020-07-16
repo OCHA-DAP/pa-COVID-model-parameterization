@@ -114,3 +114,5 @@ class Config:
     CONTACT_MATRIX_TYPES = ["home", "work", "school", "other_locations"]
 
     PSEUDO_MERCATOR_CRS = "EPSG:3857"
+
+    WHO_COVID_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv'
