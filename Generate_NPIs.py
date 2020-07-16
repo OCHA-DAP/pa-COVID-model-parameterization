@@ -50,7 +50,6 @@ def main(update_npi_list_arg, create_final_list_arg):
     config = utils.parse_yaml(CONFIG_FILE)
     countries = list(config.keys())
     countries.remove('HTI')
-    countries = ['AFG']
     if update_npi_list_arg:
         update_npi_list(config, countries)
     if create_final_list_arg:
@@ -59,7 +58,7 @@ def main(update_npi_list_arg, create_final_list_arg):
 
 def update_npi_list(config, countries):
     logger.info('Getting ACAPS data')
-    #download_acaps()
+    download_acaps()
     df_acaps = get_df_acaps(countries)
     # Loop through countries
     for country_iso3 in countries:
@@ -168,6 +167,8 @@ def add_new_acaps_data(country_iso3, df_country, config):
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
             df_manual[col] = df_manual[col].apply(lambda x: literal_eval(x))
+        for col in ['start_date', 'end_date']:
+            df_manual[col] = df_manual[col].apply(pd.to_datetime)
         # Join the pcode info
         for df in [df_country, df_manual]:
             df['ID'] = df['ID'].astype(str)
@@ -184,6 +185,8 @@ def add_new_acaps_data(country_iso3, df_country, config):
         for col in new_cols:
             df_country[col] = None
     # Write out
+    for col in ['start_date', 'end_date']:
+        df_country[col] = df_country[col].dt.date
     filename = os.path.join(output_dir, INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     logger.info(f'Writing to {filename}')
@@ -202,9 +205,11 @@ def get_triaged_csv(config, country_iso3):
 
 
 def literal_eval(val):
+    if type(val) == list:
+        return val
     try:
         return ast.literal_eval(val)
-    except ValueError:
+    except ValueError as e:
         return None
 
 
@@ -235,8 +240,10 @@ def format_final_output(country_iso3, df, boundaries):
     # Add Bucky category
     df['bucky_category'] = df['bucky_measure'].map(get_measures_category_dictionary())
     # fix compliance level
-    df['compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
-    print(df)
+    try:
+        df['compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
+    except AttributeError:
+        pass
     # Convert location lists to admin 2
     df = expand_admin_regions(df, boundaries)
     # Create 3d xarray

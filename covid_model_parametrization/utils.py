@@ -19,6 +19,12 @@ def config_logger():
 
 
 def download_url(url, save_path, chunk_size=128):
+    # Remove file if already exists
+    try:
+        os.remove(save_path)
+    except OSError:
+        pass
+    # Download
     r = requests.get(url, stream=True)
     with open(save_path, "wb") as fd:
         for chunk in r.iter_content(chunk_size=chunk_size):
