@@ -25,7 +25,7 @@ RAW_DATA_FILENAME = 'ACAPS_npis_raw_data.xlsx'
 RAW_DATA_FILEPATH = os.path.join(RAW_DATA_DIR, RAW_DATA_FILENAME)
 
 OUTPUT_DATA_DIR = 'NPIs'
-INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_input.csv'
+INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_input.xlsx'
 TRIAGED_INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_triaged.csv'
 FINAL_OUTPUT_FILENAME = '{}_NPIs.csv'
 
@@ -50,6 +50,7 @@ def main(update_npi_list_arg, create_final_list_arg):
     config = utils.parse_yaml(CONFIG_FILE)
     countries = list(config.keys())
     countries.remove('HTI')
+    countries = ['AFG']
     if update_npi_list_arg:
         update_npi_list(config, countries)
     if create_final_list_arg:
@@ -57,13 +58,12 @@ def main(update_npi_list_arg, create_final_list_arg):
 
 
 def update_npi_list(config, countries):
-    # TODO: this is now very broken
     logger.info('Getting ACAPS data')
-    download_acaps()
+    #download_acaps()
     df_acaps = get_df_acaps(countries)
     # Loop through countries
     for country_iso3 in countries:
-        add_new_acaps_data(country_iso3, df_acaps[df_acaps['ISO3'] == country_iso3])
+        add_new_acaps_data(country_iso3, df_acaps[df_acaps['ISO3'] == country_iso3], config)
 
 
 def download_acaps():
@@ -80,8 +80,8 @@ def get_df_acaps(countries):
     df_acaps = df_acaps[df_acaps['ISO'].isin(countries)]
     # rename columns
     column_name_dict = {
-        'ISO': 'ISO3',
         'ID': 'ID',
+        'ISO': 'ISO3',
         'LOG_TYPE': 'add_or_remove',
         'CATEGORY': 'acaps_category',
         'MEASURE': 'acaps_measure',
@@ -92,7 +92,7 @@ def get_df_acaps(countries):
     df_acaps = df_acaps.rename(columns=column_name_dict)
     # Combine columns
     columns_to_combine = {
-        'acaps_comments': ['ADMIN_LEVEL_NAME', 'TARGETED_POP_GROUP', 'NON_COMPLIANCE'],
+        'acaps_comments': ['ADMIN_LEVEL_NAME', 'PCODE', 'TARGETED_POP_GROUP', 'NON_COMPLIANCE'],
         'source': ['SOURCE_TYPE', 'LINK', 'Alternative source']
     }
     for main_column, cnames in columns_to_combine.items():
@@ -139,7 +139,7 @@ def get_boundaries_file(country_iso3, config):
     })
 
 
-def add_new_acaps_data(country_iso3, df_country):
+def add_new_acaps_data(country_iso3, df_country, config):
     logger.info(f'Getting info for {country_iso3}')
     # Check if JSON file already exists, if so read it in
     output_dir = os.path.join(INPUT_DIR, country_iso3, OUTPUT_DATA_DIR)
@@ -150,31 +150,37 @@ def add_new_acaps_data(country_iso3, df_country):
                 'can_be_modelled',
                 'final_input',
                 'npis_linked',
-                'OCHA_comments'
+                'ocha_comments'
     ]
     old_cols = [
-        'ISO3',
         'ID',
+        'ISO3',
         'add_or_remove',
         'acaps_category',
         'acaps_measure',
         'acaps_comments',
         'source',
+        'bucky_measure',
         'start_date'
     ]
     filename_manual = os.path.join(output_dir, TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
-    if os.path.isfile(filename_manual):
+    if 'NPIs' in config[country_iso3]:
+        get_triaged_csv(config, country_iso3)
         logger.info(f'Reading in input file {filename_manual}')
         df_manual = pd.read_csv(filename_manual)
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
             df_manual[col] = df_manual[col].apply(lambda x: literal_eval(x))
         # Join the pcode info
-        df_country = df_country[old_cols].merge(df_manual[['ID', 'start_date'] + new_cols], how='outer', on='ID')
-        # Prioritize start date from df_manual
-        df_country = df_country.rename(columns={'start_date_y': 'start_date'})
-        df_country['start_date'] = df_country['start_date'].fillna(df_country['start_date_x'])
-        df_country = df_country.drop('start_date_x', axis=1)
+        for df in [df_country, df_manual]:
+            df['ID'] = df['ID'].astype(str)
+        df_country = df_country[old_cols].merge(df_manual[['ID', 'bucky_measure', 'start_date'] + new_cols],
+                                                how='outer', on='ID')
+        # Prioritize start date and bukcy measure from df_manual
+        for q in ['bucky_measure', 'start_date']:
+            df_country = df_country.rename(columns={f'{q}_y': q})
+            df_country[q] = df_country[q].fillna(df_country[f'{q}_x'])
+            df_country = df_country.drop(f'{q}_x', axis=1)
     else:
         # If it doesn't exist, add empty columns
         logger.info(f'No input file {filename_manual} found, creating one')
@@ -184,7 +190,17 @@ def add_new_acaps_data(country_iso3, df_country):
     filename = os.path.join(output_dir, INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     logger.info(f'Writing to {filename}')
-    df_country.to_csv(filename, index=False)
+    df_country.to_excel(filename, index=False)
+    return df_country
+
+
+def get_triaged_csv(config, country_iso3):
+    logger.info(f'Getting triaged csv for {country_iso3}')
+    filename = os.path.join(INPUT_DIR, country_iso3, OUTPUT_DATA_DIR,
+                            TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
+    utils.download_url(config[country_iso3]['NPIs']['url'], filename)
+    df_country = pd.read_csv(filename)
+    df_country['affected_pcodes'] = df_country['affected_pcodes'].apply(lambda x: literal_eval(x))
     return df_country
 
 
@@ -212,24 +228,18 @@ def create_final_list(config, countries):
         format_final_output(country_iso3, df_country, boundaries)
 
 
-def get_triaged_csv(config, country_iso3):
-    logger.info(f'Getting triaged csv for {country_iso3}')
-    filename = os.path.join(INPUT_DIR, country_iso3, OUTPUT_DATA_DIR,
-                            TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
-    utils.download_url(config[country_iso3]['NPIs']['url'], filename)
-    df_country = pd.read_csv(filename)
-    df_country['affected_pcodes'] = df_country['affected_pcodes'].apply(lambda x: literal_eval(x))
-    return df_country
-
 
 def format_final_output(country_iso3, df, boundaries):
     logger.info(f'Formatting final output for {country_iso3}')
     # Only take rows with final_input is Yes
-    #df = df[(df['final_input'] == 'Yes')]
+    df = df[(df['final_input'] == 'Yes')]
     # Fill empty end dates with today's date
     df['end_date'] = df['end_date'].fillna(datetime.today())
     # Add Bucky category
     df['bucky_category'] = df['bucky_measure'].map(get_measures_category_dictionary())
+    # fix compliance level
+    df['compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
+    print(df)
     # Convert location lists to admin 2
     df = expand_admin_regions(df, boundaries)
     # Create 3d xarray
