@@ -33,6 +33,9 @@ def graph(country_iso3, mobility_csv, config=None):
     # Add COVID cases
     G = add_covid(G, main_dir, country_iso3, config)
 
+    # Add WHO data
+    G = add_WHO_data(G, country_iso3, config)
+
     # Add vulnerability
     G = add_vulnerability(G, main_dir, country_iso3, config)
 
@@ -137,6 +140,29 @@ def add_covid(G, main_dir, country_iso3, config):
             G.add_node(
                 admin2, **{f"infected_{cname}": covid_out[admin2].values.tolist()}
             )
+    return G
+
+
+def add_WHO_data(G, country_iso3, config):
+    logger.info(f"Reading in COVID cases from {config.WHO_COVID_URL}")
+    df_WHO = pd.read_csv(config.WHO_COVID_URL)
+    # get only HRP countries
+    df_WHO = df_WHO.loc[df_WHO['ISO_3_CODE'] == country_iso3, :]
+    # convert ot datetime
+    df_WHO['date_epicrv'] = pd.to_datetime(df_WHO['date_epicrv']).dt.date
+    # keep only columns that we need
+    df_WHO = df_WHO[['date_epicrv', 'CumCase', 'CumDeath']]
+    # Index by date and fill missing vals
+    date_range = pd.date_range(df_WHO["date_epicrv"].min(), df_WHO["date_epicrv"].max())
+    df_WHO.index = df_WHO['date_epicrv']
+    df_WHO = df_WHO.drop('date_epicrv', axis=1)
+    df_WHO.reindex(date_range)
+    df_WHO = df_WHO.interpolate(
+        method="linear", axis="rows", limit_direction="forward"
+    ).fillna(0)
+    df_WHO['date'] = df_WHO.index.astype(str)
+    # Add to the graph
+    G.graph["data_WHO"] = df_WHO.to_dict(orient='list')
     return G
 
 
