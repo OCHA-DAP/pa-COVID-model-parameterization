@@ -99,7 +99,7 @@ def get_df_acaps(countries):
         for cname in cnames:
             prefix = cname.lower().replace('_', ' ')
             df_acaps[cname] = df_acaps[cname].apply(lambda x: f'{prefix}: {x}' if isinstance(x, str) else x)
-        df_acaps[main_column] = df_acaps[[main_column] + cnames].fillna('').agg('|'.join, axis=1)
+        df_acaps[main_column] = df_acaps[[main_column] + cnames].fillna('').agg(' | '.join, axis=1)
     # Simplify add_or_remove
     df_acaps['add_or_remove'] = df_acaps['add_or_remove'].replace({'Introduction / extension of measures': 'add',
                                 'Phase-out measure': 'remove'})
@@ -163,11 +163,8 @@ def add_new_acaps_data(country_iso3, df_country, config):
         'bucky_measure',
         'start_date'
     ]
-    filename_manual = os.path.join(output_dir, TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     if 'NPIs' in config[country_iso3]:
-        get_triaged_csv(config, country_iso3)
-        logger.info(f'Reading in input file {filename_manual}')
-        df_manual = pd.read_csv(filename_manual)
+        df_manual = get_triaged_csv(config, country_iso3)
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
             df_manual[col] = df_manual[col].apply(lambda x: literal_eval(x))
@@ -183,7 +180,7 @@ def add_new_acaps_data(country_iso3, df_country, config):
             df_country = df_country.drop(f'{q}_x', axis=1)
     else:
         # If it doesn't exist, add empty columns
-        logger.info(f'No input file {filename_manual} found, creating one')
+        logger.info(f'No input URL in config, creating new file')
         for col in new_cols:
             df_country[col] = None
     # Write out
@@ -199,7 +196,7 @@ def get_triaged_csv(config, country_iso3):
     filename = os.path.join(INPUT_DIR, country_iso3, OUTPUT_DATA_DIR,
                             TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     utils.download_url(config[country_iso3]['NPIs']['url'], filename)
-    df_country = pd.read_csv(filename)
+    df_country = pd.read_csv(filename, header=0, skiprows=[1])
     df_country['affected_pcodes'] = df_country['affected_pcodes'].apply(lambda x: literal_eval(x))
     return df_country
 
