@@ -309,7 +309,7 @@ SSD:
     country: Uganda
     file_number: 2
   NPIs:
-    url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQSj3APyX0xsQhVLhlt3nV7SOAZPO5umf2mjrYZRHHQUgJiQ0y74jHIKy0esbAxqRjncd59wzX6hLdD/pub?gid=863998455&single=true&output=csv
+    url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQe2N9oGZLd-oICiX2k1B2lfIdyBhZc32QmVu8q8XGVURPw8EpcnsS-XE2bqoAuoxWkcSMZ8Y-L5OGL/pub?gid=585810411&single=true&output=csv
 SOM:
   admin:
     # https://data.humdata.org/dataset/somalia-administrative-boundaries
