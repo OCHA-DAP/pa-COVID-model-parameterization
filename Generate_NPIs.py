@@ -284,16 +284,11 @@ def format_final_output(country_iso3, df, boundaries):
         # Track the new number of NPIs
         da.loc[affected_pcodes, date_range, measure, 'num_npis'] += 1
     # Compute R0 reduction
-    # First value should really be 0, but that will mess up the multiplication.
-    # Setting the dictionary value manually to 0 also doesn't work because somehow
-    # the vectorization command makes all values 0, So after vectorizing, manually
-    # set all 0s to 1.
-    R0_reduction_amounts = [1.0, 0.4, 0.2, 0.1, 0.05]
+    R0_reduction_amounts = [0.0, 0.4, 0.2, 0.1, 0.05]
     num_R0_npis = da.sel(measure='r0_reduction', quantity='num_npis').astype(int)
-    R0_reduction_dict = {i: np.prod(R0_reduction_amounts[:i+1])
+    R0_reduction_dict = {i: np.sum(R0_reduction_amounts[:i+1])
                         for i in range(num_R0_npis.values.max() + 1)}
     reduction_amount = np.vectorize(R0_reduction_dict.get)(num_R0_npis)
-    reduction_amount = np.where(reduction_amount == 1, 0, reduction_amount)
     R0_compliance_level = da.sel(measure='r0_reduction', quantity='compliance_level')
     da.loc[:, :, 'r0_reduction', 'reduction'] = 1 - reduction_amount * R0_compliance_level
     # Compute mobility reduction
