@@ -1,5 +1,19 @@
 Date,Province,Number of heatlh structures,Affected,Confirmed Cases,Probable cases,Source
 #date,#admin1+name,,#affected+total,#affected+positive+total,#probable+total,#source+url
+2020-07-20,Equateur,18,2,4,0,
+2020-07-20,Haut-Katanga,27,13,260,0,
+2020-07-20,Haut-Lomami,16,1,1,0,
+2020-07-20,Haut-Uele,13,1,18,0,
+2020-07-20,Ituri,36,3,27,0,
+2020-07-20,Kinshasa,35,34,7254,1,
+2020-07-20,Kongo-Central,31,15,359,0,
+2020-07-20,Kwango,14,1,1,0,
+2020-07-20,Kwilu,24,3,4,0,
+2020-07-20,Lualaba,14,6,75,0,
+2020-07-20,Nord-Kivu,34,8,236,0,
+2020-07-20,Sud-Kivu,34,10,276,0,
+2020-07-20,Sud-Ubangi,16,1,4,0,
+2020-07-20,Tshopo,23,3,14,0,
 2020-07-19,Equateur,18,2,4,0,
 2020-07-19,Haut-Katanga,27,13,260,0,
 2020-07-19,Haut-Lomami,16,1,1,0,
@@ -283,7 +297,6 @@ Date,Province,Number of heatlh structures,Affected,Confirmed Cases,Probable case
 2020-06-06,Nord-Kivu,34,7,53,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_128_.pdf
 2020-06-06,Sud-Kivu,34,4,84,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_128_.pdf
 2020-06-06,Tshopo,23,1,1,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_128_.pdf
-2020-06-06,Total,292,70,4015,1,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_128_.pdf
 2020-05-31,Haut-Katanga,27,8,33,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_122.pdf
 2020-05-31,Ituri,36,2,2,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_122.pdf
 2020-05-31,Kinshasa,35,34,3008,1,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_122.pdf
