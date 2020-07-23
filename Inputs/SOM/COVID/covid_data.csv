@@ -1,5 +1,19 @@
 Date,State,Confirmed ,Dead,Recovered,Active
 #date,#loc+name,#affected+infected+confirmed,#affected+infected+dead,#affected+infected+recovered,#affected+infected+active
+07/22/2020,Banadir,1493,55,846,592
+07/22/2020,Somaliland,807,27,199,581
+07/22/2020,Puntland,325,8,163,154
+07/22/2020,Jubaland State,195,1,116,78
+07/22/2020,South West State,144,0,67,77
+07/22/2020,Galmudug State,119,1,42,76
+07/22/2020,Hir-Shabelle State,23,1,11,11
+07/20/2020,Banadir,1493,55,846,592
+07/20/2020,Somaliland,807,27,199,581
+07/20/2020,Puntland,325,8,163,154
+07/20/2020,Jubaland State,195,1,116,78
+07/20/2020,South West State,144,0,67,77
+07/20/2020,Galmudug State,119,1,42,76
+07/20/2020,Hir-Shabelle State,23,1,11,11
 07/16/2020,Banadir,1477,55,841,581
 07/16/2020,Somaliland,800,27,225,548
 07/16/2020,Puntland,325,8,129,188

@@ -63,6 +63,8 @@ AFG:
     date_format: "%Y-%m-%d"
     replace_dict:
       Herat: Hirat
+      Dykundi: Daykundi
+      Nooristan: Nuristan
       Helmand: Hilmand
       Paktia: Paktya
       Jowzjan: Jawzjan
