@@ -341,6 +341,9 @@ def get_adm2_to_adm1_pop_frac(pcode, exposure_gdf, gender_age_group_names):
 
 def get_covid_data(parameters, country_iso3, input_dir, config):
     # download covid data from HDX
+    if parameters["url"] == 'None':
+        logger.info(f"URL missing for {country_iso3}")
+        return False
     logger.info(f"Getting COVID data for {country_iso3}")
     download_dir = os.path.join(input_dir, config.COVID_OUTPUT_DIR)
     Path(download_dir).mkdir(parents=True, exist_ok=True)
