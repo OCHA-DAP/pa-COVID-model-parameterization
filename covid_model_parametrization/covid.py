@@ -289,6 +289,9 @@ def covid(country_iso3, download_covid=False, config=None):
         output_df_covid[config.HLX_TAG_ADM1_PCODE] = output_df_covid[
             config.HLX_TAG_ADM2_PCODE
         ].map(ADM2_ADM1_pcodes)
+    
+    # drop duplicates
+    output_df_covid=output_df_covid.drop_duplicates()
 
     # Write to file
     output_df_covid["created_at"] = str(datetime.datetime.now())
