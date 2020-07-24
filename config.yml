@@ -49,7 +49,7 @@ AFG:
   # https://vizhub.healthdata.org/tobacco/
   smoking: 0.13
   covid:
-    url: https://proxy.hxlstandard.org/data.csv?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1F-AMEDtqK78EA6LYME2oOsWQsgJi4CT3V_G4Uo-47Rg%2Fedit%23gid%3D1539509351
+    url: https://docs.google.com/spreadsheets/u/1/d/1F-AMEDtqK78EA6LYME2oOsWQsgJi4CT3V_G4Uo-47Rg/export?format=csv&id=1F-AMEDtqK78EA6LYME2oOsWQsgJi4CT3V_G4Uo-47Rg&gid=1539509351
     filename: covid_data.csv
     header: 1
     skiprows: 0
@@ -149,6 +149,7 @@ COD:
     replace_dict:
       Nord Kivu: Nord-Kivu
       Haut  Katanga: Haut-Katanga
+      Haut-Uélé: Haut-Uele
     hlx_dict:
       "#affected+positive+total": "#affected+infected+confirmed+total"  
       "#admin1+name": "#adm1+name"
