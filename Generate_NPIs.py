@@ -4,6 +4,7 @@ from pathlib import Path
 import argparse
 import ast
 from datetime import datetime
+import sys
 
 import pandas as pd
 import geopandas as gpd
@@ -35,6 +36,7 @@ SHAPEFILE_DIR = 'Shapefiles'
 
 config_logger()
 logger = logging.getLogger()
+pd.options.mode.chained_assignment = None  # default='warn'
 
 
 def parse_args():
@@ -166,27 +168,27 @@ def add_new_acaps_data(country_iso3, df_country, config):
         df_manual = get_triaged_csv(config, country_iso3)
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
-            df_manual[col] = df_manual[col].apply(lambda x: literal_eval(x))
+            df_manual.loc[:, col] = df_manual[col].apply(lambda x: literal_eval(x))
         for col in ['start_date', 'end_date']:
-            df_manual[col] = df_manual[col].apply(pd.to_datetime)
+            df_manual.loc[:, col] = df_manual[col].apply(pd.to_datetime)
         # Join the pcode info
         for df in [df_country, df_manual]:
-            df['ID'] = df['ID'].astype(str)
+            df.loc[:, 'ID'] = df.astype(str)
         df_country = df_country[old_cols].merge(df_manual[['ID', 'bucky_measure', 'start_date'] + new_cols],
                                                 how='outer', on='ID')
         # Prioritize start date and bukcy measure from df_manual
         for q in ['bucky_measure', 'start_date']:
             df_country = df_country.rename(columns={f'{q}_y': q})
-            df_country[q] = df_country[q].fillna(df_country[f'{q}_x'])
+            df_country.loc[:, q] = df_country[q].fillna(df_country[f'{q}_x'])
             df_country = df_country.drop(f'{q}_x', axis=1)
     else:
         # If it doesn't exist, add empty columns
         logger.info(f'No input URL in config, creating new file')
         for col in new_cols:
-            df_country[col] = None
+            df_country.loc[:, col] = None
     # Write out
     for col in ['start_date', 'end_date']:
-        df_country[col] = df_country[col].dt.date
+        df_country.loc[:, col] = df_country[col].dt.date
     filename = os.path.join(output_dir, INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     logger.info(f'Writing to {filename}')
@@ -230,20 +232,26 @@ def create_final_list(config, countries):
         format_final_output(country_iso3, df_country, boundaries)
 
 
-
 def format_final_output(country_iso3, df, boundaries):
     logger.info(f'Formatting final output for {country_iso3}')
     # Only take rows with final_input is Yes
     df = df[(df['final_input'] == 'Yes')]
     # Fill empty end dates with today's date
-    df['end_date'] = df['end_date'].fillna(datetime.today())
+    df.loc[:, 'end_date'] = df['end_date'].fillna(datetime.today()).apply(pd.to_datetime)
     # Add Bucky category
-    df['bucky_category'] = df['bucky_measure'].map(get_measures_category_dictionary())
+    df.loc[:, 'bucky_category'] = df['bucky_measure'].map(get_measures_category_dictionary())
     # fix compliance level
     try:
-        df['compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
+        df.loc[:, 'compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
     except AttributeError:
         pass
+    df.loc[:, 'compliance_level'] /= 100
+    if any((df['compliance_level'] < 0.01) | (df['compliance_level'] > 1)):
+        logger.error(f'One of the compliance levels for {country_iso3} is not between 1% and 100%,'
+                     f'check the spreadsheet')
+        print(df['compliance_level'])
+        logger.error('Exiting')
+        sys.exit()
     # Convert location lists to admin 2
     df = expand_admin_regions(df, boundaries)
     # Create 3d xarray
@@ -272,13 +280,14 @@ def format_final_output(country_iso3, df, boundaries):
         'reproduction number-based': 'r0_reduction'
     }
     for _, row in df.iterrows():
-        date_range = pd.date_range(row['start_date'], row['end_date'])
+        # TODO: use the real end date if we are extending the NPI file to the future
+        date_range = pd.date_range(row['start_date'], min(row['end_date'].to_pydatetime(), datetime.today()))
         affected_pcodes = [r[2:] for r in row['affected_pcodes']]
         measure = measures_dict[row['bucky_category']]
         # Amend the compliance level
         previous_num_npis = da.loc[affected_pcodes, date_range, measure, 'num_npis']
         previous_compliance_level =  da.loc[affected_pcodes, date_range, measure, 'compliance_level']
-        new_compliance_level = (previous_num_npis * previous_compliance_level + row['compliance_level']/100 ) \
+        new_compliance_level = (previous_num_npis * previous_compliance_level + row['compliance_level'] ) \
                                 / (previous_num_npis + 1)
         da.loc[affected_pcodes, date_range, measure, 'compliance_level'] = new_compliance_level
         # Track the new number of NPIs
