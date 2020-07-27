@@ -4,6 +4,7 @@ from pathlib import Path
 import argparse
 import ast
 from datetime import datetime
+import sys
 
 import pandas as pd
 import geopandas as gpd
@@ -244,6 +245,13 @@ def format_final_output(country_iso3, df, boundaries):
         df.loc[:, 'compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
     except AttributeError:
         pass
+    df.loc[:, 'compliance_level'] /= 100
+    if any((df['compliance_level'] < 0.01) | (df['compliance_level'] > 1)):
+        logger.error(f'One of the compliance levels for {country_iso3} is not between 1% and 100%,'
+                     f'check the spreadsheet')
+        print(df['compliance_level'])
+        logger.error('Exiting')
+        sys.exit()
     # Convert location lists to admin 2
     df = expand_admin_regions(df, boundaries)
     # Create 3d xarray
@@ -279,7 +287,7 @@ def format_final_output(country_iso3, df, boundaries):
         # Amend the compliance level
         previous_num_npis = da.loc[affected_pcodes, date_range, measure, 'num_npis']
         previous_compliance_level =  da.loc[affected_pcodes, date_range, measure, 'compliance_level']
-        new_compliance_level = (previous_num_npis * previous_compliance_level + row['compliance_level']/100 ) \
+        new_compliance_level = (previous_num_npis * previous_compliance_level + row['compliance_level'] ) \
                                 / (previous_num_npis + 1)
         da.loc[affected_pcodes, date_range, measure, 'compliance_level'] = new_compliance_level
         # Track the new number of NPIs
