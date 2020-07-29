@@ -34,6 +34,15 @@ MEASURE_EQUIVALENCE_FILENAME = 'NPIs - ACAPS NPIs.csv'
 
 SHAPEFILE_DIR = 'Shapefiles'
 
+# Reduction parameters
+R0_REDUCTION_AMOUNTS = [0.0, 0.4, 0.2, 0.1, 0.05]
+MOBILITY_REDUCTION_AMOUNT = 0.6
+SCHOOL_REDUCTION_VALUES = {
+       'home': 1.05,
+       'other_locations': 0.85,
+       'school': 0.05,
+    }
+
 config_logger()
 logger = logging.getLogger()
 pd.options.mode.chained_assignment = None  # default='warn'
@@ -293,25 +302,20 @@ def format_final_output(country_iso3, df, boundaries):
         # Track the new number of NPIs
         da.loc[affected_pcodes, date_range, measure, 'num_npis'] += 1
     # Compute R0 reduction
-    R0_reduction_amounts = [0.0, 0.4, 0.2, 0.1, 0.05]
     num_R0_npis = da.sel(measure='r0_reduction', quantity='num_npis').astype(int)
-    R0_reduction_dict = {i: np.sum(R0_reduction_amounts[:i+1])
+    R0_reduction_dict = {i: np.sum(R0_REDUCTION_AMOUNTS[:i + 1])
                         for i in range(num_R0_npis.values.max() + 1)}
     reduction_amount = np.vectorize(R0_reduction_dict.get)(num_R0_npis)
     R0_compliance_level = da.sel(measure='r0_reduction', quantity='compliance_level')
     da.loc[:, :, 'r0_reduction', 'reduction'] = 1 - reduction_amount * R0_compliance_level
     # Compute mobility reduction
     da.loc[:, :, 'mobility_reduction', 'reduction'] = np.where(
-        da.sel(measure='mobility_reduction', quantity='num_npis') > 0, 0.4,
+        da.sel(measure='mobility_reduction', quantity='num_npis') > 0,
+        1 - MOBILITY_REDUCTION_AMOUNT * da.sel(measure='mobility_reduction', quantity='compliance_level'),
         da.sel(measure='mobility_reduction', quantity='reduction'))
     # Compute contact reduction for schools closing
     # TODO: distinguish between schools closing and elderly shielding
-    school_reduction_values = {
-       'home': 1.05,
-       'other_locations': 0.85,
-       'school': 0.05,
-    }
-    for key, value in school_reduction_values.items():
+    for key, value in SCHOOL_REDUCTION_VALUES.items():
         da.loc[:, :, key, 'reduction'] = np.where(
             da.sel(measure='school', quantity='num_npis') > 0, value,
             da.sel(measure=key, quantity='reduction'))
