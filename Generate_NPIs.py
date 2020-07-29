@@ -35,13 +35,35 @@ MEASURE_EQUIVALENCE_FILENAME = 'NPIs - ACAPS NPIs.csv'
 SHAPEFILE_DIR = 'Shapefiles'
 
 # Reduction parameters
+# TODO: invert this dictionary
+MEASURES_DICT = {
+    'school closure': 'school',
+    'shielding elderly': 'elderly',
+    'closing borders': 'mobility_reduction',
+    'restricting inter-regional movement': 'mobility_reduction',
+    'social distancing':'r0_reduction',
+    'face mask wearing': 'r0_reduction',
+    'hand washing stations': 'r0_reduction',
+    'reduction of size of gatherings': 'r0_reduction',
+    'closing businesses': 'r0_reduction',
+    'partial lockdown': 'r0_reduction',
+    'awareness campaign': 'r0_reduction'
+}
 R0_REDUCTION_AMOUNTS = [0.0, 0.4, 0.2, 0.1, 0.05]
 MOBILITY_REDUCTION_AMOUNT = 0.6
-SCHOOL_REDUCTION_VALUES = {
+REDUCTION_VALUES = {
+    'school':  {
        'home': 1.05,
        'other_locations': 0.85,
        'school': 0.05,
+    },
+    'elderly': {
+        # TODO: get these values
+       'home': 1.0,
+       'other_locations': 1.8,
+       'school': 1.0,
     }
+}
 
 config_logger()
 logger = logging.getLogger()
@@ -264,6 +286,8 @@ def format_final_output(country_iso3, df, boundaries):
     # Convert location lists to admin 2
     df = expand_admin_regions(df, boundaries)
     # Create 3d xarray
+    # This is the list of final columns for the output, save for elderly which is needed only to count
+    # the number of elderly shielding NPIs
     clist = [
              'r0_reduction',
              'home',
@@ -271,6 +295,7 @@ def format_final_output(country_iso3, df, boundaries):
              'school',
              'work',
              'mobility_reduction',
+             'elderly'  # dropped at the end
              ]
     coords = {
         'admin2': sorted([b[2:] for b in boundaries['ADM2_PCODE'].unique()]),
@@ -283,16 +308,12 @@ def format_final_output(country_iso3, df, boundaries):
     # Set defaults for reduction and compliance
     da.loc[:, :, :, ['reduction', 'compliance_level']] = 1.0
     # Populate it by looping through the dataframe
-    measures_dict = {
-        'contact-based': 'school',  # works for now because only have school closures
-        'mobility-based': 'mobility_reduction',
-        'reproduction number-based': 'r0_reduction'
-    }
+
     for _, row in df.iterrows():
         # TODO: use the real end date if we are extending the NPI file to the future
         date_range = pd.date_range(row['start_date'], min(row['end_date'].to_pydatetime(), datetime.today()))
         affected_pcodes = [r[2:] for r in row['affected_pcodes']]
-        measure = measures_dict[row['bucky_category']]
+        measure = MEASURES_DICT[row['bucky_measure']]
         # Amend the compliance level
         previous_num_npis = da.loc[affected_pcodes, date_range, measure, 'num_npis']
         previous_compliance_level =  da.loc[affected_pcodes, date_range, measure, 'compliance_level']
@@ -314,13 +335,18 @@ def format_final_output(country_iso3, df, boundaries):
         1 - MOBILITY_REDUCTION_AMOUNT * da.sel(measure='mobility_reduction', quantity='compliance_level'),
         da.sel(measure='mobility_reduction', quantity='reduction'))
     # Compute contact reduction for schools closing
-    # TODO: distinguish between schools closing and elderly shielding
-    for key, value in SCHOOL_REDUCTION_VALUES.items():
-        da.loc[:, :, key, 'reduction'] = np.where(
-            da.sel(measure='school', quantity='num_npis') > 0, value,
-            da.sel(measure=key, quantity='reduction'))
+    for measure_type in ['school', 'elderly']:
+        for key, value in REDUCTION_VALUES[measure_type].items():
+            da.loc[:, :, key, 'reduction'] = np.where(
+                da.sel(measure=measure_type, quantity='num_npis') > 0, value,
+                da.sel(measure=key, quantity='reduction'))
     # Convert to dataframe and write out
-    df_out = da.sel(quantity='reduction').drop('quantity').to_dataframe('result').unstack().droplevel(0, axis=1)
+    df_out = (da.sel(quantity='reduction')
+              .drop('quantity')
+              .to_dataframe('result')
+              .unstack()
+              .droplevel(0, axis=1)
+              .drop('elderly', axis=1))
     output_dir = os.path.join(OUTPUT_DIR, country_iso3, 'NPIs')
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     filename = os.path.join(output_dir, FINAL_OUTPUT_FILENAME.format(country_iso3))
