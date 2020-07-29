@@ -295,6 +295,7 @@ SSD:
       Aweil: Aweil West
       Aweil Center: Aweil Centre
       Rumbek: Rumbek Centre
+      rumbek: Rumbek Centre
       Rumbek Center: Rumbek Centre
       Bentiu: Rubkona
       Twich: Twic
@@ -304,6 +305,12 @@ SSD:
       Yirol: Yirol West
       Lankien: Nyirol
       Pageri: Magwi
+      Warrap: Abyei Region
+      Aniet: Abyei Region
+      Ikoto: Ikotos
+      Ikwoto: Ikotos
+      AE: Aweil East
+      wau: Wau
     hlx_dict:
       'State ': "#adm1+name"
       County: "#adm2+name"
