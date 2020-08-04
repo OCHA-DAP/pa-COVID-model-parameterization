@@ -55,6 +55,18 @@ class Config:
             self.DIR_PATH, self.MAIN_OUTPUT_DIR, "{}", self.SADD_OUTPUT_DIR
         )
 
+    ####################### Mobility section
+
+    MOBILITY_OUTPUT_DIR = 'mobility'
+    MOBILITY_FILENAME = '{country_iso3}_mobility_matrix.csv'
+    MOBILITY_FIGNAME = '{country_iso3}_mobility_matrix_hist.png'
+
+    ROADS_FILENAME = 'hotosm_{country_iso3}_roads_gpkg.zip'
+    ROADS_SHAPEFILE = 'hotosm_{country_iso3}_roads.gpkg'
+
+    CROSSINGS_FILENAME = 'crossings.gpkg'
+    DISTANCES_FILENAME = 'distances.csv'
+
     ####################### Vulnerability section
 
     VULNERABILITY_FILENAME = "{country_iso3}_Vulnerabilities.geojson"

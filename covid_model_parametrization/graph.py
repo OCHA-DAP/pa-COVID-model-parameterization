@@ -14,7 +14,7 @@ from covid_model_parametrization.config import Config
 logger = logging.getLogger(__name__)
 
 
-def graph(country_iso3, mobility_csv, config=None):
+def graph(country_iso3, config=None):
 
     if config is None:
         config = Config()
@@ -24,6 +24,9 @@ def graph(country_iso3, mobility_csv, config=None):
     main_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3)
 
     # Initialize graph with mobility edges
+    mobility_csv = os.path.join(main_dir,
+                                config.MOBILITY_OUTPUT_DIR,
+                                config.MOBILITY_FILENAME.format(country_iso3=country_iso3))
     G = initialize_with_mobility(mobility_csv)
     G.graph["country"] = country_iso3
 
