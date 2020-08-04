@@ -10,9 +10,8 @@ import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-from covid_model_parametrization import utils
+from covid_model_parametrization import utils, exposure
 from covid_model_parametrization.config import Config
-
 
 INPUT_DIR = os.path.join('Inputs')
 OUTPUT_DIR = os.path.join('Outputs')
@@ -26,8 +25,6 @@ SHAPEFILE_ROADS = 'hotosm_{country_iso3}_roads.gpkg'
 
 FILENAME_CROSSINGS = 'crossings.gpkg'
 FILENAME_DISTANCES = 'distances.csv'
-
-POPULATION_URL = "https://raw.githubusercontent.com/OCHA-DAP/pa-COVID-model-parameterization/{branch}/Outputs/{country_iso3}/Exposure_SADD/{country_iso3}_Exposure.geojson"
 
 # How much to weight each road type
 ROAD_MFACTOR = {
@@ -97,10 +94,7 @@ def main(country_iso3, population_file=None, read_in_crossings=True, read_in_dis
     # Load admin regions
     df_adm = load_adm(country_iso3, config, parameters['admin'])
     # Read in population file
-    # TODO: make this read in from the directory
-    if population_file is None:
-        population_file = POPULATION_URL.format(country_iso3=country_iso3.upper(), branch='master')
-    df_pop = gpd.read_file(population_file)
+    df_pop = gpd.read_file(exposure.get_output_filename(country_iso3, config))
     if read_in_crossings:
         logger.info('Reading in saved roads file')
         df_roads = gpd.read_file(os.path.join(output_dir, FILENAME_CROSSINGS))
