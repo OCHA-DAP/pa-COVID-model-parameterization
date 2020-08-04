@@ -145,7 +145,7 @@ Inputs/*/GHS/*
 Inputs/*/WorldPop/*
 Inputs/ACAPS_NPIs/*
 Inputs/*/NPIs/*
-Outputs/*/Vulnerability
-Outputs/*/Figures
-Inputs/*/mobility
-Outputs/*/mobility
+Outputs/*/Vulnerability/*
+Outputs/*/Figures/*
+Inputs/*/mobility/*
+Outputs/*/mobility/*
