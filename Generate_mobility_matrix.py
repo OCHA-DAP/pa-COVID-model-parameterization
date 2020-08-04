@@ -13,18 +13,7 @@ import matplotlib.pyplot as plt
 from covid_model_parametrization import utils, exposure
 from covid_model_parametrization.config import Config
 
-INPUT_DIR = os.path.join('Inputs')
-OUTPUT_DIR = os.path.join('Outputs')
-OUTPUT_FILENAME = '{country_iso3}_mobility_matrix.csv'
-OUTPUT_FIGNAME = '{country_iso3}_mobility_matrix_hist.png'
 
-CONFIG_FILE = 'parameters.yml'
-
-FILENAME_ROADS = 'hotosm_{country_iso3}_roads_gpkg.zip'
-SHAPEFILE_ROADS = 'hotosm_{country_iso3}_roads.gpkg'
-
-FILENAME_CROSSINGS = 'crossings.gpkg'
-FILENAME_DISTANCES = 'distances.csv'
 
 # How much to weight each road type
 ROAD_MFACTOR = {
@@ -89,7 +78,7 @@ def main(country_iso3, population_file=None, read_in_crossings=True, read_in_dis
         config = Config()
     parameters = config.parameters[country_iso3]
     # Make the output directory if it doesn't exist
-    output_dir = os.path.join(OUTPUT_DIR, country_iso3, 'mobility')
+    output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR)
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     # Load admin regions
     df_adm = load_adm(country_iso3, config, parameters['admin'])
@@ -97,32 +86,32 @@ def main(country_iso3, population_file=None, read_in_crossings=True, read_in_dis
     df_pop = gpd.read_file(exposure.get_output_filename(country_iso3, config))
     if read_in_crossings:
         logger.info('Reading in saved roads file')
-        df_roads = gpd.read_file(os.path.join(output_dir, FILENAME_CROSSINGS))
+        df_roads = gpd.read_file(os.path.join(output_dir, config.CROSSINGS_FILENAME))
         for cname in ['crossings', 'crossing_pairs']:
             df_roads[cname] = df_roads[cname].apply(ast.literal_eval)
     else:
         df_borders = get_borders(df_adm)
-        df_roads = load_roads(country_iso3, parameters['mobility'], df_borders)
+        df_roads = load_roads(country_iso3, config, parameters['mobility'], df_borders)
         df_roads = get_road_crossings(df_roads, df_adm)
         df_roads_out = df_roads.copy()
         for cname in ['crossings', 'crossing_pairs']:
             df_roads_out[cname] = df_roads_out[cname].apply(str)
-        df_roads_out.to_file(os.path.join(output_dir, FILENAME_CROSSINGS), driver='GPKG')
+        df_roads_out.to_file(os.path.join(output_dir, config.CROSSINGS_FILENAME), driver='GPKG')
     # Get centroid dist
     if read_in_distances:
         logger.info('Reading in saved distances file')
-        df_dist = pd.read_csv(os.path.join(output_dir, FILENAME_DISTANCES))
+        df_dist = pd.read_csv(os.path.join(output_dir, config.DISTANCES_FILENAME))
     else:
         df_dist = get_centroid_dist(df_adm)
-        df_dist.to_csv(os.path.join(output_dir, FILENAME_DISTANCES))
+        df_dist.to_csv(os.path.join(output_dir, config.DISTANCES_FILENAME))
     # Count the number of crossings
     df_dist = count_crossings(df_dist, df_roads)
     # Create matrix and plot
     df_matrix = create_matrix(df_adm, df_dist, parameters['mobility']['scaling_factor'], df_pop)
     fig = plot_final_hist(df_matrix, country_iso3)
     # Save matrix and plot
-    df_matrix.to_csv(os.path.join(output_dir, OUTPUT_FILENAME.format(country_iso3=country_iso3)))
-    fig.savefig(os.path.join(output_dir, OUTPUT_FIGNAME.format(country_iso3=country_iso3)), format='png')
+    df_matrix.to_csv(os.path.join(output_dir, config.MOBILITY_FILENAME.format(country_iso3=country_iso3)))
+    fig.savefig(os.path.join(output_dir, config.MOBILITY_FIGNAME.format(country_iso3=country_iso3)), format='png')
 
 
 def load_adm(country_iso3, config, parameters, level=2):
@@ -153,14 +142,14 @@ def get_borders(df_adm):
     return df_borders
 
 
-def load_roads(country_iso3, parameters, df_borders):
+def load_roads(country_iso3, config, parameters, df_borders):
     logger.info('Downloading roads file')
-    save_path = os.path.join(INPUT_DIR, country_iso3, 'mobility',
-                             FILENAME_ROADS.format(country_iso3=country_iso3.lower()))
+    save_path = os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR,
+                             config.ROADS_FILENAME.format(country_iso3=country_iso3.lower()))
     utils.download_ftp(parameters['roads']['url'], save_path)
     logger.info('Reading in roads file')
     df_roads = gpd.read_file(
-        f'zip://{save_path}!{SHAPEFILE_ROADS.format(country_iso3=country_iso3.lower())}',
+        f'zip://{save_path}!{config.ROADS_SHAPEFILE.format(country_iso3=country_iso3.lower())}',
         mask=df_borders)
     df_roads = df_roads.loc[~df_roads['geometry'].isna()]
     logger.info(f'Read in {len(df_roads)} roads')
