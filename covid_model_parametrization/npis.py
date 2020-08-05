@@ -11,27 +11,9 @@ import xarray as xr
 import numpy as np
 
 from covid_model_parametrization import utils
+from covid_model_parametrization.config import Config
 from covid_model_parametrization.hdx_api import query_api
-from covid_model_parametrization.utils import config_logger
 
-CONFIG_FILE = 'config.yml'
-
-ACAPS_HDX_ADDRESS = 'acaps-covid19-government-measures-dataset'
-INPUT_DIR = 'Inputs'
-OUTPUT_DIR = 'Outputs'
-
-RAW_DATA_DIR = os.path.join(INPUT_DIR, 'ACAPS_NPIs')
-RAW_DATA_FILENAME = 'ACAPS_npis_raw_data.xlsx'
-RAW_DATA_FILEPATH = os.path.join(RAW_DATA_DIR, RAW_DATA_FILENAME)
-
-OUTPUT_DATA_DIR = 'NPIs'
-INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_input.xlsx'
-TRIAGED_INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_triaged.csv'
-FINAL_OUTPUT_FILENAME = '{}_NPIs.csv'
-
-MEASURE_EQUIVALENCE_FILENAME = 'NPIs - ACAPS NPIs.csv'
-
-SHAPEFILE_DIR = 'Shapefiles'
 
 # Reduction parameters
 R0_REDUCTION_AMOUNTS = [0.0, 0.4, 0.2, 0.1, 0.05]
@@ -42,40 +24,49 @@ SCHOOL_REDUCTION_VALUES = {
        'school': 0.05,
     }
 
-config_logger()
 logger = logging.getLogger()
 pd.options.mode.chained_assignment = None  # default='warn'
 
 
-def npis(update_npi_list_arg, create_final_list_arg):
-    config = utils.parse_yaml(CONFIG_FILE)
-    countries = list(config.keys())
+def npis(update_npi_list_arg, create_final_list_arg, config=None):
+
+    # Get config file
+    if config is None:
+        config = Config()
+    parameters = config.parameters
+
+    #  Get NPIs for each country
+    countries = list(parameters.keys())
     countries.remove('HTI')
     if update_npi_list_arg:
-        update_npi_list(config, countries)
+        update_npi_list(config, parameters, countries)
     if create_final_list_arg:
-        create_final_list(config, countries)
+        create_final_list(config, parameters, countries)
 
 
-def update_npi_list(config, countries):
+def update_npi_list(config, parameters, countries):
     logger.info('Getting ACAPS data')
-    download_acaps()
-    df_acaps = get_df_acaps(countries)
+    download_acaps(config)
+    df_acaps = get_df_acaps(config, countries)
     # Loop through countries
     for country_iso3 in countries:
-        add_new_acaps_data(country_iso3, df_acaps[df_acaps['ISO3'] == country_iso3], config)
+        add_new_acaps_data(config, country_iso3, df_acaps[df_acaps['ISO3'] == country_iso3], parameters)
 
 
-def download_acaps():
+def download_acaps(config):
     # Get the ACAPS data from HDX
-    Path(RAW_DATA_DIR).mkdir(parents=True, exist_ok=True)
-    filename = list(query_api(ACAPS_HDX_ADDRESS, RAW_DATA_DIR).values())[0]
-    os.rename(os.path.join(RAW_DATA_DIR, filename), RAW_DATA_FILEPATH)
+    acaps_dir = os.path.join(config.INPUT_DIR, config.ACAPS_DIR)
+    Path(acaps_dir).mkdir(parents=True, exist_ok=True)
+    filename = list(query_api(config.ACAPS_HDX_ADDRESS, acaps_dir).values())[0]
+    os.rename(os.path.join(acaps_dir, filename), os.path.join(acaps_dir, config.ACAPS_FILENAME))
 
 
-def get_df_acaps(countries):
+def get_df_acaps(config, countries):
     # Open the file
-    df_acaps =  pd.read_excel(RAW_DATA_FILEPATH, sheet_name='Database')
+    df_acaps =  pd.read_excel(os.path.join(config.INPUT_DIR,
+                                           config.ACAPS_DIR,
+                                           config.ACAPS_FILENAME),
+                              sheet_name='Database')
     # Take only the countries of concern
     df_acaps = df_acaps[df_acaps['ISO'].isin(countries)]
     # rename columns
@@ -104,9 +95,9 @@ def get_df_acaps(countries):
     df_acaps['add_or_remove'] = df_acaps['add_or_remove'].replace({'Introduction / extension of measures': 'add',
                                 'Phase-out measure': 'remove'})
     # Get our measures equivalent, and drop any that we don't use
-    df_acaps['bucky_measure'] = df_acaps['acaps_measure'].str.lower().map(get_measures_equivalence_dictionary())
+    df_acaps['bucky_measure'] = df_acaps['acaps_measure'].str.lower().map(get_measures_equivalence_dictionary(config))
     df_acaps = df_acaps[df_acaps['bucky_measure'].notnull()]
-    df_acaps['bucky_category'] = df_acaps['bucky_measure'].map(get_measures_category_dictionary())
+    df_acaps['bucky_category'] = df_acaps['bucky_measure'].map(get_measures_category_dictionary(config))
     # Keep only some columns, moving start date to end
     cnames_to_keep = list(column_name_dict.values()) + ['bucky_measure', 'bucky_category']
     cnames_to_keep.append(cnames_to_keep.pop(cnames_to_keep.index('start_date')))
@@ -114,23 +105,28 @@ def get_df_acaps(countries):
     return df_acaps
 
 
-def get_measures_equivalence_dictionary():
-    df = pd.read_csv(os.path.join(RAW_DATA_DIR, MEASURE_EQUIVALENCE_FILENAME),
+def get_measures_equivalence_dictionary(config):
+    df = pd.read_csv(os.path.join(config.INPUT_DIR, config.ACAPS_DIR, config.MEASURE_EQUIVALENCE_FILENAME),
                      usecols=['ACAPS NPI', 'Our equivalent'])
     return df.set_index('ACAPS NPI').to_dict()['Our equivalent']
 
 
-def get_measures_category_dictionary():
-    df = pd.read_csv(os.path.join(RAW_DATA_DIR, MEASURE_EQUIVALENCE_FILENAME),
+def get_measures_category_dictionary(config):
+    df = pd.read_csv(os.path.join(config.INPUT_DIR, config.ACAPS_DIR, config.MEASURE_EQUIVALENCE_FILENAME),
                      usecols=['Our NPIs', 'Category']).dropna()
     return df.set_index('Our NPIs').to_dict()['Category']
 
 
-def get_boundaries_file(country_iso3, config):
+def get_boundaries_file(config, country_iso3, parameters):
     # Get input boundary shape file, for the admin regions
-    input_dir = os.path.join(INPUT_DIR, country_iso3)
-    input_shp = os.path.join(input_dir, SHAPEFILE_DIR, config['admin']['directory'],
-                             f'{config["admin"]["directory"]}.shp')
+    input_shp = os.path.join(
+        config.INPUT_DIR,
+        country_iso3,
+        config.SHAPEFILE_DIR,
+        parameters["admin"]["directory"],
+        f'{parameters["admin"]["directory"]}.shp',
+    )
+    ADM2boundaries = gpd.read_file(input_shp)
     # Read in and rename columns for Somalia
     return gpd.read_file(input_shp).rename(columns={
         'admin0Pcod': 'ADM0_PCODE',
@@ -139,10 +135,10 @@ def get_boundaries_file(country_iso3, config):
     })
 
 
-def add_new_acaps_data(country_iso3, df_country, config):
+def add_new_acaps_data(config, country_iso3, df_country, parameters):
     logger.info(f'Getting info for {country_iso3}')
     # Check if JSON file already exists, if so read it in
-    output_dir = os.path.join(INPUT_DIR, country_iso3, OUTPUT_DATA_DIR)
+    output_dir = os.path.join(config.INPUT_DIR, country_iso3, config.NPI_DIR)
     new_cols = [
                 'end_date',
                 'affected_pcodes',
@@ -163,8 +159,8 @@ def add_new_acaps_data(country_iso3, df_country, config):
         'bucky_measure',
         'start_date'
     ]
-    if 'NPIs' in config[country_iso3]:
-        df_manual = get_triaged_csv(config, country_iso3)
+    if 'NPIs' in parameters[country_iso3]:
+        df_manual = get_triaged_csv(config, parameters, country_iso3)
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
             df_manual.loc[:, col] = df_manual[col].apply(lambda x: literal_eval(x))
@@ -182,24 +178,24 @@ def add_new_acaps_data(country_iso3, df_country, config):
             df_country = df_country.drop(f'{q}_x', axis=1)
     else:
         # If it doesn't exist, add empty columns
-        logger.info(f'No input URL in config, creating new file')
+        logger.info(f'No input URL in parameters, creating new file')
         for col in new_cols:
             df_country.loc[:, col] = None
     # Write out
     for col in ['start_date', 'end_date']:
         df_country.loc[:, col] = df_country[col].dt.date
-    filename = os.path.join(output_dir, INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
+    filename = os.path.join(output_dir, config.NPI_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     logger.info(f'Writing to {filename}')
     df_country.to_excel(filename, index=False)
     return df_country
 
 
-def get_triaged_csv(config, country_iso3):
+def get_triaged_csv(config, parameters, country_iso3):
     logger.info(f'Getting triaged csv for {country_iso3}')
-    filename = os.path.join(INPUT_DIR, country_iso3, OUTPUT_DATA_DIR,
-                            TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
-    utils.download_url(config[country_iso3]['NPIs']['url'], filename)
+    filename = os.path.join(config.INPUT_DIR, country_iso3, config.NPI_DIR,
+                            config.NPI_TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
+    utils.download_url(parameters[country_iso3]['NPIs']['url'], filename)
     df_country = pd.read_csv(filename, header=0, skiprows=[1])
     df_country['affected_pcodes'] = df_country['affected_pcodes'].apply(lambda x: literal_eval(x))
     return df_country
@@ -223,22 +219,22 @@ def get_admin_regions(boundaries):
     }
 
 
-def create_final_list(config, countries):
+def create_final_list(config, parameters, countries):
     for country_iso3 in countries:
         logger.info(f'Creating final NPI list for {country_iso3}')
-        boundaries = get_boundaries_file(country_iso3, config[country_iso3])
-        df_country = get_triaged_csv(config, country_iso3)
-        format_final_output(country_iso3, df_country, boundaries)
+        boundaries = get_boundaries_file(config, country_iso3, parameters[country_iso3])
+        df_country = get_triaged_csv(config, parameters, country_iso3)
+        format_final_output(config, country_iso3, df_country, boundaries)
 
 
-def format_final_output(country_iso3, df, boundaries):
+def format_final_output(config, country_iso3, df, boundaries):
     logger.info(f'Formatting final output for {country_iso3}')
     # Only take rows with final_input is Yes
     df = df[(df['final_input'] == 'Yes')]
     # Fill empty end dates with today's date
     df.loc[:, 'end_date'] = df['end_date'].fillna(datetime.today()).apply(pd.to_datetime)
     # Add Bucky category
-    df.loc[:, 'bucky_category'] = df['bucky_measure'].map(get_measures_category_dictionary())
+    df.loc[:, 'bucky_category'] = df['bucky_measure'].map(get_measures_category_dictionary(config))
     # fix compliance level
     try:
         df.loc[:, 'compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
@@ -311,9 +307,9 @@ def format_final_output(country_iso3, df, boundaries):
             da.sel(measure=key, quantity='reduction'))
     # Convert to dataframe and write out
     df_out = da.sel(quantity='reduction').drop('quantity').to_dataframe('result').unstack().droplevel(0, axis=1)
-    output_dir = os.path.join(OUTPUT_DIR, country_iso3, 'NPIs')
+    output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, 'NPIs')
     Path(output_dir).mkdir(parents=True, exist_ok=True)
-    filename = os.path.join(output_dir, FINAL_OUTPUT_FILENAME.format(country_iso3))
+    filename = os.path.join(output_dir, config.NPI_FINAL_OUTPUT_FILENAME.format(country_iso3))
     logger.info(f'Writing final results to {filename}')
     df_out.to_csv(filename)
 
