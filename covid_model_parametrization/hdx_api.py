@@ -7,7 +7,7 @@ from hdx.data.dataset import Dataset
 
 
 HDX_SITE = "prod"
-USER_AGENT = "MapAction"
+USER_AGENT = "PA"
 
 logger = logging.getLogger()
 Configuration.create(hdx_site=HDX_SITE, user_agent=USER_AGENT, hdx_read_only=True)
