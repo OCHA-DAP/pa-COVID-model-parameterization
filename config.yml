@@ -3,6 +3,12 @@ AFG:
   admin:
     directory: afg_admbnda_adm2_agcho_20180522
     language: EN
+  mobility:
+    roads:
+      url: http://export.hotosm.org/downloads/91b952a7-6dd4-4b10-acbf-c6f093aba478/hotosm_afg_roads_gpkg.zip
+    scaling_factor:
+      household_size: 8.0
+      motor_vehicle_fraction: 0.027
   pop_co:
     filename: AFG_PopEstimatesOperationalPlanning.xlsx
     province_names:
@@ -87,6 +93,12 @@ COD:
     # https://data.humdata.org/dataset/drc-administrative-boundaries-levels-0-2
     directory: cod_admbnda_adm2_rgc_20190911
     language: FR
+  mobility:
+    roads:
+      url: http://export.hotosm.org/downloads/000aaae4-8e2c-4f07-a9a0-2d0730290730/hotosm_cod_roads_gpkg.zip
+    scaling_factor:
+      household_size: 5.3
+      motor_vehicle_fraction: 0.0050
   ghs:
     column_row_pairs:
       - (19, 8)
@@ -163,6 +175,12 @@ SDN:
     # https://data.humdata.org/dataset/sudan-administrative-boundaries-levels-0-2
     directory: sdn_admbnda_adm2_cbs_nic_ssa_20200317
     language: EN
+  mobility:
+    roads:
+      url: http://export.hotosm.org/downloads/eed0994f-1965-4492-9803-c10139fdd9e3/hotosm_sdn_roads_gpkg.zip
+    scaling_factor:
+      household_size: 5.6
+      motor_vehicle_fraction: 0.031
   ghs:
     column_row_pairs:
       - (20, 6)
@@ -230,6 +248,12 @@ SSD:
     # https://data.humdata.org/dataset/south-sudan-administrative-boundaries
     directory: ssd_admbnda_adm2_imwg_nbs_20180817
     language: EN
+  mobility:
+    roads:
+      url: http://export.hotosm.org/downloads/9482ee54-2e53-445b-875d-8a5a52a24075/hotosm_ssd_roads_gpkg.zip
+    scaling_factor:
+      household_size: 5.9
+      motor_vehicle_fraction: 0.0050
   ghs:
     column_row_pairs:
       - (20, 7)
@@ -325,6 +349,12 @@ SOM:
     # https://data.humdata.org/dataset/somalia-administrative-boundaries
     directory: Som_Admbnda_Adm2_UNDP
     language: EN
+  mobility:
+    roads:
+      url: http://export.hotosm.org/downloads/8637e830-985a-46e5-b4d9-988b4426604d/hotosm_som_roads_gpkg.zip
+    scaling_factor:
+     household_size: 1.0
+     motor_vehicle_fraction: 0.2
   ghs:
     column_row_pairs:
       - (22, 7)
@@ -406,6 +436,12 @@ HTI:
     # https://data.humdata.org/dataset/hti-polbndl-adm1-cnigs-zip
     directory: hti_admbnda_adm2_cnigs_20181129
     language: EN
+  mobility:
+    roads:
+      url: http://export.hotosm.org/downloads/36004c9d-7b0a-419f-b21f-952d6f728ae9/hotosm_hti_roads_gpkg.zip
+    scaling_factor:
+      household_size: 4.3
+      motor_vehicle_fraction: 0.075
   ipc:
     filename:  Haiti - IPC Analysis 2019-2020.xlsx
     last_row: 69
