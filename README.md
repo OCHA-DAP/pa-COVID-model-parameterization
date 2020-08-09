@@ -90,7 +90,7 @@ To run for the first time, execute:
 python Generate_mobility_matrix
 ```
 The script automatically caches the distances between regions, and the road intersection information.
-Since the shapefile should rarely be updated, you can usually run using the cached distances by using the `-d` flag:
+Since the shapefile should rarely be updated you can usually run using the cached distances by using the `-d` flag:
 ```bash
 python Generate_mobility_matrix -d
 ```
@@ -100,19 +100,28 @@ if you're in a hurry you can also run with the cached road intersections using t
 python Generate_mobility_matrix -d -c
 ```
 
-### COVID
+### COVID cases
 
 #### Setup
 
 #### Running
+To run, execute: 
+```bash
+python Generate_COVID_file.py [Country ISO code] -d
+```
+The `-d ` flag is for downloading the latest COVID data.
 
 
 ### Graphs
 The graph collects the COVID-19 case data, mobility data, contact matrix, population data, and vulnerability data
 into a single file.
 
-#### Running 
+#### Setup
+1. Under the `contact_matrix` section of the config file, add the country name of the country used for 
+   the contact matrix, and whether it falls alphabetically in file 1 (_Albania_ to _Morocco_) or
+   file 2 (_Mozambique_ to _Zimbabwe_)
 
+#### Running 
 To run, execute:
 ```bash
 python Generate_graph.py [Country ISO code]
@@ -122,4 +131,25 @@ python Generate_graph.py [Country ISO code]
 
 #### Setup
 
+1. Run first with the `-u` flag to create the Excel file
+2. Copy and paste the contents into a new Google sheet, and publish it as a csv
+3. Add the URL of the published sheet to the config file under `NPIs`  
+4. Run with the `-c` flag to create the final csv file for bucky, and commit this file to the repository
+
 #### Running
+
+Make sure you have downloaded the country shapefile as described in the **Exposure** step. 
+
+To run:
+```bash
+python Generate_NPIs.py [mode]
+```
+
+There are two modes to run the NPI script:
+1. `--update-npi-list` or `-u`: This mode downloads the latest ACAPS data, and creates an Excel file 
+    (located in `Inputs/[Country ISO code]/NPIs/[Country ISO code]_NPIs_input.xlsx`)
+    for each country containing the ACAPS measures and, if it exists, any additional parameters / measures
+    from the country's Google sheet
+    - After running, you should copy and paste the cells of the Excel file to the 'Published' tab
+      on the country's Google sheet, which should then be triaged
+2. `--create-final-list` or `c`: Generate a csv file of NPI results to be read in by Bucky 
