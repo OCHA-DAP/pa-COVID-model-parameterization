@@ -125,8 +125,9 @@ def get_borders(df_adm):
 
 def load_roads(country_iso3, config, parameters, df_borders):
     logger.info('Downloading roads file')
-    save_path = os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR,
-                             config.ROADS_FILENAME.format(country_iso3=country_iso3.lower()))
+    save_dir =  os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR)
+    Path(save_dir).mkdir(parents=True, exist_ok=True)
+    save_path = os.path.join(save_dir, config.ROADS_FILENAME.format(country_iso3=country_iso3.lower()))
     utils.download_ftp(parameters['roads']['url'], save_path)
     logger.info('Reading in roads file')
     df_roads = gpd.read_file(
