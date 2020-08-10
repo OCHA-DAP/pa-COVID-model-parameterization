@@ -55,6 +55,18 @@ class Config:
             self.DIR_PATH, self.MAIN_OUTPUT_DIR, "{}", self.SADD_OUTPUT_DIR
         )
 
+    ####################### Mobility section
+
+    MOBILITY_OUTPUT_DIR = 'mobility'
+    MOBILITY_FILENAME = '{country_iso3}_mobility_matrix.csv'
+    MOBILITY_FIGNAME = '{country_iso3}_mobility_matrix_hist.png'
+
+    ROADS_FILENAME = 'hotosm_{country_iso3}_roads_gpkg.zip'
+    ROADS_SHAPEFILE = 'hotosm_{country_iso3}_roads.gpkg'
+
+    CROSSINGS_FILENAME = 'crossings.gpkg'
+    DISTANCES_FILENAME = 'distances.csv'
+
     ####################### Vulnerability section
 
     VULNERABILITY_FILENAME = "{country_iso3}_Vulnerabilities.geojson"
@@ -116,3 +128,15 @@ class Config:
     PSEUDO_MERCATOR_CRS = "EPSG:3857"
 
     WHO_COVID_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv'
+
+    ####################### NPI section
+
+    ACAPS_HDX_ADDRESS = 'acaps-covid19-government-measures-dataset'
+    ACAPS_DIR = 'ACAPS_NPIs'
+    ACAPS_FILENAME = 'ACAPS_npis_raw_data.xlsx'
+    MEASURE_EQUIVALENCE_FILENAME = 'NPIs - ACAPS NPIs.csv'
+
+    NPI_DIR = 'NPIs'
+    NPI_INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_input.xlsx'
+    NPI_TRIAGED_INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_triaged.csv'
+    NPI_FINAL_OUTPUT_FILENAME = '{}_NPIs.csv'
