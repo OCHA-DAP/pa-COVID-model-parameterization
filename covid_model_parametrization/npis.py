@@ -28,7 +28,7 @@ logger = logging.getLogger()
 pd.options.mode.chained_assignment = None  # default='warn'
 
 
-def npis(update_npi_list_arg, create_final_list_arg, config=None):
+def npis(country_iso3, update_npi_list_arg, create_final_list_arg, download_acaps_arg=False, config=None):
 
     # Get config file
     if config is None:
@@ -36,21 +36,18 @@ def npis(update_npi_list_arg, create_final_list_arg, config=None):
     parameters = config.parameters
 
     #  Get NPIs for each country
-    countries = list(parameters.keys())
-    countries.remove('HTI')
     if update_npi_list_arg:
-        update_npi_list(config, parameters, countries)
+        update_npi_list(config, parameters, country_iso3, download_acaps_arg)
     if create_final_list_arg:
-        create_final_list(config, parameters, countries)
+        create_final_list(config, parameters, country_iso3)
 
 
-def update_npi_list(config, parameters, countries):
-    logger.info('Getting ACAPS data')
-    download_acaps(config)
-    df_acaps = get_df_acaps(config, countries)
-    # Loop through countries
-    for country_iso3 in countries:
-        add_new_acaps_data(config, country_iso3, df_acaps[df_acaps['ISO3'] == country_iso3], parameters)
+def update_npi_list(config, parameters, country_iso3, download_acaps_arg):
+    if download_acaps_arg:
+        logger.info('Getting latest ACAPS data')
+        download_acaps(config)
+    df_acaps = get_df_acaps(config, country_iso3)
+    add_new_acaps_data(config, country_iso3, df_acaps[df_acaps['ISO3'] == country_iso3], parameters)
 
 
 def download_acaps(config):
@@ -61,14 +58,14 @@ def download_acaps(config):
     os.rename(os.path.join(acaps_dir, filename), os.path.join(acaps_dir, config.ACAPS_FILENAME))
 
 
-def get_df_acaps(config, countries):
+def get_df_acaps(config, country_iso3):
     # Open the file
     df_acaps =  pd.read_excel(os.path.join(config.INPUT_DIR,
                                            config.ACAPS_DIR,
                                            config.ACAPS_FILENAME),
                               sheet_name='Database')
-    # Take only the countries of concern
-    df_acaps = df_acaps[df_acaps['ISO'].isin(countries)]
+    # Take only the country of concern
+    df_acaps = df_acaps[df_acaps['ISO'] == 'country_iso3']
     # rename columns
     column_name_dict = {
         'ID': 'ID',
@@ -219,12 +216,11 @@ def get_admin_regions(boundaries):
     }
 
 
-def create_final_list(config, parameters, countries):
-    for country_iso3 in countries:
-        logger.info(f'Creating final NPI list for {country_iso3}')
-        boundaries = get_boundaries_file(config, country_iso3, parameters[country_iso3])
-        df_country = get_triaged_csv(config, parameters, country_iso3)
-        format_final_output(config, country_iso3, df_country, boundaries)
+def create_final_list(config, parameters, country_iso3):
+    logger.info(f'Creating final NPI list for {country_iso3}')
+    boundaries = get_boundaries_file(config, country_iso3, parameters[country_iso3])
+    df_country = get_triaged_csv(config, parameters, country_iso3)
+    format_final_output(config, country_iso3, df_country, boundaries)
 
 
 def format_final_output(config, country_iso3, df, boundaries):

@@ -131,25 +131,33 @@ python Generate_graph.py [Country ISO code]
 
 #### Setup
 
-1. Run first with the `-u` flag to create the Excel file
+1. Run first with the `-u` flag to create the Excel file (and with the `-d` flag to get the latest
+  ACAPS file)
 2. Copy and paste the contents into a new Google sheet, and publish it as a csv
 3. Add the URL of the published sheet to the config file under `NPIs`  
-4. Run with the `-c` flag to create the final csv file for bucky, and commit this file to the repository
+4. Run with the `-f` flag to create the final csv file for bucky, and commit this file to the repository
 
 #### Running
 
 Make sure you have downloaded the country shapefile as described in the **Exposure** step. 
 
-To run:
-```bash
-python Generate_NPIs.py [mode]
-```
-
 There are two modes to run the NPI script:
-1. `--update-npi-list` or `-u`: This mode downloads the latest ACAPS data, and creates an Excel file 
+1. `--update-npi-list` or `-u`: This mode uses the local ACAPS data file (use the `-d` flag do download
+     the latest version), and creates an Excel file 
     (located in `Inputs/[Country ISO code]/NPIs/[Country ISO code]_NPIs_input.xlsx`)
     for each country containing the ACAPS measures and, if it exists, any additional parameters / measures
     from the country's Google sheet
     - After running, you should copy and paste the cells of the Excel file to the 'Published' tab
       on the country's Google sheet, which should then be triaged
-2. `--create-final-list` or `c`: Generate a csv file of NPI results to be read in by Bucky 
+2. `--create-final-list` or `f`: Generate a csv file of NPI results to be read in by Bucky 
+
+To run in update mode:
+```bash
+python Generate_NPIs.py [Country ISO code] -u -d
+```
+The `-d ` flag is for downloading the latest ACAPS data.
+
+To run in final file creation mode: 
+```bash
+python Generate_NPIs.py  [Country ISO code] -f 
+```
