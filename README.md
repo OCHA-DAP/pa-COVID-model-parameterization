@@ -6,7 +6,10 @@
 
 ### Running for the first time
 
-1. Install all packages from `requirements.txt`
+1. Install all packages from `requirements.txt`:
+     ``` bash
+     pip install -r requirements.txt
+     ```
 2. Run `make setup` 
 
 ### Updates
