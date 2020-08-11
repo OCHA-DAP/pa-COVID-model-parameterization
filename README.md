@@ -7,11 +7,13 @@
 ### Running for the first time
 
 1. Install all packages from `requirements.txt`
-2. Uncomment all the steps in `run_all_countries.sh` and execute it
+2. Run `make setup` 
 
 ### Updates
 
-1. Execute `run_all_countries.sh` 
+1. Run `make update_npi`
+2. Triage the resulting NPIs
+3. Run `make_update`
 
 ### Adding new countries
 
