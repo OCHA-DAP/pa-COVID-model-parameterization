@@ -136,6 +136,7 @@ def add_new_acaps_data(config, country_iso3, df_country, parameters):
     logger.info(f'Getting info for {country_iso3}')
     # Check if JSON file already exists, if so read it in
     output_dir = os.path.join(config.INPUT_DIR, country_iso3, config.NPI_DIR)
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
     new_cols = [
                 'end_date',
                 'affected_pcodes',
@@ -182,7 +183,6 @@ def add_new_acaps_data(config, country_iso3, df_country, parameters):
     for col in ['start_date', 'end_date']:
         df_country.loc[:, col] = df_country[col].dt.date
     filename = os.path.join(output_dir, config.NPI_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
     logger.info(f'Writing to {filename}')
     df_country.to_excel(filename, index=False)
     return df_country
