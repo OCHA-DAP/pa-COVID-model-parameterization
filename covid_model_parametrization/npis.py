@@ -240,7 +240,7 @@ def format_final_output(config, country_iso3, df, boundaries):
         df.loc[:, 'compliance_level'] = df['compliance_level'].str.rstrip('%').astype('float')
     except AttributeError:
         pass
-    df.loc[:, 'compliance_level'] /= 100
+    df.loc[:, 'compliance_level'] = df['compliance_level'].fillna(100) /  100
     if any((df['compliance_level'] < 0.01) | (df['compliance_level'] > 1)):
         logger.error(f'One of the compliance levels for {country_iso3} is not between 1% and 100%,'
                      f'check the spreadsheet')
