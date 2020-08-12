@@ -1,9 +1,10 @@
+SHELL = /bin/bash
+
 country_list = AFG COD SDN SSD SOM
 
 update:
 	for iso3 in ${country_list} ; do \
-  	    #python Generate_mobility_matrix.py -d $$iso3 ; \
-		python Generate_COVID_file.py -d $$iso3 ; \
+  	  	python Generate_COVID_file.py -d $$iso3 ; \
 		python Generate_graph.py $$iso3 ; \
 		python Generate_NPIs.py -f $$iso3 ; \
 	done
