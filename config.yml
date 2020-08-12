@@ -95,7 +95,7 @@ COD:
     language: FR
   mobility:
     roads:
-      url: http://export.hotosm.org/downloads/000aaae4-8e2c-4f07-a9a0-2d0730290730/hotosm_cod_roads_gpkg.zip
+      url: http://export.hotosm.org/downloads/f63e7675-9cd6-4cfa-abec-f67279f387ad/hotosm_cod_roads_gpkg.zip
     scaling_factor:
       household_size: 5.3
       motor_vehicle_fraction: 0.0050
