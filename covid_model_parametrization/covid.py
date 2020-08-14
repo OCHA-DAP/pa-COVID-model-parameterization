@@ -123,7 +123,7 @@ def covid(country_iso3, download_covid=False, config=None):
     if not parameters["covid"]["deaths"]:
         # missing death data, getting it from WHO at the national level
         logger.info(f"getting CFR at ADM0 from WHO for {country_iso3}")
-        who_df=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv')
+        who_df=pd.read_csv(config.WHO_COVID_URL)
         who_df['date_epicrv']=pd.to_datetime(who_df['date_epicrv'])
         who_df=who_df[who_df['ISO_3_CODE']==country_iso3]
         who_df=who_df.sort_values(by='date_epicrv')
