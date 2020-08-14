@@ -10,10 +10,10 @@ import yaml
 logger = logging.getLogger(__name__)
 
 
-def config_logger():
+def config_logger(level='INFO'):
     logging.basicConfig(
         format="%(asctime)s %(levelname)s %(name)s %(message)s",
-        level=logging.INFO,
+        level=vars(logging)[level.upper()],
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 
