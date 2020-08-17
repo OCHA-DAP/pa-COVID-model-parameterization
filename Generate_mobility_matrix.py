@@ -1,6 +1,7 @@
 import argparse
 
-from covid_model_parametrization import utils, mobility
+from covid_model_parametrization.utils import utils
+from covid_model_parametrization import mobility
 
 utils.config_logger()
 

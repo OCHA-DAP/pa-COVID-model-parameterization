@@ -3,7 +3,7 @@ import argparse
 
 import logging
 from covid_model_parametrization.exposure import exposure
-from covid_model_parametrization import utils
+from covid_model_parametrization.utils import utils
 
 
 utils.config_logger()
