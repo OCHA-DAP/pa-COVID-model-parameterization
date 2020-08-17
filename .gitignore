@@ -144,6 +144,7 @@ cython_debug/
 Inputs/*/GHS/*
 Inputs/*/WorldPop/*
 Inputs/ACAPS_NPIs/*
+Inputs/WHO_COVID_cases/*
 Inputs/*/NPIs/*
 Outputs/*/Vulnerability/*
 Outputs/*/Figures/*
