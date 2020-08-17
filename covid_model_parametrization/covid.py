@@ -13,7 +13,7 @@ import geopandas as gpd
 
 from covid_model_parametrization import utils
 from covid_model_parametrization.config import Config
-from covid_model_parametrization.who import get_WHO_data
+from covid_model_parametrization.utils.who import get_WHO_data
 
 
 logger = logging.getLogger(__name__)
