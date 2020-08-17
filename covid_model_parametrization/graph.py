@@ -9,7 +9,7 @@ import networkx as nx
 import numpy as np
 
 from covid_model_parametrization.config import Config
-from covid_model_parametrization.who import get_WHO_data
+from covid_model_parametrization.utils.who import get_WHO_data
 
 
 logger = logging.getLogger(__name__)

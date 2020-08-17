@@ -10,9 +10,9 @@ import geopandas as gpd
 import xarray as xr
 import numpy as np
 
-from covid_model_parametrization import utils
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
-from covid_model_parametrization.hdx_api import query_api
+from covid_model_parametrization.utils.hdx_api import query_api
 
 
 # Reduction parameters

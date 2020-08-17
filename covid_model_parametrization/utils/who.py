@@ -5,7 +5,7 @@ import logging
 import pandas as pd
 from hdx.location.country import Country
 
-from covid_model_parametrization.hdx_api import query_api
+from covid_model_parametrization.utils.hdx_api import query_api
 
 logger = logging.getLogger(__name__)
 

@@ -1,5 +1,5 @@
 import os.path
-from covid_model_parametrization import utils
+from covid_model_parametrization.utils import utils
 
 
 class Config:
