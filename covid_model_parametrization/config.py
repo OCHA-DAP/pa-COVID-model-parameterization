@@ -7,7 +7,7 @@ class Config:
     ####################### General settings section
 
     INPUT_DIR = "Inputs"
-    CONFIG_FILE = "config.yml"
+    CONFIG_DIR = "config"
     SHAPEFILE_DIR = "Shapefiles"
     MAIN_OUTPUT_DIR = "Outputs"
 
@@ -24,10 +24,9 @@ class Config:
         )[0]
         self._parameters = None
 
-    @property
-    def parameters(self):
+    def parameters(self, country_iso3):
         if self._parameters is None:
-            self._parameters = utils.parse_yaml(self.CONFIG_FILE)
+            self._parameters = utils.parse_yaml(os.path.join(self.CONFIG_DIR, f'{country_iso3}.yml'))
         return self._parameters
 
     ####################### SADD section

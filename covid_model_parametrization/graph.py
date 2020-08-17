@@ -18,7 +18,7 @@ def graph(country_iso3, config=None):
 
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
 
     logger.info(f"Creating graph for {country_iso3}")
     main_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3)
