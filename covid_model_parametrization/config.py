@@ -127,8 +127,6 @@ class Config:
 
     PSEUDO_MERCATOR_CRS = "EPSG:3857"
 
-    WHO_COVID_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv'
-
     ####################### NPI section
 
     ACAPS_HDX_ADDRESS = 'acaps-covid19-government-measures-dataset'
@@ -140,3 +138,10 @@ class Config:
     NPI_INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_input.xlsx'
     NPI_TRIAGED_INTERMEDIATE_OUTPUT_FILENAME = '{}_NPIs_triaged.csv'
     NPI_FINAL_OUTPUT_FILENAME = '{}_NPIs.csv'
+
+
+    #################### MISC
+
+    WHO_HDX_ADDRESS = 'coronavirus-covid-19-cases-and-deaths'
+    WHO_DIR = 'WHO_COVID_cases'
+    WHO_FILENAME = 'WHO_covid_cases.csv'
