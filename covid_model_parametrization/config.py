@@ -26,7 +26,7 @@ class Config:
 
     def parameters(self, country_iso3):
         if self._parameters is None:
-            self._parameters = utils.parse_yaml(os.path.join(self.CONFIG_DIR, f'{country_iso3}.yml'))
+            self._parameters = utils.parse_yaml(os.path.join(self.CONFIG_DIR, f'{country_iso3.lower()}.yml'))
         return self._parameters
 
     ####################### SADD section
