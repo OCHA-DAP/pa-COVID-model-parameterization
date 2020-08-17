@@ -22,7 +22,7 @@ def covid(country_iso3, download_covid=False, config=None):
     # Get config file
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
 
     # Get input covid file
     input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)

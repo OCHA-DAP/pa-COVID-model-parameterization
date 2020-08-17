@@ -1,0 +1,90 @@
+# input shapefile downloaded from https://data.humdata.org/dataset/afg-admin-boundaries
+admin:
+  directory: afg_admbnda_adm2_agcho_20180522
+  language: EN
+mobility:
+  roads:
+    url: http://export.hotosm.org/downloads/91b952a7-6dd4-4b10-acbf-c6f093aba478/hotosm_afg_roads_gpkg.zip
+  scaling_factor:
+    household_size: 8.0
+    motor_vehicle_fraction: 0.027
+pop_co:
+  filename: AFG_PopEstimatesOperationalPlanning.xlsx
+  province_names:
+    Helmand: Hilmand
+    Herat: Hirat
+    Nooristan: Nuristan
+    Sar-e-pul: Sar-e-Pul
+    Urozgan: Uruzgan
+    Wardak: Maidan Wardak
+kochi:
+  # East/South of country
+  # from CO: The main focus would be in east as the Kochis spend winter primarily Kunar, Laghman, Nuristan, Nangahar
+  total: 2000000
+  adm1:
+    - AF15
+    - AF07
+    - AF16
+    - AF06
+ghs:
+  column_row_pairs:
+    - (23, 4)
+    - (23, 5)
+    - (24, 4)
+    - (24, 5)
+ipc:
+  filename: Afghanistan - IPC Analysis 2020-2020.xlsx
+  last_row: 58
+  admin_level: 1
+  replace_dict:
+    Sari Pul: Sar-e-Pul
+    Wardak: Maidan Wardak
+solid_fuels:
+  # from https://www.who.int/nmh/countries/afg_en.pdf?ua=1
+  frac_urban: 0.28
+  frac_rural: 0.95
+handwashing_facilities:
+  # from https://washdata.org/data/downloads#WLD
+  frac_urban: 0.36
+  frac_rural: 0.71
+# https://www.who.int/nmh/countries/afg_en.pdf?ua=1
+raised_blood_pressure: 0.23
+# https://www.who.int/nmh/countries/afg_en.pdf?ua=1
+diabetes: 0.08
+# https://vizhub.healthdata.org/tobacco/
+smoking: 0.13
+covid:
+  url: https://docs.google.com/spreadsheets/u/1/d/1F-AMEDtqK78EA6LYME2oOsWQsgJi4CT3V_G4Uo-47Rg/export?format=csv&id=1F-AMEDtqK78EA6LYME2oOsWQsgJi4CT3V_G4Uo-47Rg&gid=1539509351
+  filename: covid_data.csv
+  header: 1
+  skiprows: 0
+  cases: True
+  deaths: True
+  individual_case_data: False
+  cumulative: True
+  admin_level: 1
+  federal_state_dict: False
+  adm1_name_exp: ADM1_EN
+  date_format: "%Y-%m-%d"
+  replace_dict:
+    Herat: Hirat
+    Dykundi: Daykundi
+    Nooristan: Nuristan
+    Helmand: Hilmand
+    Paktia: Paktya
+    Jowzjan: Jawzjan
+    Panjshir: Panjsher 
+    Urozgan: Uruzgan
+    Sar-e Pol: Sar-e-Pul
+    Nimruz: Nimroz
+    Wardak: Maidan Wardak
+    Sar-e Pol: Sar-e-Pul
+  hlx_dict:
+    "#affected+infected+cases": "#affected+infected+confirmed+total"
+    "#affected+infected+deaths": "#affected+infected+dead+total"
+contact_matrix:
+  country: Pakistan
+  file_number: 2
+NPIs:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQcZaUnsrDX5hVTfoGfbRZZRsuQetgotXjo4f7BdzNtWlMyq9b7Stg3XmLwfI69Q5nQ_Nj217qbTPx3/pub?gid=1114937196&single=true&output=csv
+

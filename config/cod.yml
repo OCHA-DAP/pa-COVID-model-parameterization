@@ -1,0 +1,82 @@
+admin:
+  # https://data.humdata.org/dataset/drc-administrative-boundaries-levels-0-2
+  directory: cod_admbnda_adm2_rgc_20190911
+  language: FR
+mobility:
+  roads:
+    url: http://export.hotosm.org/downloads/f63e7675-9cd6-4cfa-abec-f67279f387ad/hotosm_cod_roads_gpkg.zip
+  scaling_factor:
+    household_size: 5.3
+    motor_vehicle_fraction: 0.0050
+ghs:
+  column_row_pairs:
+    - (19, 8)
+    - (19, 9)
+    - (19, 10)
+    - (20, 8)
+    - (20, 9)
+    - (20, 10)
+    - (21, 8)
+    - (21, 9)
+    - (21, 10)
+ipc:
+  filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
+  last_row: 147
+  admin_level: 2
+  replace_dict:
+    # Admin 2
+    Kabeya-kamwanga: Kabeya-Kamwanga
+    Katako-kombe: Katako-Kombe
+    Malemba-nkulu: Malemba-Nkulu
+    Mobayi-mbongo: Mobayi-Mbongo
+    # Admin 1
+    Bas Uélé: Bas-Uele
+    Haut Uélé: Haut-Uele
+    Kasai: Kasaï
+    Kasai Central: Kasaï-Central
+    Kasai Oriental: Kasaï-Oriental
+    Kongo Central: Kongo-Central
+    Nord Ubangi: Nord-Ubangi
+    Sud Ubangi: Sud-Ubangi
+    # Country name:
+    Congo, DRC:
+solid_fuels:
+  # from https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+  frac_urban: 0.95
+  frac_rural: 0.95
+handwashing_facilities:
+  # from https://washdata.org/data/downloads#WLD
+  frac_urban: 0.93
+  frac_rural: 0.98
+# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+raised_blood_pressure: 0.22
+# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+diabetes: 0.04
+# https://vizhub.healthdata.org/tobacco/
+smoking: 0.063
+covid:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQGOGhcfVhfuE_wP5Y78ZoKd6xPlc0BVt6uEPTNJ_6J_dqI29LlwC2KHFqw-9viNsBN60z7wC5ruOtt/pub?gid=0&single=true&output=csv
+  filename: covid_data.csv
+  header: 1
+  skiprows: 0
+  cases: True
+  deaths: False
+  individual_case_data: False
+  cumulative: True
+  admin_level: 1
+  federal_state_dict: False
+  adm1_name_exp: ADM1_FR
+  date_format: "%Y-%m-%d"
+  replace_dict:
+    Nord Kivu: Nord-Kivu
+    Haut  Katanga: Haut-Katanga
+    Haut-Uélé: Haut-Uele
+  hlx_dict:
+    "#affected+positive+total": "#affected+infected+confirmed+total"  
+    "#admin1+name": "#adm1+name"
+contact_matrix:
+  country: Zambia
+  file_number: 2
+NPIs:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vSommoUZUX9Spyg3JzC2n9oKQ9SB2jO4XoeI0T3rgFlND6rMh3MvX_Ysiq-rWKJVKujwj1XyFjVquub/pub?gid=1686966978&single=true&output=csv
+
