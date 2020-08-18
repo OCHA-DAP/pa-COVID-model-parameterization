@@ -22,7 +22,7 @@ def exposure(country_iso3, download_worldpop=False, config=None):
     # Get parameters file
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
 
     # Get input boundary shape file
     input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
