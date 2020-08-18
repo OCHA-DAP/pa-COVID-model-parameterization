@@ -3,15 +3,13 @@ import os
 import datetime
 import itertools
 import getpass
-import argparse
-import logging
 from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
 from rasterstats import zonal_stats
 
-from covid_model_parametrization import utils
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
 import logging
 

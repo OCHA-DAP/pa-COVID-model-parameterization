@@ -1,6 +1,7 @@
 import argparse
 
-from covid_model_parametrization import utils, npis
+from covid_model_parametrization import npis
+from covid_model_parametrization.utils import utils
 
 utils.config_logger()
 

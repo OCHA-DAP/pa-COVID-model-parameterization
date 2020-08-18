@@ -9,7 +9,8 @@ import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-from covid_model_parametrization import utils, exposure
+from covid_model_parametrization import exposure
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
 
 # How much to weight each road type
