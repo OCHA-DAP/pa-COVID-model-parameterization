@@ -1,0 +1,101 @@
+admin:
+  # https://data.humdata.org/dataset/south-sudan-administrative-boundaries
+  directory: ssd_admbnda_adm2_imwg_nbs_20180817
+  language: EN
+mobility:
+  roads:
+    url: http://export.hotosm.org/downloads/9482ee54-2e53-445b-875d-8a5a52a24075/hotosm_ssd_roads_gpkg.zip
+  scaling_factor:
+    household_size: 5.9
+    motor_vehicle_fraction: 0.0050
+ghs:
+  column_row_pairs:
+    - (20, 7)
+    - (20, 8)
+    - (21, 7)
+    - (21, 8)
+ipc:
+  filename: South Sudan - IPC Analysis 2020-2020.xlsx
+  last_row: 101
+  admin_level: 2
+  replace_dict:
+    # Admin 2
+    Canal/pigi: Canal/Pigi
+    Luakpiny/nasir: Luakpiny/Nasir
+    Wau (rural Only): Wau
+    Yei County: Yei
+    # Admin 1
+    Northern Bahr El Ghazal: Northern Bahr el Ghazal
+    Western Bahr El Ghazal: Western Bahr el Ghazal
+    # Country
+    South Sudan:
+solid_fuels:
+  # from https://www.who.int/nmh/countries/2018/ssd_en.pdf?ua=1
+  frac_urban: 0.95
+  frac_rural: 0.95
+handwashing_facilities:
+  # from https://washdata.org/data/downloads#WLD
+  frac_urban: 0.93
+  frac_rural: 0.98
+# Using Chad https://www.who.int/nmh/countries/2018/tcd_en.pdf?ua=1
+raised_blood_pressure: 0.24
+# http://ghdx.healthdata.org/gbd-results-tool?params=gbd-api-2017-permalink/91c1bfad5bd48ffe4484ccdeca24e066 
+diabetes: 0.0737
+# https://vizhub.healthdata.org/tobacco/
+smoking: 0.064
+covid:
+  url: None
+  filename: covid_data.csv
+  header: 0
+  skiprows: False
+  cases: True
+  deaths: False
+  individual_case_data: True
+  cumulative: False
+  admin_level: 2
+  federal_state_dict: False
+  adm2_name_exp: ADM2_EN
+  date_format: "%Y-%m-%d"
+  replace_dict:
+    JUba: Juba
+    juba: Juba
+    'Juba ': Juba
+    Winjook: Aweil East
+    Nimule: Magwi
+    Abyei: Abyei Region
+    Rumamer: Abyei Region
+    Roumamier: Abyei Region
+    Aniek: Abyei Region
+    Agok: Abyei Region
+    Ameit: Abyei Region
+    South Bor: Bor South
+    Bor: Bor South
+    Aweil: Aweil West
+    Aweil Center: Aweil Centre
+    Rumbek: Rumbek Centre
+    rumbek: Rumbek Centre
+    Rumbek Center: Rumbek Centre
+    Bentiu: Rubkona
+    Twich: Twic
+    Turalei: Twic
+    Kuajok: Gogrial West
+    Rajaf: Juba
+    Yirol: Yirol West
+    Lankien: Nyirol
+    Pageri: Magwi
+    Warrap: Abyei Region
+    Aniet: Abyei Region
+    Ikoto: Ikotos
+    Ikwoto: Ikotos
+    AE: Aweil East
+    wau: Wau
+  hlx_dict:
+    'State ': "#adm1+name"
+    County: "#adm2+name"
+    Reporting date/Notification date/Sample collection date: "#date"
+contact_matrix:
+  country: Uganda
+  file_number: 2
+NPIs:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQSj3APyX0xsQhVLhlt3nV7SOAZPO5umf2mjrYZRHHQUgJiQ0y74jHIKy0esbAxqRjncd59wzX6hLdD/pub?gid=863998455&single=true&output=csv
+

@@ -58,7 +58,7 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
     # Get config and parameters
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
     # Make the output directory if it doesn't exist
     output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR)
     Path(output_dir).mkdir(parents=True, exist_ok=True)
