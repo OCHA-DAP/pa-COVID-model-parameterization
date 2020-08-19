@@ -1,6 +1,7 @@
 import argparse
 
-from covid_model_parametrization import utils, qc
+from covid_model_parametrization import qc
+from covid_model_parametrization.utils import utils
 
 
 def parse_args():
@@ -16,4 +17,4 @@ if __name__ == '__main__':
     if args.warnings:
         level='warning'
     utils.config_logger(level=level)
-    qc.qc(args.country_iso3)
+    qc.qc(args.country_iso3.upper())
