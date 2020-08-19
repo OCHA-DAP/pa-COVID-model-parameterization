@@ -14,7 +14,7 @@ def qc(country_iso3, config=None):
 
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
     main_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3)
     check_graph(config, parameters, country_iso3, main_dir)
     check_npis(config, country_iso3, main_dir)
@@ -31,13 +31,14 @@ def check_graph(config, parameters, country_iso3, main_dir):
         logger.error('Mobility matrix diagonal values are not all 1')
     # Check that the rest of the values go from 0 to the scaling factor
     non_diag = edges.loc[edges['source'] != edges['target']]
-    scaling_factor = parameters['mobility']['household_size'] * parameters['mobility']['motor_vehicle_fraction']
+    scaling_factor = parameters['mobility']['scaling_factor']['household_size'] * \
+                     parameters['mobility']['scaling_factor']['motor_vehicle_fraction']
     try:
-        assert non_diag.max() == scaling_factor
+        assert non_diag['weight'].max() == scaling_factor
     except AssertionError:
         logger.error('Mobility matrix not scaled to scaling factor')
     try:
-        assert non_diag.min() > 0
+        assert non_diag['weight'].min() > 0
     except AssertionError:
         logger.error('Mobility matrix has negative values')
     # Loop through nodes
