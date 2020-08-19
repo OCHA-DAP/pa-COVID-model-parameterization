@@ -9,6 +9,7 @@ import networkx as nx
 import numpy as np
 
 from covid_model_parametrization.config import Config
+from covid_model_parametrization.utils.who import get_WHO_data
 
 
 logger = logging.getLogger(__name__)
@@ -18,7 +19,7 @@ def graph(country_iso3, config=None):
 
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
 
     logger.info(f"Creating graph for {country_iso3}")
     main_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3)
@@ -147,18 +148,15 @@ def add_covid(G, main_dir, country_iso3, config):
 
 
 def add_WHO_data(G, country_iso3, config):
-    logger.info(f"Reading in COVID cases from {config.WHO_COVID_URL}")
-    df_WHO = pd.read_csv(config.WHO_COVID_URL)
-    # get only HRP countries
-    df_WHO = df_WHO.loc[df_WHO['ISO_3_CODE'] == country_iso3, :]
+    df_WHO = get_WHO_data(config, country_iso3)
     # convert ot datetime
-    df_WHO['date_epicrv'] = pd.to_datetime(df_WHO['date_epicrv']).dt.date
+    df_WHO['Date_reported'] = pd.to_datetime(df_WHO['Date_reported']).dt.date
     # keep only columns that we need
-    df_WHO = df_WHO[['date_epicrv', 'CumCase', 'CumDeath']]
+    df_WHO = df_WHO[['Date_reported', ' Cumulative_cases', ' Cumulative_deaths']]
     # Index by date and fill missing vals
-    date_range = pd.date_range(df_WHO["date_epicrv"].min(), df_WHO["date_epicrv"].max())
-    df_WHO.index = df_WHO['date_epicrv']
-    df_WHO = df_WHO.drop('date_epicrv', axis=1)
+    date_range = pd.date_range(df_WHO["Date_reported"].min(), df_WHO["Date_reported"].max())
+    df_WHO.index = df_WHO['Date_reported']
+    df_WHO = df_WHO.drop('Date_reported', axis=1)
     df_WHO.reindex(date_range)
     df_WHO = df_WHO.interpolate(
         method="linear", axis="rows", limit_direction="forward"

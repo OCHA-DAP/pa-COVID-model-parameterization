@@ -1,6 +1,7 @@
 import argparse
 import logging
-from covid_model_parametrization import utils
+
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization.graph import graph
 
 

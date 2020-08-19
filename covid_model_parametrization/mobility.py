@@ -9,7 +9,8 @@ import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-from covid_model_parametrization import utils, exposure
+from covid_model_parametrization import exposure
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
 
 # How much to weight each road type
@@ -57,7 +58,7 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
     # Get config and parameters
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
     # Make the output directory if it doesn't exist
     output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR)
     Path(output_dir).mkdir(parents=True, exist_ok=True)

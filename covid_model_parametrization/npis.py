@@ -10,9 +10,9 @@ import geopandas as gpd
 import xarray as xr
 import numpy as np
 
-from covid_model_parametrization import utils
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
-from covid_model_parametrization.hdx_api import query_api
+from covid_model_parametrization.utils.hdx_api import query_api
 
 
 # Reduction parameters
@@ -33,7 +33,7 @@ def npis(country_iso3, update_npi_list_arg, create_final_list_arg, download_acap
     # Get config file
     if config is None:
         config = Config()
-    parameters = config.parameters
+    parameters = config.parameters(country_iso3)
 
     #  Get NPIs for each country
     if update_npi_list_arg:
@@ -157,7 +157,7 @@ def add_new_acaps_data(config, country_iso3, df_country, parameters):
         'bucky_measure',
         'start_date'
     ]
-    if 'NPIs' in parameters[country_iso3]:
+    if 'NPIs' in parameters:
         df_manual = get_triaged_csv(config, parameters, country_iso3)
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
@@ -192,7 +192,7 @@ def get_triaged_csv(config, parameters, country_iso3):
     logger.info(f'Getting triaged csv for {country_iso3}')
     filename = os.path.join(config.INPUT_DIR, country_iso3, config.NPI_DIR,
                             config.NPI_TRIAGED_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
-    utils.download_url(parameters[country_iso3]['NPIs']['url'], filename)
+    utils.download_url(parameters['NPIs']['url'], filename)
     df_country = pd.read_csv(filename, header=0, skiprows=[1])
     df_country['affected_pcodes'] = df_country['affected_pcodes'].apply(lambda x: literal_eval(x))
     return df_country
@@ -218,7 +218,7 @@ def get_admin_regions(boundaries):
 
 def create_final_list(config, parameters, country_iso3):
     logger.info(f'Creating final NPI list for {country_iso3}')
-    boundaries = get_boundaries_file(config, country_iso3, parameters[country_iso3])
+    boundaries = get_boundaries_file(config, country_iso3, parameters)
     df_country = get_triaged_csv(config, parameters, country_iso3)
     format_final_output(config, country_iso3, df_country, boundaries)
 
