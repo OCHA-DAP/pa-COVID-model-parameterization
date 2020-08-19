@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 
 def qc(country_iso3, config=None):
-
     if config is None:
         config = Config()
     parameters = config.parameters(country_iso3)
@@ -22,7 +21,19 @@ def qc(country_iso3, config=None):
 
 def check_graph(config, parameters, country_iso3, main_dir):
     G = read_in_graph(config, country_iso3, main_dir)
-    # First look at edges
+    check_graph_edges(G, parameters)
+    check_graph_nodes(G)
+
+
+def read_in_graph(config, country_iso3, main_dir):
+    filepath = os.path.join(main_dir, config.GRAPH_OUTPUT_DIR,
+                            config.GRAPH_OUTPUT_FILE.format(country_iso3))
+    with open(filepath, 'r') as read_file:
+        data = json.load(read_file)
+    return nx.readwrite.json_graph.node_link_graph(data)
+
+
+def check_graph_edges(G, parameters):
     edges = nx.convert_matrix.to_pandas_edgelist(G)
     # Check that diagonal is 1
     try:
@@ -33,14 +44,18 @@ def check_graph(config, parameters, country_iso3, main_dir):
     non_diag = edges.loc[edges['source'] != edges['target']]
     scaling_factor = parameters['mobility']['scaling_factor']['household_size'] * \
                      parameters['mobility']['scaling_factor']['motor_vehicle_fraction']
+    non_diag_max = non_diag['weight'].max()
     try:
-        assert non_diag['weight'].max() == scaling_factor
+        assert math.isclose(non_diag_max, scaling_factor)
     except AssertionError:
-        logger.error('Mobility matrix not scaled to scaling factor')
+        logger.error(f'Mobility matrix max ({non_diag_max}) not scaled to scaling factor ({scaling_factor})')
     try:
         assert non_diag['weight'].min() > 0
     except AssertionError:
         logger.error('Mobility matrix has negative values')
+
+
+def check_graph_nodes(G):
     # Loop through nodes
     for node in list(G.nodes(data=True)):
         # Need to take second part of tuple
@@ -62,29 +77,22 @@ def check_graph(config, parameters, country_iso3, main_dir):
                 assert node[fraction] <= 1
                 assert node[fraction] >= 0
             except AssertionError:
-                logger.error(f'{node["name"]} Not between 0 and 1: {fraction}: {node[fraction]}')
+                logger.error(f'{node["name"]}: Not between 0 and 1: {fraction}: {node[fraction]}')
         # Check that infected and dead are increasing (warning only)
         for quantity in ['infected_confirmed', 'infected_dead']:
             try:
                 assert non_decreasing(node[quantity])
             except AssertionError:
-                logger.warning(f'{node["name"]} Non-increasing: {quantity}')
+                logger.warning(f'{node["name"]}: Non-increasing: {quantity}')
+            except KeyError:
+                logger.error(f'{node["name"]}: Missing quantity: {quantity}')
         # Check that the populations add up
         sum_disag = sum(node['group_pop_f']) + sum(node['group_pop_m'])
         try:
             assert  math.isclose(sum_disag, node['population'])
         except AssertionError:
-            logger.error(f'{node["name"] }Disaggregated pop inconsistent with total pop: '
+            logger.error(f'{node["name"]}: Disaggregated pop inconsistent with total pop: '
                          f'{sum_disag}, {node["population"]}')
-    pass
-
-
-def read_in_graph(config, country_iso3, main_dir):
-    filepath = os.path.join(main_dir, config.GRAPH_OUTPUT_DIR,
-                            config.GRAPH_OUTPUT_FILE.format(country_iso3))
-    with open(filepath, 'r') as read_file:
-        data = json.load(read_file)
-    return nx.readwrite.json_graph.node_link_graph(data)
 
 
 def non_decreasing(L):
