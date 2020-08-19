@@ -2,10 +2,14 @@ import os
 import json
 import logging
 import math
+from datetime import datetime, timedelta
 
 import networkx as nx
+import pandas as pd
+import numpy as np
 
 from covid_model_parametrization.config import Config
+from covid_model_parametrization import npis
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +27,7 @@ def check_graph(config, parameters, country_iso3, main_dir):
     G = read_in_graph(config, country_iso3, main_dir)
     check_graph_edges(G, parameters)
     check_graph_nodes(G)
+    # TODO: check COVID dates
 
 
 def read_in_graph(config, country_iso3, main_dir):
@@ -100,4 +105,44 @@ def non_decreasing(L):
 
 
 def check_npis(config, country_iso3, main_dir):
-    pass
+    df_npi = pd.read_csv(os.path.join(main_dir, config.NPI_DIR,
+                                      config.NPI_FINAL_OUTPUT_FILENAME.format(country_iso3)))
+    check_npi_dates(df_npi)
+    check_npi_values(df_npi)
+
+
+def check_npi_dates(df_npi):
+    df_npi['date'] = pd.to_datetime(df_npi['date'])
+    date_min = df_npi['date'].min()
+    date_max = df_npi['date'].max()
+    date_set = set(date_min + timedelta(days=x) for x in range((date_max - date_min).days))
+    for admin in df_npi['admin2'].unique():
+        dates = df_npi.loc[df_npi['admin2'] == admin, 'date']
+        missing = date_set - set(dates)
+        try:
+            assert missing
+        except AssertionError:
+            logger.error(f'Admin pcode {admin} missing NPI dates: {missing}')
+
+
+def check_npi_values(df_npi):
+    # Check that contact matrix values are reasonable
+    contact_matrix_possible_values = {contact_matrix_name: [1.0, npis.SCHOOL_REDUCTION_VALUES[contact_matrix_name]]
+                                      for contact_matrix_name in ['home', 'school', 'work', 'other_locations']}
+    for contact_matrix_name, possible_values in contact_matrix_possible_values.items():
+        try:
+            assert all(i in possible_values for i in df_npi[contact_matrix_name])
+        except AssertionError:
+            logger.error(f'Contact matrix scaling for {contact_matrix_name} has value(s) not in {possible_values}')
+    # Check that mobility has reasonable values
+    mobility_min = 1 - npis.MOBILITY_REDUCTION_AMOUNT
+    try:
+        assert all(i <= 1.0 and i >= mobility_min for i in  df_npi['mobility_reduction'])
+    except AssertionError:
+        logger.error(f'Mobility scaling has value not between {mobility_min} and 1')
+    # Check R0 reduction has reasonable values
+    r0_min = 1 - np.sum(npis.R0_REDUCTION_AMOUNTS)
+    try:
+        assert all(i <= 1.0 and i >= r0_min for i in  df_npi['r0_reduction'])
+    except AssertionError:
+        logger.error(f'R0 scaling has value not between {r0_min} and 1')
