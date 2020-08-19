@@ -22,47 +22,47 @@ mobility:
     # https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/en/
     # (see documentation if country is not available)
     motor_vehicle_fraction: ~
-# GHS settings for vulnerability
-ghs:
-  # Check GHS: https://ghsl.jrc.ec.europa.eu/download.php for the squares that cover the country in question.
-  # Format should be a list of integer pairs (column, row)
-  column_row_pairs:
-    - (~, ~)
-    - (~, ~)
-# IPC settings for vulnerability
-ipc:
-  # Name of IPC file
-  filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
-  # The last row containing data
-  last_row: 147
-  # The highest admin level in the file (should be 1 or 2)
-  admin_level: 2
-  # Admin names that need replacement to match the admin region shapefile.
-  # You can get these by running the vulnerability script and it will warn of any admin names not found.
-  # Should be of the format $ipc_name: $admin_region_name
-  replace_dict:
-    # Admin 2
-    level_2_ipc_name : ~
-    # Admin 1
-    level_1_ipc_name : ~
-    # Country name
-    # It's also helpful to replace the country name as it appears in the IPC file with a blank string,
-    # otherwise you will get warnings
-    country_name:
-solid_fuels:
-  # from https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
-  frac_urban: 0.95
-  frac_rural: 0.95
-handwashing_facilities:
-  # from https://washdata.org/data/downloads#WLD
-  frac_urban: 0.93
-  frac_rural: 0.98
-# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
-raised_blood_pressure: 0.22
-# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
-diabetes: 0.04
-# https://vizhub.healthdata.org/tobacco/
-smoking: 0.063
+# Settings for vulnerability
+vulnerabilty:
+  ghs:
+    # Check GHS: https://ghsl.jrc.ec.europa.eu/download.php for the squares that cover the country in question.
+    # Format should be a list of integer pairs (column, row)
+    column_row_pairs:
+      - (~, ~)
+      - (~, ~)
+  ipc:
+    # Name of IPC file
+    filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
+    # The last row containing data
+    last_row: 147
+    # The highest admin level in the file (should be 1 or 2)
+    admin_level: 2
+    # Admin names that need replacement to match the admin region shapefile.
+    # You can get these by running the vulnerability script and it will warn of any admin names not found.
+    # Should be of the format $ipc_name: $admin_region_name
+    replace_dict:
+      # Admin 2
+      level_2_ipc_name : ~
+      # Admin 1
+      level_1_ipc_name : ~
+      # Country name
+      # It's also helpful to replace the country name as it appears in the IPC file with a blank string,
+      # otherwise you will get warnings
+      country_name:
+  solid_fuels:
+    # from https://www.who.int/nmh/countries/2018/
+    frac_urban: ~
+    frac_rural: ~
+  handwashing_facilities:
+    # from https://washdata.org/data/downloads#WLD
+    frac_urban: ~
+    frac_rural: ~
+  # from https://www.who.int/nmh/countries/2018/
+  raised_blood_pressure: ~
+  # from https://www.who.int/nmh/countries/2018/
+  diabetes: ~
+  # from https://vizhub.healthdata.org/tobacco/
+  smoking: ~
 covid:
   url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQGOGhcfVhfuE_wP5Y78ZoKd6xPlc0BVt6uEPTNJ_6J_dqI29LlwC2KHFqw-9viNsBN60z7wC5ruOtt/pub?gid=0&single=true&output=csv
   filename: covid_data.csv

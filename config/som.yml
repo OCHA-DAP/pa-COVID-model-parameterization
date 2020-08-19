@@ -8,39 +8,40 @@ mobility:
   scaling_factor:
    household_size: 1.0
    motor_vehicle_fraction: 0.2
-ghs:
-  column_row_pairs:
-    - (22, 7)
-    - (22, 8)
-    - (22, 9)
-    - (23, 7)
-ipc:
-  filename: Somalia - IPC Analysis 2020-2020.xlsx
-  last_row: 105
-  admin_level: 2
-  replace_dict:
-    # Admin 2
-    # Admin 1
-    Juba Dhexe: Middle Juba
-    Juba Hoose: Lower Juba
-    Shabelle Dhexe: Middle Shabelle
-    Shabelle Hoose: Lower Shabelle
-    # Country
-    Somalia:
-solid_fuels:
-  # from https://www.who.int/nmh/countries/2018/som_en.pdf?ua=1
-  frac_urban: 0.95
-  frac_rural: 0.95
-handwashing_facilities:
-  # from https://washdata.org/data/downloads#WLD
-  frac_urban: 0.88
-  frac_rural: 0.92
-# Using https://www.who.int/nmh/countries/2018/som_en.pdf?ua=1
-raised_blood_pressure: 0.26
-# https://www.who.int/nmh/countries/2018/som_en.pdf?ua=1 
-diabetes: 0.05
-# https://vizhub.healthdata.org/tobacco/
-smoking: 0.06
+vulnerability:
+  ghs:
+    column_row_pairs:
+      - (22, 7)
+      - (22, 8)
+      - (22, 9)
+      - (23, 7)
+  ipc:
+    filename: Somalia - IPC Analysis 2020-2020.xlsx
+    last_row: 105
+    admin_level: 2
+    replace_dict:
+      # Admin 2
+      # Admin 1
+      Juba Dhexe: Middle Juba
+      Juba Hoose: Lower Juba
+      Shabelle Dhexe: Middle Shabelle
+      Shabelle Hoose: Lower Shabelle
+      # Country
+      Somalia:
+  solid_fuels:
+    # from https://www.who.int/nmh/countries/2018/som_en.pdf?ua=1
+    frac_urban: 0.95
+    frac_rural: 0.95
+  handwashing_facilities:
+    # from https://washdata.org/data/downloads#WLD
+    frac_urban: 0.88
+    frac_rural: 0.92
+  # Using https://www.who.int/nmh/countries/2018/som_en.pdf?ua=1
+  raised_blood_pressure: 0.26
+  # https://www.who.int/nmh/countries/2018/som_en.pdf?ua=1
+  diabetes: 0.05
+  # https://vizhub.healthdata.org/tobacco/
+  smoking: 0.06
 covid:
   url: https://docs.google.com/spreadsheets/d/e/2PACX-1vRTGuZDNylQKqZC7ITpHkLw-7nHvElQNtImJS7kRFXGak664t6jxDjvdVHHWkKPJ7rvwAtj6VGXrQUC/pub?output=csv
   filename: covid_data.csv
