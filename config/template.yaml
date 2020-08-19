@@ -1,0 +1,91 @@
+# This YAML file is intended as a template for adding a new country. All values are set to null.
+# The first step is to rename the YAML file with the lowercase country ISO3 code, i.e. ${ISO3}.yml
+
+# Settings for the country administrative boundaries
+admin:
+  # The name of the unzipped directory containing the shapefile (should have the same name as the shapefile)
+  directory: ~
+  # The ISO 639-1 of the primary language for the admin names, which in the COD files usually appears in the
+  # column headers as e.g. ADMIN2_${ISO 639-1}
+  language: ~
+# Settings for the mobility matrix
+mobility:
+  roads:
+    # Find the country HOTOSM roads geopackage file on HDX, right click on download and copy the link here
+    url: ~
+  scaling_factor:
+    # Household size from
+    # https://population.un.org/Household/index.html#/countries/
+    # (see documentation if country is not available)
+    household_size: ~
+    # Motor vehicle fraction from
+    # https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/en/
+    # (see documentation if country is not available)
+    motor_vehicle_fraction: ~
+# GHS settings for vulnerability
+ghs:
+  # Check GHS: https://ghsl.jrc.ec.europa.eu/download.php for the squares that cover the country in question.
+  # Format should be a list of integer pairs (column, row)
+  column_row_pairs:
+    - (~, ~)
+    - (~, ~)
+# IPC settings for vulnerability
+ipc:
+  # Name of IPC file
+  filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
+  # The last row containing data
+  last_row: 147
+  # The highest admin level in the file (should be 1 or 2)
+  admin_level: 2
+  # Admin names that need replacement to match the admin region shapefile.
+  # You can get these by running the vulnerability script and it will warn of any admin names not found.
+  # Should be of the format $ipc_name: $admin_region_name
+  replace_dict:
+    # Admin 2
+    level_2_ipc_name : ~
+    # Admin 1
+    level_1_ipc_name : ~
+    # Country name
+    # It's also helpful to replace the country name as it appears in the IPC file with a blank string,
+    # otherwise you will get warnings
+    country_name:
+solid_fuels:
+  # from https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+  frac_urban: 0.95
+  frac_rural: 0.95
+handwashing_facilities:
+  # from https://washdata.org/data/downloads#WLD
+  frac_urban: 0.93
+  frac_rural: 0.98
+# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+raised_blood_pressure: 0.22
+# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+diabetes: 0.04
+# https://vizhub.healthdata.org/tobacco/
+smoking: 0.063
+covid:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQGOGhcfVhfuE_wP5Y78ZoKd6xPlc0BVt6uEPTNJ_6J_dqI29LlwC2KHFqw-9viNsBN60z7wC5ruOtt/pub?gid=0&single=true&output=csv
+  filename: covid_data.csv
+  header: 1
+  skiprows: 0
+  cases: True
+  deaths: False
+  individual_case_data: False
+  cumulative: True
+  admin_level: 1
+  federal_state_dict: False
+  adm1_name_exp: ADM1_FR
+  date_format: "%Y-%m-%d"
+  replace_dict:
+    Nord Kivu: Nord-Kivu
+    Haut  Katanga: Haut-Katanga
+    Haut-Uélé: Haut-Uele
+  hlx_dict:
+    "#affected+positive+total": "#affected+infected+confirmed+total"  
+    "#admin1+name": "#adm1+name"
+contact_matrix:
+  country: Zambia
+  file_number: 2
+NPIs:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vSommoUZUX9Spyg3JzC2n9oKQ9SB2jO4XoeI0T3rgFlND6rMh3MvX_Ysiq-rWKJVKujwj1XyFjVquub/pub?gid=1686966978&single=true&output=csv
+
