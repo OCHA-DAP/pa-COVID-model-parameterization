@@ -1,18 +1,19 @@
 # script that pulls data from several sources and generate COVID-19 breakdown for subnational SEIR model
 
 import datetime
-from datetime import timedelta
-import numpy as np
-import pandas as pd
-import geopandas as gpd
-from pathlib import Path
 import os
 import logging
 import itertools
 import getpass
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import geopandas as gpd
 
 from covid_model_parametrization import utils
 from covid_model_parametrization.config import Config
+from covid_model_parametrization.utils.who import get_WHO_data
 
 
 logger = logging.getLogger(__name__)
@@ -22,7 +23,7 @@ def covid(country_iso3, download_covid=False, config=None):
     # Get config file
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
 
     # Get input covid file
     input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
@@ -122,21 +123,19 @@ def covid(country_iso3, download_covid=False, config=None):
     ADM0_CFR=0
     if not parameters["covid"]["deaths"]:
         # missing death data, getting it from WHO at the national level
-        logger.info(f"getting CFR at ADM0 from WHO for {country_iso3}")
-        who_df=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSe-8lf6l_ShJHvd126J-jGti992SUbNLu-kmJfx1IRkvma_r4DHi0bwEW89opArs8ZkSY5G2-Bc1yT/pub?gid=0&single=true&output=csv')
-        who_df['date_epicrv']=pd.to_datetime(who_df['date_epicrv'])
-        who_df=who_df[who_df['ISO_3_CODE']==country_iso3]
-        who_df=who_df.sort_values(by='date_epicrv')
-        who_df=who_df.set_index('date_epicrv')
+        who_df = get_WHO_data(config, country_iso3)
+        who_df['Date_reported']=pd.to_datetime(who_df['Date_reported'])
+        who_df=who_df.sort_values(by='Date_reported')
+        who_df=who_df.set_index('Date_reported')
         latest_date=who_df.tail(1).index.values[0]
         # get the CFR from the latest month, to account for recent reporting rate estimation
         who_df=who_df.loc[latest_date-np.timedelta64(30,'D'):latest_date]
-        deaths=who_df.iloc[-1]['CumDeath']-who_df.iloc[0]['CumDeath']
-        cases=who_df.iloc[-1]['CumCase']-who_df.iloc[0]['CumCase']
+        deaths=who_df.iloc[-1][' Cumulative_deaths']-who_df.iloc[0][' Cumulative_deaths']
+        cases=who_df.iloc[-1][' Cumulative_cases']-who_df.iloc[0][' Cumulative_cases']
         if deaths<100:
             # if it's less than 100 use the cumulative to reduce noise
-            deaths=who_df.iloc[-1]['CumDeath']
-            cases=who_df.iloc[-1]['CumCase']
+            deaths=who_df.iloc[-1][' Cumulative_deaths']
+            cases=who_df.iloc[-1][' Cumulative_cases']
         ADM0_CFR=deaths/cases
 
     if parameters["covid"]["admin_level"] == 2:

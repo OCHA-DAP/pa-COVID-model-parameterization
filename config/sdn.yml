@@ -1,0 +1,73 @@
+admin:
+  # https://data.humdata.org/dataset/sudan-administrative-boundaries-levels-0-2
+  directory: sdn_admbnda_adm2_cbs_nic_ssa_20200317
+  language: EN
+mobility:
+  roads:
+    url: http://export.hotosm.org/downloads/eed0994f-1965-4492-9803-c10139fdd9e3/hotosm_sdn_roads_gpkg.zip
+  scaling_factor:
+    household_size: 5.6
+    motor_vehicle_fraction: 0.031
+ghs:
+  column_row_pairs:
+    - (20, 6)
+    - (20, 7)
+    - (21, 6)
+    - (21, 7)
+ipc:
+  filename: Sudan - IPC Analysis 2019-2020.xlsx
+  last_row: 193
+  admin_level: 2
+  replace_dict:
+    # Admin 2:
+    Abyei Pca Area: Abyei PCA area
+    As Salam - Sd: As Salam - SD
+    As Salam - Wk: As Salam - WK
+    At Tadamon - Bn: At Tadamon - BN
+    Galabat Ash-shargiah: Galabat Ash-Shargiah
+    Janub Aj Jazirah: Janub Al Jazirah
+    Sharg Aj Jazirah: Sharg Al Jazirah
+    # Country name:
+    Sudan:
+  replace_dict_boundaries:
+    North_Kordofan:
+      - Ar Rahad
+      - Ar Rahad (1)
+solid_fuels:
+  # from https://www.who.int/nmh/countries/2018/sdn_en.pdf?ua=1
+  frac_urban: 0.59
+  frac_rural: 0.59
+handwashing_facilities:
+  # from https://washdata.org/data/downloads#WLD
+  frac_urban: 0.68
+  frac_rural: 0.51
+# Using Chad https://www.who.int/nmh/countries/2018/tcd_en.pdf?ua=1
+# TODO replace with http://www.sho.gov.sd/controller/kn_hub_%20featured.php?sm_id=133&mid=110&lid=1
+raised_blood_pressure: 0.24
+# http://ghdx.healthdata.org/gbd-results-tool?params=gbd-api-2017-permalink/817c42c58dc6cb238e2d1eb03ef8babb
+diabetes: 0.0853
+# https://vizhub.healthdata.org/tobacco/
+smoking: 0.01
+covid:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQgIjG5wYFaK-z25ciiNNSWUTdxMWKRe5_y1YLNMpCzJziFor16xyP3R1nKz1wAkN7F4w6gx4F6yUIp/pub?gid=1817954914&single=true&output=csv
+  filename: covid_data.csv
+  header: 1
+  skiprows: 0
+  cases: True
+  deaths: False
+  individual_case_data: False
+  cumulative: True
+  admin_level: 1
+  federal_state_dict: False
+  adm1_name_exp: ADM1_EN
+  date_format: "%m/%d/%Y"
+  replace_dict:
+    Al Jazirah: Aj Jazirah
+  hlx_dict:
+    "#affected+infected+confirmed+fatalities": "#affected+infected+confirmed+total"
+contact_matrix:
+  country: Ethiopia
+  file_number: 1
+NPIs:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQe2N9oGZLd-oICiX2k1B2lfIdyBhZc32QmVu8q8XGVURPw8EpcnsS-XE2bqoAuoxWkcSMZ8Y-L5OGL/pub?gid=585810411&single=true&output=csv
+

@@ -3,15 +3,13 @@ import os
 import datetime
 import itertools
 import getpass
-import argparse
-import logging
 from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
 from rasterstats import zonal_stats
 
-from covid_model_parametrization import utils
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
 import logging
 
@@ -24,7 +22,7 @@ def exposure(country_iso3, download_worldpop=False, config=None):
     # Get parameters file
     if config is None:
         config = Config()
-    parameters = config.parameters[country_iso3]
+    parameters = config.parameters(country_iso3)
 
     # Get input boundary shape file
     input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
