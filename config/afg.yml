@@ -38,6 +38,7 @@ vulnerability:
     last_row: 58
     admin_level: 1
     replace_dict:
+      Helmand: Hilmand
       Sari Pul: Sar-e-Pul
       Wardak: Maidan Wardak
   solid_fuels:
