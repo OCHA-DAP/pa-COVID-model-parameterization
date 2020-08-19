@@ -63,29 +63,31 @@ vulnerabilty:
   diabetes: ~
   # from https://vizhub.healthdata.org/tobacco/
   smoking: ~
+# TODO: covid section
 covid:
-  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQGOGhcfVhfuE_wP5Y78ZoKd6xPlc0BVt6uEPTNJ_6J_dqI29LlwC2KHFqw-9viNsBN60z7wC5ruOtt/pub?gid=0&single=true&output=csv
-  filename: covid_data.csv
-  header: 1
-  skiprows: 0
-  cases: True
-  deaths: False
-  individual_case_data: False
-  cumulative: True
-  admin_level: 1
-  federal_state_dict: False
-  adm1_name_exp: ADM1_FR
-  date_format: "%Y-%m-%d"
+  url: ~
+  filename: ~
+  header: ~
+  skiprows: ~
+  cases: ~
+  deaths: ~
+  individual_case_data: ~
+  cumulative: ~
+  admin_level: ~
+  federal_state_dict: ~
+  adm1_name_exp: ~
+  date_format: ~
   replace_dict:
-    Nord Kivu: Nord-Kivu
-    Haut  Katanga: Haut-Katanga
-    Haut-Uélé: Haut-Uele
+    old_name: ~
   hlx_dict:
-    "#affected+positive+total": "#affected+infected+confirmed+total"  
-    "#admin1+name": "#adm1+name"
+    "#old_hxl_name": ~
+# Contact matrix settings
 contact_matrix:
-  country: Zambia
-  file_number: 2
+  # The sheet name of the country to use for the contact matrices
+  country: ~
+  # Whether the country falls in the first or second set of files (1 or 2)
+  file_number: ~
+# NPI settings
 NPIs:
-  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vSommoUZUX9Spyg3JzC2n9oKQ9SB2jO4XoeI0T3rgFlND6rMh3MvX_Ysiq-rWKJVKujwj1XyFjVquub/pub?gid=1686966978&single=true&output=csv
-
+  # The URL of the published Google sheet with NPIs
+  url: ~
