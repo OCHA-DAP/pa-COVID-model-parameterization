@@ -2,13 +2,14 @@ import os
 import json
 import logging
 import math
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import networkx as nx
 import pandas as pd
 import numpy as np
 
 from covid_model_parametrization.config import Config
+from covid_model_parametrization.utils import utils
 from covid_model_parametrization import npis
 
 logger = logging.getLogger(__name__)
@@ -27,7 +28,7 @@ def check_graph(config, parameters, country_iso3, main_dir):
     G = read_in_graph(config, country_iso3, main_dir)
     check_graph_edges(G, parameters)
     check_graph_nodes(G)
-    # TODO: check COVID dates
+    check_graph_metadata(G, country_iso3)
 
 
 def read_in_graph(config, country_iso3, main_dir):
@@ -86,7 +87,7 @@ def check_graph_nodes(G):
         # Check that infected and dead are increasing (warning only)
         for quantity in ['infected_confirmed', 'infected_dead']:
             try:
-                assert non_decreasing(node[quantity])
+                assert utils.non_decreasing(node[quantity])
             except AssertionError:
                 logger.warning(f'{node["name"]}: Non-increasing: {quantity}')
             except KeyError:
@@ -100,8 +101,50 @@ def check_graph_nodes(G):
                          f'{sum_disag}, {node["population"]}')
 
 
-def non_decreasing(L):
-    return all(x<=y for x, y in zip(L, L[1:]))
+def check_graph_metadata(G, country_iso3):
+    # Get metadata
+    metadata = G.graph
+    # Check country is correct
+    try:
+        assert metadata['country'] == country_iso3
+    except AssertionError:
+        logger.error(f'Graph for {country_iso3} has incorrect country label: {metadata["country"]}')
+    # Age groups should be increasing
+    age_groups = [int(age_group) for age_group in metadata['age_groups']]
+    try:
+        assert utils.strictly_increasing(age_groups)
+    except AssertionError:
+        logger.error(f'Age groups are not strictly increasing: {age_groups}')
+    # Contact matrix should have reasonable dimensions
+    expected_shape = (len(age_groups), len(age_groups))
+    for contact_matrix_name, contact_matrix in metadata['contact_matrix'].items():
+        contact_matrix = np.array(contact_matrix)
+        try:
+            assert contact_matrix.shape == expected_shape
+        except AssertionError:
+            logger.error(f'Contact matrix {contact_matrix_name} has incorrect shape {contact_matrix.shape} '
+                         f'(should be {expected_shape})')
+    # Check dates from country COVID and WHO
+    for date_type, dates in zip(['country office', 'WHO'], [metadata['dates'], metadata['data_WHO']['date']]):
+        dates = [datetime.strptime(date, '%Y-%m-%d') for date in dates]
+        # Check that there are no gaps
+        date_set = utils.create_date_set(min(dates), max(dates))
+        missing = date_set - set(dates)
+        try:
+            assert not missing
+        except AssertionError:
+            logger.error(f'Graph missing {date_type} dates: {missing}')
+        # Check that dates are increasing
+        try:
+            assert utils.strictly_increasing(dates)
+        except AssertionError:
+            logger.error(f'Graph {date_type} dates are not strictly increasing')
+    # Check that WHO data makes sense
+    for quantity in [metadata['data_WHO']['CumCase'], metadata['data_WHO']['CumDeath']]:
+        try:
+            assert utils.non_decreasing(quantity)
+        except AssertionError:
+            logger.warning(f'WHO COVID {quantity} is non-increasing')
 
 
 def check_npis(config, country_iso3, main_dir):
@@ -113,16 +156,18 @@ def check_npis(config, country_iso3, main_dir):
 
 def check_npi_dates(df_npi):
     df_npi['date'] = pd.to_datetime(df_npi['date'])
-    date_min = df_npi['date'].min()
-    date_max = df_npi['date'].max()
-    date_set = set(date_min + timedelta(days=x) for x in range((date_max - date_min).days))
+    date_set = utils.create_date_set(df_npi['date'].min(), df_npi['date'].max())
     for admin in df_npi['admin2'].unique():
         dates = df_npi.loc[df_npi['admin2'] == admin, 'date']
         missing = date_set - set(dates)
         try:
-            assert missing
+            assert not missing
         except AssertionError:
             logger.error(f'Admin pcode {admin} missing NPI dates: {missing}')
+        try:
+            assert utils.strictly_increasing(dates)
+        except AssertionError:
+            logger.error(f'Admin pcode {admin} dates are not strictly increasing')
 
 
 def check_npi_values(df_npi):
