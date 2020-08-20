@@ -8,52 +8,53 @@ mobility:
   scaling_factor:
     household_size: 5.3
     motor_vehicle_fraction: 0.0050
-ghs:
-  column_row_pairs:
-    - (19, 8)
-    - (19, 9)
-    - (19, 10)
-    - (20, 8)
-    - (20, 9)
-    - (20, 10)
-    - (21, 8)
-    - (21, 9)
-    - (21, 10)
-ipc:
-  filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
-  last_row: 147
-  admin_level: 2
-  replace_dict:
-    # Admin 2
-    Kabeya-kamwanga: Kabeya-Kamwanga
-    Katako-kombe: Katako-Kombe
-    Malemba-nkulu: Malemba-Nkulu
-    Mobayi-mbongo: Mobayi-Mbongo
-    # Admin 1
-    Bas Uélé: Bas-Uele
-    Haut Uélé: Haut-Uele
-    Kasai: Kasaï
-    Kasai Central: Kasaï-Central
-    Kasai Oriental: Kasaï-Oriental
-    Kongo Central: Kongo-Central
-    Nord Ubangi: Nord-Ubangi
-    Sud Ubangi: Sud-Ubangi
-    # Country name:
-    Congo, DRC:
-solid_fuels:
-  # from https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
-  frac_urban: 0.95
-  frac_rural: 0.95
-handwashing_facilities:
-  # from https://washdata.org/data/downloads#WLD
-  frac_urban: 0.93
-  frac_rural: 0.98
-# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
-raised_blood_pressure: 0.22
-# https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
-diabetes: 0.04
-# https://vizhub.healthdata.org/tobacco/
-smoking: 0.063
+vulnerability:
+  ghs:
+    column_row_pairs:
+      - (19, 8)
+      - (19, 9)
+      - (19, 10)
+      - (20, 8)
+      - (20, 9)
+      - (20, 10)
+      - (21, 8)
+      - (21, 9)
+      - (21, 10)
+  ipc:
+    filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
+    last_row: 147
+    admin_level: 2
+    replace_dict:
+      # Admin 2
+      Kabeya-kamwanga: Kabeya-Kamwanga
+      Katako-kombe: Katako-Kombe
+      Malemba-nkulu: Malemba-Nkulu
+      Mobayi-mbongo: Mobayi-Mbongo
+      # Admin 1
+      Bas Uélé: Bas-Uele
+      Haut Uélé: Haut-Uele
+      Kasai: Kasaï
+      Kasai Central: Kasaï-Central
+      Kasai Oriental: Kasaï-Oriental
+      Kongo Central: Kongo-Central
+      Nord Ubangi: Nord-Ubangi
+      Sud Ubangi: Sud-Ubangi
+      # Country name:
+      Congo, DRC:
+  solid_fuels:
+    # from https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+    frac_urban: 0.95
+    frac_rural: 0.95
+  handwashing_facilities:
+    # from https://washdata.org/data/downloads#WLD
+    frac_urban: 0.93
+    frac_rural: 0.98
+  # https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+  raised_blood_pressure: 0.22
+  # https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
+  diabetes: 0.04
+  # https://vizhub.healthdata.org/tobacco/
+  smoking: 0.063
 covid:
   url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQGOGhcfVhfuE_wP5Y78ZoKd6xPlc0BVt6uEPTNJ_6J_dqI29LlwC2KHFqw-9viNsBN60z7wC5ruOtt/pub?gid=0&single=true&output=csv
   filename: covid_data.csv

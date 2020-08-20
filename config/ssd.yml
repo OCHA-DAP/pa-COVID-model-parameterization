@@ -8,41 +8,42 @@ mobility:
   scaling_factor:
     household_size: 5.9
     motor_vehicle_fraction: 0.0050
-ghs:
-  column_row_pairs:
-    - (20, 7)
-    - (20, 8)
-    - (21, 7)
-    - (21, 8)
-ipc:
-  filename: South Sudan - IPC Analysis 2020-2020.xlsx
-  last_row: 101
-  admin_level: 2
-  replace_dict:
-    # Admin 2
-    Canal/pigi: Canal/Pigi
-    Luakpiny/nasir: Luakpiny/Nasir
-    Wau (rural Only): Wau
-    Yei County: Yei
-    # Admin 1
-    Northern Bahr El Ghazal: Northern Bahr el Ghazal
-    Western Bahr El Ghazal: Western Bahr el Ghazal
-    # Country
-    South Sudan:
-solid_fuels:
-  # from https://www.who.int/nmh/countries/2018/ssd_en.pdf?ua=1
-  frac_urban: 0.95
-  frac_rural: 0.95
-handwashing_facilities:
-  # from https://washdata.org/data/downloads#WLD
-  frac_urban: 0.93
-  frac_rural: 0.98
-# Using Chad https://www.who.int/nmh/countries/2018/tcd_en.pdf?ua=1
-raised_blood_pressure: 0.24
-# http://ghdx.healthdata.org/gbd-results-tool?params=gbd-api-2017-permalink/91c1bfad5bd48ffe4484ccdeca24e066 
-diabetes: 0.0737
-# https://vizhub.healthdata.org/tobacco/
-smoking: 0.064
+vulnerability:
+  ghs:
+    column_row_pairs:
+      - (20, 7)
+      - (20, 8)
+      - (21, 7)
+      - (21, 8)
+  ipc:
+    filename: South Sudan - IPC Analysis 2020-2020.xlsx
+    last_row: 101
+    admin_level: 2
+    replace_dict:
+      # Admin 2
+      Canal/pigi: Canal/Pigi
+      Luakpiny/nasir: Luakpiny/Nasir
+      Wau (rural Only): Wau
+      Yei County: Yei
+      # Admin 1
+      Northern Bahr El Ghazal: Northern Bahr el Ghazal
+      Western Bahr El Ghazal: Western Bahr el Ghazal
+      # Country
+      South Sudan:
+  solid_fuels:
+    # from https://www.who.int/nmh/countries/2018/ssd_en.pdf?ua=1
+    frac_urban: 0.95
+    frac_rural: 0.95
+  handwashing_facilities:
+    # from https://washdata.org/data/downloads#WLD
+    frac_urban: 0.93
+    frac_rural: 0.98
+  # Using Chad https://www.who.int/nmh/countries/2018/tcd_en.pdf?ua=1
+  raised_blood_pressure: 0.24
+  # http://ghdx.healthdata.org/gbd-results-tool?params=gbd-api-2017-permalink/91c1bfad5bd48ffe4484ccdeca24e066
+  diabetes: 0.0737
+  # https://vizhub.healthdata.org/tobacco/
+  smoking: 0.064
 covid:
   url: None
   filename: covid_data.csv

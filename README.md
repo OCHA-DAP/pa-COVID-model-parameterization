@@ -21,8 +21,8 @@
 ### Adding new countries
 
 1. Go through each of the **Setup** and **Running** steps for the individual components
-    - You will need to add the country to `config.yml`, use a previous country as a guide for which fields
-    to fill in (COD is a good one)
+    - You will need to make a new country config file in `config/`, start by 
+      using `config/template.yml` as a guide
 
 ## Individual components
 
