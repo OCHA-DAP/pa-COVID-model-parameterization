@@ -176,3 +176,7 @@ Make sure you have generated the graph and NPI files.
 ```bash
 python Check_output_quality.py [Country ISO code]
 ```
+To do an extra-thorough check and run with warnings, use the `-w` flag:
+```bash
+python Check_output_quality.py [Country ISO code] -w
+```
