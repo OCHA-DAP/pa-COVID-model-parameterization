@@ -60,7 +60,7 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
         config = Config()
     parameters = config.parameters(country_iso3)
     # Make the output directory if it doesn't exist
-    output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR)
+    output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, config.MOBILITY_DIR)
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     # Load admin regions
     df_adm = load_adm(country_iso3, config, parameters['admin'])
@@ -85,9 +85,9 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
         df_dist = pd.read_csv(os.path.join(output_dir, config.DISTANCES_FILENAME))
     else:
         df_dist = get_centroid_dist(df_adm)
-        df_dist.to_csv(os.path.join(output_dir, config.DISTANCES_FILENAME))
+        df_dist.to_csv(os.path.join(output_dir, config.DISTANCES_FILENAME), index=False)
     # Count the number of crossings
-    df_dist = count_crossings(df_dist, df_roads)
+    df_dist = count_crossings(df_dist, df_roads, config)
     # Create matrix and plot
     df_matrix = create_matrix(df_adm, df_dist, parameters['mobility']['scaling_factor'], df_pop)
     fig = plot_final_hist(df_matrix, country_iso3)
@@ -126,7 +126,7 @@ def get_borders(df_adm):
 
 def load_roads(country_iso3, config, parameters, df_borders):
     logger.info('Downloading roads file')
-    save_dir =  os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_OUTPUT_DIR)
+    save_dir =  os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_DIR)
     Path(save_dir).mkdir(parents=True, exist_ok=True)
     save_path = os.path.join(save_dir, config.ROADS_FILENAME.format(country_iso3=country_iso3.lower()))
     utils.download_ftp(parameters['roads']['url'], save_path)
@@ -173,29 +173,30 @@ def get_centroid_dist(df_adm):
             .distance(df_centroids.loc[df_centroids['ADM'] == x['ADM_B'], 'geometry'].values[0])
     ), axis=1)
 
-    # Add class columns to df_dist
-    df_dist = df_dist.join(pd.DataFrame({f'class_{i}': 0 for i in ROAD_MFACTOR.keys()}, index=df_dist.index))
-
     return df_dist
 
 
-def count_crossings(df_dist, df_roads):
+def count_crossings(df_dist, df_roads, config):
     logger.info('Counting road crossings')
+
+    # Read in road weights
+    df_weights = pd.read_csv(os.path.join(config.INPUT_DIR, config.MOBILITY_DIR, config.ROAD_WEIGHTS_FILENAME))
+    # Make a dict for the type and weights
+    weights_dict = pd.Series(df_weights['factor'].values,index=df_weights['name']).to_dict()
+    # Add road type name columns to df_dist
+    df_dist = df_dist.join(pd.DataFrame({road_class: 0 for road_class in weights_dict.keys()}, index=df_dist.index))
+
     # For each road, add the crossings to the distance matrix
     for _, row in df_roads.iterrows():
         for crossing_pair in row['crossing_pairs']:
-            df_dist.loc[(df_dist['ADM_A'] == crossing_pair[0]) &
-                        (df_dist['ADM_B'] == crossing_pair[1]),
-                        f'class_{OSM_ROAD_TYPES[row["highway"]]}'
-            ] += 1
-    # Drop any rows that have no road crossings
-    df_dist = df_dist[(df_dist['class_1'] != 0) | (df_dist['class_2'] != 0) | (df_dist['class_3'] != 0)]
+            df_dist.loc[(df_dist['ADM_A'] == crossing_pair[0]) & (df_dist['ADM_B'] == crossing_pair[1]),
+                        row["highway"]] += 1
 
     # Calculate weight -- roads weighted by mfactor, divided by distance
-    df_dist.loc[:, 'weight'] = df_dist.apply(lambda x:
-                                             sum([ROAD_MFACTOR[i] * x[f'class_{i}'] for i in [1, 2, 3]]) / x['dist'],
-                                             axis=1)
-
+    df_dist.loc[:, 'weight'] = df_dist.apply(lambda x: sum([weights_dict[road_class] * x[road_class]
+                                                    for road_class in weights_dict.keys()])
+                                                       / x['dist'] , axis=1)
+    df_dist.to_csv('test.csv')
     return df_dist
 
 
