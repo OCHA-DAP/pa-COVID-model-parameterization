@@ -2,6 +2,7 @@ import zipfile
 from urllib.request import urlretrieve
 import logging
 import os
+from datetime import timedelta
 
 import requests
 import yaml
@@ -55,3 +56,15 @@ def write_to_geojson(filename, geodataframe):
     except OSError:
         pass
     geodataframe.to_file(filename, driver="GeoJSON")
+
+
+def non_decreasing(L):
+    return all(x <= y for x, y in zip(L, L[1:]))
+
+
+def strictly_increasing(L):
+    return all(x<y for x, y in zip(L, L[1:]))
+
+
+def create_date_set(date_min, date_max):
+    return set(date_min + timedelta(days=x) for x in range((date_max - date_min).days))
