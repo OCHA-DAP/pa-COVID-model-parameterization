@@ -166,3 +166,17 @@ To run in final file creation mode:
 ```bash
 python Generate_NPIs.py  [Country ISO code] -f 
 ```
+
+### Output Quality
+
+This script checks the two final output files (the graph and NPIs) for any missing or unexpected values.
+
+#### Running
+Make sure you have generated the graph and NPI files.
+```bash
+python Check_output_quality.py [Country ISO code]
+```
+To do an extra-thorough check and run with warnings, use the `-w` flag:
+```bash
+python Check_output_quality.py [Country ISO code] -w
+```
