@@ -23,7 +23,7 @@ mobility:
     # (see documentation if country is not available)
     motor_vehicle_fraction: ~
 # Settings for vulnerability
-vulnerabilty:
+vulnerability:
   ghs:
     # Check GHS: https://ghsl.jrc.ec.europa.eu/download.php for the squares that cover the country in question.
     # Format should be a list of integer pairs (column, row)
@@ -31,7 +31,7 @@ vulnerabilty:
       - (~, ~)
       - (~, ~)
   ipc:
-    # Name of IPC file
+    # Name of IPC file, leave '~' if IPC data is not available
     filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
     # The last row containing data
     last_row: 147
