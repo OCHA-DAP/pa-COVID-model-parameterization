@@ -39,9 +39,14 @@ def covid(country_iso3, download_covid=False, config=None):
         header=parameters["covid"]["header"],
         skiprows=parameters["covid"]["skiprows"],
     )
+    # drop duplicates. Some datasets have duplicated rows on HDX
+    df_covid=df_covid.drop_duplicates()
+
     # convert to standard HLX
     if "hlx_dict" in parameters["covid"]:
         df_covid = df_covid.rename(columns=parameters["covid"]["hlx_dict"])
+
+    # in South Sudan we have individual case data which need to be aggregated at the ADM2 level 
     if (
         parameters["covid"]["individual_case_data"]
         and parameters["covid"]["admin_level"] == 2
@@ -64,31 +69,7 @@ def covid(country_iso3, download_covid=False, config=None):
                 config.HLX_TAG_TOTAL_CASES,
             ]
         ]
-
-    # in some files we have province explicitely
-    df_covid = df_covid[df_covid[config.HLX_TAG_ADM1_NAME] != "Total"]
-    df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].str.replace(
-        "Province", ""
-    )
-    df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].str.replace(
-        "State", ""
-    )
-    df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].str.strip()
-    if (
-        "replace_dict" in parameters["covid"]
-        and parameters["covid"]["admin_level"] == 1
-    ):
-        df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].replace(
-            parameters["covid"]["replace_dict"]
-        )
-    if (
-        "replace_dict" in parameters["covid"]
-        and parameters["covid"]["admin_level"] == 2
-    ):
-        df_covid[config.HLX_TAG_ADM2_NAME] = df_covid[config.HLX_TAG_ADM2_NAME].replace(
-            parameters["covid"]["replace_dict"]
-        )
-
+    
     # convert to numeric
     if parameters["covid"]["cases"]:
         df_covid[config.HLX_TAG_TOTAL_CASES] = convert_to_numeric(
@@ -99,6 +80,36 @@ def covid(country_iso3, download_covid=False, config=None):
             df_covid[config.HLX_TAG_TOTAL_DEATHS]
         )
     df_covid.fillna(0, inplace=True)
+
+    # remove Total for spatially disaggregated data
+    df_covid = df_covid[df_covid[config.HLX_TAG_ADM1_NAME] != "Total"]
+    # cleaning up names before using the replace dictionary
+    df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].str.replace(
+        "Province", ""
+    )
+    df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].str.replace(
+        "State", ""
+    )
+    df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].str.strip()
+    # apply replace dict to match ADM unit names in the COD with teh COVID data
+    if (
+        "replace_dict" in parameters["covid"]
+        and parameters["covid"]["admin_level"] == 1
+    ):
+        df_covid[config.HLX_TAG_ADM1_NAME] = df_covid[config.HLX_TAG_ADM1_NAME].replace(
+            parameters["covid"]["replace_dict"]
+        )
+        # Some datasets have mutliple rows corresponsing to the same ADM1
+        df_covid=df_covid.groupby([config.HLX_TAG_ADM1_NAME,config.HLX_TAG_DATE]).sum().reset_index()
+    if (
+        "replace_dict" in parameters["covid"]
+        and parameters["covid"]["admin_level"] == 2
+    ):
+        df_covid[config.HLX_TAG_ADM2_NAME] = df_covid[config.HLX_TAG_ADM2_NAME].replace(
+            parameters["covid"]["replace_dict"]
+        )
+        # Some datasets have mutliple rows corresponsing to the same ADM2
+        df_covid=df_covid.groupby([config.HLX_TAG_ADM2_NAME,config.HLX_TAG_DATE]).sum().reset_index()
 
     # Get exposure file
     try:
@@ -194,12 +205,15 @@ def covid(country_iso3, download_covid=False, config=None):
             exposure_gdf[parameters["covid"]["adm1_name_exp"]] = exposure_gdf[
                 "ADM1_PCODE"
             ]
+        # get dictionary of ADM1 pcodes
         ADM1_names = get_dict_pcodes(
             exposure_gdf, parameters["covid"]["adm1_name_exp"], "ADM1_PCODE"
         )
+        # create new column with pcodes
         df_covid[config.HLX_TAG_ADM1_PCODE] = df_covid[config.HLX_TAG_ADM1_NAME].map(
             ADM1_names
         )
+        # check if any pcode is missing
         if df_covid[config.HLX_TAG_ADM1_PCODE].isnull().sum() > 0:
             logger.warning("missing PCODE for the following admin units :")
             logger.warning(
@@ -207,7 +221,8 @@ def covid(country_iso3, download_covid=False, config=None):
                     [config.HLX_TAG_ADM1_NAME, config.HLX_TAG_DATE]
                 ]
             )
-        # recalculate total for each ADM1 unit
+        # get the full list of gender/age combinations to calculate the sum of population in adm2_pop_fractions
+        # in principle we could use the sum in the exposure but it's safer to recalculate it
         gender_age_groups = list(
             itertools.product(config.GENDER_CLASSES, config.AGE_CLASSES)
         )
@@ -288,9 +303,6 @@ def covid(country_iso3, download_covid=False, config=None):
         output_df_covid[config.HLX_TAG_ADM1_PCODE] = output_df_covid[
             config.HLX_TAG_ADM2_PCODE
         ].map(ADM2_ADM1_pcodes)
-    
-    # drop duplicates
-    output_df_covid=output_df_covid.drop_duplicates()
 
     # Write to file
     output_df_covid["created_at"] = str(datetime.datetime.now())
