@@ -26,7 +26,7 @@ def graph(country_iso3, config=None):
 
     # Initialize graph with mobility edges
     mobility_csv = os.path.join(main_dir,
-                                config.MOBILITY_OUTPUT_DIR,
+                                config.MOBILITY_DIR,
                                 config.MOBILITY_FILENAME.format(country_iso3=country_iso3))
     G = initialize_with_mobility(mobility_csv)
     G.graph["country"] = country_iso3
