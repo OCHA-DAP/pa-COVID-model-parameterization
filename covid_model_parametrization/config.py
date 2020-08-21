@@ -56,7 +56,10 @@ class Config:
 
     ####################### Mobility section
 
-    MOBILITY_OUTPUT_DIR = 'mobility'
+    MOBILITY_DIR = 'mobility'
+
+    ROAD_WEIGHTS_FILENAME = 'road_weights.csv'
+
     MOBILITY_FILENAME = '{country_iso3}_mobility_matrix.csv'
     MOBILITY_FIGNAME = '{country_iso3}_mobility_matrix_hist.png'
 
