@@ -30,22 +30,41 @@ vulnerability:
   smoking: 0.12
 # TODO: covid section
 covid:
-  url: ~
-  filename: ~
-  header: ~
-  skiprows: ~
-  cases: ~
-  deaths: ~
-  individual_case_data: ~
-  cumulative: ~
-  admin_level: ~
-  federal_state_dict: ~
-  adm1_name_exp: ~
-  date_format: ~
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQh_BwL222rdcpIH2rLPIbvdKLJu3fevAy2L82FHUcl-84w6byWRITQicetYzpqX707EUc3qgAJm7Hr/pub?gid=0&single=true&output=csv
+  filename: covid_data.csv
+  header: 1
+  skiprows: 0
+  cases: True
+  deaths: True
+  individual_case_data: False
+  # TODO CHECK THIS ONE!!!!!!!
+  cumulative: False
+  admin_level: 1
+  federal_state_dict: False
+  adm1_name_exp: ADM1_EN
+  date_format: "%d/%m/%Y"
   replace_dict:
-    old_name: ~
+    ANBAR: Al-Anbar
+    BAGHDAD-RESAFA and MIDICAL CITY: Baghdad
+    BAGHDAD-KARKH: Baghdad
+    DIWANIYA: Al-Qadissiya
+    KERBALA: Kerbala
+    MUTHANNA: Al-Muthanna
+    SALAH AL-DIN: Salah Al-Din
+    THI-QAR: Thi Qar
+    BABYLON: Babil
+    BASRAH: Al-Basrah
+    DAHUK: Duhok
+    DIYALA: Diyala
+    ERBIL: Erbil
+    KIRKUK: Kirkuk
+    MISSAN: Maysan
+    NAJAF: Al-Najaf
+    SULAYMANIYAH: Al-Sulaymaniyah
+    WASSIT: Wassit
   hlx_dict:
-    "#old_hxl_name": ~
+    "#affected+infected+confirmed": "#affected+infected+confirmed+total"
+    "#affected+infected+dead": "#affected+infected+dead+total"
 # Contact matrix settings
 contact_matrix:
   # The sheet name of the country to use for the contact matrices
