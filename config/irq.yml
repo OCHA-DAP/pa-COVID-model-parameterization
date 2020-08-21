@@ -1,32 +1,21 @@
-# This YAML file is intended as a template for adding a new country. All values are set to null.
-# The first step is to rename the YAML file with the lowercase country ISO3 code, i.e. ${ISO3}.yml
-
-# Settings for the country administrative boundaries
 admin:
   directory: irq_admbnda_adm2_cso_20190603
   language: EN
 # Settings for the mobility matrix
 mobility:
-  roads:
-    # Find the country HOTOSM roads geopackage file on HDX, right click on download and copy the link here
-    url: ~
+  roads: 
+    url: http://export.hotosm.org/downloads/c7df7430-c20e-4016-8039-7f536b0526db/hotosm_irq_roads_gpkg.zip
   scaling_factor:
-    # Household size from
-    # https://population.un.org/Household/index.html#/countries/
-    # (see documentation if country is not available)
-    household_size: ~
-    # Motor vehicle fraction from
-    # https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/en/
-    # (see documentation if country is not available)
-    motor_vehicle_fraction: ~
+    household_size: 7.7
+    motor_vehicle_fraction: 0.077
 # Settings for vulnerability
 vulnerabilty:
   ghs:
-    # Check GHS: https://ghsl.jrc.ec.europa.eu/download.php for the squares that cover the country in question.
-    # Format should be a list of integer pairs (column, row)
     column_row_pairs:
-      - (~, ~)
-      - (~, ~)
+      - (21, 4)
+      - (21, 5)
+      - (22, 4)
+      - (22, 5)
   ipc:
     # Name of IPC file
     filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
@@ -47,19 +36,14 @@ vulnerabilty:
       # otherwise you will get warnings
       country_name:
   solid_fuels:
-    # from https://www.who.int/nmh/countries/2018/
-    frac_urban: ~
-    frac_rural: ~
+    frac_urban: 5
+    frac_rural: 5
   handwashing_facilities:
-    # from https://washdata.org/data/downloads#WLD
-    frac_urban: ~
-    frac_rural: ~
-  # from https://www.who.int/nmh/countries/2018/
-  raised_blood_pressure: ~
-  # from https://www.who.int/nmh/countries/2018/
-  diabetes: ~
-  # from https://vizhub.healthdata.org/tobacco/
-  smoking: ~
+    frac_urban: 0.03
+    frac_rural: 0.1
+  raised_blood_pressure: 0.20
+  diabetes: 0.13
+  smoking: 0.12
 # TODO: covid section
 covid:
   url: ~
