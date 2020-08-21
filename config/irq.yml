@@ -69,9 +69,9 @@ covid:
 # Contact matrix settings
 contact_matrix:
   # The sheet name of the country to use for the contact matrices
-  country: ~
+  country: Iraq
   # Whether the country falls in the first or second set of files (1 or 2)
-  file_number: ~
+  file_number: 1
 # NPI settings
 NPIs:
   # The URL of the published Google sheet with NPIs
