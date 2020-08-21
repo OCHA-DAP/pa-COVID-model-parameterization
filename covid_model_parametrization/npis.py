@@ -22,6 +22,7 @@ SCHOOL_REDUCTION_VALUES = {
        'home': 1.05,
        'other_locations': 0.85,
        'school': 0.05,
+       'work': 1.0
     }
 
 logger = logging.getLogger()
