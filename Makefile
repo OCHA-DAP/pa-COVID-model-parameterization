@@ -7,7 +7,7 @@ update:
   	  	python Generate_COVID_file.py -d $$iso3 ; \
 		python Generate_graph.py $$iso3 ; \
 		python Generate_NPIs.py -f $$iso3 ; \
-		python Check_output_quality.py $iso3 ; \
+		python Check_output_quality.py $$iso3 ; \
 	done
 
 update_npi:
