@@ -23,7 +23,7 @@ mobility:
     # (see documentation if country is not available)
     motor_vehicle_fraction: ~
 # Settings for vulnerability
-vulnerabilty:
+vulnerability:
   ghs:
     # Check GHS: https://ghsl.jrc.ec.europa.eu/download.php for the squares that cover the country in question.
     # Format should be a list of integer pairs (column, row)
@@ -31,7 +31,7 @@ vulnerabilty:
       - (~, ~)
       - (~, ~)
   ipc:
-    # Name of IPC file
+    # Name of IPC file, leave '~' if IPC data is not available
     filename: Congo, DRC - IPC Analysis 2019-2020.xlsx
     # The last row containing data
     last_row: 147
@@ -50,18 +50,24 @@ vulnerabilty:
       # otherwise you will get warnings
       country_name:
   solid_fuels:
-    # from https://www.who.int/nmh/countries/2018/
+    # from https://www.who.int/nmh/countries/
+    # expressed as fraction (e.g. 0.2) instead of percentage (e.g. 20) 
     frac_urban: ~
     frac_rural: ~
   handwashing_facilities:
     # from https://washdata.org/data/downloads#WLD
+    # expressed as fraction (e.g. 0.2) instead of percentage (e.g. 20) 
+    # this is the sum of 'Limited' and 'No facility' in the 'Hygiene' tab of the Household World file
     frac_urban: ~
     frac_rural: ~
   # from https://www.who.int/nmh/countries/2018/
+  # expressed as fraction (e.g. 0.2) instead of percentage (e.g. 20) 
   raised_blood_pressure: ~
   # from https://www.who.int/nmh/countries/2018/
+  # expressed as fraction (e.g. 0.2) instead of percentage (e.g. 20) 
   diabetes: ~
   # from https://vizhub.healthdata.org/tobacco/
+  # expressed as fraction (e.g. 0.2) instead of percentage (e.g. 20) 
   smoking: ~
 # TODO: covid section
 covid:
