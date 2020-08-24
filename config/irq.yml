@@ -1,0 +1,77 @@
+admin:
+  directory: irq_admbnda_adm2_cso_20190603
+  language: EN
+# Settings for the mobility matrix
+mobility:
+  roads: 
+    url: http://export.hotosm.org/downloads/c7df7430-c20e-4016-8039-7f536b0526db/hotosm_irq_roads_gpkg.zip
+  scaling_factor:
+    household_size: 7.7
+    motor_vehicle_fraction: 0.077
+# Settings for vulnerability
+vulnerability:
+  ghs:
+    column_row_pairs:
+      - (21, 4)
+      - (21, 5)
+      - (22, 4)
+      - (22, 5)
+  ipc:
+    # Name of IPC file
+    filename: ~
+  solid_fuels:
+    frac_urban: 0.05
+    frac_rural: 0.05
+  handwashing_facilities:
+    frac_urban: 0.03
+    frac_rural: 0.1
+  raised_blood_pressure: 0.20
+  diabetes: 0.13
+  smoking: 0.12
+# TODO: covid section
+covid:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQh_BwL222rdcpIH2rLPIbvdKLJu3fevAy2L82FHUcl-84w6byWRITQicetYzpqX707EUc3qgAJm7Hr/pub?gid=0&single=true&output=csv
+  filename: covid_data.csv
+  header: 1
+  skiprows: 0
+  cases: True
+  deaths: True
+  individual_case_data: False
+  # TODO CHECK THIS ONE!!!!!!!
+  cumulative: False
+  admin_level: 1
+  federal_state_dict: False
+  adm1_name_exp: ADM1_EN
+  date_format: "%Y-%m-%d"
+  replace_dict:
+    ANBAR: Al-Anbar
+    BAGHDAD-RESAFA and MIDICAL CITY: Baghdad
+    BAGHDAD-KARKH: Baghdad
+    DIWANIYA: Al-Qadissiya
+    KERBALA: Kerbala
+    MUTHANNA: Al-Muthanna
+    SALAH AL-DIN: Salah Al-Din
+    THI-QAR: Thi Qar
+    BABYLON: Babil
+    BASRAH: Al-Basrah
+    DAHUK: Duhok
+    DIYALA: Diyala
+    ERBIL: Erbil
+    KIRKUK: Kirkuk
+    MISSAN: Maysan
+    NAJAF: Al-Najaf
+    SULAYMANIYAH: Al-Sulaymaniyah
+    WASSIT: Wassit
+    NINEWA: Ninewa
+  hlx_dict:
+    "#affected+infected+confirmed": "#affected+infected+confirmed+total"
+    "#affected+infected+dead": "#affected+infected+dead+total"
+# Contact matrix settings
+contact_matrix:
+  # The sheet name of the country to use for the contact matrices
+  country: Iraq
+  # Whether the country falls in the first or second set of files (1 or 2)
+  file_number: 1
+# NPI settings
+NPIs:
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQWn8YQT-FBlEC2dcvKMK3ZJ5DE9EBd-_Gmw5vh78aqRLDhLtoZhJbQbwepLaCRNfz_avnKbnU_Kz_L/pub?gid=1114937196&single=true&output=csv

@@ -140,7 +140,7 @@ def check_graph_metadata(G, country_iso3):
         except AssertionError:
             logger.error(f'Graph {date_type} dates are not strictly increasing')
     # Check that WHO data makes sense
-    for quantity in [metadata['data_WHO']['CumCase'], metadata['data_WHO']['CumDeath']]:
+    for quantity in [metadata['data_WHO'][' Cumulative_cases'], metadata['data_WHO'][' Cumulative_deaths']]:
         try:
             assert utils.non_decreasing(quantity)
         except AssertionError:
