@@ -66,7 +66,7 @@ def get_df_acaps(config, country_iso3):
                                            config.ACAPS_FILENAME),
                               sheet_name='Database')
     # Take only the country of concern
-    df_acaps = df_acaps[df_acaps['ISO'] == 'country_iso3']
+    df_acaps = df_acaps[df_acaps['ISO'] == country_iso3]
     # rename columns
     column_name_dict = {
         'ID': 'ID',

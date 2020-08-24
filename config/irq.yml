@@ -74,5 +74,4 @@ contact_matrix:
   file_number: 1
 # NPI settings
 NPIs:
-  # The URL of the published Google sheet with NPIs
-  url: ~
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQWn8YQT-FBlEC2dcvKMK3ZJ5DE9EBd-_Gmw5vh78aqRLDhLtoZhJbQbwepLaCRNfz_avnKbnU_Kz_L/pub?gid=1114937196&single=true&output=csv
