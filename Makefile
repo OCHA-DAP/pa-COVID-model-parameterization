@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 
-country_list = AFG COD SDN SSD SOM
+country_list = AFG COD SDN SSD SOM IRQ
 
 update:
 	for iso3 in ${country_list} ; do \
