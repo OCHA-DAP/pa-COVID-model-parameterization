@@ -20,4 +20,5 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    npis.npis(args.country_iso3, args.update_npi_list, args.create_final_list, download_acaps_arg=args.download_acaps)
+    npis.npis(args.country_iso3.upper(), args.update_npi_list, args.create_final_list,
+              download_acaps_arg=args.download_acaps)
