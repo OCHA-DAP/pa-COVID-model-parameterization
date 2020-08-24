@@ -50,7 +50,7 @@ vulnerability:
       # otherwise you will get warnings
       country_name:
   solid_fuels:
-    # from https://www.who.int/nmh/countries/2018/
+    # from https://www.who.int/nmh/countries/
     # expressed as fraction (e.g. 0.2) instead of percentage (e.g. 20) 
     frac_urban: ~
     frac_rural: ~
