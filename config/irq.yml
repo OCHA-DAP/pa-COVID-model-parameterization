@@ -20,8 +20,8 @@ vulnerability:
     # Name of IPC file
     filename: ~
   solid_fuels:
-    frac_urban: 5
-    frac_rural: 5
+    frac_urban: 0.05
+    frac_rural: 0.05
   handwashing_facilities:
     frac_urban: 0.03
     frac_rural: 0.1
