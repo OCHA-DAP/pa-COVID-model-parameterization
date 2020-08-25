@@ -46,6 +46,7 @@ covid:
   replace_dict:
     ANBAR: Al-Anbar
     BAGHDAD-RESAFA and MIDICAL CITY: Baghdad
+    BAGHDAD-RUSAFA and MEDICAL City: Baghdad
     BAGHDAD-KARKH: Baghdad
     DIWANIYA: Al-Qadissiya
     KERBALA: Kerbala
