@@ -38,7 +38,7 @@ covid:
   deaths: True
   individual_case_data: False
   # TODO CHECK THIS ONE!!!!!!!
-  cumulative: False
+  cumulative: True
   admin_level: 1
   federal_state_dict: False
   adm1_name_exp: ADM1_EN
