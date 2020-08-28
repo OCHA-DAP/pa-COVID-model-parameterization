@@ -168,7 +168,7 @@
       "2020-08-22"
     ],
     "data_WHO": {
-      " Cumulative_cases": [
+      "#affected+infected+confirmed+total": [
         1,
         1,
         1,
@@ -314,7 +314,7 @@
         2510,
         2514
       ],
-      " Cumulative_deaths": [
+      "#affected+infected+dead+total": [
         0,
         0,
         0,
@@ -460,7 +460,7 @@
         47,
         47
       ],
-      "date": [
+      "#date": [
         "2020-04-06",
         "2020-04-07",
         "2020-04-08",

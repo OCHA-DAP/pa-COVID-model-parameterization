@@ -122,7 +122,7 @@
       "2020-08-24"
     ],
     "data_WHO": {
-      " Cumulative_cases": [
+      "#affected+infected+confirmed+total": [
         5,
         5,
         5,
@@ -287,9 +287,10 @@
         3269,
         3269,
         3269,
+        3269,
         3269
       ],
-      " Cumulative_deaths": [
+      "#affected+infected+dead+total": [
         0,
         0,
         0,
@@ -454,9 +455,10 @@
         93,
         93,
         93,
+        93,
         93
       ],
-      "date": [
+      "#date": [
         "2020-03-16",
         "2020-03-17",
         "2020-03-18",
@@ -621,7 +623,8 @@
         "2020-08-24",
         "2020-08-25",
         "2020-08-26",
-        "2020-08-27"
+        "2020-08-27",
+        "2020-08-28"
       ]
     },
     "contact_matrix": {
@@ -7343,15 +7346,15 @@
         0.7686744113722758,
         0.7686744113722758
       ],
-      "frac_urban": 0.6699414266196202,
+      "frac_urban": 0.6487210474964067,
       "food_insecurity": 0.12,
       "fossil_fuels": 0.95,
-      "handwashing_facilities": 0.8932023429352152,
+      "handwashing_facilities": 0.8940511581001437,
       "raised_blood_pressure": 0.10996018294449386,
       "diabetes": 0.021146189027787282,
       "smoking": 0.025375426833344733,
       "vulnerable_frac": 0.95,
-      "high_beta_frac": 0.8932023429352152,
+      "high_beta_frac": 0.8940511581001437,
       "id": "SO1604"
     },
     {
@@ -9620,15 +9623,15 @@
         0.056382676339692774,
         0.056382676339692774
       ],
-      "frac_urban": 0.8117317723802896,
+      "frac_urban": 0.8088517955816528,
       "food_insecurity": 0.12,
       "fossil_fuels": 0.95,
-      "handwashing_facilities": 0.8875307291047885,
+      "handwashing_facilities": 0.8876459281767339,
       "raised_blood_pressure": 0.109960166757644,
       "diabetes": 0.021146185914931538,
       "smoking": 0.02537542309791784,
       "vulnerable_frac": 0.95,
-      "high_beta_frac": 0.8875307291047885,
+      "high_beta_frac": 0.8876459281767339,
       "id": "SO1804"
     },
     {
@@ -9873,15 +9876,15 @@
         0.09722356331711572,
         0.09722356331711572
       ],
-      "frac_urban": 0.4780206985219131,
+      "frac_urban": 0.47606910929265056,
       "food_insecurity": 0.01,
       "fossil_fuels": 0.95,
-      "handwashing_facilities": 0.9008791720591235,
+      "handwashing_facilities": 0.900957235628294,
       "raised_blood_pressure": 0.109966794004192,
       "diabetes": 0.02114746038542154,
       "smoking": 0.025376952462505844,
       "vulnerable_frac": 0.95,
-      "high_beta_frac": 0.9008791720591235,
+      "high_beta_frac": 0.900957235628294,
       "id": "SO1805"
     },
     {
@@ -12961,7 +12964,7 @@
         7817.329514298204
       ],
       "population": 1909989.1250000002,
-      "population_density": 7850.7616291015,
+      "population_density": 7850.7616291017,
       "infected_confirmed": [
         1048.0,
         1063.0,
@@ -13415,15 +13418,15 @@
         0.11269672579658647,
         0.11269672579658647
       ],
-      "frac_urban": 0.7982351030104995,
+      "frac_urban": 0.7976618099539988,
       "food_insecurity": 0.06,
       "fossil_fuels": 0.95,
-      "handwashing_facilities": 0.88807059587958,
+      "handwashing_facilities": 0.88809352760184,
       "raised_blood_pressure": 0.11265395817250576,
       "diabetes": 0.02166422272548188,
       "smoking": 0.025997067270578253,
       "vulnerable_frac": 0.95,
-      "high_beta_frac": 0.88807059587958,
+      "high_beta_frac": 0.88809352760184,
       "id": "SO2301"
     },
     {
@@ -19740,15 +19743,15 @@
         0.17385614909052044,
         0.17385614909052044
       ],
-      "frac_urban": 0.8734146168107483,
+      "frac_urban": 0.8725297014137358,
       "food_insecurity": 0.22,
       "fossil_fuels": 0.95,
-      "handwashing_facilities": 0.8850634153275702,
+      "handwashing_facilities": 0.8850988119434505,
       "raised_blood_pressure": 0.1126423181334592,
       "diabetes": 0.021661984256434463,
       "smoking": 0.025994381107721353,
       "vulnerable_frac": 0.95,
-      "high_beta_frac": 0.8850634153275702,
+      "high_beta_frac": 0.8850988119434505,
       "id": "SO2801"
     },
     {
@@ -20246,15 +20249,15 @@
         0.03891287687310288,
         0.03891287687310288
       ],
-      "frac_urban": 0.4849682005506776,
+      "frac_urban": 0.4814812724212545,
       "food_insecurity": 0.04,
       "fossil_fuels": 0.95,
-      "handwashing_facilities": 0.900601271977973,
+      "handwashing_facilities": 0.9007407491031498,
       "raised_blood_pressure": 0.11265260098859006,
       "diabetes": 0.021663961728575015,
       "smoking": 0.025996754074290016,
       "vulnerable_frac": 0.95,
-      "high_beta_frac": 0.900601271977973,
+      "high_beta_frac": 0.9007407491031498,
       "id": "SO2803"
     },
     {

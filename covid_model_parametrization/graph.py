@@ -148,22 +148,24 @@ def add_covid(G, main_dir, country_iso3, config):
 
 
 def add_WHO_data(G, country_iso3, config):
-    df_WHO = get_WHO_data(config, country_iso3)
+    df_WHO = get_WHO_data(config, country_iso3, hxlize=True)
     # convert ot datetime
-    df_WHO['Date_reported'] = pd.to_datetime(df_WHO['Date_reported']).dt.date
+    df_WHO['#date'] = pd.to_datetime(df_WHO['#date']).dt.date
     # keep only columns that we need
-    df_WHO = df_WHO[['Date_reported', ' Cumulative_cases', ' Cumulative_deaths']]
+    df_WHO = df_WHO[['#date',
+                     '#affected+infected+confirmed+total',
+                     '#affected+infected+dead+total']]
     # Index by date and fill missing vals
-    date_range = pd.date_range(df_WHO["Date_reported"].min(), df_WHO["Date_reported"].max())
-    df_WHO.index = df_WHO['Date_reported']
-    df_WHO = df_WHO.drop('Date_reported', axis=1)
+    date_range = pd.date_range(df_WHO["#date"].min(), df_WHO["#date"].max())
+    df_WHO.index = df_WHO['#date']
+    df_WHO = df_WHO.drop('#date', axis=1)
     df_WHO.reindex(date_range)
     df_WHO = df_WHO.interpolate(
         method="linear", axis="rows", limit_direction="forward"
     ).fillna(0)
-    df_WHO['date'] = df_WHO.index.astype(str)
+    df_WHO['#date'] = df_WHO.index.astype(str)
     # Add to the graph
-    G.graph["data_WHO"] = df_WHO.to_dict(orient='list')
+    G.graph['data_WHO'] = df_WHO.to_dict(orient='list')
     return G
 
 
