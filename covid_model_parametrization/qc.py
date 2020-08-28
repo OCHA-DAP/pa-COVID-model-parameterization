@@ -125,7 +125,7 @@ def check_graph_metadata(G, country_iso3):
             logger.error(f'Contact matrix {contact_matrix_name} has incorrect shape {contact_matrix.shape} '
                          f'(should be {expected_shape})')
     # Check dates from country COVID and WHO
-    for date_type, dates in zip(['country office', 'WHO'], [metadata['dates'], metadata['data_WHO']['date']]):
+    for date_type, dates in zip(['country office', 'WHO'], [metadata['dates'], metadata['data_WHO']['#date']]):
         dates = [datetime.strptime(date, '%Y-%m-%d') for date in dates]
         # Check that there are no gaps
         date_set = utils.create_date_set(min(dates), max(dates))
@@ -140,7 +140,8 @@ def check_graph_metadata(G, country_iso3):
         except AssertionError:
             logger.error(f'Graph {date_type} dates are not strictly increasing')
     # Check that WHO data makes sense
-    for quantity in [metadata['data_WHO'][' Cumulative_cases'], metadata['data_WHO'][' Cumulative_deaths']]:
+    for quantity in [metadata['data_WHO']['#affected+infected+confirmed+total'],
+                     metadata['data_WHO']['#affected+infected+dead+total']]:
         try:
             assert utils.non_decreasing(quantity)
         except AssertionError:
