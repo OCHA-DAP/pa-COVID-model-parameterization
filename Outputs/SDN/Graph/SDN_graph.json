@@ -135,7 +135,7 @@
       "2020-08-17"
     ],
     "data_WHO": {
-      " Cumulative_cases": [
+      "#affected+infected+confirmed+total": [
         5,
         5,
         5,
@@ -302,9 +302,10 @@
         12836,
         12903,
         12974,
-        12974
+        12974,
+        13045
       ],
-      " Cumulative_deaths": [
+      "#affected+infected+dead+total": [
         0,
         1,
         1,
@@ -471,9 +472,10 @@
         815,
         818,
         819,
-        819
+        819,
+        823
       ],
-      "date": [
+      "#date": [
         "2020-03-14",
         "2020-03-15",
         "2020-03-16",
@@ -640,7 +642,8 @@
         "2020-08-24",
         "2020-08-25",
         "2020-08-26",
-        "2020-08-27"
+        "2020-08-27",
+        "2020-08-28"
       ]
     },
     "contact_matrix": {
@@ -3522,7 +3525,7 @@
         5887.274427850772
       ],
       "population": 909559.8750000001,
-      "population_density": 5019.4417899704,
+      "population_density": 5019.4417899703,
       "infected_confirmed": [
         41.73629717306565,
         50.6151870315006,
@@ -13845,7 +13848,7 @@
         828.125529385414
       ],
       "population": 146331.265625,
-      "population_density": 539.8390087151,
+      "population_density": 539.839008715,
       "infected_confirmed": [
         0.0,
         0.04417120500617935,
@@ -32486,15 +32489,15 @@
         1.2167833869322515,
         1.2343827476409972
       ],
-      "frac_urban": 0.9030095685582755,
+      "frac_urban": 0.900588461264439,
       "food_insecurity": 0.37,
       "fossil_fuels": 0.59,
-      "handwashing_facilities": 0.6635116266549069,
+      "handwashing_facilities": 0.6631000384149547,
       "raised_blood_pressure": 0.12614887288269816,
       "diabetes": 0.04483541190372564,
       "smoking": 0.00525620303677909,
       "vulnerable_frac": 0.59,
-      "high_beta_frac": 0.6635116266549069,
+      "high_beta_frac": 0.6631000384149547,
       "id": "SD10068"
     },
     {
@@ -33933,7 +33936,7 @@
         3300.2020470926313
       ],
       "population": 412608.31249999994,
-      "population_density": 2877.1976505715,
+      "population_density": 2877.1976505714,
       "infected_confirmed": [
         0.0,
         0.015182272695342268,
