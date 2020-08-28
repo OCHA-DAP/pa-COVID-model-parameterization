@@ -8,13 +8,13 @@ mobility:
   scaling_factor:
     household_size: 5.6
     motor_vehicle_fraction: 0.031
-ghs:
-  column_row_pairs:
-    - (20, 6)
-    - (20, 7)
-    - (21, 6)
-    - (21, 7)
 vulnerability:
+  ghs:
+    column_row_pairs:
+      - (20, 6)
+      - (20, 7)
+      - (21, 6)
+      - (21, 7)
   ipc:
     filename: Sudan - IPC Analysis 2019-2020.xlsx
     last_row: 193
