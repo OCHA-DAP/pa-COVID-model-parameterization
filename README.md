@@ -21,7 +21,7 @@
        in the final input
     3. For any new measures that are to be included, fill in the Bucky measurement type, affected pcodes, and 
        and compliance level
-3. Run `make_update`
+3. Run `make update`
 
 ### Adding a new country
 
