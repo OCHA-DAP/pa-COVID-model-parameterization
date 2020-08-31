@@ -20,7 +20,7 @@ mobility:
     household_size: ~
     # Motor vehicle fraction from
     # https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/en/
-    # by taking the total population divide by the number of registered vehicles
+    # by taking the total population divided by the number of registered vehicles
     # (see documentation if country is not available)
     motor_vehicle_fraction: ~
 # Settings for vulnerability
