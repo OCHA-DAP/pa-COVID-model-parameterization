@@ -10,19 +10,24 @@
      ``` bash
      pip install -r requirements.txt
      ```
-2. Run `make setup` 
+2. Run `make setup` (downloads several large files, may take some time)
 
-### Updates
+### Updating the NPI and graph output files
 
 1. Run `make update_npi`
-2. Triage the resulting NPIs
+2. Triage the resulting NPIs:
+    1. Copy and paste the output Excel file to the Google sheet
+    2. Indicate if any of the new NPIs can be modelled, and if so, if they should be included
+       in the final input
+    3. For any new measures that are to be included, fill in the Bucky measurement type, affected pcodes, and 
+       and compliance level
 3. Run `make_update`
 
-### Adding new countries
+### Adding a new country
 
-1. Go through each of the **Setup** and **Running** steps for the individual components
-    - You will need to make a new country config file in `config/`, start by 
-      using `config/template.yml` as a guide
+1. Make a new country config file in `config/`, start by 
+   using `config/template.yml` as a guide
+2. Go through each of the **Setup** and **Running** steps for the individual components
 
 ## Individual components
 
