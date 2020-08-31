@@ -10,19 +10,24 @@
      ``` bash
      pip install -r requirements.txt
      ```
-2. Run `make setup` 
+2. Run `make setup` (downloads several large files, may take some time)
 
-### Updates
+### Updating the NPI and graph output files
 
 1. Run `make update_npi`
-2. Triage the resulting NPIs
-3. Run `make_update`
+2. Triage the resulting NPIs:
+    1. Copy and paste the output Excel file to the Google sheet
+    2. Indicate if any of the new NPIs can be modelled, and if so, if they should be included
+       in the final input
+    3. For any new measures that are to be included, fill in the Bucky measurement type, affected pcodes, and 
+       and compliance level
+3. Run `make update`
 
-### Adding new countries
+### Adding a new country
 
-1. Go through each of the **Setup** and **Running** steps for the individual components
-    - You will need to make a new country config file in `config/`, start by 
-      using `config/template.yml` as a guide
+1. Make a new country config file in `config/`, start by 
+   using `config/template.yml` as a guide
+2. Go through each of the **Setup** and **Running** steps for the individual components
 
 ## Individual components
 
@@ -49,13 +54,16 @@ The `-d ` flag is for downloading the WolrdPop files (they are large).
 #### Setup
 
 1. Check [GHS](https://ghsl.jrc.ec.europa.eu/download.php) for the grid square numbers that cover the country
-  and add these to the config file under the `ghs` section
+  and add these to the config file under the `ghs` section. It helps to double check that the grid squares
+  fully cover the country by displaying the admin regions file over the GHS rasters using QGIS.
 2. Download food security data from [IPC](http://www.ipcinfo.org/ipc-country-analysis/population-tracking-tool/en/):
-   1. Select the country and only data from 2020, save the excel file to `Inputs/$COUNTRY_ISO3/IPC`
-   2. Add the filename, last row number, and admin level to the config file in the `ipc` section
-   3. In the `replace_dict`, add any region names that have a different format than in the admin regions file
+   1. Select the country from the dropdown menu, use the date slider to select
+      only data from 2020, and export using the "Excel" button
+   2. Save the excel file to `Inputs/$COUNTRY_ISO3/IPC`
+   3. Add the filename, last row number, and admin level to the config file in the `ipc` section
+   4. In the `replace_dict`, add any region names that have a different format than in the admin regions file
      (the script will also warn you about any mismatches so you can fill this part in iteratively)
-   4. Commit the excel file to the repository
+   5. Commit the Excel file to the repository
 3. If available, add the following to the config file:
    1. [solid fuels](https://apps.who.int/gho/data/node.main.135?lang=en)
    2. [raised blood pressure](https://www.who.int/nmh/countries)
