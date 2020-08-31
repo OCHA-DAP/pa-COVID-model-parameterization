@@ -54,13 +54,16 @@ The `-d ` flag is for downloading the WolrdPop files (they are large).
 #### Setup
 
 1. Check [GHS](https://ghsl.jrc.ec.europa.eu/download.php) for the grid square numbers that cover the country
-  and add these to the config file under the `ghs` section
+  and add these to the config file under the `ghs` section. It helps to double check that the grid squares
+  fully cover the country by displaying the admin regions file over the GHS rasters using QGIS.
 2. Download food security data from [IPC](http://www.ipcinfo.org/ipc-country-analysis/population-tracking-tool/en/):
-   1. Select the country and only data from 2020, save the excel file to `Inputs/$COUNTRY_ISO3/IPC`
-   2. Add the filename, last row number, and admin level to the config file in the `ipc` section
-   3. In the `replace_dict`, add any region names that have a different format than in the admin regions file
+   1. Select the country from the dropdown menu, and use the date slider to select
+      only data from 2020 
+   2. Save the excel file to `Inputs/$COUNTRY_ISO3/IPC`
+   3. Add the filename, last row number, and admin level to the config file in the `ipc` section
+   4. In the `replace_dict`, add any region names that have a different format than in the admin regions file
      (the script will also warn you about any mismatches so you can fill this part in iteratively)
-   4. Commit the excel file to the repository
+   5. Commit the excel file to the repository
 3. If available, add the following to the config file:
    1. [solid fuels](https://apps.who.int/gho/data/node.main.135?lang=en)
    2. [raised blood pressure](https://www.who.int/nmh/countries)

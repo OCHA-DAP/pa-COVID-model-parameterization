@@ -196,7 +196,6 @@ def count_crossings(df_dist, df_roads, config):
     df_dist.loc[:, 'weight'] = df_dist.apply(lambda x: sum([weights_dict[road_class] * x[road_class]
                                                     for road_class in weights_dict.keys()])
                                                        / x['dist'] , axis=1)
-    df_dist.to_csv('test.csv')
     return df_dist
 
 
