@@ -11,8 +11,9 @@ import numpy as np
 from covid_model_parametrization.config import Config
 from covid_model_parametrization.utils.who import get_WHO_data
 
-
 logger = logging.getLogger(__name__)
+
+CONTACT_MATRIX_SIZE = 16
 
 
 def graph(country_iso3, config=None):
@@ -91,7 +92,7 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
     # Project to pseudo mercator to get meter units: https://epsg.io/3857
     exposure["population_density"] = np.round(exposure["population"] / exposure[
         "geometry"
-    ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6), 10)
+    ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6), 9)
     # Only keep necessary columns
     columns = [
         "ADM2_{}".format(parameters["language"]),
@@ -225,7 +226,7 @@ def add_contact_matrix(G, parameters, config):
             column_names = None
             header = 0
         elif parameters["file_number"] == 2:
-            column_names = [f"X{i}" for i in range(16)]
+            column_names = [f"X{i}" for i in range(CONTACT_MATRIX_SIZE)]
             header = None
         contact_matrix = pd.read_excel(
             filename,
@@ -235,4 +236,8 @@ def add_contact_matrix(G, parameters, config):
         )
         # Add as metadata
         G.graph["contact_matrix"][contact_matrix_type] = contact_matrix.values.tolist()
+    # Add elderly shielding contact matrix
+    # TODO: populate these values
+    elderly_shielding_matrix = np.zeros((CONTACT_MATRIX_SIZE, CONTACT_MATRIX_SIZE))
+    G.graph["contact_matrix"]["elderly_shielding"] = elderly_shielding_matrix.tolist()
     return G
