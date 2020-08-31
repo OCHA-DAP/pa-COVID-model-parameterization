@@ -27,6 +27,7 @@ mobility:
 vulnerability:
   ghs:
     # Check GHS: https://ghsl.jrc.ec.europa.eu/download.php for the squares that cover the country in question.
+    # Double check the coverage by displaying the admin file over the GHS rasters in QGIS.
     # Format should be a list of integer pairs (column, row)
     column_row_pairs:
       - (~, ~)
