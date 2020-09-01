@@ -20,7 +20,7 @@ def config_logger(level='INFO'):
         fmt="%(asctime)s %(name)s %(levelname)s %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
         field_styles={
-            'name': {'color': 8 }
+            'name': {'color': 8 },
             'asctime': {'color': 248},
             'levelname': {'color': 8, 'bold': True},
         },
