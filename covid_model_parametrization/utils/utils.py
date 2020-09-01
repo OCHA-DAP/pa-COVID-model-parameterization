@@ -6,16 +6,24 @@ from datetime import timedelta
 
 import requests
 import yaml
+import coloredlogs
 
 
 logger = logging.getLogger(__name__)
 
 
 def config_logger(level='INFO'):
-    logging.basicConfig(
-        format="%(asctime)s %(levelname)s %(name)s %(message)s",
-        level=vars(logging)[level.upper()],
+    # Colours selected from here:
+    # http://humanfriendly.readthedocs.io/en/latest/_images/ansi-demo.png
+    coloredlogs.install(
+        level=level,
+        fmt="%(asctime)s %(name)s %(levelname)s %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
+        field_styles={
+            'name': {'color': 8 }
+            'asctime': {'color': 248},
+            'levelname': {'color': 8, 'bold': True},
+        },
     )
 
 
