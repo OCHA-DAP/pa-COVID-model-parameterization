@@ -18,7 +18,7 @@ from covid_model_parametrization.utils.hdx_api import query_api
 # Reduction parameters
 MEASURES_DICT = {
     'school closure': 'school',
-    'shielding elderly': 'elderly',
+    'shielding elderly': 'elderly_shielding',
     'closing borders': 'mobility_reduction',
     'restricting inter-regional movement': 'mobility_reduction',
     'social distancing':'r0_reduction',
