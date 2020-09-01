@@ -326,7 +326,8 @@
         219435,
         223612,
         227446,
-        231177
+        231177,
+        234934
       ],
       "#affected+infected+dead+total": [
         0,
@@ -518,7 +519,8 @@
         6740,
         6814,
         6891,
-        6959
+        6959,
+        7042
       ],
       "#date": [
         "2020-02-24",
@@ -710,7 +712,8 @@
         "2020-08-28",
         "2020-08-29",
         "2020-08-30",
-        "2020-08-31"
+        "2020-08-31",
+        "2020-09-01"
       ]
     },
     "contact_matrix": {
@@ -2208,7 +2211,7 @@
         2337.8448371804825
       ],
       "population": 671805.25,
-      "population_density": 106.511130216,
+      "population_density": 106.51113022,
       "infected_confirmed": [
         1.8112026371017544,
         1.8112026371017544,
@@ -2489,7 +2492,7 @@
         563.2664094403451
       ],
       "population": 172398.9375,
-      "population_density": 13.809927186,
+      "population_density": 13.80992719,
       "infected_confirmed": [
         0.4647915601039744,
         0.4647915601039744,
@@ -2770,7 +2773,7 @@
         2128.9581113779413
       ],
       "population": 648383.1875,
-      "population_density": 52.940590769,
+      "population_density": 52.94059077,
       "infected_confirmed": [
         1.748056209820393,
         1.748056209820393,
@@ -3051,7 +3054,7 @@
         112.88985499459933
       ],
       "population": 33669.3515625,
-      "population_density": 0.297141147,
+      "population_density": 0.29714115,
       "infected_confirmed": [
         0.09077335781389932,
         0.09077335781389932,
@@ -3332,7 +3335,7 @@
         191.4311311013389
       ],
       "population": 58109.78515625001,
-      "population_density": 3.475595219,
+      "population_density": 3.47559522,
       "infected_confirmed": [
         0.15666533733759358,
         0.15666533733759358,
@@ -3613,7 +3616,7 @@
         336.4676932440502
       ],
       "population": 102507.1171875,
-      "population_density": 20.098103161,
+      "population_density": 20.09810316,
       "infected_confirmed": [
         0.276361580936884,
         0.276361580936884,
@@ -3894,7 +3897,7 @@
         548.8959849446522
       ],
       "population": 167709.71875,
-      "population_density": 15.658335279,
+      "population_density": 15.65833528,
       "infected_confirmed": [
         0.4521493168855015,
         0.4521493168855015,
@@ -4175,7 +4178,7 @@
         772.8948611122621
       ],
       "population": 162884.140625,
-      "population_density": 105.710337724,
+      "population_density": 105.71033772,
       "infected_confirmed": [
         30.89624260877821,
         31.85015747491545,
@@ -4456,7 +4459,7 @@
         7777.548976686076
       ],
       "population": 1639083.875,
-      "population_density": 1001.643112726,
+      "population_density": 1001.64311273,
       "infected_confirmed": [
         310.9052413809014,
         320.5043740478932,
@@ -4737,7 +4740,7 @@
         162.50100099002023
       ],
       "population": 34246.359375,
-      "population_density": 17.046270594,
+      "population_density": 17.04627059,
       "infected_confirmed": [
         6.49592909203714,
         6.696489509973106,
@@ -5018,7 +5021,7 @@
         823.8135061503347
       ],
       "population": 174645.640625,
-      "population_density": 124.922019001,
+      "population_density": 124.922019,
       "infected_confirmed": [
         33.12719128216534,
         34.14998621025964,
@@ -5299,7 +5302,7 @@
         1429.371851362358
       ],
       "population": 301222.5625,
-      "population_density": 105.519259957,
+      "population_density": 105.51925996,
       "infected_confirmed": [
         57.136596199774196,
         58.900676356885576,
@@ -5580,7 +5583,7 @@
         2319.4672299901513
       ],
       "population": 489160.8125,
-      "population_density": 36.697244538,
+      "population_density": 36.69724454,
       "infected_confirmed": [
         92.78516054243431,
         95.64988248027962,
@@ -5861,7 +5864,7 @@
         1292.1581505406311
       ],
       "population": 272316.5625,
-      "population_density": 100.298411015,
+      "population_density": 100.29841101,
       "infected_confirmed": [
         51.653638893909466,
         53.24843391979346,
@@ -6142,7 +6145,7 @@
         409.2885908374426
       ],
       "population": 92363.9921875,
-      "population_density": 39.196175506,
+      "population_density": 39.19617551,
       "infected_confirmed": [
         10.068533405025944,
         10.068533405025944,
@@ -6423,7 +6426,7 @@
         1695.861460917202
       ],
       "population": 378239.84375,
-      "population_density": 116.044698108,
+      "population_density": 116.04469811,
       "infected_confirmed": [
         41.231657615856754,
         41.231657615856754,
@@ -6704,7 +6707,7 @@
         236.88839524203945
       ],
       "population": 52847.1875,
-      "population_density": 0.847170181,
+      "population_density": 0.84717018,
       "infected_confirmed": [
         5.760834499501311,
         5.760834499501311,
@@ -6985,7 +6988,7 @@
         1678.1317965949518
       ],
       "population": 375554.90625,
-      "population_density": 270.729745042,
+      "population_density": 270.72974504,
       "infected_confirmed": [
         40.93897447961597,
         40.93897447961597,
@@ -7266,7 +7269,7 @@
         1634.0461087271387
       ],
       "population": 409111.625,
-      "population_density": 563.777126552,
+      "population_density": 563.77712655,
       "infected_confirmed": [
         77.47163351234519,
         1.5141035865604922,
@@ -7547,7 +7550,7 @@
         986.4414172253806
       ],
       "population": 236343.125,
-      "population_density": 281.113218938,
+      "population_density": 281.11321894,
       "infected_confirmed": [
         44.75523755445078,
         0.8746951965039241,
@@ -7828,7 +7831,7 @@
         3811.831606134034
       ],
       "population": 975748.5625,
-      "population_density": 18.252724845,
+      "population_density": 18.25272485,
       "infected_confirmed": [
         184.77312893320405,
         3.611201216935585,
@@ -8109,7 +8112,7 @@
         1664.4129207407586
       ],
       "population": 353077.03125,
-      "population_density": 65.264162527,
+      "population_density": 65.26416253,
       "infected_confirmed": [
         2.549948686595192,
         2.549948686595192,
@@ -8390,7 +8393,7 @@
         2357.6430276051083
       ],
       "population": 496850.25,
-      "population_density": 280.815350242,
+      "population_density": 280.81535024,
       "infected_confirmed": [
         3.5882896090312943,
         3.5882896090312943,
@@ -8671,7 +8674,7 @@
         2135.743608660314
       ],
       "population": 453554.53125,
-      "population_density": 137.675535628,
+      "population_density": 137.67553563,
       "infected_confirmed": [
         3.2756046950030404,
         3.2756046950030404,
@@ -8952,7 +8955,7 @@
         1685.7906312702012
       ],
       "population": 358090.59375,
-      "population_density": 271.407563971,
+      "population_density": 271.40756397,
       "infected_confirmed": [
         2.5861570093704724,
         2.5861570093704724,
@@ -9233,7 +9236,7 @@
         6595.26208654901
       ],
       "population": 1006922.4375,
-      "population_density": 289.307433874,
+      "population_density": 289.30743387,
       "infected_confirmed": [
         78.91411882619164,
         78.91411882619164,
@@ -9514,7 +9517,7 @@
         2066.404397631795
       ],
       "population": 316389.0625,
-      "population_density": 51.668407312,
+      "population_density": 51.66840731,
       "infected_confirmed": [
         24.795915895391268,
         24.795915895391268,
@@ -9795,7 +9798,7 @@
         238.47119227157538
       ],
       "population": 37186.58203125,
-      "population_density": 46.740902652,
+      "population_density": 46.74090265,
       "infected_confirmed": [
         2.914371796540669,
         2.914371796540669,
@@ -10076,7 +10079,7 @@
         445.8092003742115
       ],
       "population": 68063.296875,
-      "population_density": 38.822648891,
+      "population_density": 38.82264889,
       "infected_confirmed": [
         5.334229228848732,
         5.334229228848732,
@@ -10357,7 +10360,7 @@
         872.4855567942864
       ],
       "population": 133205.515625,
-      "population_density": 61.244175155,
+      "population_density": 61.24417516,
       "infected_confirmed": [
         10.439528901981962,
         10.439528901981962,
@@ -10638,7 +10641,7 @@
         1190.37319418915
       ],
       "population": 223276.95312500003,
-      "population_density": 69.794778259,
+      "population_density": 69.79477826,
       "infected_confirmed": [
         17.498571244278452,
         17.498571244278452,
@@ -10919,7 +10922,7 @@
         231.61426780104398
       ],
       "population": 35361.38671875,
-      "population_density": 23.376823965,
+      "population_density": 23.37682397,
       "infected_confirmed": [
         2.7713283262518944,
         2.7713283262518944,
@@ -11200,7 +11203,7 @@
         528.1406851950267
       ],
       "population": 80777.3359375,
-      "population_density": 37.562257898,
+      "population_density": 37.5622579,
       "infected_confirmed": [
         6.330648766216488,
         6.330648766216488,
@@ -11481,7 +11484,7 @@
         510.62314860631943
       ],
       "population": 78050.4765625,
-      "population_density": 36.886704327,
+      "population_density": 36.88670433,
       "infected_confirmed": [
         6.116940443979341,
         6.116940443979341,
@@ -11762,7 +11765,7 @@
         408.21022088597135
       ],
       "population": 62322.91796875,
-      "population_density": 18.892602658,
+      "population_density": 18.89260266,
       "infected_confirmed": [
         4.884346570319557,
         4.884346570319557,
@@ -12043,7 +12046,7 @@
         1941.973119856811
       ],
       "population": 386127.3125,
-      "population_density": 133.376337005,
+      "population_density": 133.37633701,
       "infected_confirmed": [
         9.429686009258957,
         9.429686009258957,
@@ -12324,7 +12327,7 @@
         5170.246438698968
       ],
       "population": 1023782.3124999999,
-      "population_density": 783.029558005,
+      "population_density": 783.02955801,
       "infected_confirmed": [
         25.00197586698308,
         25.00197586698308,
@@ -12605,7 +12608,7 @@
         897.7220601380434
       ],
       "population": 179609.859375,
-      "population_density": 95.157672364,
+      "population_density": 95.15767236,
       "infected_confirmed": [
         4.386285360410515,
         4.386285360410515,
@@ -12886,7 +12889,7 @@
         1690.3571742098702
       ],
       "population": 335039.15625,
-      "population_density": 232.017609889,
+      "population_density": 232.01760989,
       "infected_confirmed": [
         8.182052763347452,
         8.182052763347452,
@@ -13167,7 +13170,7 @@
         4253.665451341191
       ],
       "population": 990971.0,
-      "population_density": 2692.817231401,
+      "population_density": 2692.8172314,
       "infected_confirmed": [
         133.20150140391027,
         142.5744514531448,
@@ -13448,7 +13451,7 @@
         12381.96483748555
       ],
       "population": 2931476.5,
-      "population_density": 1285.332324536,
+      "population_density": 1285.33232454,
       "infected_confirmed": [
         394.03481144279687,
         421.7617406919927,
@@ -13729,7 +13732,7 @@
         5797.890664508763
       ],
       "population": 1265564.375,
-      "population_density": 3267.499821777,
+      "population_density": 3267.49982178,
       "infected_confirmed": [
         170.1110071569212,
         182.081157313652,
@@ -14010,7 +14013,7 @@
         613.8661223684696
       ],
       "population": 163864.328125,
-      "population_density": 86.806271806,
+      "population_density": 86.80627181,
       "infected_confirmed": [
         22.025845895382403,
         23.575731979200192,
@@ -14291,7 +14294,7 @@
         2544.046560972129
       ],
       "population": 537820.375,
-      "population_density": 264.747629351,
+      "population_density": 264.74762935,
       "infected_confirmed": [
         72.29119866839095,
         77.3780917362361,
@@ -14572,7 +14575,7 @@
         6050.535061184728
       ],
       "population": 1323566.625,
-      "population_density": 5325.716418628,
+      "population_density": 5325.71641863,
       "infected_confirmed": [
         177.90738745947792,
         190.4261431677266,
@@ -14853,7 +14856,7 @@
         1349.8659845589182
       ],
       "population": 293331.90625,
-      "population_density": 2594.349811614,
+      "population_density": 2594.34981161,
       "infected_confirmed": [
         39.428247973120364,
         42.20268365804756,
@@ -15134,7 +15137,7 @@
         1815.7382310452695
       ],
       "population": 358871.25,
-      "population_density": 79.390072989,
+      "population_density": 79.39007299,
       "infected_confirmed": [
         2.7915106056020096,
         2.7915106056020096,
@@ -15415,7 +15418,7 @@
         2862.5382611100595
       ],
       "population": 565514.0,
-      "population_density": 347.632805769,
+      "population_density": 347.63280577,
       "infected_confirmed": [
         4.398898849145522,
         4.398898849145522,
@@ -15696,7 +15699,7 @@
         3612.340683233723
       ],
       "population": 714192.8125,
-      "population_density": 336.813676272,
+      "population_density": 336.81367627,
       "infected_confirmed": [
         5.555409664436693,
         5.555409664436693,
@@ -15977,7 +15980,7 @@
         4069.144266915936
       ],
       "population": 804025.5,
-      "population_density": 368.204399262,
+      "population_density": 368.20439926,
       "infected_confirmed": [
         6.254180880815777,
         6.254180880815777,
@@ -16258,7 +16261,7 @@
         1731.3366194383943
       ],
       "population": 469063.81249999994,
-      "population_density": 108.739533388,
+      "population_density": 108.73953339,
       "infected_confirmed": [
         6.988725456237277,
         8.735906820296595,
@@ -16539,7 +16542,7 @@
         302.4800260892431
       ],
       "population": 81970.609375,
-      "population_density": 56.500566904,
+      "population_density": 56.5005669,
       "infected_confirmed": [
         1.2213052235879835,
         1.5266315294849797,
@@ -16820,7 +16823,7 @@
         303.3961152755991
       ],
       "population": 82134.7578125,
-      "population_density": 8.361853593,
+      "population_density": 8.36185359,
       "infected_confirmed": [
         1.2237509214508044,
         1.5296886518135056,
@@ -17382,7 +17385,7 @@
         517.0964672661135
       ],
       "population": 137235.34375,
-      "population_density": 23.442700697,
+      "population_density": 23.4427007,
       "infected_confirmed": [
         2.0447114332894705,
         2.555889291611838,
@@ -17663,7 +17666,7 @@
         246.5637421284687
       ],
       "population": 56285.65625,
-      "population_density": 17.385456184,
+      "population_density": 17.38545618,
       "infected_confirmed": [
         0.8386172375115718,
         1.0482715468894648,
@@ -17944,7 +17947,7 @@
         442.44702617303074
       ],
       "population": 85254.0390625,
-      "population_density": 56.989325434,
+      "population_density": 56.98932543,
       "infected_confirmed": [
         8.00514029242134,
         8.00514029242134,
@@ -18225,7 +18228,7 @@
         4019.527279236241
       ],
       "population": 770912.6875,
-      "population_density": 184.014289219,
+      "population_density": 184.01428922,
       "infected_confirmed": [
         72.38676647473439,
         72.38676647473439,
@@ -18506,7 +18509,7 @@
         2585.7727600254384
       ],
       "population": 481479.28125,
-      "population_density": 153.782915426,
+      "population_density": 153.78291543,
       "infected_confirmed": [
         45.209696064661934,
         45.209696064661934,
@@ -18787,7 +18790,7 @@
         350.95140099414596
       ],
       "population": 66708.1640625,
-      "population_density": 16.812203622,
+      "population_density": 16.81220362,
       "infected_confirmed": [
         6.2637291774374315,
         6.2637291774374315,
@@ -19068,7 +19071,7 @@
         2412.733580382899
       ],
       "population": 464475.5,
-      "population_density": 67.883761427,
+      "population_density": 67.88376143,
       "infected_confirmed": [
         43.61308368236641,
         43.61308368236641,
@@ -19349,7 +19352,7 @@
         2026.7736769307498
       ],
       "population": 388951.65625,
-      "population_density": 140.851970866,
+      "population_density": 140.85197087,
       "infected_confirmed": [
         36.52158430837852,
         36.52158430837852,
@@ -19630,7 +19633,7 @@
         202.51300215895412
       ],
       "population": 48709.57421875,
-      "population_density": 18.701175575,
+      "population_density": 18.70117558,
       "infected_confirmed": [
         3.5797916159683454,
         3.6126337408854865,
@@ -19911,7 +19914,7 @@
         1716.3534297151664
       ],
       "population": 356104.25,
-      "population_density": 472.439563357,
+      "population_density": 472.43956336,
       "infected_confirmed": [
         26.17101522661205,
         26.41111628373693,
@@ -20192,7 +20195,7 @@
         4647.311359733604
       ],
       "population": 1078329.375,
-      "population_density": 284.793059217,
+      "population_density": 284.79305922,
       "infected_confirmed": [
         79.24919315741963,
         79.9762499753776,
@@ -20473,7 +20476,7 @@
         3004.4833099956345
       ],
       "population": 397413.68750000006,
-      "population_density": 91.411273164,
+      "population_density": 91.41127316,
       "infected_confirmed": [
         17.658685231753015,
         17.658685231753015,
@@ -20754,7 +20757,7 @@
         872.5505623871829
       ],
       "population": 118900.7265625,
-      "population_density": 29.773044774,
+      "population_density": 29.77304477,
       "infected_confirmed": [
         5.283236512063822,
         5.283236512063822,
@@ -21035,7 +21038,7 @@
         1469.66577871475
       ],
       "population": 194626.125,
-      "population_density": 74.415564333,
+      "population_density": 74.41556433,
       "infected_confirmed": [
         8.648019903065906,
         8.648019903065906,
@@ -21316,7 +21319,7 @@
         6481.915963084039
       ],
       "population": 864429.1875,
-      "population_density": 196.448581902,
+      "population_density": 196.4485819,
       "infected_confirmed": [
         38.41005835311728,
         38.41005835311728,
@@ -21878,7 +21881,7 @@
         285.33903699394983
       ],
       "population": 59779.156249999985,
-      "population_density": 11.329843492,
+      "population_density": 11.32984349,
       "infected_confirmed": [
         2.1286912338718547,
         2.1286912338718547,
@@ -22159,7 +22162,7 @@
         2487.2177933995204
       ],
       "population": 521077.65625,
-      "population_density": 103.094209159,
+      "population_density": 103.09420916,
       "infected_confirmed": [
         18.555187269406577,
         18.555187269406577,
@@ -22440,7 +22443,7 @@
         483.72603906804255
       ],
       "population": 101345.20312500001,
-      "population_density": 27.270707317,
+      "population_density": 27.27070732,
       "infected_confirmed": [
         3.608827207010805,
         3.608827207010805,
@@ -23002,7 +23005,7 @@
         293.82937024591274
       ],
       "population": 61557.90234375,
-      "population_density": 158.017084329,
+      "population_density": 158.01708433,
       "infected_confirmed": [
         2.192031057559136,
         2.192031057559136,
@@ -23283,7 +23286,7 @@
         628.4345219465126
       ],
       "population": 125727.359375,
-      "population_density": 27.261573222,
+      "population_density": 27.26157322,
       "infected_confirmed": [
         0.1867689557842648,
         0.2490252743790197,
@@ -23564,7 +23567,7 @@
         887.865159444292
       ],
       "population": 181829.78125,
-      "population_density": 13.953004158,
+      "population_density": 13.95300416,
       "infected_confirmed": [
         0.2701095333852732,
         0.3601460445136976,
@@ -23845,7 +23848,7 @@
         1281.7742671418291
       ],
       "population": 261856.65624999997,
-      "population_density": 130.598657217,
+      "population_density": 130.59865722,
       "infected_confirmed": [
         0.3889900694334987,
         0.5186534259113316,
@@ -24126,7 +24129,7 @@
         711.3001046034871
       ],
       "population": 145998.796875,
-      "population_density": 9.414268643,
+      "population_density": 9.41426864,
       "infected_confirmed": [
         0.2168823315279521,
         0.2891764420372695,
@@ -24407,7 +24410,7 @@
         10461.363396872497
       ],
       "population": 2142253.25,
-      "population_density": 295.719374811,
+      "population_density": 295.71937481,
       "infected_confirmed": [
         3.1823336186881366,
         4.243111491584182,
@@ -24688,7 +24691,7 @@
         453.3026232708054
       ],
       "population": 92601.4453125,
-      "population_density": 47.171806668,
+      "population_density": 47.17180667,
       "infected_confirmed": [
         0.13756015660477106,
         0.18341354213969474,
@@ -24969,7 +24972,7 @@
         904.9974949660783
       ],
       "population": 185338.37500000003,
-      "population_density": 41.611541012,
+      "population_density": 41.61154101,
       "infected_confirmed": [
         0.2753215762868041,
         0.3670954350490721,
@@ -25250,7 +25253,7 @@
         2631.184361182563
       ],
       "population": 537702.25,
-      "population_density": 72.941518548,
+      "population_density": 72.94151855,
       "infected_confirmed": [
         0.7987608127186892,
         1.0650144169582525,
@@ -26093,7 +26096,7 @@
         840.9377890663054
       ],
       "population": 177236.0,
-      "population_density": 82.375215591,
+      "population_density": 82.37521559,
       "infected_confirmed": [
         0.9779710208222924,
         0.9779710208222924,
@@ -26374,7 +26377,7 @@
         1596.1110322152579
       ],
       "population": 308434.78125,
-      "population_density": 31.248803823,
+      "population_density": 31.24880382,
       "infected_confirmed": [
         1.7019131433577996,
         1.7019131433577996,
@@ -26655,7 +26658,7 @@
         1755.7404133902637
       ],
       "population": 416694.84375,
-      "population_density": 71.265432809,
+      "population_density": 71.26543281,
       "infected_confirmed": [
         2.299281645453368,
         2.299281645453368,
@@ -26936,7 +26939,7 @@
         1466.5316964643655
       ],
       "population": 332599.9375,
-      "population_density": 41.223298549,
+      "population_density": 41.22329855,
       "infected_confirmed": [
         1.8352541267141311,
         1.8352541267141311,
@@ -27217,7 +27220,7 @@
         667.0629476113086
       ],
       "population": 148376.765625,
-      "population_density": 38.852671009,
+      "population_density": 38.85267101,
       "infected_confirmed": [
         0.8187285706323277,
         0.8187285706323277,
@@ -27498,7 +27501,7 @@
         895.4566384705556
       ],
       "population": 200489.171875,
-      "population_density": 63.781895066,
+      "population_density": 63.78189507,
       "infected_confirmed": [
         1.1062797630414236,
         1.1062797630414236,
@@ -27779,7 +27782,7 @@
         611.535464100095
       ],
       "population": 144952.34375,
-      "population_density": 45.151108876,
+      "population_density": 45.15110888,
       "infected_confirmed": [
         4.639864059302755,
         4.639864059302755,
@@ -28060,7 +28063,7 @@
         1957.547363848196
       ],
       "population": 463857.93750000006,
-      "population_density": 94.163420437,
+      "population_density": 94.16342044,
       "infected_confirmed": [
         14.84789908979001,
         14.84789908979001,
@@ -28341,7 +28344,7 @@
         1861.5940698648974
       ],
       "population": 441350.3125,
-      "population_density": 177.125523933,
+      "population_density": 177.12552393,
       "infected_confirmed": [
         14.127439402171026,
         14.127439402171026,
@@ -28622,7 +28625,7 @@
         3758.5049958245004
       ],
       "population": 891735.8750000001,
-      "population_density": 156.206668729,
+      "population_density": 156.20666873,
       "infected_confirmed": [
         28.54409338795802,
         28.54409338795802,
@@ -28903,7 +28906,7 @@
         1295.4387393962134
       ],
       "population": 307429.9375,
-      "population_density": 161.671718134,
+      "population_density": 161.67171813,
       "infected_confirmed": [
         9.840704060778195,
         9.840704060778195,
@@ -29184,7 +29187,7 @@
         821.2619536302767
       ],
       "population": 193575.578125,
-      "population_density": 67.755777483,
+      "population_density": 67.75577748,
       "infected_confirmed": [
         5.174019630186339,
         5.174019630186339,
@@ -29465,7 +29468,7 @@
         2030.3183070882264
       ],
       "population": 477231.40625,
-      "population_density": 66.633128966,
+      "population_density": 66.63312897,
       "infected_confirmed": [
         12.75576541212477,
         12.75576541212477,
@@ -30027,7 +30030,7 @@
         1515.900105210499
       ],
       "population": 359054.0,
-      "population_density": 58.765447364,
+      "population_density": 58.76544736,
       "infected_confirmed": [
         9.59703936979744,
         9.59703936979744,
@@ -30308,7 +30311,7 @@
         108.17074422178544
       ],
       "population": 25498.228515625,
-      "population_density": 5.120703421,
+      "population_density": 5.12070342,
       "infected_confirmed": [
         0.6815339835360279,
         0.6815339835360279,
