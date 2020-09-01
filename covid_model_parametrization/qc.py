@@ -91,7 +91,7 @@ def check_graph_nodes(G):
             except AssertionError:
                 logger.warning(f'{node["name"]}: Non-increasing: {quantity}')
             except KeyError:
-                logger.error(f'{node["name"]}: Missing quantity: {quantity}')
+                logger.warning(f'{node["name"]}: Missing quantity: {quantity}')
         # Check that the populations add up
         sum_disag = sum(node['group_pop_f']) + sum(node['group_pop_m'])
         try:
