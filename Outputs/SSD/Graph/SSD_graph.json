@@ -312,7 +312,11 @@
         2504,
         2507,
         2510,
-        2514
+        2514,
+        2518,
+        2519,
+        2519,
+        2527
       ],
       "#affected+infected+dead+total": [
         0,
@@ -435,6 +439,10 @@
         46,
         46,
         46,
+        47,
+        47,
+        47,
+        47,
         47,
         47,
         47,
@@ -604,7 +612,11 @@
         "2020-08-24",
         "2020-08-25",
         "2020-08-26",
-        "2020-08-27"
+        "2020-08-27",
+        "2020-08-28",
+        "2020-08-29",
+        "2020-08-30",
+        "2020-08-31"
       ]
     },
     "contact_matrix": {
@@ -1767,6 +1779,296 @@
           0.0014397199203757787,
           0.000662189455403425
         ]
+      ],
+      "elderly_shielding": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
       ]
     }
   },
@@ -1812,7 +2114,7 @@
         1975.443554572235
       ],
       "population": 419956.1875,
-      "population_density": 22.5599627278,
+      "population_density": 22.559962728,
       "infected_confirmed": [
         1.0,
         2.0,
@@ -2157,7 +2459,7 @@
         567.9216649113605
       ],
       "population": 220630.60937499994,
-      "population_density": 86.7032792902,
+      "population_density": 86.70327929,
       "frac_urban": 1.0,
       "food_insecurity": 0.55,
       "fossil_fuels": 0.95,
@@ -2210,7 +2512,7 @@
         400.7981342425393
       ],
       "population": 101805.1875,
-      "population_density": 28.7416932982,
+      "population_density": 28.741693298,
       "frac_urban": 0.5070786440791072,
       "food_insecurity": 0.45,
       "fossil_fuels": 0.95,
@@ -2263,7 +2565,7 @@
         506.40020776486745
       ],
       "population": 113747.6875,
-      "population_density": 85.9559583721,
+      "population_density": 85.955958372,
       "frac_urban": 0.813120865533779,
       "food_insecurity": 0.3,
       "fossil_fuels": 0.95,
@@ -2316,7 +2618,7 @@
         211.13000885653025
       ],
       "population": 164562.078125,
-      "population_density": 15.1692190451,
+      "population_density": 15.169219045,
       "frac_urban": 0.6491430547972084,
       "food_insecurity": 0.25,
       "fossil_fuels": 0.95,
@@ -2369,7 +2671,7 @@
         1448.427550960528
       ],
       "population": 228822.0,
-      "population_density": 33.6363496123,
+      "population_density": 33.636349612,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -2767,7 +3069,7 @@
         1102.4060221842587
       ],
       "population": 387434.03125,
-      "population_density": 109.0722405257,
+      "population_density": 109.072240526,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -3112,7 +3414,7 @@
         3829.452989393539
       ],
       "population": 740999.0625,
-      "population_density": 24.6902611714,
+      "population_density": 24.690261171,
       "frac_urban": 0.9045743272398603,
       "food_insecurity": 0.45,
       "fossil_fuels": 0.95,
@@ -3165,7 +3467,7 @@
         4433.367592666984
       ],
       "population": 471810.03125,
-      "population_density": 81.0530509986,
+      "population_density": 81.053050999,
       "frac_urban": 1.0,
       "food_insecurity": 0.45,
       "fossil_fuels": 0.95,
@@ -3218,7 +3520,7 @@
         1576.141969064554
       ],
       "population": 363730.40625,
-      "population_density": 299.1408531643,
+      "population_density": 299.140853164,
       "frac_urban": 1.0,
       "food_insecurity": 0.45,
       "fossil_fuels": 0.95,
@@ -3271,7 +3573,7 @@
         3296.422541778
       ],
       "population": 485893.28124999994,
-      "population_density": 29.4687394605,
+      "population_density": 29.468739461,
       "frac_urban": 1.0,
       "food_insecurity": 0.4,
       "fossil_fuels": 0.95,
@@ -3324,7 +3626,7 @@
         8017.2599475434945
       ],
       "population": 776248.125,
-      "population_density": 147.5793469239,
+      "population_density": 147.579346924,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -3669,7 +3971,7 @@
         1994.1380524287056
       ],
       "population": 456506.99999999994,
-      "population_density": 77.2183790467,
+      "population_density": 77.218379047,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -4014,7 +4316,7 @@
         636.2162386695363
       ],
       "population": 139243.109375,
-      "population_density": 15.0478310928,
+      "population_density": 15.047831093,
       "frac_urban": 0.995098659311478,
       "food_insecurity": 0.75,
       "fossil_fuels": 0.95,
@@ -4120,7 +4422,7 @@
         2142.536850986969
       ],
       "population": 226048.609375,
-      "population_density": 15.8791571638,
+      "population_density": 15.879157164,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -4465,7 +4767,7 @@
         704.4666109397447
       ],
       "population": 101008.28906250001,
-      "population_density": 22.0476666008,
+      "population_density": 22.047666601,
       "frac_urban": 0.6671630343145329,
       "food_insecurity": 0.65,
       "fossil_fuels": 0.95,
@@ -4518,7 +4820,7 @@
         290.7711738316795
       ],
       "population": 67229.625,
-      "population_density": 9.5309361766,
+      "population_density": 9.530936177,
       "frac_urban": 0.951242274845838,
       "food_insecurity": 0.7,
       "fossil_fuels": 0.95,
@@ -4571,7 +4873,7 @@
         1219.1886064615096
       ],
       "population": 110565.484375,
-      "population_density": 13.9941512295,
+      "population_density": 13.994151229,
       "frac_urban": 0.9625344696588023,
       "food_insecurity": 0.65,
       "fossil_fuels": 0.95,
@@ -4624,7 +4926,7 @@
         863.8005311906475
       ],
       "population": 111101.7421875,
-      "population_density": 15.2531199899,
+      "population_density": 15.25311999,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -4969,7 +5271,7 @@
         514.1679892519312
       ],
       "population": 151799.75,
-      "population_density": 4.5062563621,
+      "population_density": 4.506256362,
       "frac_urban": 0.9980843129161227,
       "food_insecurity": 0.7,
       "fossil_fuels": 0.95,
@@ -5022,7 +5324,7 @@
         226.54289997611474
       ],
       "population": 67140.7578125,
-      "population_density": 7.9506884426,
+      "population_density": 7.950688443,
       "frac_urban": 0.0,
       "food_insecurity": 0.4,
       "fossil_fuels": 0.95,
@@ -5075,7 +5377,7 @@
         936.5858607851626
       ],
       "population": 87300.0234375,
-      "population_density": 14.3694427942,
+      "population_density": 14.369442794,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -5420,7 +5722,7 @@
         1081.367445949902
       ],
       "population": 182564.734375,
-      "population_density": 14.6395043004,
+      "population_density": 14.6395043,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -5818,7 +6120,7 @@
         513.1610202382734
       ],
       "population": 101667.3515625,
-      "population_density": 20.4572434358,
+      "population_density": 20.457243436,
       "frac_urban": 0.9994814646617297,
       "food_insecurity": 0.6,
       "fossil_fuels": 0.95,
@@ -5871,7 +6173,7 @@
         770.2848290161339
       ],
       "population": 132572.46875,
-      "population_density": 33.6701455441,
+      "population_density": 33.670145544,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -6216,7 +6518,7 @@
         854.1079140200366
       ],
       "population": 106049.9609375,
-      "population_density": 29.1346949452,
+      "population_density": 29.134694945,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -6561,7 +6863,7 @@
         189.03702922596142
       ],
       "population": 37479.5859375,
-      "population_density": 8.9178579426,
+      "population_density": 8.917857943,
       "frac_urban": 0.0,
       "food_insecurity": 0.7,
       "fossil_fuels": 0.95,
@@ -6614,7 +6916,7 @@
         200.88294766515662
       ],
       "population": 35010.7890625,
-      "population_density": 2.9024687786,
+      "population_density": 2.902468779,
       "frac_urban": 1.0,
       "food_insecurity": 0.1,
       "fossil_fuels": 0.95,
@@ -6667,7 +6969,7 @@
         259.39480502978336
       ],
       "population": 58173.8671875,
-      "population_density": 10.2331049578,
+      "population_density": 10.233104958,
       "frac_urban": 0.8264278558475162,
       "food_insecurity": 0.6,
       "fossil_fuels": 0.95,
@@ -6720,7 +7022,7 @@
         495.4655490060769
       ],
       "population": 89092.25,
-      "population_density": 17.9907706908,
+      "population_density": 17.990770691,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -7410,7 +7712,7 @@
         1726.0987938185995
       ],
       "population": 201237.03125,
-      "population_density": 30.5919103148,
+      "population_density": 30.591910315,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -7755,7 +8057,7 @@
         1155.2409526040315
       ],
       "population": 83842.8671875,
-      "population_density": 12.7889523894,
+      "population_density": 12.788952389,
       "frac_urban": 1.0,
       "food_insecurity": 0.6,
       "fossil_fuels": 0.95,
@@ -7861,7 +8163,7 @@
         648.3734182748824
       ],
       "population": 107921.42187500001,
-      "population_density": 20.8972230566,
+      "population_density": 20.897223057,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -8206,7 +8508,7 @@
         174.141421938178
       ],
       "population": 18530.0234375,
-      "population_density": 7.4354515956,
+      "population_density": 7.435451596,
       "frac_urban": 1.0,
       "food_insecurity": 0.5,
       "fossil_fuels": 0.95,
@@ -8259,7 +8561,7 @@
         227.9036935780141
       ],
       "population": 36777.5,
-      "population_density": 10.3092866512,
+      "population_density": 10.309286651,
       "frac_urban": 0.9387128954923097,
       "food_insecurity": 0.55,
       "fossil_fuels": 0.95,
@@ -8312,7 +8614,7 @@
         771.9948633217261
       ],
       "population": 82675.0703125,
-      "population_density": 18.2633978032,
+      "population_density": 18.263397803,
       "frac_urban": 0.9820005531016438,
       "food_insecurity": 0.6,
       "fossil_fuels": 0.95,
@@ -8365,7 +8667,7 @@
         561.6600960219205
       ],
       "population": 57954.77734375,
-      "population_density": 35.0224981377,
+      "population_density": 35.022498138,
       "frac_urban": 0.9950580376229015,
       "food_insecurity": 0.5,
       "fossil_fuels": 0.95,
@@ -8418,7 +8720,7 @@
         556.0361141908082
       ],
       "population": 59555.26562499999,
-      "population_density": 18.9435669612,
+      "population_density": 18.943566961,
       "frac_urban": 0.0,
       "food_insecurity": 0.5,
       "fossil_fuels": 0.95,
@@ -8471,7 +8773,7 @@
         1258.5610927272396
       ],
       "population": 133728.40625,
-      "population_density": 30.4092342257,
+      "population_density": 30.409234226,
       "frac_urban": 1.0,
       "food_insecurity": 0.55,
       "fossil_fuels": 0.95,
@@ -8524,7 +8826,7 @@
         218.46474014255008
       ],
       "population": 56282.398437500015,
-      "population_density": 10.3207548725,
+      "population_density": 10.320754873,
       "frac_urban": 0.0,
       "food_insecurity": 0.6,
       "fossil_fuels": 0.95,
@@ -8577,7 +8879,7 @@
         671.6782323180345
       ],
       "population": 90277.703125,
-      "population_density": 9.7006886803,
+      "population_density": 9.70068868,
       "frac_urban": 1.0,
       "food_insecurity": 0.3,
       "fossil_fuels": 0.95,
@@ -8975,7 +9277,7 @@
         219.84816331579475
       ],
       "population": 50308.84374999999,
-      "population_density": 4.1647723318,
+      "population_density": 4.164772332,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -9320,7 +9622,7 @@
         810.003259235412
       ],
       "population": 38245.41796875,
-      "population_density": 10.2540559743,
+      "population_density": 10.254055974,
       "frac_urban": 0.8242497642950426,
       "food_insecurity": 0.45,
       "fossil_fuels": 0.95,
@@ -9373,7 +9675,7 @@
         137.02282851605767
       ],
       "population": 66099.0234375,
-      "population_density": 9.2348051578,
+      "population_density": 9.234805158,
       "frac_urban": 0.0,
       "food_insecurity": 0.6,
       "fossil_fuels": 0.95,
@@ -9479,7 +9781,7 @@
         751.3001807684126
       ],
       "population": 47337.91796875,
-      "population_density": 3.8588812663,
+      "population_density": 3.858881266,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -9824,7 +10126,7 @@
         406.09639822099103
       ],
       "population": 80714.71093750001,
-      "population_density": 21.2520639598,
+      "population_density": 21.25206396,
       "frac_urban": 0.0,
       "food_insecurity": 0.55,
       "fossil_fuels": 0.95,
@@ -9877,7 +10179,7 @@
         511.01827277422615
       ],
       "population": 132463.59375,
-      "population_density": 169.5034816401,
+      "population_density": 169.50348164,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -10222,7 +10524,7 @@
         375.8801761788321
       ],
       "population": 39726.22265625,
-      "population_density": 5.6902098074,
+      "population_density": 5.690209807,
       "frac_urban": 0.8332838173353064,
       "food_insecurity": 0.5,
       "fossil_fuels": 0.95,
@@ -10328,7 +10630,7 @@
         565.4950884551561
       ],
       "population": 49789.99609375,
-      "population_density": 9.4205446662,
+      "population_density": 9.420544666,
       "frac_urban": 0.6194701631286829,
       "food_insecurity": 0.55,
       "fossil_fuels": 0.95,
@@ -10381,7 +10683,7 @@
         996.1357279474582
       ],
       "population": 140265.875,
-      "population_density": 13.3657551314,
+      "population_density": 13.365755131,
       "frac_urban": 0.9770944231624817,
       "food_insecurity": 0.35,
       "fossil_fuels": 0.95,
@@ -10434,7 +10736,7 @@
         283.1268588707567
       ],
       "population": 88968.453125,
-      "population_density": 17.8813955638,
+      "population_density": 17.881395564,
       "frac_urban": 0.9965965169583622,
       "food_insecurity": 0.6,
       "fossil_fuels": 0.95,
@@ -10487,7 +10789,7 @@
         529.6002636969206
       ],
       "population": 81106.65625,
-      "population_density": 17.8054505952,
+      "population_density": 17.805450595,
       "frac_urban": 1.0,
       "food_insecurity": 0.3,
       "fossil_fuels": 0.95,
@@ -10540,7 +10842,7 @@
         833.3939667367797
       ],
       "population": 191545.84375,
-      "population_density": 42.2833995284,
+      "population_density": 42.283399528,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -10885,7 +11187,7 @@
         476.92696799419184
       ],
       "population": 91188.1171875,
-      "population_density": 20.1091707162,
+      "population_density": 20.109170716,
       "frac_urban": 0.4510991308534326,
       "food_insecurity": 0.45,
       "fossil_fuels": 0.95,
@@ -10938,7 +11240,7 @@
         586.6153461239496
       ],
       "population": 129745.4921875,
-      "population_density": 11.2448976871,
+      "population_density": 11.244897687,
       "frac_urban": 0.7317890643869929,
       "food_insecurity": 0.3,
       "fossil_fuels": 0.95,
@@ -10991,7 +11293,7 @@
         432.5770400286184
       ],
       "population": 67998.921875,
-      "population_density": 8.9621334675,
+      "population_density": 8.962133468,
       "frac_urban": 0.40065833572478876,
       "food_insecurity": 0.45,
       "fossil_fuels": 0.95,
@@ -11044,7 +11346,7 @@
         1295.4331783087666
       ],
       "population": 160852.828125,
-      "population_density": 39.3724902848,
+      "population_density": 39.372490285,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -11389,7 +11691,7 @@
         2.5180428462897533
       ],
       "population": 302.188720703125,
-      "population_density": 0.0277826164,
+      "population_density": 0.027782616,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -11734,7 +12036,7 @@
         446.87313658344925
       ],
       "population": 118769.41406249999,
-      "population_density": 11.5377267084,
+      "population_density": 11.537726708,
       "frac_urban": 0.6216704869781855,
       "food_insecurity": 0.05,
       "fossil_fuels": 0.95,
@@ -11787,7 +12089,7 @@
         364.5687436095287
       ],
       "population": 49866.8125,
-      "population_density": 0.7808789357,
+      "population_density": 0.780878936,
       "frac_urban": 0.8411778881396831,
       "food_insecurity": 0.5,
       "fossil_fuels": 0.95,
@@ -11840,7 +12142,7 @@
         895.670998243445
       ],
       "population": 140657.25,
-      "population_density": 7.1563236753,
+      "population_density": 7.156323675,
       "infected_confirmed": [
         0.0,
         0.0,
@@ -12185,7 +12487,7 @@
         949.0909753668604
       ],
       "population": 81921.3671875,
-      "population_density": 9.9896221282,
+      "population_density": 9.989622128,
       "frac_urban": 0.8403832070444464,
       "food_insecurity": 0.15,
       "fossil_fuels": 0.95,
@@ -12238,7 +12540,7 @@
         300.00856018492163
       ],
       "population": 42935.4375,
-      "population_density": 4.4039953877,
+      "population_density": 4.403995388,
       "frac_urban": 0.8160375765975674,
       "food_insecurity": 0.15,
       "fossil_fuels": 0.95,
@@ -12291,7 +12593,7 @@
         597.4479925208569
       ],
       "population": 84940.484375,
-      "population_density": 10.8982606149,
+      "population_density": 10.898260615,
       "frac_urban": 0.8326386695541632,
       "food_insecurity": 0.0,
       "fossil_fuels": 0.95,
@@ -12344,7 +12646,7 @@
         355.048547175987
       ],
       "population": 49872.6796875,
-      "population_density": 9.6696217453,
+      "population_density": 9.669621745,
       "frac_urban": 0.100934391058835,
       "food_insecurity": 0.2,
       "fossil_fuels": 0.95,
@@ -12397,7 +12699,7 @@
         201.51284920155578
       ],
       "population": 35068.45703125,
-      "population_density": 5.8827548032,
+      "population_density": 5.882754803,
       "frac_urban": 0.44030921216946817,
       "food_insecurity": 0.15,
       "fossil_fuels": 0.95,
@@ -12450,7 +12752,7 @@
         284.04777904958667
       ],
       "population": 49683.08203125,
-      "population_density": 8.5506608864,
+      "population_density": 8.550660886,
       "frac_urban": 0.9546151467650181,
       "food_insecurity": 0.15,
       "fossil_fuels": 0.95,
@@ -12556,7 +12858,7 @@
         937.5965780127626
       ],
       "population": 66519.8359375,
-      "population_density": 10.1655293508,
+      "population_density": 10.165529351,
       "frac_urban": 0.8094261126828844,
       "food_insecurity": 0.1,
       "fossil_fuels": 0.95,
@@ -12662,7 +12964,7 @@
         789.6566147332051
       ],
       "population": 155629.9375,
-      "population_density": 17.4427171437,
+      "population_density": 17.442717144,
       "infected_confirmed": [
         0.0,
         0.0,
