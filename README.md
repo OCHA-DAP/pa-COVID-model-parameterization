@@ -116,6 +116,9 @@ python Generate_mobility_matrix -d -c
 ### COVID cases
 
 #### Setup
+1. Find the COVID-19 dataset file for the country on HDX, and add the URL for the direct download to the config file under `covid:url`
+2. Set the different parameters according to the description in the config file template
+3. Make sure the `replace_dict` field is accurate to match the admin names in the covid file and in the exposure file
 
 #### Running
 To run, execute: 
@@ -123,6 +126,7 @@ To run, execute:
 python Generate_COVID_file.py [Country ISO code] -d
 ```
 The `-d ` flag is for downloading the latest COVID data.
+A common warning is given when the admin names in the covid file don't match teh exposure. The following warning is printed on the terminal: `missing PCODE for the following admin units:` and the list is provided. To fix that, add the missing units in the `replace_dict` dictionary in the config file. 
 
 
 ### Graphs
