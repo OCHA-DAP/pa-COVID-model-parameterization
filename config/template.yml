@@ -73,20 +73,37 @@ vulnerability:
   smoking: ~
 # TODO: covid section
 covid:
+  # URL of the COVID file to be downloaded (from HDX or elsewhere)
   url: ~
-  filename: ~
-  header: ~
-  skiprows: ~
+  # local filename of the COVID file 
+  filename: covid_data.csv
+  # header of the COVID-19 (if set to 1 the second row - HLX tag - is used)
+  header: 1
+  # skip the first row if using HLX tag as header
+  skiprows: 0
+  # True is the dataset contains case data
   cases: ~
+  # True is the dataset contains death data
   deaths: ~
+  # True if the dataset represent invidual case data (i.e. each row correspond to a patient)
   individual_case_data: ~
+  # True is the data represent cumulative cases and deaths (instead of new cases and deaths)
   cumulative: ~
+  # admin level provided (can be 1 or 2)
   admin_level: ~
+  # for Somalia we have data at the federal state level (which is not ADM1 or 2)
   federal_state_dict: ~
+  # ADM1 name column in the exposure file (the shapefile in the country folder) 
   adm1_name_exp: ~
+  # ADM2 name field in the exposure file (the shapefile in the country folder) 
+  adm2_name_exp: ~
+  # format of the date in the COVID dataset
   date_format: ~
+  # replace column values to match the ADMIN names in the exposure
+  # used to get the pcodes from the exposure file
   replace_dict:
     old_name: ~
+  # dictionary to map HLX tags in the COVID dataset to standard HLX tags used in teh model
   hlx_dict:
     "#old_hxl_name": ~
 # Contact matrix settings
