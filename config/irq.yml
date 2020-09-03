@@ -3,8 +3,6 @@ admin:
   language: EN
 # Settings for the mobility matrix
 mobility:
-  roads: 
-    url: http://export.hotosm.org/downloads/c7df7430-c20e-4016-8039-7f536b0526db/hotosm_irq_roads_gpkg.zip
   scaling_factor:
     household_size: 7.7
     motor_vehicle_fraction: 0.077

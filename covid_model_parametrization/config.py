@@ -63,6 +63,7 @@ class Config:
     MOBILITY_FILENAME = '{country_iso3}_mobility_matrix.csv'
     MOBILITY_FIGNAME = '{country_iso3}_mobility_matrix_hist.png'
 
+    ROADS_HDX_ADDRESS = 'hotosm_{country_iso3}_roads'
     ROADS_FILENAME = 'hotosm_{country_iso3}_roads_gpkg.zip'
     ROADS_SHAPEFILE = 'hotosm_{country_iso3}_roads.gpkg'
 

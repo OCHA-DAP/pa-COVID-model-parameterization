@@ -3,8 +3,6 @@ admin:
   directory: afg_admbnda_adm2_agcho_20180522
   language: EN
 mobility:
-  roads:
-    url: http://export.hotosm.org/downloads/91b952a7-6dd4-4b10-acbf-c6f093aba478/hotosm_afg_roads_gpkg.zip
   scaling_factor:
     household_size: 8.0
     motor_vehicle_fraction: 0.027

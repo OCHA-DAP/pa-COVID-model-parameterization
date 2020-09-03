@@ -86,12 +86,10 @@ The `-d ` flag is for downloading and mosaicing the GHS data the first time you 
 
 #### Setup
 
-1. Find the HOTOSM roads file for the country on HDX, and add the URL for the direct GeoPackage download
-   to the config file under `mobility` 
-2. Add the car ownership fraction from 
+1. Add the car ownership fraction from 
   [WHO](https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/en/)
   and household size from the [UN](https://population.un.org/Household/index.html#/countries/)
-3. If either or both sources are missing, set the household size to 1 and the car ownership fraction
+2. If either or both sources are missing, set the household size to 1 and the car ownership fraction
   to some reasonable final maximum value (like 0.2)
 
 #### Running
