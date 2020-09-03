@@ -7,6 +7,7 @@ from datetime import timedelta
 import requests
 import yaml
 import coloredlogs
+import geopandas as gpd
 
 
 logger = logging.getLogger(__name__)
@@ -76,3 +77,19 @@ def strictly_increasing(L):
 
 def create_date_set(date_min, date_max):
     return set(date_min + timedelta(days=x) for x in range((date_max - date_min).days))
+
+
+def read_in_admin_boundaries(config, parameters, country_iso3):
+    input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
+    input_shp = os.path.join(
+        input_dir,
+        config.SHAPEFILE_DIR,
+        parameters["admin"]["directory"],
+        f'{parameters["admin"]["directory"]}.shp',
+    )
+    # Read in and rename columns for Somalia
+    return gpd.read_file(input_shp).rename(columns={
+        'admin0Pcod': 'ADM0_PCODE',
+        'admin1Pcod': 'ADM1_PCODE',
+        'admin2Pcod': 'ADM2_PCODE',
+    })

@@ -129,24 +129,6 @@ def get_measures_category_dictionary(config):
     return df.set_index('Our NPIs').to_dict()['Category']
 
 
-def get_boundaries_file(config, country_iso3, parameters):
-    # Get input boundary shape file, for the admin regions
-    input_shp = os.path.join(
-        config.INPUT_DIR,
-        country_iso3,
-        config.SHAPEFILE_DIR,
-        parameters["admin"]["directory"],
-        f'{parameters["admin"]["directory"]}.shp',
-    )
-    ADM2boundaries = gpd.read_file(input_shp)
-    # Read in and rename columns for Somalia
-    return gpd.read_file(input_shp).rename(columns={
-        'admin0Pcod': 'ADM0_PCODE',
-        'admin1Pcod': 'ADM1_PCODE',
-        'admin2Pcod': 'ADM2_PCODE',
-    })
-
-
 def add_new_acaps_data(config, country_iso3, df_country, parameters):
     logger.info(f'Getting info for {country_iso3}')
     # Check if JSON file already exists, if so read it in
@@ -233,7 +215,7 @@ def get_admin_regions(boundaries):
 
 def create_final_list(config, parameters, country_iso3):
     logger.info(f'Creating final NPI list for {country_iso3}')
-    boundaries = get_boundaries_file(config, country_iso3, parameters)
+    boundaries = utils.read_in_admin_boundaries(config, parameters, country_iso3)
     df_country = get_triaged_csv(config, parameters, country_iso3)
     format_final_output(config, country_iso3, df_country, boundaries)
 
