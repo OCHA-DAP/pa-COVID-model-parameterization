@@ -3,8 +3,6 @@ admin:
   directory: Som_Admbnda_Adm2_UNDP
   language: EN
 mobility:
-  roads:
-    url: http://export.hotosm.org/downloads/8637e830-985a-46e5-b4d9-988b4426604d/hotosm_som_roads_gpkg.zip
   scaling_factor:
    household_size: 1.0
    motor_vehicle_fraction: 0.2

@@ -3,8 +3,6 @@ admin:
   directory: ssd_admbnda_adm2_imwg_nbs_20180817
   language: EN
 mobility:
-  roads:
-    url: http://export.hotosm.org/downloads/9482ee54-2e53-445b-875d-8a5a52a24075/hotosm_ssd_roads_gpkg.zip
   scaling_factor:
     household_size: 5.9
     motor_vehicle_fraction: 0.0050
