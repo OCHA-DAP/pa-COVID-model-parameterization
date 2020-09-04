@@ -5,7 +5,6 @@ import itertools
 import getpass
 from pathlib import Path
 
-import geopandas as gpd
 import pandas as pd
 from rasterstats import zonal_stats
 
@@ -23,16 +22,17 @@ def exposure(country_iso3, download_worldpop=False, config=None):
     if config is None:
         config = Config()
     parameters = config.parameters(country_iso3)
+    input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
 
     # Get input boundary shape file
-    input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
+    ADM2boundaries = utils.read_in_admin_boundaries(config, parameters, country_iso3)
+    # TODO: take this out once reasterstats is removed
     input_shp = os.path.join(
         input_dir,
         config.SHAPEFILE_DIR,
         parameters["admin"]["directory"],
         f'{parameters["admin"]["directory"]}.shp',
     )
-    ADM2boundaries = gpd.read_file(input_shp)
 
     # Download the worldpop data
     if download_worldpop:

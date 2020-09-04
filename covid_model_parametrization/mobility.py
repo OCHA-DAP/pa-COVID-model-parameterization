@@ -63,7 +63,7 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
     output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, config.MOBILITY_DIR)
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     # Load admin regions
-    df_adm = load_adm(country_iso3, config, parameters['admin'])
+    df_adm = load_adm(country_iso3, config, parameters)
     # Read in population file
     df_pop = gpd.read_file(exposure.get_output_filename(country_iso3, config))
     if read_in_crossings:
@@ -98,20 +98,7 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
 
 def load_adm(country_iso3, config, parameters, level=2):
     logger.info(f'Reading in admin {level} file')
-    input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
-    input_shp = os.path.join(
-        input_dir,
-        config.SHAPEFILE_DIR,
-        parameters["directory"],
-        f'{parameters["directory"]}.shp',
-    )
-    df_adm = gpd.read_file(input_shp)
-    # Somalia has weird column names
-    df_adm = df_adm.rename(columns={
-        'admin0Pcod': 'ADM0_PCODE',
-        'admin1Pcod': 'ADM1_PCODE',
-        'admin2Pcod': 'ADM2_PCODE',
-    })
+    df_adm = utils.read_in_admin_boundaries(config, parameters, country_iso3)
     # Modify admin 2 files to contain admin 1 name
     df_adm.loc[:, 'ADM'] = df_adm[f'ADM{level}_PCODE']
     df_adm = df_adm.sort_values(by='ADM').reset_index(drop=True)
