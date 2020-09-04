@@ -5,9 +5,9 @@ import itertools
 import getpass
 from pathlib import Path
 
-import geopandas as gpd
 import pandas as pd
-from rasterstats import zonal_stats
+import rasterio
+from rasterio.mask import mask
 
 from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
@@ -23,16 +23,10 @@ def exposure(country_iso3, download_worldpop=False, config=None):
     if config is None:
         config = Config()
     parameters = config.parameters(country_iso3)
+    input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
 
     # Get input boundary shape file
-    input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
-    input_shp = os.path.join(
-        input_dir,
-        config.SHAPEFILE_DIR,
-        parameters["admin"]["directory"],
-        f'{parameters["admin"]["directory"]}.shp',
-    )
-    ADM2boundaries = gpd.read_file(input_shp)
+    ADM2boundaries = utils.read_in_admin_boundaries(config, parameters, country_iso3)
 
     # Download the worldpop data
     if download_worldpop:
@@ -45,7 +39,7 @@ def exposure(country_iso3, download_worldpop=False, config=None):
     for gender_age_group in gender_age_groups:
         gender_age_group_name = f"{gender_age_group[0]}_{gender_age_group[1]}"
         logger.info(f"analyising gender age {gender_age_group_name}")
-        input_tif_file = os.path.join(
+        input_tiff_file = os.path.join(
             input_dir,
             config.WORLDPOP_DIR,
             config.WORLDPOP_FILENAMES["sadd"].format(
@@ -54,31 +48,21 @@ def exposure(country_iso3, download_worldpop=False, config=None):
                 age=gender_age_group[1],
             ),
         )
-        zs = zonal_stats(input_shp, input_tif_file, stats="sum")
-        total_pop = [district_zs.get("sum") for district_zs in zs]
-        ADM2boundaries[gender_age_group_name] = total_pop
+        raster = rasterio.open(input_tiff_file)
+        ADM2boundaries[gender_age_group_name] = (
+            ADM2boundaries['geometry'].apply(lambda x: mask(raster, [x], crop=True, nodata=0)[0].sum()))
 
-    # total population for cross check
-    logger.info("adding total population")
-    input_tiff_pop = os.path.join(
-        input_dir,
-        config.WORLDPOP_DIR,
-        config.WORLDPOP_FILENAMES["pop"].format(country_iso3=country_iso3.lower()),
-    )
-    zs = zonal_stats(input_shp, input_tiff_pop, stats="sum")
-    total_pop = [district_zs.get("sum") for district_zs in zs]
-    ADM2boundaries["tot_pop_WP"] = total_pop
-
-    # total population UNadj for cross check
-    logger.info("adding total population UN adjusted")
-    input_tiff_pop_unadj = os.path.join(
-        input_dir,
-        config.WORLDPOP_DIR,
-        config.WORLDPOP_FILENAMES["unadj"].format(country_iso3=country_iso3.lower()),
-    )
-    zs = zonal_stats(input_shp, input_tiff_pop_unadj, stats="sum")
-    total_pop = [district_zs.get("sum") for district_zs in zs]
-    ADM2boundaries["tot_pop_UN"] = total_pop
+    # get total pops
+    for pop_type, cname in zip(["pop", "unadj"], ["tot_pop_WP", "tot_pop_UN"]):
+        logger.info(f"adding {pop_type}")
+        input_tiff_pop = os.path.join(
+            input_dir,
+            config.WORLDPOP_DIR,
+            config.WORLDPOP_FILENAMES[pop_type].format(country_iso3=country_iso3.lower()),
+        )
+        raster = rasterio.open(input_tiff_pop)
+        ADM2boundaries[cname] = (
+            ADM2boundaries['geometry'].apply(lambda x: mask(raster, [x], crop=True, nodata=0)[0].sum()))
 
     # total from disaggregated
     logger.info("scaling SADD data to match UN Adjusted population estimates")

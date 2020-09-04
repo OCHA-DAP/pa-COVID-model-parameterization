@@ -3,8 +3,6 @@ admin:
   directory: hti_admbnda_adm2_cnigs_20181129
   language: EN
 mobility:
-  roads:
-    url: http://export.hotosm.org/downloads/36004c9d-7b0a-419f-b21f-952d6f728ae9/hotosm_hti_roads_gpkg.zip
   scaling_factor:
     household_size: 4.3
     motor_vehicle_fraction: 0.075

@@ -10,8 +10,8 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 
 from covid_model_parametrization import exposure
-from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
+from covid_model_parametrization.utils.hdx_api import query_api
 
 # How much to weight each road type
 ROAD_MFACTOR = {
@@ -63,7 +63,7 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
     output_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3, config.MOBILITY_DIR)
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     # Load admin regions
-    df_adm = load_adm(country_iso3, config, parameters['admin'])
+    df_adm = load_adm(country_iso3, config, parameters)
     # Read in population file
     df_pop = gpd.read_file(exposure.get_output_filename(country_iso3, config))
     if read_in_crossings:
@@ -98,20 +98,7 @@ def mobility(country_iso3, read_in_crossings=True, read_in_distances=True, confi
 
 def load_adm(country_iso3, config, parameters, level=2):
     logger.info(f'Reading in admin {level} file')
-    input_dir = os.path.join(config.DIR_PATH, config.INPUT_DIR, country_iso3)
-    input_shp = os.path.join(
-        input_dir,
-        config.SHAPEFILE_DIR,
-        parameters["directory"],
-        f'{parameters["directory"]}.shp',
-    )
-    df_adm = gpd.read_file(input_shp)
-    # Somalia has weird column names
-    df_adm = df_adm.rename(columns={
-        'admin0Pcod': 'ADM0_PCODE',
-        'admin1Pcod': 'ADM1_PCODE',
-        'admin2Pcod': 'ADM2_PCODE',
-    })
+    df_adm = utils.read_in_admin_boundaries(config, parameters, country_iso3)
     # Modify admin 2 files to contain admin 1 name
     df_adm.loc[:, 'ADM'] = df_adm[f'ADM{level}_PCODE']
     df_adm = df_adm.sort_values(by='ADM').reset_index(drop=True)
@@ -128,8 +115,10 @@ def load_roads(country_iso3, config, parameters, df_borders):
     logger.info('Downloading roads file')
     save_dir =  os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_DIR)
     Path(save_dir).mkdir(parents=True, exist_ok=True)
+    download_filename = list(query_api(config.ROADS_HDX_ADDRESS.format(country_iso3=country_iso3.lower()),
+                                       save_dir, resource_format='zipped geopackage').values())[0]
     save_path = os.path.join(save_dir, config.ROADS_FILENAME.format(country_iso3=country_iso3.lower()))
-    utils.download_ftp(parameters['roads']['url'], save_path)
+    os.rename(os.path.join(save_dir, download_filename), save_path)
     logger.info('Reading in roads file')
     df_roads = gpd.read_file(
         f'zip://{save_path}!{config.ROADS_SHAPEFILE.format(country_iso3=country_iso3.lower())}',
