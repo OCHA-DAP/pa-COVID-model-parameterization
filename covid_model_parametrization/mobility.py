@@ -10,8 +10,8 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 
 from covid_model_parametrization import exposure
-from covid_model_parametrization.utils import utils
 from covid_model_parametrization.config import Config
+from covid_model_parametrization.utils.hdx_api import query_api
 
 # How much to weight each road type
 ROAD_MFACTOR = {
@@ -128,8 +128,10 @@ def load_roads(country_iso3, config, parameters, df_borders):
     logger.info('Downloading roads file')
     save_dir =  os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_DIR)
     Path(save_dir).mkdir(parents=True, exist_ok=True)
+    download_filename = list(query_api(config.ROADS_HDX_ADDRESS.format(country_iso3=country_iso3.lower()),
+                                       save_dir, resource_format='zipped geopackage').values())[0]
     save_path = os.path.join(save_dir, config.ROADS_FILENAME.format(country_iso3=country_iso3.lower()))
-    utils.download_ftp(parameters['roads']['url'], save_path)
+    os.rename(os.path.join(save_dir, download_filename), save_path)
     logger.info('Reading in roads file')
     df_roads = gpd.read_file(
         f'zip://{save_path}!{config.ROADS_SHAPEFILE.format(country_iso3=country_iso3.lower())}',
