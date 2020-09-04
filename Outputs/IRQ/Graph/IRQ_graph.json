@@ -330,7 +330,8 @@
         231177,
         234934,
         238338,
-        242284
+        242284,
+        247039
       ],
       "#affected+infected+dead+total": [
         0,
@@ -525,7 +526,8 @@
         6959,
         7042,
         7123,
-        7201
+        7201,
+        7275
       ],
       "#date": [
         "2020-02-24",
@@ -720,7 +722,8 @@
         "2020-08-31",
         "2020-09-01",
         "2020-09-02",
-        "2020-09-03"
+        "2020-09-03",
+        "2020-09-04"
       ]
     },
     "contact_matrix": {
@@ -30768,32 +30771,32 @@
       "target": "IQG01Q01"
     },
     {
-      "weight": 0.025704651693378287,
+      "weight": 0.025704651693378298,
       "source": "IQG01Q01",
       "target": "IQG01Q03"
     },
     {
-      "weight": 0.002863091872533317,
+      "weight": 0.0028630918725333176,
       "source": "IQG01Q01",
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.032347722648125486,
+      "weight": 0.0323477226481255,
       "source": "IQG01Q01",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.011392159445172688,
+      "weight": 0.011392159445172693,
       "source": "IQG01Q01",
       "target": "IQG08Q05"
     },
     {
-      "weight": 9.437376730317404e-05,
+      "weight": 9.437376730317408e-05,
       "source": "IQG01Q01",
       "target": "IQG12Q03"
     },
     {
-      "weight": 0.0009121415061941482,
+      "weight": 0.0009121415061941484,
       "source": "IQG01Q01",
       "target": "IQG16Q04"
     },
@@ -30803,12 +30806,12 @@
       "target": "IQG01Q02"
     },
     {
-      "weight": 0.0006662398104998954,
+      "weight": 0.0006662398104998956,
       "source": "IQG01Q02",
       "target": "IQG01Q04"
     },
     {
-      "weight": 0.004099667468196965,
+      "weight": 0.004099667468196967,
       "source": "IQG01Q02",
       "target": "IQG01Q05"
     },
@@ -30818,27 +30821,27 @@
       "target": "IQG01Q03"
     },
     {
-      "weight": 0.025704651693378287,
+      "weight": 0.025704651693378298,
       "source": "IQG01Q03",
       "target": "IQG01Q01"
     },
     {
-      "weight": 0.0018070160306924387,
+      "weight": 0.0018070160306924395,
       "source": "IQG01Q03",
       "target": "IQG01Q04"
     },
     {
-      "weight": 0.016671356741130558,
+      "weight": 0.01667135674113056,
       "source": "IQG01Q03",
       "target": "IQG01Q07"
     },
     {
-      "weight": 0.0005737068075772535,
+      "weight": 0.0005737068075772537,
       "source": "IQG01Q03",
       "target": "IQG12Q01"
     },
     {
-      "weight": 0.0018879057603432203,
+      "weight": 0.0018879057603432212,
       "source": "IQG01Q03",
       "target": "IQG16Q04"
     },
@@ -30848,32 +30851,32 @@
       "target": "IQG01Q04"
     },
     {
-      "weight": 0.0006662398104998954,
+      "weight": 0.0006662398104998956,
       "source": "IQG01Q04",
       "target": "IQG01Q02"
     },
     {
-      "weight": 0.0018070160306924387,
+      "weight": 0.0018070160306924395,
       "source": "IQG01Q04",
       "target": "IQG01Q03"
     },
     {
-      "weight": 3.487693695384871e-05,
+      "weight": 3.4876936953848725e-05,
       "source": "IQG01Q04",
       "target": "IQG01Q05"
     },
     {
-      "weight": 0.0025259424228297462,
+      "weight": 0.0025259424228297467,
       "source": "IQG01Q04",
       "target": "IQG01Q07"
     },
     {
-      "weight": 9.195014210637503e-05,
+      "weight": 9.195014210637509e-05,
       "source": "IQG01Q04",
       "target": "IQG04Q03"
     },
     {
-      "weight": 0.0004996404079762926,
+      "weight": 0.0004996404079762928,
       "source": "IQG01Q04",
       "target": "IQG12Q01"
     },
@@ -30883,27 +30886,27 @@
       "target": "IQG01Q05"
     },
     {
-      "weight": 0.004099667468196965,
+      "weight": 0.004099667468196967,
       "source": "IQG01Q05",
       "target": "IQG01Q02"
     },
     {
-      "weight": 3.487693695384871e-05,
+      "weight": 3.4876936953848725e-05,
       "source": "IQG01Q05",
       "target": "IQG01Q04"
     },
     {
-      "weight": 0.00564661764211641,
+      "weight": 0.0056466176421164135,
       "source": "IQG01Q05",
       "target": "IQG01Q06"
     },
     {
-      "weight": 0.0002546437209715724,
+      "weight": 0.00025464372097157246,
       "source": "IQG01Q05",
       "target": "IQG01Q07"
     },
     {
-      "weight": 0.0006290217629267126,
+      "weight": 0.0006290217629267129,
       "source": "IQG01Q05",
       "target": "IQG15Q02"
     },
@@ -30918,17 +30921,17 @@
       "target": "IQG01Q06"
     },
     {
-      "weight": 0.00564661764211641,
+      "weight": 0.0056466176421164135,
       "source": "IQG01Q06",
       "target": "IQG01Q05"
     },
     {
-      "weight": 0.005825012929648536,
+      "weight": 0.005825012929648539,
       "source": "IQG01Q06",
       "target": "IQG01Q07"
     },
     {
-      "weight": 0.0010807558354910764,
+      "weight": 0.0010807558354910766,
       "source": "IQG01Q06",
       "target": "IQG16Q03"
     },
@@ -30938,22 +30941,22 @@
       "target": "IQG01Q07"
     },
     {
-      "weight": 0.016671356741130558,
+      "weight": 0.01667135674113056,
       "source": "IQG01Q07",
       "target": "IQG01Q03"
     },
     {
-      "weight": 0.0025259424228297462,
+      "weight": 0.0025259424228297467,
       "source": "IQG01Q07",
       "target": "IQG01Q04"
     },
     {
-      "weight": 0.0002546437209715724,
+      "weight": 0.00025464372097157246,
       "source": "IQG01Q07",
       "target": "IQG01Q05"
     },
     {
-      "weight": 0.005825012929648536,
+      "weight": 0.005825012929648539,
       "source": "IQG01Q07",
       "target": "IQG01Q06"
     },
@@ -30963,22 +30966,22 @@
       "target": "IQG02Q01"
     },
     {
-      "weight": 0.04303534545654317,
+      "weight": 0.04303534545654319,
       "source": "IQG02Q01",
       "target": "IQG02Q02"
     },
     {
-      "weight": 0.007994792907250541,
+      "weight": 0.007994792907250544,
       "source": "IQG02Q01",
       "target": "IQG02Q03"
     },
     {
-      "weight": 0.00156768021482974,
+      "weight": 0.001567680214829741,
       "source": "IQG02Q01",
       "target": "IQG02Q06"
     },
     {
-      "weight": 0.012188524606234031,
+      "weight": 0.012188524606234036,
       "source": "IQG02Q01",
       "target": "IQG02Q07"
     },
@@ -30988,37 +30991,37 @@
       "target": "IQG02Q02"
     },
     {
-      "weight": 0.04303534545654317,
+      "weight": 0.04303534545654319,
       "source": "IQG02Q02",
       "target": "IQG02Q01"
     },
     {
-      "weight": 0.0007977647473043119,
+      "weight": 0.0007977647473043123,
       "source": "IQG02Q02",
       "target": "IQG02Q03"
     },
     {
-      "weight": 0.0004795620351869625,
+      "weight": 0.0004795620351869626,
       "source": "IQG02Q02",
       "target": "IQG02Q04"
     },
     {
-      "weight": 0.006678402849884654,
+      "weight": 0.006678402849884657,
       "source": "IQG02Q02",
       "target": "IQG02Q05"
     },
     {
-      "weight": 0.0230547947356094,
+      "weight": 0.02305479473560941,
       "source": "IQG02Q02",
       "target": "IQG02Q06"
     },
     {
-      "weight": 0.04374528626212902,
+      "weight": 0.043745286262129035,
       "source": "IQG02Q02",
       "target": "IQG02Q07"
     },
     {
-      "weight": 0.00033553891706248945,
+      "weight": 0.0003355389170624896,
       "source": "IQG02Q02",
       "target": "IQG17Q01"
     },
@@ -31028,12 +31031,12 @@
       "target": "IQG02Q03"
     },
     {
-      "weight": 0.007994792907250541,
+      "weight": 0.007994792907250544,
       "source": "IQG02Q03",
       "target": "IQG02Q01"
     },
     {
-      "weight": 0.0007977647473043119,
+      "weight": 0.0007977647473043123,
       "source": "IQG02Q03",
       "target": "IQG02Q02"
     },
@@ -31043,17 +31046,17 @@
       "target": "IQG02Q04"
     },
     {
-      "weight": 0.0004795620351869625,
+      "weight": 0.0004795620351869626,
       "source": "IQG02Q04",
       "target": "IQG02Q02"
     },
     {
-      "weight": 0.05077729292490499,
+      "weight": 0.050777292924905,
       "source": "IQG02Q04",
       "target": "IQG02Q05"
     },
     {
-      "weight": 0.001016435998654364,
+      "weight": 0.0010164359986543645,
       "source": "IQG02Q04",
       "target": "IQG14Q05"
     },
@@ -31068,37 +31071,37 @@
       "target": "IQG02Q05"
     },
     {
-      "weight": 0.006678402849884654,
+      "weight": 0.006678402849884657,
       "source": "IQG02Q05",
       "target": "IQG02Q02"
     },
     {
-      "weight": 0.05077729292490499,
+      "weight": 0.050777292924905,
       "source": "IQG02Q05",
       "target": "IQG02Q04"
     },
     {
-      "weight": 0.002204943284467861,
+      "weight": 0.0022049432844678625,
       "source": "IQG02Q05",
       "target": "IQG02Q06"
     },
     {
-      "weight": 0.01656565949507552,
+      "weight": 0.016565659495075526,
       "source": "IQG02Q05",
       "target": "IQG02Q07"
     },
     {
-      "weight": 0.010645790656583064,
+      "weight": 0.010645790656583066,
       "source": "IQG02Q05",
       "target": "IQG14Q05"
     },
     {
-      "weight": 0.0008711086273013577,
+      "weight": 0.0008711086273013581,
       "source": "IQG02Q05",
       "target": "IQG14Q06"
     },
     {
-      "weight": 0.00046454867733110566,
+      "weight": 0.0004645486773311059,
       "source": "IQG02Q05",
       "target": "IQG17Q01"
     },
@@ -31108,32 +31111,32 @@
       "target": "IQG02Q06"
     },
     {
-      "weight": 0.00156768021482974,
+      "weight": 0.001567680214829741,
       "source": "IQG02Q06",
       "target": "IQG02Q01"
     },
     {
-      "weight": 0.0230547947356094,
+      "weight": 0.02305479473560941,
       "source": "IQG02Q06",
       "target": "IQG02Q02"
     },
     {
-      "weight": 0.002204943284467861,
+      "weight": 0.0022049432844678625,
       "source": "IQG02Q06",
       "target": "IQG02Q05"
     },
     {
-      "weight": 0.0006569640834964874,
+      "weight": 0.0006569640834964875,
       "source": "IQG02Q06",
       "target": "IQG03Q03"
     },
     {
-      "weight": 0.007611353439652361,
+      "weight": 0.007611353439652364,
       "source": "IQG02Q06",
       "target": "IQG17Q01"
     },
     {
-      "weight": 0.00559554775406751,
+      "weight": 0.005595547754067512,
       "source": "IQG02Q06",
       "target": "IQG17Q05"
     },
@@ -31143,17 +31146,17 @@
       "target": "IQG02Q07"
     },
     {
-      "weight": 0.012188524606234031,
+      "weight": 0.012188524606234036,
       "source": "IQG02Q07",
       "target": "IQG02Q01"
     },
     {
-      "weight": 0.04374528626212902,
+      "weight": 0.043745286262129035,
       "source": "IQG02Q07",
       "target": "IQG02Q02"
     },
     {
-      "weight": 0.01656565949507552,
+      "weight": 0.016565659495075526,
       "source": "IQG02Q07",
       "target": "IQG02Q05"
     },
@@ -31163,37 +31166,37 @@
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.010340234999396871,
+      "weight": 0.010340234999396876,
       "source": "IQG03Q01",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.011836410173389222,
+      "weight": 0.011836410173389223,
       "source": "IQG03Q01",
       "target": "IQG03Q04"
     },
     {
-      "weight": 0.002327120876464933,
+      "weight": 0.0023271208764649343,
       "source": "IQG03Q01",
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.0018135772175260519,
+      "weight": 0.0018135772175260528,
       "source": "IQG03Q01",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.002291640578557867,
+      "weight": 0.002291640578557868,
       "source": "IQG03Q01",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.00642012882341189,
+      "weight": 0.006420128823411892,
       "source": "IQG03Q01",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.01118659110486208,
+      "weight": 0.011186591104862085,
       "source": "IQG03Q01",
       "target": "IQG17Q04"
     },
@@ -31203,42 +31206,42 @@
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.010340234999396871,
+      "weight": 0.010340234999396876,
       "source": "IQG03Q02",
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.0018469908420384628,
+      "weight": 0.001846990842038464,
       "source": "IQG03Q02",
       "target": "IQG03Q03"
     },
     {
-      "weight": 0.0509604096909774,
+      "weight": 0.05096040969097742,
       "source": "IQG03Q02",
       "target": "IQG03Q04"
     },
     {
-      "weight": 0.007999950406920213,
+      "weight": 0.007999950406920217,
       "source": "IQG03Q02",
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.0029811535183336788,
+      "weight": 0.00298115351833368,
       "source": "IQG03Q02",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.016784983511022217,
+      "weight": 0.01678498351102223,
       "source": "IQG03Q02",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.0026408333091054704,
+      "weight": 0.0026408333091054717,
       "source": "IQG03Q02",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.002033200921105804,
+      "weight": 0.0020332009211058047,
       "source": "IQG03Q02",
       "target": "IQG17Q04"
     },
@@ -31248,27 +31251,27 @@
       "target": "IQG03Q03"
     },
     {
-      "weight": 0.0006569640834964874,
+      "weight": 0.0006569640834964875,
       "source": "IQG03Q03",
       "target": "IQG02Q06"
     },
     {
-      "weight": 0.0018469908420384628,
+      "weight": 0.001846990842038464,
       "source": "IQG03Q03",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.0006625377849326452,
+      "weight": 0.0006625377849326456,
       "source": "IQG03Q03",
       "target": "IQG04Q03"
     },
     {
-      "weight": 0.0001970771870935514,
+      "weight": 0.0001970771870935515,
       "source": "IQG03Q03",
       "target": "IQG17Q04"
     },
     {
-      "weight": 0.00700900201169402,
+      "weight": 0.007009002011694025,
       "source": "IQG03Q03",
       "target": "IQG17Q05"
     },
@@ -31278,22 +31281,22 @@
       "target": "IQG03Q04"
     },
     {
-      "weight": 0.011836410173389222,
+      "weight": 0.011836410173389223,
       "source": "IQG03Q04",
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.0509604096909774,
+      "weight": 0.05096040969097742,
       "source": "IQG03Q04",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.0020059920293938167,
+      "weight": 0.002005992029393817,
       "source": "IQG03Q04",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.00029350872845173415,
+      "weight": 0.0002935087284517342,
       "source": "IQG03Q04",
       "target": "IQG17Q04"
     },
@@ -31303,12 +31306,12 @@
       "target": "IQG04Q01"
     },
     {
-      "weight": 0.016328125187187188,
+      "weight": 0.016328125187187195,
       "source": "IQG04Q01",
       "target": "IQG04Q02"
     },
     {
-      "weight": 0.02513412412871423,
+      "weight": 0.02513412412871424,
       "source": "IQG04Q01",
       "target": "IQG04Q03"
     },
@@ -31318,12 +31321,12 @@
       "target": "IQG05Q04"
     },
     {
-      "weight": 0.0008630105838705589,
+      "weight": 0.0008630105838705591,
       "source": "IQG04Q01",
       "target": "IQG07Q01"
     },
     {
-      "weight": 0.011700899204567536,
+      "weight": 0.01170089920456754,
       "source": "IQG04Q01",
       "target": "IQG07Q02"
     },
@@ -31333,22 +31336,22 @@
       "target": "IQG04Q02"
     },
     {
-      "weight": 0.016328125187187188,
+      "weight": 0.016328125187187195,
       "source": "IQG04Q02",
       "target": "IQG04Q01"
     },
     {
-      "weight": 0.0003485328502207233,
+      "weight": 0.00034853285022072345,
       "source": "IQG04Q02",
       "target": "IQG04Q03"
     },
     {
-      "weight": 0.003533888515132664,
+      "weight": 0.003533888515132665,
       "source": "IQG04Q02",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.030806912921879055,
+      "weight": 0.03080691292187906,
       "source": "IQG04Q02",
       "target": "IQG05Q04"
     },
@@ -31358,37 +31361,37 @@
       "target": "IQG04Q03"
     },
     {
-      "weight": 9.195014210637503e-05,
+      "weight": 9.195014210637509e-05,
       "source": "IQG04Q03",
       "target": "IQG01Q04"
     },
     {
-      "weight": 0.0006625377849326452,
+      "weight": 0.0006625377849326456,
       "source": "IQG04Q03",
       "target": "IQG03Q03"
     },
     {
-      "weight": 0.02513412412871423,
+      "weight": 0.02513412412871424,
       "source": "IQG04Q03",
       "target": "IQG04Q01"
     },
     {
-      "weight": 0.0003485328502207233,
+      "weight": 0.00034853285022072345,
       "source": "IQG04Q03",
       "target": "IQG04Q02"
     },
     {
-      "weight": 0.0013428367001489144,
+      "weight": 0.0013428367001489148,
       "source": "IQG04Q03",
       "target": "IQG07Q02"
     },
     {
-      "weight": 0.005453805248467781,
+      "weight": 0.005453805248467783,
       "source": "IQG04Q03",
       "target": "IQG12Q02"
     },
     {
-      "weight": 0.0019649354203637786,
+      "weight": 0.0019649354203637795,
       "source": "IQG04Q03",
       "target": "IQG12Q03"
     },
@@ -31398,32 +31401,32 @@
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.002327120876464933,
+      "weight": 0.0023271208764649343,
       "source": "IQG05Q01",
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.007999950406920213,
+      "weight": 0.007999950406920217,
       "source": "IQG05Q01",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.040451729584291135,
+      "weight": 0.04045172958429116,
       "source": "IQG05Q01",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.0061188489474625725,
+      "weight": 0.006118848947462575,
       "source": "IQG05Q01",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.0041028042654197155,
+      "weight": 0.004102804265419717,
       "source": "IQG05Q01",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.0015690291195042515,
+      "weight": 0.001569029119504252,
       "source": "IQG05Q01",
       "target": "IQG17Q04"
     },
@@ -31438,42 +31441,42 @@
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.0018135772175260519,
+      "weight": 0.0018135772175260528,
       "source": "IQG05Q02",
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.0029811535183336788,
+      "weight": 0.00298115351833368,
       "source": "IQG05Q02",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.040451729584291135,
+      "weight": 0.04045172958429116,
       "source": "IQG05Q02",
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.017270655173742364,
+      "weight": 0.017270655173742367,
       "source": "IQG05Q02",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.013649660775953521,
+      "weight": 0.01364966077595353,
       "source": "IQG05Q02",
       "target": "IQG05Q04"
     },
     {
-      "weight": 0.025247653286365086,
+      "weight": 0.02524765328636509,
       "source": "IQG05Q02",
       "target": "IQG07Q01"
     },
     {
-      "weight": 0.0016133137916531533,
+      "weight": 0.001613313791653154,
       "source": "IQG05Q02",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.0012244769145174034,
+      "weight": 0.0012244769145174036,
       "source": "IQG05Q02",
       "target": "IQG17Q04"
     },
@@ -31483,47 +31486,47 @@
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.002291640578557867,
+      "weight": 0.002291640578557868,
       "source": "IQG05Q03",
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.016784983511022217,
+      "weight": 0.01678498351102223,
       "source": "IQG05Q03",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.0020059920293938167,
+      "weight": 0.002005992029393817,
       "source": "IQG05Q03",
       "target": "IQG03Q04"
     },
     {
-      "weight": 0.003533888515132664,
+      "weight": 0.003533888515132665,
       "source": "IQG05Q03",
       "target": "IQG04Q02"
     },
     {
-      "weight": 0.0061188489474625725,
+      "weight": 0.006118848947462575,
       "source": "IQG05Q03",
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.017270655173742364,
+      "weight": 0.017270655173742367,
       "source": "IQG05Q03",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.01079061722471547,
+      "weight": 0.010790617224715473,
       "source": "IQG05Q03",
       "target": "IQG05Q04"
     },
     {
-      "weight": 0.0016386450250703742,
+      "weight": 0.0016386450250703748,
       "source": "IQG05Q03",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.0013722502322488085,
+      "weight": 0.0013722502322488091,
       "source": "IQG05Q03",
       "target": "IQG17Q04"
     },
@@ -31538,22 +31541,22 @@
       "target": "IQG04Q01"
     },
     {
-      "weight": 0.030806912921879055,
+      "weight": 0.03080691292187906,
       "source": "IQG05Q04",
       "target": "IQG04Q02"
     },
     {
-      "weight": 0.013649660775953521,
+      "weight": 0.01364966077595353,
       "source": "IQG05Q04",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.01079061722471547,
+      "weight": 0.010790617224715473,
       "source": "IQG05Q04",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.0007131654636976224,
+      "weight": 0.0007131654636976227,
       "source": "IQG05Q04",
       "target": "IQG07Q01"
     },
@@ -31563,32 +31566,32 @@
       "target": "IQG06Q01"
     },
     {
-      "weight": 0.01256379711313659,
+      "weight": 0.012563797113136595,
       "source": "IQG06Q01",
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.026377543015411557,
+      "weight": 0.026377543015411564,
       "source": "IQG06Q01",
       "target": "IQG06Q03"
     },
     {
-      "weight": 0.0064511447019194425,
+      "weight": 0.006451144701919443,
       "source": "IQG06Q01",
       "target": "IQG06Q04"
     },
     {
-      "weight": 0.0038467783678545055,
+      "weight": 0.0038467783678545063,
       "source": "IQG06Q01",
       "target": "IQG06Q05"
     },
     {
-      "weight": 0.001353323097225765,
+      "weight": 0.0013533230972257654,
       "source": "IQG06Q01",
       "target": "IQG06Q06"
     },
     {
-      "weight": 0.010353172063209086,
+      "weight": 0.01035317206320909,
       "source": "IQG06Q01",
       "target": "IQG06Q10"
     },
@@ -31598,37 +31601,37 @@
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.01256379711313659,
+      "weight": 0.012563797113136595,
       "source": "IQG06Q02",
       "target": "IQG06Q01"
     },
     {
-      "weight": 0.0015863908484060386,
+      "weight": 0.0015863908484060395,
       "source": "IQG06Q02",
       "target": "IQG06Q04"
     },
     {
-      "weight": 0.006142553908450135,
+      "weight": 0.0061425539084501365,
       "source": "IQG06Q02",
       "target": "IQG06Q06"
     },
     {
-      "weight": 0.003176886944674055,
+      "weight": 0.0031768869446740567,
       "source": "IQG06Q02",
       "target": "IQG11Q03"
     },
     {
-      "weight": 0.0004685114752633495,
+      "weight": 0.0004685114752633497,
       "source": "IQG06Q02",
       "target": "IQG13Q02"
     },
     {
-      "weight": 0.013781801228975748,
+      "weight": 0.013781801228975751,
       "source": "IQG06Q02",
       "target": "IQG13Q04"
     },
     {
-      "weight": 0.0035863720392993272,
+      "weight": 0.003586372039299329,
       "source": "IQG06Q02",
       "target": "IQG16Q07"
     },
@@ -31638,22 +31641,22 @@
       "target": "IQG06Q03"
     },
     {
-      "weight": 0.026377543015411557,
+      "weight": 0.026377543015411564,
       "source": "IQG06Q03",
       "target": "IQG06Q01"
     },
     {
-      "weight": 0.01559922213163414,
+      "weight": 0.015599222131634147,
       "source": "IQG06Q03",
       "target": "IQG06Q05"
     },
     {
-      "weight": 0.003095262530961139,
+      "weight": 0.0030952625309611393,
       "source": "IQG06Q03",
       "target": "IQG06Q06"
     },
     {
-      "weight": 0.001649618685115512,
+      "weight": 0.0016496186851155125,
       "source": "IQG06Q03",
       "target": "IQG10Q05"
     },
@@ -31663,27 +31666,27 @@
       "target": "IQG06Q04"
     },
     {
-      "weight": 0.0064511447019194425,
+      "weight": 0.006451144701919443,
       "source": "IQG06Q04",
       "target": "IQG06Q01"
     },
     {
-      "weight": 0.0015863908484060386,
+      "weight": 0.0015863908484060395,
       "source": "IQG06Q04",
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.02129770155284962,
+      "weight": 0.021297701552849633,
       "source": "IQG06Q04",
       "target": "IQG06Q09"
     },
     {
-      "weight": 0.0011649066605682805,
+      "weight": 0.0011649066605682813,
       "source": "IQG06Q04",
       "target": "IQG06Q10"
     },
     {
-      "weight": 0.009149619223495204,
+      "weight": 0.009149619223495206,
       "source": "IQG06Q04",
       "target": "IQG11Q03"
     },
@@ -31693,27 +31696,27 @@
       "target": "IQG06Q05"
     },
     {
-      "weight": 0.0038467783678545055,
+      "weight": 0.0038467783678545063,
       "source": "IQG06Q05",
       "target": "IQG06Q01"
     },
     {
-      "weight": 0.01559922213163414,
+      "weight": 0.015599222131634147,
       "source": "IQG06Q05",
       "target": "IQG06Q03"
     },
     {
-      "weight": 0.004570021134790822,
+      "weight": 0.004570021134790824,
       "source": "IQG06Q05",
       "target": "IQG06Q07"
     },
     {
-      "weight": 0.0077165773921526095,
+      "weight": 0.007716577392152611,
       "source": "IQG06Q05",
       "target": "IQG06Q10"
     },
     {
-      "weight": 0.0011146501921372712,
+      "weight": 0.0011146501921372714,
       "source": "IQG06Q05",
       "target": "IQG10Q05"
     },
@@ -31723,27 +31726,27 @@
       "target": "IQG06Q06"
     },
     {
-      "weight": 0.001353323097225765,
+      "weight": 0.0013533230972257654,
       "source": "IQG06Q06",
       "target": "IQG06Q01"
     },
     {
-      "weight": 0.006142553908450135,
+      "weight": 0.0061425539084501365,
       "source": "IQG06Q06",
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.003095262530961139,
+      "weight": 0.0030952625309611393,
       "source": "IQG06Q06",
       "target": "IQG06Q03"
     },
     {
-      "weight": 0.0184528463473081,
+      "weight": 0.018452846347308108,
       "source": "IQG06Q06",
       "target": "IQG10Q05"
     },
     {
-      "weight": 0.03939078099877271,
+      "weight": 0.03939078099877273,
       "source": "IQG06Q06",
       "target": "IQG10Q06"
     },
@@ -31753,12 +31756,12 @@
       "target": "IQG06Q07"
     },
     {
-      "weight": 0.004570021134790822,
+      "weight": 0.004570021134790824,
       "source": "IQG06Q07",
       "target": "IQG06Q05"
     },
     {
-      "weight": 0.010447090215287648,
+      "weight": 0.010447090215287651,
       "source": "IQG06Q07",
       "target": "IQG06Q10"
     },
@@ -31768,17 +31771,17 @@
       "target": "IQG06Q08"
     },
     {
-      "weight": 0.01880969434337221,
+      "weight": 0.018809694343372218,
       "source": "IQG06Q08",
       "target": "IQG06Q09"
     },
     {
-      "weight": 0.0005424829585465099,
+      "weight": 0.0005424829585465101,
       "source": "IQG06Q08",
       "target": "IQG06Q10"
     },
     {
-      "weight": 0.0017929776252137066,
+      "weight": 0.001792977625213707,
       "source": "IQG06Q08",
       "target": "IQG11Q05"
     },
@@ -31788,32 +31791,32 @@
       "target": "IQG06Q09"
     },
     {
-      "weight": 0.02129770155284962,
+      "weight": 0.021297701552849633,
       "source": "IQG06Q09",
       "target": "IQG06Q04"
     },
     {
-      "weight": 0.01880969434337221,
+      "weight": 0.018809694343372218,
       "source": "IQG06Q09",
       "target": "IQG06Q08"
     },
     {
-      "weight": 0.0013087030609604704,
+      "weight": 0.001308703060960471,
       "source": "IQG06Q09",
       "target": "IQG06Q10"
     },
     {
-      "weight": 0.0035488602293740406,
+      "weight": 0.003548860229374043,
       "source": "IQG06Q09",
       "target": "IQG11Q03"
     },
     {
-      "weight": 0.0005889164312807443,
+      "weight": 0.0005889164312807447,
       "source": "IQG06Q09",
       "target": "IQG11Q05"
     },
     {
-      "weight": 0.001839363557854564,
+      "weight": 0.001839363557854565,
       "source": "IQG06Q09",
       "target": "IQG11Q06"
     },
@@ -31823,32 +31826,32 @@
       "target": "IQG06Q10"
     },
     {
-      "weight": 0.010353172063209086,
+      "weight": 0.01035317206320909,
       "source": "IQG06Q10",
       "target": "IQG06Q01"
     },
     {
-      "weight": 0.0011649066605682805,
+      "weight": 0.0011649066605682813,
       "source": "IQG06Q10",
       "target": "IQG06Q04"
     },
     {
-      "weight": 0.0077165773921526095,
+      "weight": 0.007716577392152611,
       "source": "IQG06Q10",
       "target": "IQG06Q05"
     },
     {
-      "weight": 0.010447090215287648,
+      "weight": 0.010447090215287651,
       "source": "IQG06Q10",
       "target": "IQG06Q07"
     },
     {
-      "weight": 0.0005424829585465099,
+      "weight": 0.0005424829585465101,
       "source": "IQG06Q10",
       "target": "IQG06Q08"
     },
     {
-      "weight": 0.0013087030609604704,
+      "weight": 0.001308703060960471,
       "source": "IQG06Q10",
       "target": "IQG06Q09"
     },
@@ -31858,37 +31861,37 @@
       "target": "IQG07Q01"
     },
     {
-      "weight": 0.0008630105838705589,
+      "weight": 0.0008630105838705591,
       "source": "IQG07Q01",
       "target": "IQG04Q01"
     },
     {
-      "weight": 0.025247653286365086,
+      "weight": 0.02524765328636509,
       "source": "IQG07Q01",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.0007131654636976224,
+      "weight": 0.0007131654636976227,
       "source": "IQG07Q01",
       "target": "IQG05Q04"
     },
     {
-      "weight": 0.011584866508334762,
+      "weight": 0.011584866508334766,
       "source": "IQG07Q01",
       "target": "IQG07Q02"
     },
     {
-      "weight": 0.013283480550968106,
+      "weight": 0.013283480550968115,
       "source": "IQG07Q01",
       "target": "IQG07Q03"
     },
     {
-      "weight": 0.003354461077174673,
+      "weight": 0.0033544610771746738,
       "source": "IQG07Q01",
       "target": "IQG18Q03"
     },
     {
-      "weight": 0.000685339994996809,
+      "weight": 0.0006853399949968093,
       "source": "IQG07Q01",
       "target": "IQG18Q04"
     },
@@ -31898,32 +31901,32 @@
       "target": "IQG07Q02"
     },
     {
-      "weight": 0.011700899204567536,
+      "weight": 0.01170089920456754,
       "source": "IQG07Q02",
       "target": "IQG04Q01"
     },
     {
-      "weight": 0.0013428367001489144,
+      "weight": 0.0013428367001489148,
       "source": "IQG07Q02",
       "target": "IQG04Q03"
     },
     {
-      "weight": 0.011584866508334762,
+      "weight": 0.011584866508334766,
       "source": "IQG07Q02",
       "target": "IQG07Q01"
     },
     {
-      "weight": 0.02628041233456976,
+      "weight": 0.026280412334569767,
       "source": "IQG07Q02",
       "target": "IQG07Q03"
     },
     {
-      "weight": 0.011251041884986155,
+      "weight": 0.011251041884986159,
       "source": "IQG07Q02",
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.039210233951797034,
+      "weight": 0.039210233951797055,
       "source": "IQG07Q02",
       "target": "IQG12Q02"
     },
@@ -31933,22 +31936,22 @@
       "target": "IQG07Q03"
     },
     {
-      "weight": 0.013283480550968106,
+      "weight": 0.013283480550968115,
       "source": "IQG07Q03",
       "target": "IQG07Q01"
     },
     {
-      "weight": 0.02628041233456976,
+      "weight": 0.026280412334569767,
       "source": "IQG07Q03",
       "target": "IQG07Q02"
     },
     {
-      "weight": 0.037804009805554886,
+      "weight": 0.0378040098055549,
       "source": "IQG07Q03",
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.002137228057365649,
+      "weight": 0.0021372280573656493,
       "source": "IQG07Q03",
       "target": "IQG18Q04"
     },
@@ -31958,37 +31961,37 @@
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.002863091872533317,
+      "weight": 0.0028630918725333176,
       "source": "IQG07Q04",
       "target": "IQG01Q01"
     },
     {
-      "weight": 0.011251041884986155,
+      "weight": 0.011251041884986159,
       "source": "IQG07Q04",
       "target": "IQG07Q02"
     },
     {
-      "weight": 0.037804009805554886,
+      "weight": 0.0378040098055549,
       "source": "IQG07Q04",
       "target": "IQG07Q03"
     },
     {
-      "weight": 0.08582611979451947,
+      "weight": 0.0858261197945195,
       "source": "IQG07Q04",
       "target": "IQG08Q05"
     },
     {
-      "weight": 0.020755759655251137,
+      "weight": 0.020755759655251147,
       "source": "IQG07Q04",
       "target": "IQG12Q02"
     },
     {
-      "weight": 0.027305583330939496,
+      "weight": 0.027305583330939503,
       "source": "IQG07Q04",
       "target": "IQG12Q03"
     },
     {
-      "weight": 0.0013009173049813349,
+      "weight": 0.001300917304981335,
       "source": "IQG07Q04",
       "target": "IQG18Q04"
     },
@@ -31998,32 +32001,32 @@
       "target": "IQG08Q01"
     },
     {
-      "weight": 0.1483707893991189,
+      "weight": 0.14837078939911896,
       "source": "IQG08Q01",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.04335947140854958,
+      "weight": 0.0433594714085496,
       "source": "IQG08Q01",
       "target": "IQG08Q03"
     },
     {
-      "weight": 0.04469983531268351,
+      "weight": 0.04469983531268353,
       "source": "IQG08Q01",
       "target": "IQG08Q06"
     },
     {
-      "weight": 0.2929421705343028,
+      "weight": 0.2929421705343029,
       "source": "IQG08Q01",
       "target": "IQG08Q07"
     },
     {
-      "weight": 0.004624297279993238,
+      "weight": 0.00462429727999324,
       "source": "IQG08Q01",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.017357051540854197,
+      "weight": 0.017357051540854204,
       "source": "IQG08Q01",
       "target": "IQG10Q04"
     },
@@ -32033,47 +32036,47 @@
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.032347722648125486,
+      "weight": 0.0323477226481255,
       "source": "IQG08Q02",
       "target": "IQG01Q01"
     },
     {
-      "weight": 0.1483707893991189,
+      "weight": 0.14837078939911896,
       "source": "IQG08Q02",
       "target": "IQG08Q01"
     },
     {
-      "weight": 0.2517131153038634,
+      "weight": 0.25171311530386353,
       "source": "IQG08Q02",
       "target": "IQG08Q03"
     },
     {
-      "weight": 0.042146611751659464,
+      "weight": 0.04214661175165947,
       "source": "IQG08Q02",
       "target": "IQG08Q05"
     },
     {
-      "weight": 0.00906616263238952,
+      "weight": 0.009066162632389524,
       "source": "IQG08Q02",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.00036368574661210025,
+      "weight": 0.0003636857466121004,
       "source": "IQG08Q02",
       "target": "IQG10Q04"
     },
     {
-      "weight": 0.011193786143870435,
+      "weight": 0.01119378614387044,
       "source": "IQG08Q02",
       "target": "IQG16Q04"
     },
     {
-      "weight": 0.00018431338631032926,
+      "weight": 0.0001843133863103294,
       "source": "IQG08Q02",
       "target": "IQG16Q05"
     },
     {
-      "weight": 0.00014504846932886386,
+      "weight": 0.0001450484693288639,
       "source": "IQG08Q02",
       "target": "IQG16Q06"
     },
@@ -32083,32 +32086,32 @@
       "target": "IQG08Q03"
     },
     {
-      "weight": 0.04335947140854958,
+      "weight": 0.0433594714085496,
       "source": "IQG08Q03",
       "target": "IQG08Q01"
     },
     {
-      "weight": 0.2517131153038634,
+      "weight": 0.25171311530386353,
       "source": "IQG08Q03",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.014934306486951847,
+      "weight": 0.01493430648695185,
       "source": "IQG08Q03",
       "target": "IQG08Q04"
     },
     {
-      "weight": 0.15218742374150449,
+      "weight": 0.15218742374150454,
       "source": "IQG08Q03",
       "target": "IQG08Q05"
     },
     {
-      "weight": 0.3266039850721196,
+      "weight": 0.3266039850721197,
       "source": "IQG08Q03",
       "target": "IQG08Q06"
     },
     {
-      "weight": 0.0015572690222795179,
+      "weight": 0.0015572690222795187,
       "source": "IQG08Q03",
       "target": "IQG18Q04"
     },
@@ -32118,27 +32121,27 @@
       "target": "IQG08Q04"
     },
     {
-      "weight": 0.014934306486951847,
+      "weight": 0.01493430648695185,
       "source": "IQG08Q04",
       "target": "IQG08Q03"
     },
     {
-      "weight": 0.0014928693151563346,
+      "weight": 0.0014928693151563352,
       "source": "IQG08Q04",
       "target": "IQG08Q05"
     },
     {
-      "weight": 0.05008206406772616,
+      "weight": 0.05008206406772618,
       "source": "IQG08Q04",
       "target": "IQG08Q06"
     },
     {
-      "weight": 0.0063488487238028465,
+      "weight": 0.00634884872380285,
       "source": "IQG08Q04",
       "target": "IQG10Q04"
     },
     {
-      "weight": 0.007219245803044923,
+      "weight": 0.0072192458030449266,
       "source": "IQG08Q04",
       "target": "IQG18Q04"
     },
@@ -32148,32 +32151,32 @@
       "target": "IQG08Q05"
     },
     {
-      "weight": 0.011392159445172688,
+      "weight": 0.011392159445172693,
       "source": "IQG08Q05",
       "target": "IQG01Q01"
     },
     {
-      "weight": 0.08582611979451947,
+      "weight": 0.0858261197945195,
       "source": "IQG08Q05",
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.042146611751659464,
+      "weight": 0.04214661175165947,
       "source": "IQG08Q05",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.15218742374150449,
+      "weight": 0.15218742374150454,
       "source": "IQG08Q05",
       "target": "IQG08Q03"
     },
     {
-      "weight": 0.0014928693151563346,
+      "weight": 0.0014928693151563352,
       "source": "IQG08Q05",
       "target": "IQG08Q04"
     },
     {
-      "weight": 0.0013337393528344605,
+      "weight": 0.0013337393528344607,
       "source": "IQG08Q05",
       "target": "IQG18Q04"
     },
@@ -32183,17 +32186,17 @@
       "target": "IQG08Q06"
     },
     {
-      "weight": 0.04469983531268351,
+      "weight": 0.04469983531268353,
       "source": "IQG08Q06",
       "target": "IQG08Q01"
     },
     {
-      "weight": 0.3266039850721196,
+      "weight": 0.3266039850721197,
       "source": "IQG08Q06",
       "target": "IQG08Q03"
     },
     {
-      "weight": 0.05008206406772616,
+      "weight": 0.05008206406772618,
       "source": "IQG08Q06",
       "target": "IQG08Q04"
     },
@@ -32203,7 +32206,7 @@
       "target": "IQG08Q07"
     },
     {
-      "weight": 0.003214955087114297,
+      "weight": 0.0032149550871142982,
       "source": "IQG08Q06",
       "target": "IQG10Q04"
     },
@@ -32213,7 +32216,7 @@
       "target": "IQG08Q07"
     },
     {
-      "weight": 0.2929421705343028,
+      "weight": 0.2929421705343029,
       "source": "IQG08Q07",
       "target": "IQG08Q01"
     },
@@ -32223,7 +32226,7 @@
       "target": "IQG08Q06"
     },
     {
-      "weight": 0.026637609566342518,
+      "weight": 0.026637609566342528,
       "source": "IQG08Q07",
       "target": "IQG10Q04"
     },
@@ -32233,27 +32236,27 @@
       "target": "IQG09Q01"
     },
     {
-      "weight": 0.008680720569315604,
+      "weight": 0.00868072056931561,
       "source": "IQG09Q01",
       "target": "IQG09Q02"
     },
     {
-      "weight": 0.006031188066082271,
+      "weight": 0.006031188066082272,
       "source": "IQG09Q01",
       "target": "IQG09Q04"
     },
     {
-      "weight": 0.004109701737966803,
+      "weight": 0.0041097017379668034,
       "source": "IQG09Q01",
       "target": "IQG11Q01"
     },
     {
-      "weight": 0.007200531520504951,
+      "weight": 0.0072005315205049564,
       "source": "IQG09Q01",
       "target": "IQG15Q01"
     },
     {
-      "weight": 0.0026370927175606283,
+      "weight": 0.0026370927175606287,
       "source": "IQG09Q01",
       "target": "IQG15Q06"
     },
@@ -32263,17 +32266,17 @@
       "target": "IQG09Q02"
     },
     {
-      "weight": 0.008680720569315604,
+      "weight": 0.00868072056931561,
       "source": "IQG09Q02",
       "target": "IQG09Q01"
     },
     {
-      "weight": 0.07192148068978646,
+      "weight": 0.07192148068978649,
       "source": "IQG09Q02",
       "target": "IQG09Q03"
     },
     {
-      "weight": 0.0077573382206518465,
+      "weight": 0.007757338220651852,
       "source": "IQG09Q02",
       "target": "IQG09Q04"
     },
@@ -32288,32 +32291,32 @@
       "target": "IQG09Q03"
     },
     {
-      "weight": 0.07192148068978646,
+      "weight": 0.07192148068978649,
       "source": "IQG09Q03",
       "target": "IQG09Q02"
     },
     {
-      "weight": 0.030039129798807226,
+      "weight": 0.030039129798807237,
       "source": "IQG09Q03",
       "target": "IQG09Q04"
     },
     {
-      "weight": 0.00019921233525957413,
+      "weight": 0.0001992123352595742,
       "source": "IQG09Q03",
       "target": "IQG15Q03"
     },
     {
-      "weight": 0.00023444956219909022,
+      "weight": 0.0002344495621990904,
       "source": "IQG09Q03",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.002211266737835154,
+      "weight": 0.002211266737835155,
       "source": "IQG09Q03",
       "target": "IQG15Q08"
     },
     {
-      "weight": 0.009565588895949769,
+      "weight": 0.00956558889594977,
       "source": "IQG09Q03",
       "target": "IQG15Q09"
     },
@@ -32323,37 +32326,37 @@
       "target": "IQG09Q04"
     },
     {
-      "weight": 0.006031188066082271,
+      "weight": 0.006031188066082272,
       "source": "IQG09Q04",
       "target": "IQG09Q01"
     },
     {
-      "weight": 0.0077573382206518465,
+      "weight": 0.007757338220651852,
       "source": "IQG09Q04",
       "target": "IQG09Q02"
     },
     {
-      "weight": 0.030039129798807226,
+      "weight": 0.030039129798807237,
       "source": "IQG09Q04",
       "target": "IQG09Q03"
     },
     {
-      "weight": 0.00017162428164056178,
+      "weight": 0.0001716242816405618,
       "source": "IQG09Q04",
       "target": "IQG15Q03"
     },
     {
-      "weight": 0.0001805628868066238,
+      "weight": 0.00018056288680662395,
       "source": "IQG09Q04",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.0028835116483571085,
+      "weight": 0.0028835116483571102,
       "source": "IQG09Q04",
       "target": "IQG15Q08"
     },
     {
-      "weight": 0.00030229383847160126,
+      "weight": 0.00030229383847160137,
       "source": "IQG09Q04",
       "target": "IQG15Q09"
     },
@@ -32363,47 +32366,47 @@
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.004624297279993238,
+      "weight": 0.00462429727999324,
       "source": "IQG10Q01",
       "target": "IQG08Q01"
     },
     {
-      "weight": 0.00906616263238952,
+      "weight": 0.009066162632389524,
       "source": "IQG10Q01",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.03292418959186924,
+      "weight": 0.03292418959186926,
       "source": "IQG10Q01",
       "target": "IQG10Q02"
     },
     {
-      "weight": 0.02429966186590207,
+      "weight": 0.024299661865902083,
       "source": "IQG10Q01",
       "target": "IQG10Q04"
     },
     {
-      "weight": 0.003956286625986718,
+      "weight": 0.003956286625986721,
       "source": "IQG10Q01",
       "target": "IQG10Q05"
     },
     {
-      "weight": 0.0009320932822472584,
+      "weight": 0.0009320932822472586,
       "source": "IQG10Q01",
       "target": "IQG10Q06"
     },
     {
-      "weight": 0.0019998622583273463,
+      "weight": 0.0019998622583273467,
       "source": "IQG10Q01",
       "target": "IQG16Q01"
     },
     {
-      "weight": 0.007282205084389867,
+      "weight": 0.00728220508438987,
       "source": "IQG10Q01",
       "target": "IQG16Q04"
     },
     {
-      "weight": 0.003732798650134026,
+      "weight": 0.003732798650134027,
       "source": "IQG10Q01",
       "target": "IQG16Q07"
     },
@@ -32413,22 +32416,22 @@
       "target": "IQG10Q02"
     },
     {
-      "weight": 0.03292418959186924,
+      "weight": 0.03292418959186926,
       "source": "IQG10Q02",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.005084150384023248,
+      "weight": 0.00508415038402325,
       "source": "IQG10Q02",
       "target": "IQG10Q03"
     },
     {
-      "weight": 0.013980519186864302,
+      "weight": 0.013980519186864307,
       "source": "IQG10Q02",
       "target": "IQG10Q04"
     },
     {
-      "weight": 0.004098765323643968,
+      "weight": 0.00409876532364397,
       "source": "IQG10Q02",
       "target": "IQG10Q05"
     },
@@ -32438,27 +32441,27 @@
       "target": "IQG10Q03"
     },
     {
-      "weight": 0.005084150384023248,
+      "weight": 0.00508415038402325,
       "source": "IQG10Q03",
       "target": "IQG10Q02"
     },
     {
-      "weight": 0.002350405012552597,
+      "weight": 0.0023504050125525977,
       "source": "IQG10Q03",
       "target": "IQG10Q04"
     },
     {
-      "weight": 0.004503178829383984,
+      "weight": 0.004503178829383986,
       "source": "IQG10Q03",
       "target": "IQG10Q05"
     },
     {
-      "weight": 0.00019078789816652863,
+      "weight": 0.00019078789816652871,
       "source": "IQG10Q03",
       "target": "IQG18Q04"
     },
     {
-      "weight": 0.002169544067088211,
+      "weight": 0.0021695440670882115,
       "source": "IQG10Q03",
       "target": "IQG18Q05"
     },
@@ -32468,42 +32471,42 @@
       "target": "IQG10Q04"
     },
     {
-      "weight": 0.017357051540854197,
+      "weight": 0.017357051540854204,
       "source": "IQG10Q04",
       "target": "IQG08Q01"
     },
     {
-      "weight": 0.00036368574661210025,
+      "weight": 0.0003636857466121004,
       "source": "IQG10Q04",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.0063488487238028465,
+      "weight": 0.00634884872380285,
       "source": "IQG10Q04",
       "target": "IQG08Q04"
     },
     {
-      "weight": 0.003214955087114297,
+      "weight": 0.0032149550871142982,
       "source": "IQG10Q04",
       "target": "IQG08Q06"
     },
     {
-      "weight": 0.026637609566342518,
+      "weight": 0.026637609566342528,
       "source": "IQG10Q04",
       "target": "IQG08Q07"
     },
     {
-      "weight": 0.02429966186590207,
+      "weight": 0.024299661865902083,
       "source": "IQG10Q04",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.013980519186864302,
+      "weight": 0.013980519186864307,
       "source": "IQG10Q04",
       "target": "IQG10Q02"
     },
     {
-      "weight": 0.002350405012552597,
+      "weight": 0.0023504050125525977,
       "source": "IQG10Q04",
       "target": "IQG10Q03"
     },
@@ -32513,37 +32516,37 @@
       "target": "IQG10Q05"
     },
     {
-      "weight": 0.001649618685115512,
+      "weight": 0.0016496186851155125,
       "source": "IQG10Q05",
       "target": "IQG06Q03"
     },
     {
-      "weight": 0.0011146501921372712,
+      "weight": 0.0011146501921372714,
       "source": "IQG10Q05",
       "target": "IQG06Q05"
     },
     {
-      "weight": 0.0184528463473081,
+      "weight": 0.018452846347308108,
       "source": "IQG10Q05",
       "target": "IQG06Q06"
     },
     {
-      "weight": 0.003956286625986718,
+      "weight": 0.003956286625986721,
       "source": "IQG10Q05",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.004098765323643968,
+      "weight": 0.00409876532364397,
       "source": "IQG10Q05",
       "target": "IQG10Q02"
     },
     {
-      "weight": 0.004503178829383984,
+      "weight": 0.004503178829383986,
       "source": "IQG10Q05",
       "target": "IQG10Q03"
     },
     {
-      "weight": 0.026342623327582856,
+      "weight": 0.026342623327582877,
       "source": "IQG10Q05",
       "target": "IQG10Q06"
     },
@@ -32553,22 +32556,22 @@
       "target": "IQG10Q06"
     },
     {
-      "weight": 0.03939078099877271,
+      "weight": 0.03939078099877273,
       "source": "IQG10Q06",
       "target": "IQG06Q06"
     },
     {
-      "weight": 0.0009320932822472584,
+      "weight": 0.0009320932822472586,
       "source": "IQG10Q06",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.026342623327582856,
+      "weight": 0.026342623327582877,
       "source": "IQG10Q06",
       "target": "IQG10Q05"
     },
     {
-      "weight": 0.009619057697326487,
+      "weight": 0.009619057697326492,
       "source": "IQG10Q06",
       "target": "IQG16Q07"
     },
@@ -32578,17 +32581,17 @@
       "target": "IQG11Q01"
     },
     {
-      "weight": 0.004109701737966803,
+      "weight": 0.0041097017379668034,
       "source": "IQG11Q01",
       "target": "IQG09Q01"
     },
     {
-      "weight": 0.005456223466752161,
+      "weight": 0.005456223466752164,
       "source": "IQG11Q01",
       "target": "IQG11Q05"
     },
     {
-      "weight": 0.0058199815352169,
+      "weight": 0.005819981535216902,
       "source": "IQG11Q01",
       "target": "IQG15Q01"
     },
@@ -32598,12 +32601,12 @@
       "target": "IQG11Q02"
     },
     {
-      "weight": 0.009797256653516316,
+      "weight": 0.00979725665351632,
       "source": "IQG11Q02",
       "target": "IQG11Q03"
     },
     {
-      "weight": 0.021734516935759597,
+      "weight": 0.0217345169357596,
       "source": "IQG11Q02",
       "target": "IQG11Q04"
     },
@@ -32613,17 +32616,17 @@
       "target": "IQG11Q06"
     },
     {
-      "weight": 0.013657572598469876,
+      "weight": 0.01365757259846988,
       "source": "IQG11Q02",
       "target": "IQG13Q03"
     },
     {
-      "weight": 0.013581912905321665,
+      "weight": 0.013581912905321668,
       "source": "IQG11Q02",
       "target": "IQG15Q01"
     },
     {
-      "weight": 0.015500321352896385,
+      "weight": 0.01550032135289639,
       "source": "IQG11Q02",
       "target": "IQG15Q03"
     },
@@ -32633,37 +32636,37 @@
       "target": "IQG11Q03"
     },
     {
-      "weight": 0.003176886944674055,
+      "weight": 0.0031768869446740567,
       "source": "IQG11Q03",
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.009149619223495204,
+      "weight": 0.009149619223495206,
       "source": "IQG11Q03",
       "target": "IQG06Q04"
     },
     {
-      "weight": 0.0035488602293740406,
+      "weight": 0.003548860229374043,
       "source": "IQG11Q03",
       "target": "IQG06Q09"
     },
     {
-      "weight": 0.009797256653516316,
+      "weight": 0.00979725665351632,
       "source": "IQG11Q03",
       "target": "IQG11Q02"
     },
     {
-      "weight": 0.012642922493364885,
+      "weight": 0.012642922493364886,
       "source": "IQG11Q03",
       "target": "IQG11Q06"
     },
     {
-      "weight": 0.0013110070076883275,
+      "weight": 0.001311007007688328,
       "source": "IQG11Q03",
       "target": "IQG13Q03"
     },
     {
-      "weight": 0.004514942182778832,
+      "weight": 0.004514942182778835,
       "source": "IQG11Q03",
       "target": "IQG13Q04"
     },
@@ -32673,32 +32676,32 @@
       "target": "IQG11Q04"
     },
     {
-      "weight": 0.021734516935759597,
+      "weight": 0.0217345169357596,
       "source": "IQG11Q04",
       "target": "IQG11Q02"
     },
     {
-      "weight": 0.0032775789787609197,
+      "weight": 0.003277578978760921,
       "source": "IQG11Q04",
       "target": "IQG13Q01"
     },
     {
-      "weight": 0.010496387519288651,
+      "weight": 0.010496387519288657,
       "source": "IQG11Q04",
       "target": "IQG13Q03"
     },
     {
-      "weight": 0.016159583083291733,
+      "weight": 0.01615958308329174,
       "source": "IQG11Q04",
       "target": "IQG15Q03"
     },
     {
-      "weight": 0.0047162115030221115,
+      "weight": 0.004716211503022114,
       "source": "IQG11Q04",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.008525269821649945,
+      "weight": 0.00852526982164995,
       "source": "IQG11Q04",
       "target": "IQG16Q02"
     },
@@ -32708,27 +32711,27 @@
       "target": "IQG11Q05"
     },
     {
-      "weight": 0.0017929776252137066,
+      "weight": 0.001792977625213707,
       "source": "IQG11Q05",
       "target": "IQG06Q08"
     },
     {
-      "weight": 0.0005889164312807443,
+      "weight": 0.0005889164312807447,
       "source": "IQG11Q05",
       "target": "IQG06Q09"
     },
     {
-      "weight": 0.005456223466752161,
+      "weight": 0.005456223466752164,
       "source": "IQG11Q05",
       "target": "IQG11Q01"
     },
     {
-      "weight": 0.009377004159418322,
+      "weight": 0.009377004159418324,
       "source": "IQG11Q05",
       "target": "IQG11Q06"
     },
     {
-      "weight": 0.005048328853209178,
+      "weight": 0.005048328853209182,
       "source": "IQG11Q05",
       "target": "IQG15Q01"
     },
@@ -32738,7 +32741,7 @@
       "target": "IQG11Q06"
     },
     {
-      "weight": 0.001839363557854564,
+      "weight": 0.001839363557854565,
       "source": "IQG11Q06",
       "target": "IQG06Q09"
     },
@@ -32748,17 +32751,17 @@
       "target": "IQG11Q02"
     },
     {
-      "weight": 0.012642922493364885,
+      "weight": 0.012642922493364886,
       "source": "IQG11Q06",
       "target": "IQG11Q03"
     },
     {
-      "weight": 0.009377004159418322,
+      "weight": 0.009377004159418324,
       "source": "IQG11Q06",
       "target": "IQG11Q05"
     },
     {
-      "weight": 0.022761359798312668,
+      "weight": 0.022761359798312675,
       "source": "IQG11Q06",
       "target": "IQG15Q01"
     },
@@ -32768,17 +32771,17 @@
       "target": "IQG12Q01"
     },
     {
-      "weight": 0.0005737068075772535,
+      "weight": 0.0005737068075772537,
       "source": "IQG12Q01",
       "target": "IQG01Q03"
     },
     {
-      "weight": 0.0004996404079762926,
+      "weight": 0.0004996404079762928,
       "source": "IQG12Q01",
       "target": "IQG01Q04"
     },
     {
-      "weight": 0.008642539470344348,
+      "weight": 0.008642539470344351,
       "source": "IQG12Q01",
       "target": "IQG12Q03"
     },
@@ -32788,22 +32791,22 @@
       "target": "IQG12Q02"
     },
     {
-      "weight": 0.005453805248467781,
+      "weight": 0.005453805248467783,
       "source": "IQG12Q02",
       "target": "IQG04Q03"
     },
     {
-      "weight": 0.039210233951797034,
+      "weight": 0.039210233951797055,
       "source": "IQG12Q02",
       "target": "IQG07Q02"
     },
     {
-      "weight": 0.020755759655251137,
+      "weight": 0.020755759655251147,
       "source": "IQG12Q02",
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.09232570083885264,
+      "weight": 0.09232570083885268,
       "source": "IQG12Q02",
       "target": "IQG12Q03"
     },
@@ -32813,27 +32816,27 @@
       "target": "IQG12Q03"
     },
     {
-      "weight": 9.437376730317404e-05,
+      "weight": 9.437376730317408e-05,
       "source": "IQG12Q03",
       "target": "IQG01Q01"
     },
     {
-      "weight": 0.0019649354203637786,
+      "weight": 0.0019649354203637795,
       "source": "IQG12Q03",
       "target": "IQG04Q03"
     },
     {
-      "weight": 0.027305583330939496,
+      "weight": 0.027305583330939503,
       "source": "IQG12Q03",
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.008642539470344348,
+      "weight": 0.008642539470344351,
       "source": "IQG12Q03",
       "target": "IQG12Q01"
     },
     {
-      "weight": 0.09232570083885264,
+      "weight": 0.09232570083885268,
       "source": "IQG12Q03",
       "target": "IQG12Q02"
     },
@@ -32843,32 +32846,32 @@
       "target": "IQG13Q01"
     },
     {
-      "weight": 0.0032775789787609197,
+      "weight": 0.003277578978760921,
       "source": "IQG13Q01",
       "target": "IQG11Q04"
     },
     {
-      "weight": 0.004390082750282108,
+      "weight": 0.00439008275028211,
       "source": "IQG13Q01",
       "target": "IQG13Q02"
     },
     {
-      "weight": 0.0057254239588965545,
+      "weight": 0.005725423958896558,
       "source": "IQG13Q01",
       "target": "IQG13Q03"
     },
     {
-      "weight": 0.008306712075645335,
+      "weight": 0.008306712075645338,
       "source": "IQG13Q01",
       "target": "IQG13Q04"
     },
     {
-      "weight": 0.006007279279599764,
+      "weight": 0.006007279279599767,
       "source": "IQG13Q01",
       "target": "IQG16Q02"
     },
     {
-      "weight": 0.007301847442450792,
+      "weight": 0.007301847442450795,
       "source": "IQG13Q01",
       "target": "IQG16Q03"
     },
@@ -32878,32 +32881,32 @@
       "target": "IQG13Q02"
     },
     {
-      "weight": 0.0004685114752633495,
+      "weight": 0.0004685114752633497,
       "source": "IQG13Q02",
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.004390082750282108,
+      "weight": 0.00439008275028211,
       "source": "IQG13Q02",
       "target": "IQG13Q01"
     },
     {
-      "weight": 0.01256174597774107,
+      "weight": 0.012561745977741076,
       "source": "IQG13Q02",
       "target": "IQG13Q04"
     },
     {
-      "weight": 0.0019604149286978705,
+      "weight": 0.001960414928697871,
       "source": "IQG13Q02",
       "target": "IQG16Q01"
     },
     {
-      "weight": 0.002266860602265902,
+      "weight": 0.0022668606022659033,
       "source": "IQG13Q02",
       "target": "IQG16Q06"
     },
     {
-      "weight": 0.010103867672359506,
+      "weight": 0.010103867672359507,
       "source": "IQG13Q02",
       "target": "IQG16Q07"
     },
@@ -32913,27 +32916,27 @@
       "target": "IQG13Q03"
     },
     {
-      "weight": 0.013657572598469876,
+      "weight": 0.01365757259846988,
       "source": "IQG13Q03",
       "target": "IQG11Q02"
     },
     {
-      "weight": 0.0013110070076883275,
+      "weight": 0.001311007007688328,
       "source": "IQG13Q03",
       "target": "IQG11Q03"
     },
     {
-      "weight": 0.010496387519288651,
+      "weight": 0.010496387519288657,
       "source": "IQG13Q03",
       "target": "IQG11Q04"
     },
     {
-      "weight": 0.0057254239588965545,
+      "weight": 0.005725423958896558,
       "source": "IQG13Q03",
       "target": "IQG13Q01"
     },
     {
-      "weight": 0.031014623602510963,
+      "weight": 0.031014623602510977,
       "source": "IQG13Q03",
       "target": "IQG13Q04"
     },
@@ -32943,27 +32946,27 @@
       "target": "IQG13Q04"
     },
     {
-      "weight": 0.013781801228975748,
+      "weight": 0.013781801228975751,
       "source": "IQG13Q04",
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.004514942182778832,
+      "weight": 0.004514942182778835,
       "source": "IQG13Q04",
       "target": "IQG11Q03"
     },
     {
-      "weight": 0.008306712075645335,
+      "weight": 0.008306712075645338,
       "source": "IQG13Q04",
       "target": "IQG13Q01"
     },
     {
-      "weight": 0.01256174597774107,
+      "weight": 0.012561745977741076,
       "source": "IQG13Q04",
       "target": "IQG13Q02"
     },
     {
-      "weight": 0.031014623602510963,
+      "weight": 0.031014623602510977,
       "source": "IQG13Q04",
       "target": "IQG13Q03"
     },
@@ -32973,27 +32976,27 @@
       "target": "IQG14Q01"
     },
     {
-      "weight": 0.01699405194153584,
+      "weight": 0.016994051941535842,
       "source": "IQG14Q01",
       "target": "IQG14Q02"
     },
     {
-      "weight": 0.02343743586021329,
+      "weight": 0.023437435860213296,
       "source": "IQG14Q01",
       "target": "IQG14Q03"
     },
     {
-      "weight": 0.0030433075026240737,
+      "weight": 0.0030433075026240755,
       "source": "IQG14Q01",
       "target": "IQG14Q04"
     },
     {
-      "weight": 0.0025662658227724065,
+      "weight": 0.0025662658227724074,
       "source": "IQG14Q01",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.0035179884565891386,
+      "weight": 0.003517988456589141,
       "source": "IQG14Q01",
       "target": "IQG18Q02"
     },
@@ -33003,17 +33006,17 @@
       "target": "IQG14Q02"
     },
     {
-      "weight": 0.01699405194153584,
+      "weight": 0.016994051941535842,
       "source": "IQG14Q02",
       "target": "IQG14Q01"
     },
     {
-      "weight": 0.0025009231896194477,
+      "weight": 0.002500923189619448,
       "source": "IQG14Q02",
       "target": "IQG14Q03"
     },
     {
-      "weight": 0.006349728904659784,
+      "weight": 0.006349728904659786,
       "source": "IQG14Q02",
       "target": "IQG18Q02"
     },
@@ -33023,32 +33026,32 @@
       "target": "IQG14Q03"
     },
     {
-      "weight": 0.02343743586021329,
+      "weight": 0.023437435860213296,
       "source": "IQG14Q03",
       "target": "IQG14Q01"
     },
     {
-      "weight": 0.0025009231896194477,
+      "weight": 0.002500923189619448,
       "source": "IQG14Q03",
       "target": "IQG14Q02"
     },
     {
-      "weight": 0.01063332272753206,
+      "weight": 0.010633322727532065,
       "source": "IQG14Q03",
       "target": "IQG14Q04"
     },
     {
-      "weight": 0.013773431328475076,
+      "weight": 0.01377343132847508,
       "source": "IQG14Q03",
       "target": "IQG14Q05"
     },
     {
-      "weight": 0.031277239763638554,
+      "weight": 0.03127723976363856,
       "source": "IQG14Q03",
       "target": "IQG14Q06"
     },
     {
-      "weight": 0.001575983218479658,
+      "weight": 0.0015759832184796586,
       "source": "IQG14Q03",
       "target": "IQG18Q02"
     },
@@ -33058,12 +33061,12 @@
       "target": "IQG14Q04"
     },
     {
-      "weight": 0.0030433075026240737,
+      "weight": 0.0030433075026240755,
       "source": "IQG14Q04",
       "target": "IQG14Q01"
     },
     {
-      "weight": 0.01063332272753206,
+      "weight": 0.010633322727532065,
       "source": "IQG14Q04",
       "target": "IQG14Q03"
     },
@@ -33073,17 +33076,17 @@
       "target": "IQG14Q05"
     },
     {
-      "weight": 0.000806078754350103,
+      "weight": 0.0008060787543501032,
       "source": "IQG14Q04",
       "target": "IQG17Q01"
     },
     {
-      "weight": 0.0005984663966976763,
+      "weight": 0.0005984663966976764,
       "source": "IQG14Q04",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.00168469210868492,
+      "weight": 0.0016846921086849207,
       "source": "IQG14Q04",
       "target": "IQG17Q04"
     },
@@ -33093,17 +33096,17 @@
       "target": "IQG14Q05"
     },
     {
-      "weight": 0.001016435998654364,
+      "weight": 0.0010164359986543645,
       "source": "IQG14Q05",
       "target": "IQG02Q04"
     },
     {
-      "weight": 0.010645790656583064,
+      "weight": 0.010645790656583066,
       "source": "IQG14Q05",
       "target": "IQG02Q05"
     },
     {
-      "weight": 0.013773431328475076,
+      "weight": 0.01377343132847508,
       "source": "IQG14Q05",
       "target": "IQG14Q03"
     },
@@ -33113,12 +33116,12 @@
       "target": "IQG14Q04"
     },
     {
-      "weight": 0.07247364370476926,
+      "weight": 0.0724736437047693,
       "source": "IQG14Q05",
       "target": "IQG14Q06"
     },
     {
-      "weight": 0.0003961595498253625,
+      "weight": 0.00039615954982536263,
       "source": "IQG14Q05",
       "target": "IQG17Q01"
     },
@@ -33128,17 +33131,17 @@
       "target": "IQG14Q06"
     },
     {
-      "weight": 0.0008711086273013577,
+      "weight": 0.0008711086273013581,
       "source": "IQG14Q06",
       "target": "IQG02Q05"
     },
     {
-      "weight": 0.031277239763638554,
+      "weight": 0.03127723976363856,
       "source": "IQG14Q06",
       "target": "IQG14Q03"
     },
     {
-      "weight": 0.07247364370476926,
+      "weight": 0.0724736437047693,
       "source": "IQG14Q06",
       "target": "IQG14Q05"
     },
@@ -33148,42 +33151,42 @@
       "target": "IQG15Q01"
     },
     {
-      "weight": 0.007200531520504951,
+      "weight": 0.0072005315205049564,
       "source": "IQG15Q01",
       "target": "IQG09Q01"
     },
     {
-      "weight": 0.0058199815352169,
+      "weight": 0.005819981535216902,
       "source": "IQG15Q01",
       "target": "IQG11Q01"
     },
     {
-      "weight": 0.013581912905321665,
+      "weight": 0.013581912905321668,
       "source": "IQG15Q01",
       "target": "IQG11Q02"
     },
     {
-      "weight": 0.005048328853209178,
+      "weight": 0.005048328853209182,
       "source": "IQG15Q01",
       "target": "IQG11Q05"
     },
     {
-      "weight": 0.022761359798312668,
+      "weight": 0.022761359798312675,
       "source": "IQG15Q01",
       "target": "IQG11Q06"
     },
     {
-      "weight": 0.005974328353078817,
+      "weight": 0.005974328353078821,
       "source": "IQG15Q01",
       "target": "IQG15Q03"
     },
     {
-      "weight": 0.0024592814415999005,
+      "weight": 0.002459281441599901,
       "source": "IQG15Q01",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.014272889218367387,
+      "weight": 0.014272889218367394,
       "source": "IQG15Q01",
       "target": "IQG15Q06"
     },
@@ -33193,22 +33196,22 @@
       "target": "IQG15Q02"
     },
     {
-      "weight": 0.0006290217629267126,
+      "weight": 0.0006290217629267129,
       "source": "IQG15Q02",
       "target": "IQG01Q05"
     },
     {
-      "weight": 0.008119193605478426,
+      "weight": 0.00811919360547843,
       "source": "IQG15Q02",
       "target": "IQG15Q04"
     },
     {
-      "weight": 0.013686874691588987,
+      "weight": 0.013686874691588994,
       "source": "IQG15Q02",
       "target": "IQG15Q07"
     },
     {
-      "weight": 0.0009192945689499184,
+      "weight": 0.0009192945689499187,
       "source": "IQG15Q02",
       "target": "IQG15Q08"
     },
@@ -33218,37 +33221,37 @@
       "target": "IQG15Q03"
     },
     {
-      "weight": 0.00019921233525957413,
+      "weight": 0.0001992123352595742,
       "source": "IQG15Q03",
       "target": "IQG09Q03"
     },
     {
-      "weight": 0.00017162428164056178,
+      "weight": 0.0001716242816405618,
       "source": "IQG15Q03",
       "target": "IQG09Q04"
     },
     {
-      "weight": 0.015500321352896385,
+      "weight": 0.01550032135289639,
       "source": "IQG15Q03",
       "target": "IQG11Q02"
     },
     {
-      "weight": 0.016159583083291733,
+      "weight": 0.01615958308329174,
       "source": "IQG15Q03",
       "target": "IQG11Q04"
     },
     {
-      "weight": 0.005974328353078817,
+      "weight": 0.005974328353078821,
       "source": "IQG15Q03",
       "target": "IQG15Q01"
     },
     {
-      "weight": 0.07636202743405504,
+      "weight": 0.07636202743405507,
       "source": "IQG15Q03",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.0003616782390757488,
+      "weight": 0.00036167823907574904,
       "source": "IQG15Q03",
       "target": "IQG15Q09"
     },
@@ -33263,27 +33266,27 @@
       "target": "IQG01Q05"
     },
     {
-      "weight": 0.008119193605478426,
+      "weight": 0.00811919360547843,
       "source": "IQG15Q04",
       "target": "IQG15Q02"
     },
     {
-      "weight": 0.016322002197479153,
+      "weight": 0.01632200219747916,
       "source": "IQG15Q04",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.0034931182463002262,
+      "weight": 0.003493118246300227,
       "source": "IQG15Q04",
       "target": "IQG15Q07"
     },
     {
-      "weight": 0.003237245214832601,
+      "weight": 0.003237245214832602,
       "source": "IQG15Q04",
       "target": "IQG15Q08"
     },
     {
-      "weight": 0.004345883272231048,
+      "weight": 0.004345883272231049,
       "source": "IQG15Q04",
       "target": "IQG16Q02"
     },
@@ -33293,52 +33296,52 @@
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.00023444956219909022,
+      "weight": 0.0002344495621990904,
       "source": "IQG15Q05",
       "target": "IQG09Q03"
     },
     {
-      "weight": 0.0001805628868066238,
+      "weight": 0.00018056288680662395,
       "source": "IQG15Q05",
       "target": "IQG09Q04"
     },
     {
-      "weight": 0.0047162115030221115,
+      "weight": 0.004716211503022114,
       "source": "IQG15Q05",
       "target": "IQG11Q04"
     },
     {
-      "weight": 0.0024592814415999005,
+      "weight": 0.002459281441599901,
       "source": "IQG15Q05",
       "target": "IQG15Q01"
     },
     {
-      "weight": 0.07636202743405504,
+      "weight": 0.07636202743405507,
       "source": "IQG15Q05",
       "target": "IQG15Q03"
     },
     {
-      "weight": 0.016322002197479153,
+      "weight": 0.01632200219747916,
       "source": "IQG15Q05",
       "target": "IQG15Q04"
     },
     {
-      "weight": 0.012202202027670387,
+      "weight": 0.01220220202767039,
       "source": "IQG15Q05",
       "target": "IQG15Q06"
     },
     {
-      "weight": 0.011976760219279865,
+      "weight": 0.011976760219279866,
       "source": "IQG15Q05",
       "target": "IQG15Q08"
     },
     {
-      "weight": 0.09337221579738142,
+      "weight": 0.09337221579738146,
       "source": "IQG15Q05",
       "target": "IQG15Q09"
     },
     {
-      "weight": 0.004124222950825276,
+      "weight": 0.004124222950825277,
       "source": "IQG15Q05",
       "target": "IQG16Q02"
     },
@@ -33348,7 +33351,7 @@
       "target": "IQG15Q06"
     },
     {
-      "weight": 0.0026370927175606283,
+      "weight": 0.0026370927175606287,
       "source": "IQG15Q06",
       "target": "IQG09Q01"
     },
@@ -33358,17 +33361,17 @@
       "target": "IQG09Q02"
     },
     {
-      "weight": 0.014272889218367387,
+      "weight": 0.014272889218367394,
       "source": "IQG15Q06",
       "target": "IQG15Q01"
     },
     {
-      "weight": 0.012202202027670387,
+      "weight": 0.01220220202767039,
       "source": "IQG15Q06",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.03810834917782458,
+      "weight": 0.0381083491778246,
       "source": "IQG15Q06",
       "target": "IQG15Q09"
     },
@@ -33378,17 +33381,17 @@
       "target": "IQG15Q07"
     },
     {
-      "weight": 0.013686874691588987,
+      "weight": 0.013686874691588994,
       "source": "IQG15Q07",
       "target": "IQG15Q02"
     },
     {
-      "weight": 0.0034931182463002262,
+      "weight": 0.003493118246300227,
       "source": "IQG15Q07",
       "target": "IQG15Q04"
     },
     {
-      "weight": 0.01661904238722289,
+      "weight": 0.016619042387222897,
       "source": "IQG15Q07",
       "target": "IQG15Q08"
     },
@@ -33398,37 +33401,37 @@
       "target": "IQG15Q08"
     },
     {
-      "weight": 0.002211266737835154,
+      "weight": 0.002211266737835155,
       "source": "IQG15Q08",
       "target": "IQG09Q03"
     },
     {
-      "weight": 0.0028835116483571085,
+      "weight": 0.0028835116483571102,
       "source": "IQG15Q08",
       "target": "IQG09Q04"
     },
     {
-      "weight": 0.0009192945689499184,
+      "weight": 0.0009192945689499187,
       "source": "IQG15Q08",
       "target": "IQG15Q02"
     },
     {
-      "weight": 0.003237245214832601,
+      "weight": 0.003237245214832602,
       "source": "IQG15Q08",
       "target": "IQG15Q04"
     },
     {
-      "weight": 0.011976760219279865,
+      "weight": 0.011976760219279866,
       "source": "IQG15Q08",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.01661904238722289,
+      "weight": 0.016619042387222897,
       "source": "IQG15Q08",
       "target": "IQG15Q07"
     },
     {
-      "weight": 0.0042593528433425894,
+      "weight": 0.004259352843342592,
       "source": "IQG15Q08",
       "target": "IQG15Q09"
     },
@@ -33438,32 +33441,32 @@
       "target": "IQG15Q09"
     },
     {
-      "weight": 0.009565588895949769,
+      "weight": 0.00956558889594977,
       "source": "IQG15Q09",
       "target": "IQG09Q03"
     },
     {
-      "weight": 0.00030229383847160126,
+      "weight": 0.00030229383847160137,
       "source": "IQG15Q09",
       "target": "IQG09Q04"
     },
     {
-      "weight": 0.0003616782390757488,
+      "weight": 0.00036167823907574904,
       "source": "IQG15Q09",
       "target": "IQG15Q03"
     },
     {
-      "weight": 0.09337221579738142,
+      "weight": 0.09337221579738146,
       "source": "IQG15Q09",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.03810834917782458,
+      "weight": 0.0381083491778246,
       "source": "IQG15Q09",
       "target": "IQG15Q06"
     },
     {
-      "weight": 0.0042593528433425894,
+      "weight": 0.004259352843342592,
       "source": "IQG15Q09",
       "target": "IQG15Q08"
     },
@@ -33473,32 +33476,32 @@
       "target": "IQG16Q01"
     },
     {
-      "weight": 0.0019998622583273463,
+      "weight": 0.0019998622583273467,
       "source": "IQG16Q01",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.0019604149286978705,
+      "weight": 0.001960414928697871,
       "source": "IQG16Q01",
       "target": "IQG13Q02"
     },
     {
-      "weight": 0.0006051035179446293,
+      "weight": 0.0006051035179446295,
       "source": "IQG16Q01",
       "target": "IQG16Q04"
     },
     {
-      "weight": 0.009577348041646394,
+      "weight": 0.0095773480416464,
       "source": "IQG16Q01",
       "target": "IQG16Q05"
     },
     {
-      "weight": 0.005916374861445147,
+      "weight": 0.00591637486144515,
       "source": "IQG16Q01",
       "target": "IQG16Q06"
     },
     {
-      "weight": 0.00045578722935088017,
+      "weight": 0.0004557872293508804,
       "source": "IQG16Q01",
       "target": "IQG16Q07"
     },
@@ -33508,27 +33511,27 @@
       "target": "IQG16Q02"
     },
     {
-      "weight": 0.008525269821649945,
+      "weight": 0.00852526982164995,
       "source": "IQG16Q02",
       "target": "IQG11Q04"
     },
     {
-      "weight": 0.006007279279599764,
+      "weight": 0.006007279279599767,
       "source": "IQG16Q02",
       "target": "IQG13Q01"
     },
     {
-      "weight": 0.004345883272231048,
+      "weight": 0.004345883272231049,
       "source": "IQG16Q02",
       "target": "IQG15Q04"
     },
     {
-      "weight": 0.004124222950825276,
+      "weight": 0.004124222950825277,
       "source": "IQG16Q02",
       "target": "IQG15Q05"
     },
     {
-      "weight": 0.009257488117074478,
+      "weight": 0.009257488117074482,
       "source": "IQG16Q02",
       "target": "IQG16Q03"
     },
@@ -33538,22 +33541,22 @@
       "target": "IQG16Q03"
     },
     {
-      "weight": 0.0010807558354910764,
+      "weight": 0.0010807558354910766,
       "source": "IQG16Q03",
       "target": "IQG01Q06"
     },
     {
-      "weight": 0.007301847442450792,
+      "weight": 0.007301847442450795,
       "source": "IQG16Q03",
       "target": "IQG13Q01"
     },
     {
-      "weight": 0.009257488117074478,
+      "weight": 0.009257488117074482,
       "source": "IQG16Q03",
       "target": "IQG16Q02"
     },
     {
-      "weight": 0.010372578784179626,
+      "weight": 0.01037257878417963,
       "source": "IQG16Q03",
       "target": "IQG16Q06"
     },
@@ -33563,37 +33566,37 @@
       "target": "IQG16Q04"
     },
     {
-      "weight": 0.0009121415061941482,
+      "weight": 0.0009121415061941484,
       "source": "IQG16Q04",
       "target": "IQG01Q01"
     },
     {
-      "weight": 0.0018879057603432203,
+      "weight": 0.0018879057603432212,
       "source": "IQG16Q04",
       "target": "IQG01Q03"
     },
     {
-      "weight": 0.011193786143870435,
+      "weight": 0.01119378614387044,
       "source": "IQG16Q04",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.007282205084389867,
+      "weight": 0.00728220508438987,
       "source": "IQG16Q04",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.0006051035179446293,
+      "weight": 0.0006051035179446295,
       "source": "IQG16Q04",
       "target": "IQG16Q01"
     },
     {
-      "weight": 0.017651423064778262,
+      "weight": 0.01765142306477827,
       "source": "IQG16Q04",
       "target": "IQG16Q05"
     },
     {
-      "weight": 0.0002343704112355152,
+      "weight": 0.00023437041123551528,
       "source": "IQG16Q04",
       "target": "IQG16Q06"
     },
@@ -33603,22 +33606,22 @@
       "target": "IQG16Q05"
     },
     {
-      "weight": 0.00018431338631032926,
+      "weight": 0.0001843133863103294,
       "source": "IQG16Q05",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.009577348041646394,
+      "weight": 0.0095773480416464,
       "source": "IQG16Q05",
       "target": "IQG16Q01"
     },
     {
-      "weight": 0.017651423064778262,
+      "weight": 0.01765142306477827,
       "source": "IQG16Q05",
       "target": "IQG16Q04"
     },
     {
-      "weight": 0.01043787200660864,
+      "weight": 0.010437872006608643,
       "source": "IQG16Q05",
       "target": "IQG16Q06"
     },
@@ -33628,32 +33631,32 @@
       "target": "IQG16Q06"
     },
     {
-      "weight": 0.00014504846932886386,
+      "weight": 0.0001450484693288639,
       "source": "IQG16Q06",
       "target": "IQG08Q02"
     },
     {
-      "weight": 0.002266860602265902,
+      "weight": 0.0022668606022659033,
       "source": "IQG16Q06",
       "target": "IQG13Q02"
     },
     {
-      "weight": 0.005916374861445147,
+      "weight": 0.00591637486144515,
       "source": "IQG16Q06",
       "target": "IQG16Q01"
     },
     {
-      "weight": 0.010372578784179626,
+      "weight": 0.01037257878417963,
       "source": "IQG16Q06",
       "target": "IQG16Q03"
     },
     {
-      "weight": 0.0002343704112355152,
+      "weight": 0.00023437041123551528,
       "source": "IQG16Q06",
       "target": "IQG16Q04"
     },
     {
-      "weight": 0.01043787200660864,
+      "weight": 0.010437872006608643,
       "source": "IQG16Q06",
       "target": "IQG16Q05"
     },
@@ -33663,27 +33666,27 @@
       "target": "IQG16Q07"
     },
     {
-      "weight": 0.0035863720392993272,
+      "weight": 0.003586372039299329,
       "source": "IQG16Q07",
       "target": "IQG06Q02"
     },
     {
-      "weight": 0.003732798650134026,
+      "weight": 0.003732798650134027,
       "source": "IQG16Q07",
       "target": "IQG10Q01"
     },
     {
-      "weight": 0.009619057697326487,
+      "weight": 0.009619057697326492,
       "source": "IQG16Q07",
       "target": "IQG10Q06"
     },
     {
-      "weight": 0.010103867672359506,
+      "weight": 0.010103867672359507,
       "source": "IQG16Q07",
       "target": "IQG13Q02"
     },
     {
-      "weight": 0.00045578722935088017,
+      "weight": 0.0004557872293508804,
       "source": "IQG16Q07",
       "target": "IQG16Q01"
     },
@@ -33693,7 +33696,7 @@
       "target": "IQG17Q01"
     },
     {
-      "weight": 0.00033553891706248945,
+      "weight": 0.0003355389170624896,
       "source": "IQG17Q01",
       "target": "IQG02Q02"
     },
@@ -33703,32 +33706,32 @@
       "target": "IQG02Q04"
     },
     {
-      "weight": 0.00046454867733110566,
+      "weight": 0.0004645486773311059,
       "source": "IQG17Q01",
       "target": "IQG02Q05"
     },
     {
-      "weight": 0.007611353439652361,
+      "weight": 0.007611353439652364,
       "source": "IQG17Q01",
       "target": "IQG02Q06"
     },
     {
-      "weight": 0.000806078754350103,
+      "weight": 0.0008060787543501032,
       "source": "IQG17Q01",
       "target": "IQG14Q04"
     },
     {
-      "weight": 0.0003961595498253625,
+      "weight": 0.00039615954982536263,
       "source": "IQG17Q01",
       "target": "IQG14Q05"
     },
     {
-      "weight": 0.002520882646328625,
+      "weight": 0.0025208826463286264,
       "source": "IQG17Q01",
       "target": "IQG17Q04"
     },
     {
-      "weight": 0.01828460408147132,
+      "weight": 0.018284604081471333,
       "source": "IQG17Q01",
       "target": "IQG17Q05"
     },
@@ -33738,52 +33741,52 @@
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.00642012882341189,
+      "weight": 0.006420128823411892,
       "source": "IQG17Q02",
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.0026408333091054704,
+      "weight": 0.0026408333091054717,
       "source": "IQG17Q02",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.0041028042654197155,
+      "weight": 0.004102804265419717,
       "source": "IQG17Q02",
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.0016133137916531533,
+      "weight": 0.001613313791653154,
       "source": "IQG17Q02",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.0016386450250703742,
+      "weight": 0.0016386450250703748,
       "source": "IQG17Q02",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.0025662658227724065,
+      "weight": 0.0025662658227724074,
       "source": "IQG17Q02",
       "target": "IQG14Q01"
     },
     {
-      "weight": 0.0005984663966976763,
+      "weight": 0.0005984663966976764,
       "source": "IQG17Q02",
       "target": "IQG14Q04"
     },
     {
-      "weight": 0.023028162022336263,
+      "weight": 0.023028162022336277,
       "source": "IQG17Q02",
       "target": "IQG17Q03"
     },
     {
-      "weight": 0.009405190736907069,
+      "weight": 0.009405190736907073,
       "source": "IQG17Q02",
       "target": "IQG17Q04"
     },
     {
-      "weight": 0.00966958587776016,
+      "weight": 0.009669585877760165,
       "source": "IQG17Q02",
       "target": "IQG18Q01"
     },
@@ -33793,12 +33796,12 @@
       "target": "IQG17Q03"
     },
     {
-      "weight": 0.023028162022336263,
+      "weight": 0.023028162022336277,
       "source": "IQG17Q03",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.019247438090294,
+      "weight": 0.01924743809029401,
       "source": "IQG17Q03",
       "target": "IQG17Q04"
     },
@@ -33808,62 +33811,62 @@
       "target": "IQG17Q04"
     },
     {
-      "weight": 0.01118659110486208,
+      "weight": 0.011186591104862085,
       "source": "IQG17Q04",
       "target": "IQG03Q01"
     },
     {
-      "weight": 0.002033200921105804,
+      "weight": 0.0020332009211058047,
       "source": "IQG17Q04",
       "target": "IQG03Q02"
     },
     {
-      "weight": 0.0001970771870935514,
+      "weight": 0.0001970771870935515,
       "source": "IQG17Q04",
       "target": "IQG03Q03"
     },
     {
-      "weight": 0.00029350872845173415,
+      "weight": 0.0002935087284517342,
       "source": "IQG17Q04",
       "target": "IQG03Q04"
     },
     {
-      "weight": 0.0015690291195042515,
+      "weight": 0.001569029119504252,
       "source": "IQG17Q04",
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.0012244769145174034,
+      "weight": 0.0012244769145174036,
       "source": "IQG17Q04",
       "target": "IQG05Q02"
     },
     {
-      "weight": 0.0013722502322488085,
+      "weight": 0.0013722502322488091,
       "source": "IQG17Q04",
       "target": "IQG05Q03"
     },
     {
-      "weight": 0.00168469210868492,
+      "weight": 0.0016846921086849207,
       "source": "IQG17Q04",
       "target": "IQG14Q04"
     },
     {
-      "weight": 0.002520882646328625,
+      "weight": 0.0025208826463286264,
       "source": "IQG17Q04",
       "target": "IQG17Q01"
     },
     {
-      "weight": 0.009405190736907069,
+      "weight": 0.009405190736907073,
       "source": "IQG17Q04",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.019247438090294,
+      "weight": 0.01924743809029401,
       "source": "IQG17Q04",
       "target": "IQG17Q03"
     },
     {
-      "weight": 0.0303316128981215,
+      "weight": 0.030331612898121512,
       "source": "IQG17Q04",
       "target": "IQG17Q05"
     },
@@ -33873,22 +33876,22 @@
       "target": "IQG17Q05"
     },
     {
-      "weight": 0.00559554775406751,
+      "weight": 0.005595547754067512,
       "source": "IQG17Q05",
       "target": "IQG02Q06"
     },
     {
-      "weight": 0.00700900201169402,
+      "weight": 0.007009002011694025,
       "source": "IQG17Q05",
       "target": "IQG03Q03"
     },
     {
-      "weight": 0.01828460408147132,
+      "weight": 0.018284604081471333,
       "source": "IQG17Q05",
       "target": "IQG17Q01"
     },
     {
-      "weight": 0.0303316128981215,
+      "weight": 0.030331612898121512,
       "source": "IQG17Q05",
       "target": "IQG17Q04"
     },
@@ -33898,17 +33901,17 @@
       "target": "IQG18Q01"
     },
     {
-      "weight": 0.00966958587776016,
+      "weight": 0.009669585877760165,
       "source": "IQG18Q01",
       "target": "IQG17Q02"
     },
     {
-      "weight": 0.00988032365025363,
+      "weight": 0.009880323650253634,
       "source": "IQG18Q01",
       "target": "IQG18Q02"
     },
     {
-      "weight": 0.002182833475644673,
+      "weight": 0.0021828334756446733,
       "source": "IQG18Q01",
       "target": "IQG18Q03"
     },
@@ -33918,37 +33921,37 @@
       "target": "IQG18Q02"
     },
     {
-      "weight": 0.0035179884565891386,
+      "weight": 0.003517988456589141,
       "source": "IQG18Q02",
       "target": "IQG14Q01"
     },
     {
-      "weight": 0.006349728904659784,
+      "weight": 0.006349728904659786,
       "source": "IQG18Q02",
       "target": "IQG14Q02"
     },
     {
-      "weight": 0.001575983218479658,
+      "weight": 0.0015759832184796586,
       "source": "IQG18Q02",
       "target": "IQG14Q03"
     },
     {
-      "weight": 0.00988032365025363,
+      "weight": 0.009880323650253634,
       "source": "IQG18Q02",
       "target": "IQG18Q01"
     },
     {
-      "weight": 0.024132589042761672,
+      "weight": 0.024132589042761686,
       "source": "IQG18Q02",
       "target": "IQG18Q03"
     },
     {
-      "weight": 0.002071535724186271,
+      "weight": 0.002071535724186272,
       "source": "IQG18Q02",
       "target": "IQG18Q04"
     },
     {
-      "weight": 0.0112268807346663,
+      "weight": 0.011226880734666305,
       "source": "IQG18Q02",
       "target": "IQG18Q05"
     },
@@ -33963,22 +33966,22 @@
       "target": "IQG05Q01"
     },
     {
-      "weight": 0.003354461077174673,
+      "weight": 0.0033544610771746738,
       "source": "IQG18Q03",
       "target": "IQG07Q01"
     },
     {
-      "weight": 0.002182833475644673,
+      "weight": 0.0021828334756446733,
       "source": "IQG18Q03",
       "target": "IQG18Q01"
     },
     {
-      "weight": 0.024132589042761672,
+      "weight": 0.024132589042761686,
       "source": "IQG18Q03",
       "target": "IQG18Q02"
     },
     {
-      "weight": 0.006533598638960564,
+      "weight": 0.0065335986389605675,
       "source": "IQG18Q03",
       "target": "IQG18Q04"
     },
@@ -33988,52 +33991,52 @@
       "target": "IQG18Q04"
     },
     {
-      "weight": 0.000685339994996809,
+      "weight": 0.0006853399949968093,
       "source": "IQG18Q04",
       "target": "IQG07Q01"
     },
     {
-      "weight": 0.002137228057365649,
+      "weight": 0.0021372280573656493,
       "source": "IQG18Q04",
       "target": "IQG07Q03"
     },
     {
-      "weight": 0.0013009173049813349,
+      "weight": 0.001300917304981335,
       "source": "IQG18Q04",
       "target": "IQG07Q04"
     },
     {
-      "weight": 0.0015572690222795179,
+      "weight": 0.0015572690222795187,
       "source": "IQG18Q04",
       "target": "IQG08Q03"
     },
     {
-      "weight": 0.007219245803044923,
+      "weight": 0.0072192458030449266,
       "source": "IQG18Q04",
       "target": "IQG08Q04"
     },
     {
-      "weight": 0.0013337393528344605,
+      "weight": 0.0013337393528344607,
       "source": "IQG18Q04",
       "target": "IQG08Q05"
     },
     {
-      "weight": 0.00019078789816652863,
+      "weight": 0.00019078789816652871,
       "source": "IQG18Q04",
       "target": "IQG10Q03"
     },
     {
-      "weight": 0.002071535724186271,
+      "weight": 0.002071535724186272,
       "source": "IQG18Q04",
       "target": "IQG18Q02"
     },
     {
-      "weight": 0.006533598638960564,
+      "weight": 0.0065335986389605675,
       "source": "IQG18Q04",
       "target": "IQG18Q03"
     },
     {
-      "weight": 0.00133764248982425,
+      "weight": 0.0013376424898242506,
       "source": "IQG18Q04",
       "target": "IQG18Q05"
     },
@@ -34043,17 +34046,17 @@
       "target": "IQG18Q05"
     },
     {
-      "weight": 0.002169544067088211,
+      "weight": 0.0021695440670882115,
       "source": "IQG18Q05",
       "target": "IQG10Q03"
     },
     {
-      "weight": 0.0112268807346663,
+      "weight": 0.011226880734666305,
       "source": "IQG18Q05",
       "target": "IQG18Q02"
     },
     {
-      "weight": 0.00133764248982425,
+      "weight": 0.0013376424898242506,
       "source": "IQG18Q05",
       "target": "IQG18Q04"
     }
