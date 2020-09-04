@@ -29,7 +29,7 @@ vulnerability:
       # Country name:
       Sudan:
     replace_dict_boundaries:
-      North_Kordofan:
+      North Kordofan:
         - Ar Rahad
         - Ar Rahad (1)
   solid_fuels:
