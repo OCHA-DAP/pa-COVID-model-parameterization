@@ -25,20 +25,26 @@ vulnerability:
     replace_dict:
       # Admin 2
       Kabeya-kamwanga: Kabeya-Kamwanga
+      Kasongo-lunda: Kasongo-Lunda
       Katako-kombe: Katako-Kombe
       Malemba-nkulu: Malemba-Nkulu
       Mobayi-mbongo: Mobayi-Mbongo
       # Admin 1
       Bas Uélé: Bas-Uele
       Haut Uélé: Haut-Uele
+      Haut-katanga: Haut-Katanga
+      Haut-lomami: Haut-Lomami
       Kasai: Kasaï
       Kasai Central: Kasaï-Central
       Kasai Oriental: Kasaï-Oriental
       Kongo Central: Kongo-Central
+      Maï-ndombe: Maï-Ndombe
+      Nord-kivu: Nord-Kivu
       Nord Ubangi: Nord-Ubangi
+      Sud-kivu: Sud-Kivu
       Sud Ubangi: Sud-Ubangi
       # Country name:
-      Congo, DRC:
+      Congo, Drc:
   solid_fuels:
     # from https://www.who.int/nmh/countries/2018/cod_en.pdf?ua=1
     frac_urban: 0.95

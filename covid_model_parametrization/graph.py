@@ -92,7 +92,7 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
     # Project to pseudo mercator to get meter units: https://epsg.io/3857
     exposure["population_density"] = np.round(exposure["population"] / exposure[
         "geometry"
-    ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6), 9)
+    ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6), 8)
     # Only keep necessary columns
     columns = [
         "ADM2_{}".format(parameters["language"]),
