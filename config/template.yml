@@ -10,9 +10,6 @@ admin:
   language: ~
 # Settings for the mobility matrix
 mobility:
-  roads:
-    # Find the country HOTOSM roads geopackage file on HDX, right click on download and copy the link here
-    url: ~
   scaling_factor:
     # Household size from
     # https://population.un.org/Household/index.html#/countries/

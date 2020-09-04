@@ -3,8 +3,6 @@ admin:
   directory: sdn_admbnda_adm2_cbs_nic_ssa_20200317
   language: EN
 mobility:
-  roads:
-    url: http://export.hotosm.org/downloads/eed0994f-1965-4492-9803-c10139fdd9e3/hotosm_sdn_roads_gpkg.zip
   scaling_factor:
     household_size: 5.6
     motor_vehicle_fraction: 0.031
