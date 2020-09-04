@@ -37,7 +37,7 @@ setup_graphs_no_download:
 	for iso3 in ${country_list} ; do \
 		python Generate_SADD_exposure_from_tiff.py $$iso3 ; \
 		python Generate_vulnerability_file.py $$iso3 ; \
-		python Generate_mobility_matrix.py $$iso3 ; \
+		python Generate_mobility_matrix.py -c -d $$iso3 ; \
 		python Generate_graph.py $$iso3 ; \
 		python Check_output_quality.py $$iso3 ; \
 	done
