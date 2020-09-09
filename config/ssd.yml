@@ -54,7 +54,8 @@ covid:
   admin_level: 2
   federal_state_dict: False
   adm2_name_exp: ADM2_EN
-  date_format: "%Y-%m-%d"
+  #date_format: "%Y-%m-%d"
+  date_format: "%d-%b-%y"
   replace_dict:
     JUba: Juba
     juba: Juba
