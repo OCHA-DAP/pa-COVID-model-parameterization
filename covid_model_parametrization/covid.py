@@ -158,8 +158,10 @@ def covid(country_iso3, download_covid=False, config=None):
         )
         if df_covid[config.HLX_TAG_ADM2_PCODE].isnull().sum() > 0:
             logger.warning(
-                "missing PCODE for the following admin units ",
-                df_covid[df_covid[config.HLX_TAG_ADM2_PCODE].isnull()],
+                "missing PCODE for the following admin units "
+            )
+            logger.warning(
+                df_covid[df_covid[config.HLX_TAG_ADM2_PCODE].isnull()][config.HLX_TAG_ADM2_NAME].values
             )
             # print(df_covid)
             return
@@ -217,9 +219,7 @@ def covid(country_iso3, download_covid=False, config=None):
         if df_covid[config.HLX_TAG_ADM1_PCODE].isnull().sum() > 0:
             logger.warning("missing PCODE for the following admin units :")
             logger.warning(
-                df_covid[df_covid[config.HLX_TAG_ADM1_PCODE].isnull()][
-                    [config.HLX_TAG_ADM1_NAME, config.HLX_TAG_DATE]
-                ]
+                df_covid[df_covid[config.HLX_TAG_ADM1_PCODE].isnull()][config.HLX_TAG_ADM1_NAME].values
             )
         # get the full list of gender/age combinations to calculate the sum of population in adm2_pop_fractions
         # in principle we could use the sum in the exposure but it's safer to recalculate it
