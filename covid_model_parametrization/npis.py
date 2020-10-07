@@ -178,6 +178,7 @@ def add_new_acaps_data(config, country_iso3, df_country, parameters):
             df_country.loc[:, col] = None
     # Write out
     for col in ['start_date', 'end_date']:
+        df_country[col] = pd.to_datetime(df_country[col])
         df_country.loc[:, col] = df_country[col].dt.date
     filename = os.path.join(output_dir, config.NPI_INTERMEDIATE_OUTPUT_FILENAME.format(country_iso3))
     logger.info(f'Writing to {filename}')
