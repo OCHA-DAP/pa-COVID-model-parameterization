@@ -78,16 +78,16 @@ def get_df_acaps(config, country_iso3):
     df_acaps =  pd.read_excel(os.path.join(config.INPUT_DIR,
                                            config.ACAPS_DIR,
                                            config.ACAPS_FILENAME),
-                              sheet_name='Database')
+                              sheet_name='Dataset')
     # Take only the country of concern
-    df_acaps = df_acaps[df_acaps['ISO'] == country_iso3]
+    df_acaps = df_acaps[df_acaps['_ISO'] == country_iso3]
     # rename columns
     column_name_dict = {
         'ID': 'ID',
-        'ISO': 'ISO3',
+        '_ISO': 'ISO3',
         'LOG_TYPE': 'add_or_remove',
         'CATEGORY': 'acaps_category',
-        'MEASURE': 'acaps_measure',
+        '_MEASURE': 'acaps_measure',
         'COMMENTS': 'acaps_comments',
         'DATE_IMPLEMENTED': 'start_date',
         'SOURCE': 'source',
