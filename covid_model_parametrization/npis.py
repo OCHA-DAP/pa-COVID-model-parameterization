@@ -155,7 +155,7 @@ def add_new_acaps_data(config, country_iso3, df_country, parameters):
         'bucky_measure',
         'start_date'
     ]
-    if 'NPIs' in parameters:
+    if 0:
         df_manual = get_triaged_csv(config, parameters, country_iso3)
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
