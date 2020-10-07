@@ -111,7 +111,8 @@ def get_df_acaps(config, country_iso3):
     df_acaps = df_acaps[df_acaps['bucky_measure'].notnull()]
     df_acaps['bucky_category'] = df_acaps['bucky_measure'].map(get_measures_category_dictionary(config))
     # Keep only some columns, moving start date to end
-    cnames_to_keep = list(column_name_dict.values()) + ['bucky_measure', 'bucky_category']
+    # cnames_to_keep = list(column_name_dict.values()) + ['bucky_measure', 'bucky_category']
+    cnames_to_keep = list(column_name_dict.values()) + ['bucky_measure']
     cnames_to_keep.append(cnames_to_keep.pop(cnames_to_keep.index('start_date')))
     df_acaps = df_acaps[cnames_to_keep]
     return df_acaps
