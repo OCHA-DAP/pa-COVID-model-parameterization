@@ -80,14 +80,14 @@ def get_df_acaps(config, country_iso3):
                                            config.ACAPS_FILENAME),
                               sheet_name='Dataset')
     # Take only the country of concern
-    df_acaps = df_acaps[df_acaps['_ISO'] == country_iso3]
+    df_acaps = df_acaps[df_acaps['ISO'] == country_iso3]
     # rename columns
     column_name_dict = {
         'ID': 'ID',
-        '_ISO': 'ISO3',
+        'ISO': 'ISO3',
         'LOG_TYPE': 'add_or_remove',
         'CATEGORY': 'acaps_category',
-        '_MEASURE': 'acaps_measure',
+        'MEASURE': 'acaps_measure',
         'COMMENTS': 'acaps_comments',
         'DATE_IMPLEMENTED': 'start_date',
         'SOURCE': 'source',
@@ -155,7 +155,7 @@ def add_new_acaps_data(config, country_iso3, df_country, parameters):
         'bucky_measure',
         'start_date'
     ]
-    if 0:
+    if 'NPIs' in parameters:
         df_manual = get_triaged_csv(config, parameters, country_iso3)
         # Fix the columns that are lists
         for col in ['affected_pcodes']:
