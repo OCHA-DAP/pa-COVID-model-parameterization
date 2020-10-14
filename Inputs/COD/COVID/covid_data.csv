@@ -1,5 +1,26 @@
 Date,Province,Number of heatlh structures,Affected,Confirmed Cases,Probable cases,Source
 #date,#admin1+name,,#affected+total,#affected+positive+total,#probable+total,#source+url
+2020-10-07,Equateur,18,2,15,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Haut-Katanga,27,13,334,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Haut-Lomami,16,1,1,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Haut-Uélé,13,2,86,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Ituri,36,9,157,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Kasaï,18,1,1,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Kasaï-Central,26,1,3,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Kasaï-Oriental,19,1,3,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Kinshasa,35,34,8188,1,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Kongo-Central,31,20,518,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Kwango,14,1,1,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Kwilu,24,4,6,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Lualaba,14,7,120,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Maniema,18,1,2,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Nord-Kivu,34,18,983,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Nord-Ubangi,11,3,33,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Sud-Kivu,34,13,307,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Sud-Ubangi,16,1,6,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Tanganyika,11,1,6,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Tshopo,23,5,50,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
+2020-10-07,Tshuapa,12,1,1,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_251_20201007.pdf
 2020-09-25,Equateur,18,2,15,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_239_20200925.pdf
 2020-09-25,Haut-Katanga,27,13,329,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_239_20200925.pdf
 2020-09-25,Haut-Lomami,16,1,1,0,https://fscluster.org/sites/default/files/documents/bulletin_epid_covid-19_n_239_20200925.pdf
