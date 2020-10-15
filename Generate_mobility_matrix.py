@@ -1,9 +1,11 @@
 import argparse
+import logging
 
 from covid_model_parametrization.utils import utils
 from covid_model_parametrization import mobility
 
 utils.config_logger()
+logger = logging.getLogger(__name__)
 
 
 def parse_args():
@@ -19,6 +21,12 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    mobility.mobility(country_iso3=args.country_iso3.upper(),
-                      read_in_crossings=args.crossings,
-                      read_in_distances=args.distances)
+    try:
+        mobility.mobility(country_iso3=args.country_iso3.upper(),
+                          read_in_crossings=args.crossings,
+                          read_in_distances=args.distances)
+    except:
+        logger.error(
+            f"Cannot generate mobility matrix, check log for details"
+        )
+
