@@ -1,10 +1,11 @@
 import argparse
+import logging
 
 from covid_model_parametrization import npis
 from covid_model_parametrization.utils import utils
 
 utils.config_logger()
-
+logger = logging.getLogger(__name__)
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -20,5 +21,10 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    npis.npis(args.country_iso3.upper(), args.update_npi_list, args.create_final_list,
+    try:
+        npis.npis(args.country_iso3.upper(), args.update_npi_list, args.create_final_list,
               download_acaps_arg=args.download_acaps)
+    except:
+        logger.error(
+            f"Cannot generate NPI file, check log for details"
+        )
