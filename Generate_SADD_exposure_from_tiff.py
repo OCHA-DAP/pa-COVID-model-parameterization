@@ -24,4 +24,9 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    exposure(args.country_iso3.upper(), download_worldpop=args.download)
+    try:
+        exposure(args.country_iso3.upper(), download_worldpop=args.download)
+    except:
+        logger.error(
+            f"Cannot generate SADD exposure, check log for details"
+        )
