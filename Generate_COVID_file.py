@@ -21,4 +21,9 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    covid(args.country_iso3.upper(), download_covid=args.download_covid)
+    try:
+        covid(args.country_iso3.upper(), download_covid=args.download_covid)
+    except:
+        logger.error(
+            f"Cannot generate COVID file, check log for details"
+        )

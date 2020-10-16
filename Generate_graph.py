@@ -17,4 +17,10 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    graph(args.country_iso3.upper())
+    try:
+        graph(args.country_iso3.upper())
+    except:
+        logger.error(
+            f"Cannot generate graph file, check log for details"
+        )
+
