@@ -33,7 +33,7 @@ def check_graph(config, parameters, country_iso3, main_dir):
 
 def read_in_graph(config, country_iso3, main_dir):
     filepath = os.path.join(main_dir, config.GRAPH_OUTPUT_DIR,
-                            config.GRAPH_OUTPUT_FILE.format(country_iso3))
+                            config.GRAPH_OUTPUT_FILE_JSON.format(country_iso3))
     with open(filepath, 'r') as read_file:
         data = json.load(read_file)
     return nx.readwrite.json_graph.node_link_graph(data)
@@ -83,21 +83,21 @@ def check_graph_nodes(G):
                 assert node[fraction] <= 1
                 assert node[fraction] >= 0
             except AssertionError:
-                logger.error(f'{node["name"]}: Not between 0 and 1: {fraction}: {node[fraction]}')
+                logger.error(f'{node["adm2_name"]}: Not between 0 and 1: {fraction}: {node[fraction]}')
         # Check that infected and dead are increasing (warning only)
         for quantity in ['infected_confirmed', 'infected_dead']:
             try:
                 assert utils.non_decreasing(node[quantity])
             except AssertionError:
-                logger.warning(f'{node["name"]}: Non-increasing: {quantity}')
+                logger.warning(f'{node["adm2_name"]}: Non-increasing: {quantity}')
             except KeyError:
-                logger.warning(f'{node["name"]}: Missing quantity: {quantity}')
+                logger.warning(f'{node["adm2_name"]}: Missing quantity: {quantity}')
         # Check that the populations add up
-        sum_disag = sum(node['group_pop_f']) + sum(node['group_pop_m'])
+        sum_disag = sum(node['N_age_init'])
         try:
             assert  math.isclose(sum_disag, node['population'])
         except AssertionError:
-            logger.error(f'{node["name"]}: Disaggregated pop inconsistent with total pop: '
+            logger.error(f'{node["adm2_name"]}: Disaggregated pop inconsistent with total pop: '
                          f'{sum_disag}, {node["population"]}')
 
 
@@ -117,7 +117,7 @@ def check_graph_metadata(G, country_iso3):
         logger.error(f'Age groups are not strictly increasing: {age_groups}')
     # Contact matrix should have reasonable dimensions
     expected_shape = (len(age_groups), len(age_groups))
-    for contact_matrix_name, contact_matrix in metadata['contact_matrix'].items():
+    for contact_matrix_name, contact_matrix in metadata['contact_mats'].items():
         contact_matrix = np.array(contact_matrix)
         try:
             assert contact_matrix.shape == expected_shape
