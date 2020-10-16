@@ -7,6 +7,8 @@ import pandas as pd
 import geopandas as gpd
 import networkx as nx
 import numpy as np
+import fiona
+import re
 
 from covid_model_parametrization.config import Config
 from covid_model_parametrization.utils.who import get_WHO_data
@@ -24,6 +26,7 @@ def graph(country_iso3, config=None):
 
     logger.info(f"Creating graph for {country_iso3}")
     main_dir = os.path.join(config.MAIN_OUTPUT_DIR, country_iso3)
+    print(config.INPUT_DIR)
 
     # Initialize graph with mobility edges
     mobility_csv = os.path.join(main_dir,
@@ -47,6 +50,16 @@ def graph(country_iso3, config=None):
     # Add contact matrix
     add_contact_matrix(G, parameters["contact_matrix"], config)
 
+    input_shp = os.path.join(
+        config.INPUT_DIR,
+        country_iso3,
+        config.SHAPEFILE_DIR,
+        parameters["admin"]["directory"],
+        f'{parameters["admin"]["directory"]}.shp',
+    )
+    # Add general attributes
+    G=add_general_attributes(G, country_iso3,input_shp)
+
     # Write out
     data = nx.readwrite.json_graph.node_link_data(G)
     outdir = os.path.join(main_dir, config.GRAPH_OUTPUT_DIR)
@@ -54,10 +67,65 @@ def graph(country_iso3, config=None):
     outfile = os.path.join(
         main_dir, config.GRAPH_OUTPUT_DIR, config.GRAPH_OUTPUT_FILE.format(country_iso3)
     )
+
     with open(outfile, "w") as f:
         json.dump(data, f, indent=2)
     logger.info(f"Wrote out to {outfile}")
 
+def add_general_attributes(G,country_iso3,shape_path):
+    G.graph["country"] = country_iso3
+    G.graph['adm0_name'] = country_iso3
+    # cm = G.graph['contact_matrix']
+    # contact_matrix = np.array(cm)
+    # G.graph['contact_mats'] = cm
+    start_date = G.graph['dates'][-1]
+    G.graph['start_date'] = start_date
+    G.graph['adm1_key'] = 'adm1_int'
+    G.graph['adm2_key'] = 'adm2_int'
+    G.graph['adm2_name'] = 'adm2_name'
+
+    shape = fiona.open(shape_path)
+    adm1_to_str = {}
+    for obj in shape:
+        #remove the letters from the pcode
+        pcode=re.findall(r'\d+', str(obj['properties']['ADM1_PCODE']))[0]
+        # print(pcode)
+        name = obj['properties'].get('ADM1_EN', 'ADM1_FR').lower()
+        adm1_to_str[pcode] = name
+    G.graph['adm1_to_str'] = adm1_to_str
+
+    num_dates = len(G.graph['dates'])
+    from collections import defaultdict
+    # replace missing counts with a list of zeros
+    added = defaultdict(int)
+    # update node attributes
+    for n in G.nodes.values():
+        if 'case_hist' not in n:
+            n['case_hist'] = [0] * num_dates
+            added['case_hist'] += 1
+        if 'death_hist' not in n:
+            n['death_hist'] = [0] * num_dates
+            added['death_hist'] += 1
+        # n['N_age_init'] = n['group_pop_f'] + n['group_pop_m']  # np.array(n['group_pop_f']) + np.array(n['group_pop_m'])
+        # n['case_hist'] = n['infected_confirmed']  # np.array(n['infected_confirmed'])
+        # n['death_hist'] = n['infected_dead']  # np.array(n['infected_dead'])
+        # n['adm1_int'] = re.findall(r'\d+', n['ADM1_PCODE'])[0] #n['ADM1_PCODE'][2:]
+        # n['adm2_int'] = re.findall(r'\d+', n['ADM2_PCODE'])[0] #n['ADM2_PCODE'][2:]
+        # n['adm2_name'] = n['name']
+        # del n['group_pop_f']
+        # del n['group_pop_m']
+        # del n['infected_confirmed']
+        # del n['infected_dead']
+
+    if any(added.values()):
+        print(f"added missing values to graph ({len(graph['nodes'])} total nodes):")
+        for key, value in added.items():
+            print(f"{key}: {value}")
+
+
+    # already stored as "ADM2_PCODE"
+    G = nx.convert_node_labels_to_integers(G)
+    return G
 
 def initialize_with_mobility(filename):
     logger.info(f"Reading in mobility from {filename}")
@@ -74,6 +142,7 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
     )
     logger.info(f"Reading in exposure from {filename}")
     exposure = gpd.read_file(filename)
+    print(exposure)
     # Turn disag pop columns into lists
     for gender in ["f", "m"]:
         # to match contact matrix, combine gender_0 with gender_1 and gender_75 with gender_80
@@ -82,6 +151,7 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
         exposure.drop([f"{gender}_1", f"{gender}_80"], axis=1, inplace=True)
 
         columns = [c for c in exposure.columns if f"{gender}_" in c]
+        # print(exposure[columns].values.tolist())
         exposure[f"group_pop_{gender}"] = exposure[columns].values.tolist()
         # Get the age groups
         age_groups = [s.split("_")[-1] for s in columns]
@@ -93,20 +163,32 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
     exposure["population_density"] = np.round(exposure["population"] / exposure[
         "geometry"
     ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6), 8)
+    exposure['N_age_init'] = exposure['group_pop_f'] + exposure['group_pop_m']  # np.array(n['group_pop_f']) + np.array(n['group_pop_m'])
+    # n['case_hist'] = n['infected_confirmed']  # np.array(n['infected_confirmed'])
+    # n['death_hist'] = n['infected_dead']  # np.array(n['infected_dead'])
+    # print(exposure['ADM1_PCODE'])
+    exposure['adm1_int'] = exposure['ADM1_PCODE'].str.extract('(\d+)')# re.findall(r'\d+', exposure['ADM1_PCODE'])[0]  # n['ADM1_PCODE'][2:]
+    exposure['adm2_int'] = exposure['ADM2_PCODE'].str.extract('(\d+)')# re.findall(r'\d+', exposure['ADM2_PCODE'])[0]  # n['ADM2_PCODE'][2:]
+    # exposure['adm2_name'] = exposure['name']
+    # print(exposure['adm1_int'])
     # Only keep necessary columns
     columns = [
         "ADM2_{}".format(parameters["language"]),
         "ADM1_PCODE",
         "ADM2_PCODE",
-        "group_pop_f",
-        "group_pop_m",
+        # "group_pop_f",
+        # "group_pop_m",
         "population",
         "population_density",
+        "N_age_init",
+        "adm1_int",
+        "adm2_int",
+        # "adm2_name"
     ]
     exposure = exposure[columns]
     # Rename some
     rename_dict = {
-        "ADM2_{}".format(parameters["language"]): "name",
+        "ADM2_{}".format(parameters["language"]): "adm2_name",
     }
     exposure = exposure.rename(columns=rename_dict)
 
@@ -125,6 +207,8 @@ def add_covid(G, main_dir, country_iso3, config):
     logger.info(f"Reading in COVID cases from {filename}")
     covid = pd.read_csv(filename)
     date_range = pd.date_range(covid["#date"].min(), covid["#date"].max())
+    #mapping of covid column names to the key values bucky requires as input requirements for historical numbers
+    bucky_dict={"confirmed":"case", "dead":"death"}
     for cname in ["confirmed", "dead"]:
         # Do some pivoting
         covid_out = covid.pivot(
@@ -143,7 +227,7 @@ def add_covid(G, main_dir, country_iso3, config):
         G.graph["dates"] = list(covid_out.index.astype(str))
         for admin2 in covid_out.columns:
             G.add_node(
-                admin2, **{f"infected_{cname}": covid_out[admin2].values.tolist()}
+                admin2, **{f"{bucky_dict[cname]}_hist": covid_out[admin2].values.tolist()}
             )
     return G
 
@@ -212,7 +296,7 @@ def add_vulnerability(G, main_dir, country_iso3, config):
 
 
 def add_contact_matrix(G, parameters, config):
-    G.graph["contact_matrix"] = {}
+    G.graph["contact_mats"] = {}
     logger.info(f'Reading in contact matrices for {parameters["country"]}')
     for contact_matrix_type in config.CONTACT_MATRIX_TYPES:
         filename = os.path.join(
@@ -235,9 +319,9 @@ def add_contact_matrix(G, parameters, config):
             names=column_names,
         )
         # Add as metadata
-        G.graph["contact_matrix"][contact_matrix_type] = contact_matrix.values.tolist()
+        G.graph["contact_mats"][contact_matrix_type] = contact_matrix.values.tolist()
     # Add elderly shielding contact matrix
     # TODO: populate these values
     elderly_shielding_matrix = np.zeros((CONTACT_MATRIX_SIZE, CONTACT_MATRIX_SIZE))
-    G.graph["contact_matrix"]["elderly_shielding"] = elderly_shielding_matrix.tolist()
+    G.graph["contact_mats"]["elderly_shielding"] = elderly_shielding_matrix.tolist()
     return G
