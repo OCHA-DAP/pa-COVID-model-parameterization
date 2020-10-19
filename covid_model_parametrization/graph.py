@@ -85,41 +85,6 @@ def initialize_with_mobility(filename):
     G = nx.from_pandas_adjacency(mobility, nx.DiGraph)
     return G
 
-def add_general_attributes(G, country_iso3, shape_path):
-    # update graph attributes to be compatible with Bucky model
-    start_date = G.graph['dates'][-1]
-    G.graph['start_date'] = start_date
-    G.graph['adm1_key'] = 'adm1_int'
-    G.graph['adm2_key'] = 'adm2_int'
-    G.graph['adm0_name'] = country_iso3
-    G.graph['adm2_name'] = 'adm2_name'
-
-    shape = fiona.open(shape_path)
-    adm1_to_str = {}
-    for obj in shape:
-        #remove the letters from the pcode
-        pcode=re.findall(r'\d+', str(obj['properties']['ADM1_PCODE']))[0]
-        name = obj['properties'].get('ADM1_EN', 'ADM1_FR').lower()
-        adm1_to_str[pcode] = name
-    G.graph['adm1_to_str'] = adm1_to_str
-
-    num_dates = len(G.graph['dates'])
-    # update node attributes
-    for n in G.nodes.values():
-        if 'case_hist' not in n:
-            n['case_hist'] = [0] * num_dates
-        if 'death_hist' not in n:
-            n['death_hist'] = [0] * num_dates
-        n['N_age_init'] = [x + y for x, y in zip(n['group_pop_f'], n['group_pop_m'])]
-        n['adm1_int'] = re.findall(r'\d+', n['ADM1_PCODE'])[0]
-        n['adm2_int'] = re.findall(r'\d+', n['ADM2_PCODE'])[0]
-        del n['group_pop_f']
-        del n['group_pop_m']
-
-    # already stored as "ADM2_PCODE"
-    G = nx.convert_node_labels_to_integers(G)
-    return G
-
 def add_exposure(G, main_dir, country_iso3, parameters, config):
     # Read in exposure file
     filename = os.path.join(
@@ -299,4 +264,39 @@ def add_contact_matrix(G, parameters, config):
     # TODO: populate these values
     elderly_shielding_matrix = np.zeros((CONTACT_MATRIX_SIZE, CONTACT_MATRIX_SIZE))
     G.graph["contact_mats"]["elderly_shielding"] = elderly_shielding_matrix.tolist()
+    return G
+
+def add_general_attributes(G, country_iso3, shape_path):
+    # update graph attributes to be compatible with Bucky model
+    start_date = G.graph['dates'][-1]
+    G.graph['start_date'] = start_date
+    G.graph['adm1_key'] = 'adm1_int'
+    G.graph['adm2_key'] = 'adm2_int'
+    G.graph['adm0_name'] = country_iso3
+    G.graph['adm2_name'] = 'adm2_name'
+
+    shape = fiona.open(shape_path)
+    adm1_to_str = {}
+    for obj in shape:
+        #remove the letters from the pcode
+        pcode=re.findall(r'\d+', str(obj['properties']['ADM1_PCODE']))[0]
+        name = obj['properties'].get('ADM1_EN', 'ADM1_FR').lower()
+        adm1_to_str[pcode] = name
+    G.graph['adm1_to_str'] = adm1_to_str
+
+    num_dates = len(G.graph['dates'])
+    # update node attributes
+    for n in G.nodes.values():
+        if 'case_hist' not in n:
+            n['case_hist'] = [0] * num_dates
+        if 'death_hist' not in n:
+            n['death_hist'] = [0] * num_dates
+        n['N_age_init'] = [x + y for x, y in zip(n['group_pop_f'], n['group_pop_m'])]
+        n['adm1_int'] = re.findall(r'\d+', n['ADM1_PCODE'])[0]
+        n['adm2_int'] = re.findall(r'\d+', n['ADM2_PCODE'])[0]
+        del n['group_pop_f']
+        del n['group_pop_m']
+
+    # already stored as "ADM2_PCODE"
+    G = nx.convert_node_labels_to_integers(G)
     return G
