@@ -122,6 +122,7 @@ class Config:
 
     ####################### Graph section
 
+    GRAPH_OUTPUT_FILE = "{}_graph.json"
     GRAPH_OUTPUT_FILE_JSON = "{}_graph.json"
     GRAPH_OUTPUT_FILE_PICKLE = "{}_graph.p"
 
