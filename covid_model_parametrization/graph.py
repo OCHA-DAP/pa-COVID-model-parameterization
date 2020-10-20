@@ -7,6 +7,9 @@ import pandas as pd
 import geopandas as gpd
 import networkx as nx
 import numpy as np
+import fiona
+import re
+import pickle
 
 from covid_model_parametrization.config import Config
 from covid_model_parametrization.utils.who import get_WHO_data
@@ -47,17 +50,33 @@ def graph(country_iso3, config=None):
     # Add contact matrix
     add_contact_matrix(G, parameters["contact_matrix"], config)
 
+    input_shp = os.path.join(
+        config.INPUT_DIR,
+        country_iso3,
+        config.SHAPEFILE_DIR,
+        parameters["admin"]["directory"],
+        f'{parameters["admin"]["directory"]}.shp',
+    )
+    # Add general attributes to ensure compatibility with Bucky requirements
+    G=add_general_attributes(G, country_iso3,input_shp)
+
     # Write out
     data = nx.readwrite.json_graph.node_link_data(G)
     outdir = os.path.join(main_dir, config.GRAPH_OUTPUT_DIR)
     Path(outdir).mkdir(parents=True, exist_ok=True)
-    outfile = os.path.join(
-        main_dir, config.GRAPH_OUTPUT_DIR, config.GRAPH_OUTPUT_FILE.format(country_iso3)
+    outfile_json = os.path.join(
+        main_dir, config.GRAPH_OUTPUT_DIR, config.GRAPH_OUTPUT_FILE_JSON.format(country_iso3)
     )
-    with open(outfile, "w") as f:
-        json.dump(data, f, indent=2)
-    logger.info(f"Wrote out to {outfile}")
+    outfile_pickle = os.path.join(
+        main_dir, config.GRAPH_OUTPUT_DIR, config.GRAPH_OUTPUT_FILE_PICKLE.format(country_iso3)
+    )
 
+    with open(outfile_json, "w") as f:
+        json.dump(data, f, indent=2)
+    logger.info(f"Wrote out to {outfile_json}")
+
+    with open(outfile_pickle, 'wb') as f:
+        pickle.dump(G, f)
 
 def initialize_with_mobility(filename):
     logger.info(f"Reading in mobility from {filename}")
@@ -65,7 +84,6 @@ def initialize_with_mobility(filename):
     mobility.set_index("ADM", inplace=True)
     G = nx.from_pandas_adjacency(mobility, nx.DiGraph)
     return G
-
 
 def add_exposure(G, main_dir, country_iso3, parameters, config):
     # Read in exposure file
@@ -93,6 +111,8 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
     exposure["population_density"] = np.round(exposure["population"] / exposure[
         "geometry"
     ].to_crs(config.PSEUDO_MERCATOR_CRS).apply(lambda x: x.area / 10 ** 6), 8)
+    exposure['adm1_int'] = exposure['ADM1_PCODE'].str.extract('(\d+)')
+    exposure['adm2_int'] = exposure['ADM2_PCODE'].str.extract('(\d+)')
     # Only keep necessary columns
     columns = [
         "ADM2_{}".format(parameters["language"]),
@@ -102,11 +122,13 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
         "group_pop_m",
         "population",
         "population_density",
+        "adm1_int",
+        "adm2_int",
     ]
     exposure = exposure[columns]
     # Rename some
     rename_dict = {
-        "ADM2_{}".format(parameters["language"]): "name",
+        "ADM2_{}".format(parameters["language"]): "adm2_name",
     }
     exposure = exposure.rename(columns=rename_dict)
 
@@ -125,6 +147,8 @@ def add_covid(G, main_dir, country_iso3, config):
     logger.info(f"Reading in COVID cases from {filename}")
     covid = pd.read_csv(filename)
     date_range = pd.date_range(covid["#date"].min(), covid["#date"].max())
+    #mapping of covid column names to the key values bucky requires as input for historical numbers
+    bucky_dict={"confirmed":"case", "dead":"death"}
     for cname in ["confirmed", "dead"]:
         # Do some pivoting
         covid_out = covid.pivot(
@@ -143,7 +167,7 @@ def add_covid(G, main_dir, country_iso3, config):
         G.graph["dates"] = list(covid_out.index.astype(str))
         for admin2 in covid_out.columns:
             G.add_node(
-                admin2, **{f"infected_{cname}": covid_out[admin2].values.tolist()}
+                admin2, **{f"{bucky_dict[cname]}_hist": covid_out[admin2].values.tolist()}
             )
     return G
 
@@ -212,7 +236,7 @@ def add_vulnerability(G, main_dir, country_iso3, config):
 
 
 def add_contact_matrix(G, parameters, config):
-    G.graph["contact_matrix"] = {}
+    G.graph["contact_mats"] = {}
     logger.info(f'Reading in contact matrices for {parameters["country"]}')
     for contact_matrix_type in config.CONTACT_MATRIX_TYPES:
         filename = os.path.join(
@@ -235,9 +259,44 @@ def add_contact_matrix(G, parameters, config):
             names=column_names,
         )
         # Add as metadata
-        G.graph["contact_matrix"][contact_matrix_type] = contact_matrix.values.tolist()
+        G.graph["contact_mats"][contact_matrix_type] = contact_matrix.values.tolist()
     # Add elderly shielding contact matrix
     # TODO: populate these values
     elderly_shielding_matrix = np.zeros((CONTACT_MATRIX_SIZE, CONTACT_MATRIX_SIZE))
-    G.graph["contact_matrix"]["elderly_shielding"] = elderly_shielding_matrix.tolist()
+    G.graph["contact_mats"]["elderly_shielding"] = elderly_shielding_matrix.tolist()
+    return G
+
+def add_general_attributes(G, country_iso3, shape_path):
+    # update graph attributes to be compatible with Bucky model
+    start_date = G.graph['dates'][-1]
+    G.graph['start_date'] = start_date
+    G.graph['adm1_key'] = 'adm1_int'
+    G.graph['adm2_key'] = 'adm2_int'
+    G.graph['adm0_name'] = country_iso3
+    G.graph['adm2_name'] = 'adm2_name'
+
+    shape = fiona.open(shape_path)
+    adm1_to_str = {}
+    for obj in shape:
+        #remove the letters from the pcode
+        pcode=re.findall(r'\d+', str(obj['properties']['ADM1_PCODE']))[0]
+        name = obj['properties'].get('ADM1_EN', 'ADM1_FR').lower()
+        adm1_to_str[pcode] = name
+    G.graph['adm1_to_str'] = adm1_to_str
+
+    num_dates = len(G.graph['dates'])
+    # update node attributes
+    for n in G.nodes.values():
+        if 'case_hist' not in n:
+            n['case_hist'] = [0] * num_dates
+        if 'death_hist' not in n:
+            n['death_hist'] = [0] * num_dates
+        n['N_age_init'] = [x + y for x, y in zip(n['group_pop_f'], n['group_pop_m'])]
+        n['adm1_int'] = re.findall(r'\d+', n['ADM1_PCODE'])[0]
+        n['adm2_int'] = re.findall(r'\d+', n['ADM2_PCODE'])[0]
+        del n['group_pop_f']
+        del n['group_pop_m']
+
+    # already stored as "ADM2_PCODE"
+    G = nx.convert_node_labels_to_integers(G)
     return G

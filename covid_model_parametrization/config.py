@@ -123,6 +123,8 @@ class Config:
     ####################### Graph section
 
     GRAPH_OUTPUT_FILE = "{}_graph.json"
+    GRAPH_OUTPUT_FILE_JSON = "{}_graph.json"
+    GRAPH_OUTPUT_FILE_PICKLE = "{}_graph.p"
 
     CONTACT_MATRIX_DIR = "contact_matrices_152_countries"
     CONTACT_MATRIX_FILENAME = "MUestimates_{contact_matrix_type}_{file_number}.xlsx"
