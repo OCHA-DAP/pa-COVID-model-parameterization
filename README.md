@@ -6,10 +6,17 @@
 
 ### Running for the first time
 
-1. Install all packages from `requirements.txt`:
+1. Install all packages from `requirements.txt`.
      ``` bash
      pip install -r requirements.txt
      ```
+   
+   If using Anaconda, set-up an environment and install the packages from `environment.yml`. 
+   ``` bash
+   conda env create --file environment.yml --name covid_param
+   conda activate covid_param
+     ```
+   
 2. Run `make setup` (downloads several large files, may take some time)
 
 ### Updating the NPI and graph output files
@@ -98,17 +105,17 @@ Make sure you have downloaded the country shapefile as described in the **Exposu
 
 To run for the first time, execute:
 ``` bash
-python Generate_mobility_matrix
+python Generate_mobility_matrix [Country ISO code]
 ```
 The script automatically caches the distances between regions, and the road intersection information.
 Since the shapefile should rarely be updated you can usually run using the cached distances by using the `-d` flag:
 ```bash
-python Generate_mobility_matrix -d
+python Generate_mobility_matrix [Country ISO code] -d
 ```
 HOTOSM occasionally refreshes the roads file, so it's good to update it every so often. However, 
 if you're in a hurry you can also run with the cached road intersections using the `-c` flag:
 ```bash
-python Generate_mobility_matrix -d -c
+python Generate_mobility_matrix [Country ISO code] -d -c
 ```
 
 ### COVID cases
