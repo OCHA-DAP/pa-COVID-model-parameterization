@@ -29,7 +29,7 @@ MEASURES_DICT = {
     'partial lockdown': 'r0_reduction',
     'awareness campaign': 'r0_reduction'
 }
-R0_REDUCTION_AMOUNTS = [0.0, 0.4, 0.2, 0.1, 0.05]
+R0_REDUCTION_AMOUNTS = [0.0, 0.4, 0.2, 0.1]
 MOBILITY_REDUCTION_AMOUNT = 0.6
 SCHOOL_REDUCTION_VALUES = {
        'home': 1.05,
