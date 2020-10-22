@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 CONTACT_MATRIX_SIZE = 16
 
 
-def graph(country_iso3, config=None):
+def graph(country_iso3, end_date, config=None):
 
     if config is None:
         config = Config()
@@ -39,10 +39,10 @@ def graph(country_iso3, config=None):
     G = add_exposure(G, main_dir, country_iso3, parameters["admin"], config)
 
     # Add COVID cases
-    G = add_covid(G, main_dir, country_iso3, config)
+    G = add_covid(G, main_dir, country_iso3, end_date, config)
 
     # Add WHO data
-    G = add_WHO_data(G, country_iso3, config)
+    G = add_WHO_data(G, country_iso3, end_date, config)
 
     # Add vulnerability
     G = add_vulnerability(G, main_dir, country_iso3, config)
@@ -139,14 +139,18 @@ def add_exposure(G, main_dir, country_iso3, parameters, config):
     return G
 
 
-def add_covid(G, main_dir, country_iso3, config):
+def add_covid(G, main_dir, country_iso3, end_date, config):
     # Read in COVID file
     filename = os.path.join(
         main_dir, config.COVID_OUTPUT_DIR, config.COVID_OUTPUT_CSV.format(country_iso3)
     )
     logger.info(f"Reading in COVID cases from {filename}")
     covid = pd.read_csv(filename)
-    date_range = pd.date_range(covid["#date"].min(), covid["#date"].max())
+    if end_date:
+        date_range = pd.date_range(covid["#date"].min(), pd.to_datetime(end_date))
+        covid=covid.loc[covid["#date"] <= end_date]
+    else:
+        date_range = pd.date_range(covid["#date"].min(), covid["#date"].max())
     #mapping of covid column names to the key values bucky requires as input for historical numbers
     bucky_dict={"confirmed":"case", "dead":"death"}
     for cname in ["confirmed", "dead"]:
@@ -172,7 +176,7 @@ def add_covid(G, main_dir, country_iso3, config):
     return G
 
 
-def add_WHO_data(G, country_iso3, config):
+def add_WHO_data(G, country_iso3, end_date, config):
     df_WHO = get_WHO_data(config, country_iso3, hxlize=True)
     # convert ot datetime
     df_WHO['#date'] = pd.to_datetime(df_WHO['#date']).dt.date
@@ -181,7 +185,12 @@ def add_WHO_data(G, country_iso3, config):
                      '#affected+infected+confirmed+total',
                      '#affected+infected+dead+total']]
     # Index by date and fill missing vals
-    date_range = pd.date_range(df_WHO["#date"].min(), df_WHO["#date"].max())
+    if end_date:
+        date_range = pd.date_range(df_WHO["#date"].min(), end_date)
+        df_WHO = df_WHO.loc[df_WHO["#date"] <= pd.to_datetime(end_date)]
+    else:
+        date_range = pd.date_range(df_WHO["#date"].min(), df_WHO["#date"].max())
+
     df_WHO.index = df_WHO['#date']
     df_WHO = df_WHO.drop('#date', axis=1)
     df_WHO.reindex(date_range)
