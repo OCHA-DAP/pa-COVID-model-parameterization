@@ -3,7 +3,7 @@
 The main output of this repository are an Input Graph and a NPI file, which can be used as input for the [COVID projection model](https://github.com/OCHA-DAP/pa-ocha-bucky/) which has been developed in partnership between UN OCHA and the Johns Hopkins University Applied Physics Laboratory (JHU/APL). 
 The parametrization has been tested for six countries, of which the required files will also be downloaded during the setup. These countries are Afghanistan, the Democratic Republic of Congo, Iraq, Somalia, Sudan and South Sudan. Simultaneously, we encourage users to add their own countries of interest with the given instructions. 
 
-The methodology and reasoning behind the parameterization implemented in this repository can be found [here].(https://docs.google.com/document/d/1Izusop2liq3bvcDEG3l-ttQnt0a-fw037fBId2Y6fRw/edit?usp=sharing)
+The methodology and reasoning behind the parameterization implemented in this repository can be found [here](https://docs.google.com/document/d/1Izusop2liq3bvcDEG3l-ttQnt0a-fw037fBId2Y6fRw/edit?usp=sharing).
 
 ## General
 
