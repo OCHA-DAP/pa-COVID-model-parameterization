@@ -1,37 +1,46 @@
 # COVID model parameterization
 
-The main output of this repository are an Input Graph and a NPI file, which can be used as input for the [COVID projection model](https://github.com/OCHA-DAP/pa-ocha-bucky/) which has been developed in partnership between UN OCHA and the Johns Hopkins University Applied Physics Laboratory (JHU/APL). 
+The main output of this repository are a Graph and a NPI file. The Graph consists of exposure, vulnerability, mobility, and historical COVID data on subnational and national level. The Graph and NPI file can be used as input for the [COVID projection model](https://github.com/OCHA-DAP/pa-ocha-bucky/) which has been developed in partnership between UN OCHA and the Johns Hopkins University Applied Physics Laboratory (JHU/APL). 
 The parametrization has been tested for six countries, of which the required files will also be downloaded during the setup. These countries are Afghanistan, the Democratic Republic of Congo, Iraq, Somalia, Sudan and South Sudan. Simultaneously, we encourage users to add their own countries of interest with the given instructions. 
 
-The methodology and reasoning behind the parameterization implemented in this repository can be found [here].(https://docs.google.com/document/d/1Izusop2liq3bvcDEG3l-ttQnt0a-fw037fBId2Y6fRw/edit?usp=sharing)
+The methodology and reasoning behind the parameterization implemented in this repository can be found [here](https://docs.google.com/document/d/1Izusop2liq3bvcDEG3l-ttQnt0a-fw037fBId2Y6fRw/edit?usp=sharing).
 
 ## General
 
-### Running for the first time
+### Setting up the environment
 
-1. Install all packages from `requirements.txt`.
-     ``` bash
-     pip install -r requirements.txt
-     ```
+Install all packages from `requirements.txt`.
+ ``` bash
+ pip install -r requirements.txt
+ ```
    
-   If using Anaconda, set-up an environment and install the packages from `environment.yml`. 
-   ``` bash
-   conda env create --file environment.yml --name covid_param
-   conda activate covid_param
-     ```
-   
-2. Run `make setup` (downloads several large files, may take some time)
+If using Anaconda, set-up an environment and install the packages from `environment.yml`. 
+``` bash
+conda env create --file environment.yml --name covid_param
+conda activate covid_param
+ ```
+
+### Generate output for existing countries
+The configuration for six countries has been implemented in this repository (Afghanistan, the Democratic Republic of Congo, Iraq, Somalia, Sudan and South Sudan).
+
+To download the data of these six countries and produce the outputs run 
+ ``` bash
+ make setup
+ ```
+This will run all [individual components](#individual-components), to create the outputs. 
+Due to the large files that will be downloaded this may take some time. Alternatively, you can execute the **Running** step of each [individual component](#individual-components) to get the outputs of one country.
 
 ### Updating the NPI and graph output files
+Execute these steps to update the NPI and graph output files at any time after you have done the initial setup. This will be a lot faster than `make setup` since most data has already been downloaded.  
 
-1. Run `make update_npi`
+1. Run `make update_npi` , this will download the latest NPI information and write that to the output
 2. Triage the resulting NPIs:
     1. Copy and paste the output Excel file to the Google sheet
     2. Indicate if any of the new NPIs can be modelled, and if so, if they should be included
        in the final input
     3. For any new measures that are to be included, fill in the Bucky measurement type, affected pcodes, and 
        and compliance level
-3. Run `make update`
+3. Run `make update` , this will run all [individual components](#individual-components) to create the Graph and NPI file
 
 ### Adding a new country
 
