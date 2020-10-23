@@ -24,9 +24,10 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     try:
-        graph(args.country_iso3.upper(),args.end_date)
-    except:
+        graph(args.country_iso3.upper(), args.end_date)
+    except Exception as err:
         logger.error(
             f"Cannot generate graph file, check log for details"
         )
+        raise err
 
