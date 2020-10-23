@@ -115,10 +115,11 @@ def covid(country_iso3, download_covid=False, config=None):
     try:
         exposure_file = f"{config.SADD_output_dir().format(country_iso3)}/{config.EXPOSURE_GEOJSON.format(country_iso3)}"
         exposure_gdf = gpd.read_file(exposure_file)
-    except:
+    except Exception as err:
         logger.error(
             f"Cannot get exposure file for {country_iso3}, COVID file not generate"
         )
+        raise err
 
     output_fields = [
         config.HLX_TAG_ADM1_PCODE,

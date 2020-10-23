@@ -25,8 +25,9 @@ if __name__ == '__main__':
         mobility.mobility(country_iso3=args.country_iso3.upper(),
                           read_in_crossings=args.crossings,
                           read_in_distances=args.distances)
-    except:
+    except Exception as err:
         logger.error(
             f"Cannot generate mobility matrix, check log for details"
         )
+        raise err
 

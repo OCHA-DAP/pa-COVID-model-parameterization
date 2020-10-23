@@ -24,7 +24,8 @@ if __name__ == '__main__':
     try:
         npis.npis(args.country_iso3.upper(), args.update_npi_list, args.create_final_list,
               download_acaps_arg=args.download_acaps)
-    except:
+    except Exception as err:
         logger.error(
             f"Cannot generate NPI file, check log for details"
         )
+        raise err
