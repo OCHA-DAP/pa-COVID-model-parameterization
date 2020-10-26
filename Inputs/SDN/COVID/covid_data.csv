@@ -1,5 +1,24 @@
 Report Date,As of Date,State,Confirmed Cases,Source
 ,#date,#adm1+name,#affected+infected+confirmed+fatalities,#source+url
+,10/23/2020,Abyei PCA,0,https://app.powerbi.com/view?r=eyJrIjoiNTJmYTlkZTgtOTgyOC00ZWY1LTlmZDAtNzQ1OTIxNDhjZDIzIiwidCI6IjBmOWUzNWRiLTU0NGYtNGY2MC1iZGNjLTVlYTQxNmU2ZGM3MCIsImMiOjh9
+,10/23/2020,Al Jazirah,"1,139",
+,10/23/2020,Blue Nile,30,
+,10/23/2020,Central Darfur,6,
+,10/23/2020,East Darfur,21,
+,10/23/2020,Gedaref,274,
+,10/23/2020,Kassala,229,
+,10/23/2020,Khartoum,"9,882",
+,10/23/2020,North Darfur,146,
+,10/23/2020,North Kordofan,205,
+,10/23/2020,Northern,385,
+,10/23/2020,Red Sea,391,
+,10/23/2020,River Nile,438,
+,10/23/2020,Sennar,247,
+,10/23/2020,South Darfur,39,
+,10/23/2020,South Kordofan,15,
+,10/23/2020,West Darfur,35,
+,10/23/2020,West Kordofan,69,
+,10/23/2020,White Nile,191,
 10/11/2020,10/11/2020,Abyei PCA,,https://reliefweb.int/sites/reliefweb.int/files/resources/sudan_covid-19_situation_overview_response_11_oct_2020.pdf
 10/11/2020,10/11/2020,Al Jazirah,"1,137",https://reliefweb.int/sites/reliefweb.int/files/resources/sudan_covid-19_situation_overview_response_11_oct_2020.pdf
 10/11/2020,10/11/2020,Blue Nile,30,https://reliefweb.int/sites/reliefweb.int/files/resources/sudan_covid-19_situation_overview_response_11_oct_2020.pdf
