@@ -58,6 +58,7 @@ covid:
   replace_dict:
     JUba: Juba
     juba: Juba
+    JUBA: Juba
     'Juba ': Juba
     Winjook: Aweil East
     Nimule: Magwi
