@@ -5,6 +5,8 @@ The parametrization has been tested for six countries, of which the required fil
 
 The methodology and reasoning behind the parameterization implemented in this repository can be found [here](https://docs.google.com/document/d/1Izusop2liq3bvcDEG3l-ttQnt0a-fw037fBId2Y6fRw/edit?usp=sharing).
 
+If you have any questions or feedback, contact us at centrehumdata@un.org.
+
 ## General
 
 ### Setting up the environment
