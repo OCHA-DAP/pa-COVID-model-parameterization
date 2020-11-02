@@ -13,6 +13,7 @@ import pickle
 
 from covid_model_parametrization.config import Config
 from covid_model_parametrization.utils.who import get_WHO_data
+from covid_model_parametrization.utils.utils import remove_chars
 
 logger = logging.getLogger(__name__)
 
@@ -301,8 +302,8 @@ def add_general_attributes(G, country_iso3, shape_path):
         if 'death_hist' not in n:
             n['death_hist'] = [0] * num_dates
         n['N_age_init'] = [x + y for x, y in zip(n['group_pop_f'], n['group_pop_m'])]
-        n['adm1_int'] = re.findall(r'\d+', n['ADM1_PCODE'])[0]
-        n['adm2_int'] = re.findall(r'\d+', n['ADM2_PCODE'])[0]
+        n['adm1_int'] = remove_chars(n['ADM1_PCODE'])
+        n['adm2_int'] = remove_chars(n['ADM2_PCODE'])
         del n['group_pop_f']
         del n['group_pop_m']
 

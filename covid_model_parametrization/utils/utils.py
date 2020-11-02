@@ -93,3 +93,10 @@ def read_in_admin_boundaries(config, parameters, country_iso3):
         'admin1Pcod': 'ADM1_PCODE',
         'admin2Pcod': 'ADM2_PCODE',
     })
+
+def remove_chars(seq):
+    seq_type = type(seq)
+    if seq_type != str:
+        return seq
+    else:
+        return seq_type().join(filter(seq_type.isdigit, seq))
