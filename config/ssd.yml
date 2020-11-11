@@ -90,6 +90,7 @@ covid:
     Ikwoto: Ikotos
     AE: Aweil East
     wau: Wau
+    Munuki: Juba
   hlx_dict:
     'State ': "#adm1+name"
     County: "#adm2+name"
