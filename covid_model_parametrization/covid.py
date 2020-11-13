@@ -144,11 +144,14 @@ def covid(country_iso3, download_covid=False, config=None):
         who_df=who_df.loc[latest_date-np.timedelta64(30,'D'):latest_date]
         deaths=who_df.iloc[-1][' Cumulative_deaths']-who_df.iloc[0][' Cumulative_deaths']
         cases=who_df.iloc[-1][' Cumulative_cases']-who_df.iloc[0][' Cumulative_cases']
-        if deaths<100:
+        ADM0_CFR=deaths/cases
+        if deaths<100 or ADM0_CFR> 0.3:
             # if it's less than 100 use the cumulative to reduce noise
+            # When there are adjustments to the data we may have a jump in the CFR
+            # calcualted from the latest month,i t should be captured by the ADM0_CFR> 0.3 
             deaths=who_df.iloc[-1][' Cumulative_deaths']
             cases=who_df.iloc[-1][' Cumulative_cases']
-        ADM0_CFR=deaths/cases
+            ADM0_CFR=deaths/cases
 
     if parameters["covid"]["admin_level"] == 2:
         ADM2_names = get_dict_pcodes(
