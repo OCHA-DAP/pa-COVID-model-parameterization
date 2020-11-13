@@ -1,5 +1,24 @@
 Report Date,As of Date,State,Confirmed Cases,Source
 ,#date,#adm1+name,#affected+infected+confirmed+fatalities,#source+url
+,11/10/2020,Abyei PCA,0,https://app.powerbi.com/view?r=eyJrIjoiNTJmYTlkZTgtOTgyOC00ZWY1LTlmZDAtNzQ1OTIxNDhjZDIzIiwidCI6IjBmOWUzNWRiLTU0NGYtNGY2MC1iZGNjLTVlYTQxNmU2ZGM3MCIsImMiOjh9
+,11/10/2020,Al Jazirah,"1,199",
+,11/10/2020,Blue Nile,30,
+,11/10/2020,Central Darfur,6,
+,11/10/2020,East Darfur,21,
+,11/10/2020,Gedaref,280,
+,11/10/2020,Kassala,235,
+,11/10/2020,Khartoum,"10,358",
+,11/10/2020,North Darfur,147,
+,11/10/2020,North Kordofan,209,
+,11/10/2020,Northern,386,
+,11/10/2020,Red Sea,417,
+,11/10/2020,River Nile,446,
+,11/10/2020,Sennar,251,
+,11/10/2020,South Darfur,40,
+,11/10/2020,South Kordofan,17,
+,11/10/2020,West Darfur,36,
+,11/10/2020,West Kordofan,69,
+,11/10/2020,White Nile,199,
 ,11/07/2020,Abyei PCA,0,https://app.powerbi.com/view?r=eyJrIjoiNTJmYTlkZTgtOTgyOC00ZWY1LTlmZDAtNzQ1OTIxNDhjZDIzIiwidCI6IjBmOWUzNWRiLTU0NGYtNGY2MC1iZGNjLTVlYTQxNmU2ZGM3MCIsImMiOjh9
 ,11/07/2020,Al Jazirah,"1,173",
 ,11/07/2020,Blue Nile,30,
