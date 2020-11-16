@@ -46,7 +46,7 @@ covid:
   url: None
   filename: covid_data.csv
   header: 0
-  skiprows: False
+  skiprows: null
   cases: True
   deaths: False
   individual_case_data: True
