@@ -178,7 +178,7 @@ def add_covid(G, main_dir, country_iso3, end_date, config):
 
 
 def add_WHO_data(G, country_iso3, end_date,parameters, config):
-    df_WHO = get_WHO_data(config, country_iso3,hxlize=False,\
+    df_WHO = get_WHO_data(config, country_iso3,hxlize=True,\
         smooth_data=parameters['WHO']['smooth_data'],n_days_smoothing=parameters['WHO']['n_days_smoothing'])
     # convert ot datetime
     df_WHO['#date'] = pd.to_datetime(df_WHO['#date']).dt.date
