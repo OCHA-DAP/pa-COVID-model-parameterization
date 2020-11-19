@@ -113,3 +113,8 @@ contact_matrix:
 NPIs:
   # The URL of the published Google sheet with NPIs
   url: ~
+WHO:
+  # Smooth out adjustments in the WHO data
+  smooth_data: False
+  # Number fo days to be use for smoothing WHO data
+  n_days_smoothing: 14
