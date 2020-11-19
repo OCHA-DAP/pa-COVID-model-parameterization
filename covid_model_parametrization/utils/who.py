@@ -16,7 +16,7 @@ HXL_DICT = {
 }
 
 
-def get_WHO_data(config, country_iso3, hxlize=False):
+def get_WHO_data(config, country_iso3, hxlize=False,smooth_data=False,n_days_smoothing=14):
     # Download the file and move it to a local directory
     logger.info('Downloading WHO data from HDX')
     WHO_dir = os.path.join(config.INPUT_DIR, config.WHO_DIR)
@@ -30,4 +30,8 @@ def get_WHO_data(config, country_iso3, hxlize=False):
     df_WHO = df_WHO.loc[df_WHO[' Country_code'] == Country.get_iso2_from_iso3(country_iso3)]
     if hxlize:
        df_WHO = df_WHO.rename(columns=HXL_DICT)
+    if smooth_data:
+        df_WHO=df_WHO.sort_values(by='Date_reported',ascending=True)
+        for column_name in [' New_cases', ' Cumulative_cases', ' New_deaths', ' Cumulative_deaths']:
+            df_WHO[column_name] = df_WHO[column_name].rolling(window=n_days_smoothing).mean()
     return df_WHO
