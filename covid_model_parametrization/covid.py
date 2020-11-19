@@ -135,7 +135,8 @@ def covid(country_iso3, download_covid=False, config=None):
     ADM0_CFR=0
     if not parameters["covid"]["deaths"]:
         # missing death data, getting it from WHO at the national level
-        who_df = get_WHO_data(config, country_iso3)
+        who_df = get_WHO_data(config, country_iso3,hxlize=False,\
+            smooth_data=parameters['WHO']['smooth_data'],n_days_smoothing=parameters['WHO']['n_days_smoothing'])
         who_df['Date_reported']=pd.to_datetime(who_df['Date_reported'])
         who_df=who_df.sort_values(by='Date_reported')
         who_df=who_df.set_index('Date_reported')
