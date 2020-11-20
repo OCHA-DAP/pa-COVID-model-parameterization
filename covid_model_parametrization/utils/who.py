@@ -28,6 +28,8 @@ def get_WHO_data(config, country_iso3, hxlize=False,smooth_data=False,n_days_smo
     logger.info(f'Returning WHO data for {country_iso3}')
     df_WHO = pd.read_csv(final_filepath)
     df_WHO = df_WHO.loc[df_WHO['Country_code'] == Country.get_iso2_from_iso3(country_iso3)]
+    #in some cases the WHO data might include sudden increases in numbers, due to for example changes in reporting
+    #sudden bumps might cause distorted outcomes of the model and thus in those cases we smooth the WHO data before inputting it to the graph
     if smooth_data:
         df_WHO=df_WHO.sort_values(by='Date_reported',ascending=True)
         for column_name in ['New_cases', 'Cumulative_cases', 'New_deaths', 'Cumulative_deaths']:
