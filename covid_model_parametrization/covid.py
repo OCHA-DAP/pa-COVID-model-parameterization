@@ -135,22 +135,23 @@ def covid(country_iso3, download_covid=False, config=None):
     ADM0_CFR=0
     if not parameters["covid"]["deaths"]:
         # missing death data, getting it from WHO at the national level
-        who_df = get_WHO_data(config, country_iso3)
+        who_df = get_WHO_data(config, country_iso3,hxlize=False,\
+            smooth_data=parameters['WHO']['smooth_data'],n_days_smoothing=parameters['WHO']['n_days_smoothing'])
         who_df['Date_reported']=pd.to_datetime(who_df['Date_reported'])
         who_df=who_df.sort_values(by='Date_reported')
         who_df=who_df.set_index('Date_reported')
         latest_date=who_df.tail(1).index.values[0]
         # get the CFR from the latest month, to account for recent reporting rate estimation
         who_df=who_df.loc[latest_date-np.timedelta64(30,'D'):latest_date]
-        deaths=who_df.iloc[-1][' Cumulative_deaths']-who_df.iloc[0][' Cumulative_deaths']
-        cases=who_df.iloc[-1][' Cumulative_cases']-who_df.iloc[0][' Cumulative_cases']
+        deaths=who_df.iloc[-1]['Cumulative_deaths']-who_df.iloc[0]['Cumulative_deaths']
+        cases=who_df.iloc[-1]['Cumulative_cases']-who_df.iloc[0]['Cumulative_cases']
         ADM0_CFR=deaths/cases
         if deaths<100 or ADM0_CFR> 0.3:
             # if it's less than 100 use the cumulative to reduce noise
             # When there are adjustments to the data we may have a jump in the CFR
             # calcualted from the latest month,i t should be captured by the ADM0_CFR> 0.3 
-            deaths=who_df.iloc[-1][' Cumulative_deaths']
-            cases=who_df.iloc[-1][' Cumulative_cases']
+            deaths=who_df.iloc[-1]['Cumulative_deaths']
+            cases=who_df.iloc[-1]['Cumulative_cases']
             ADM0_CFR=deaths/cases
 
     if parameters["covid"]["admin_level"] == 2:

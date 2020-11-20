@@ -83,4 +83,6 @@ contact_matrix:
   file_number: 1
 NPIs:
   url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQSwkx2eOoeQXEiyp_QjcP71mbIiMTg0Bnyd0pU113XyTP8VoQVxWQjefhM-u8Rsm2uuXZNW2w3dDeH/pub?gid=1334301503&single=true&output=csv
-
+WHO:
+  smooth_data: False
+  n_days_smoothing: 14

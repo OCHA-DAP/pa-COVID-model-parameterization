@@ -74,3 +74,6 @@ contact_matrix:
 # NPI settings
 NPIs:
   url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQWn8YQT-FBlEC2dcvKMK3ZJ5DE9EBd-_Gmw5vh78aqRLDhLtoZhJbQbwepLaCRNfz_avnKbnU_Kz_L/pub?gid=1114937196&single=true&output=csv
+WHO:
+  smooth_data: False
+  n_days_smoothing: 14
