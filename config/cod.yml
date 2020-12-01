@@ -76,6 +76,7 @@ covid:
     Nord Kivu: Nord-Kivu
     Haut  Katanga: Haut-Katanga
     Haut-Uélé: Haut-Uele
+    Bas-Uélé: Bas-Uele
   hlx_dict:
     "#affected+positive+total": "#affected+infected+confirmed+total"  
     "#admin1+name": "#adm1+name"
