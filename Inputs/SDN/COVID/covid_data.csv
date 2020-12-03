@@ -1,5 +1,24 @@
 Report Date,As of Date,State,Confirmed Cases,Source
 ,#date,#adm1+name,#affected+infected+confirmed+fatalities,#source+url
+,11/28/2020,Abyei PCA,,https://app.powerbi.com/view?r=eyJrIjoiNTJmYTlkZTgtOTgyOC00ZWY1LTlmZDAtNzQ1OTIxNDhjZDIzIiwidCI6IjBmOWUzNWRiLTU0NGYtNGY2MC1iZGNjLTVlYTQxNmU2ZGM3MCIsImMiOjh9
+,11/28/2020,El Gazira,"1,429",
+,11/28/2020,Blue Nile,35,
+,11/28/2020,Central Darfur,6,
+,11/28/2020,East Darfur,21,
+,11/28/2020,Gedaref,294,
+,11/28/2020,Kassala,245,
+,11/28/2020,Khartoum,"13,389",
+,11/28/2020,North Darfur,152,
+,11/28/2020,North Kordofan,215,
+,11/28/2020,Northern,405,
+,11/28/2020,Red Sea,473,
+,11/28/2020,River Nile,486,
+,11/28/2020,Sennar,273,
+,11/28/2020,South Darfur,46,
+,11/28/2020,South Kordofan,20,
+,11/28/2020,West Darfur,38,
+,11/28/2020,West Kordofan,70,
+,11/28/2020,White Nile,213,
 ,11/26/2020,Abyei PCA,,https://app.powerbi.com/view?r=eyJrIjoiNTJmYTlkZTgtOTgyOC00ZWY1LTlmZDAtNzQ1OTIxNDhjZDIzIiwidCI6IjBmOWUzNWRiLTU0NGYtNGY2MC1iZGNjLTVlYTQxNmU2ZGM3MCIsImMiOjh9
 ,11/26/2020,El Gazira,"1,422",
 ,11/26/2020,Blue Nile,35,
