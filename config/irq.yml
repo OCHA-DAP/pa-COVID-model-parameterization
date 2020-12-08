@@ -30,7 +30,7 @@ vulnerability:
 covid:
   url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQh_BwL222rdcpIH2rLPIbvdKLJu3fevAy2L82FHUcl-84w6byWRITQicetYzpqX707EUc3qgAJm7Hr/pub?gid=0&single=true&output=csv
   filename: covid_data.csv
-  header: 1
+  header: 2
   skiprows: 0
   cases: True
   deaths: True
