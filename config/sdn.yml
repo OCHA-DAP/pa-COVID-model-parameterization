@@ -4,8 +4,12 @@ admin:
   language: EN
 mobility:
   scaling_factor:
-    household_size: 5.6
-    motor_vehicle_fraction: 0.031
+    frac_vehicles_crossing_adm2_regions: 0.5
+    car_occupancy: 2.2
+    bus_occupancy: 20
+    # from https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/sudan.pdf
+    car_fraction: 0.02
+    bus_fraction: 0.004
 vulnerability:
   ghs:
     column_row_pairs:

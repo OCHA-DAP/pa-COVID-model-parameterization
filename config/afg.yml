@@ -4,8 +4,12 @@ admin:
   language: EN
 mobility:
   scaling_factor:
-    household_size: 8.0
-    motor_vehicle_fraction: 0.027
+    frac_vehicles_crossing_adm2_regions: 0.5
+    car_occupancy: 2.2
+    bus_occupancy: 20
+    # from https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/afghanistan.pdf?ua=1
+    car_fraction: 0.015
+    bus_fraction: 0.0075
 pop_co:
   filename: AFG_PopEstimatesOperationalPlanning.xlsx
   province_names:
