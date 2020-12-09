@@ -48,8 +48,9 @@ def check_graph_edges(G, parameters):
         logger.error('Mobility matrix diagonal values are not all 1')
     # Check that the rest of the values go from 0 to the scaling factor
     non_diag = edges.loc[edges['source'] != edges['target']]
-    scaling_factor = parameters['mobility']['scaling_factor']['household_size'] * \
-                     parameters['mobility']['scaling_factor']['motor_vehicle_fraction']
+    scaling_factor = parameters['mobility']['scaling_factor']['car_occupancy'] * parameters['mobility']['scaling_factor']["frac_vehicles_crossing_adm2_regions"] * parameters['mobility']['scaling_factor']['car_fraction'] + \
+    parameters['mobility']['scaling_factor'][
+        'bus_occupancy'] * parameters['mobility']['scaling_factor']["frac_vehicles_crossing_adm2_regions"] * parameters['mobility']['scaling_factor']['bus_fraction']
     non_diag_max = non_diag['weight'].max()
     try:
         assert math.isclose(non_diag_max, scaling_factor)

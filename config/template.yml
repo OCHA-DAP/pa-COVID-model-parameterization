@@ -11,15 +11,18 @@ admin:
 # Settings for the mobility matrix
 mobility:
   scaling_factor:
-    # Household size from
-    # https://population.un.org/Household/index.html#/countries/
-    # (see documentation if country is not available)
-    household_size: ~
+    # we assume that only 50% of the vehicles will move across ADM2 units.
+    frac_vehicles_crossing_adm2_regions: 0.5
+    # maximum car occupancy from https://www.researchgate.net/publication/311400958_VEHICLE_OCCUPANCY_RATES_AND_TRIP_PURPOSE_IN_MAKKAH_DURING_RAMADAN_AND_HAJJ_PERIODS/link/58e4c9260f7e9b5622f1a50f/download 
+    car_occupancy: 2.2
+    # full bus occupancy
+    bus_occupancy: 20
     # Motor vehicle fraction from
     # https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/en/
     # by taking the total population divided by the number of registered vehicles
     # (see documentation if country is not available)
-    motor_vehicle_fraction: ~
+    car_fraction: ~
+    bus_fraction: ~
 # Settings for vulnerability
 vulnerability:
   ghs:
