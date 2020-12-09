@@ -4,8 +4,13 @@ admin:
   language: FR
 mobility:
   scaling_factor:
-    household_size: 5.3
-    motor_vehicle_fraction: 0.0050
+    frac_vehicles_crossing_adm2_regions: 0.5
+    car_occupancy: 2.2
+    bus_occupancy: 20
+    # from https://www.who.int/violence_injury_prevention/road_safety_status/country_profiles/democratic_republic_of_the_congo.pdf?ua=1
+    # no details on vehicle type, assuming 50% cars and 50%
+    car_fraction: 0.0024
+    bus_fraction: 0.0024
 vulnerability:
   ghs:
     column_row_pairs:
