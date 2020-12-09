@@ -208,7 +208,11 @@ def create_matrix(df_adm2, df_dist, parameters, df_pop, scale_by_pop=False):
     df_matrix = df_matrix.fillna(0)
 
     # Normalize
-    df_matrix *= parameters['household_size'] * parameters['motor_vehicle_fraction'] / df_matrix.values.max()
+    # scaling factor is used to estimate the number of people crossing the borders. The ADM border that has the highest connectivity will equal this scaling factor
+    # We focus on two modes of transport: cars and buses with a maximum capacity of 20 people. We assume both modes cross borders in 50 percent of the journeys.
+    scaling_factor = parameters['car_occupancy'] * parameters["frac_vehicles_crossing_adm2_regions"] * parameters['car_fraction'] + parameters[
+        'bus_occupancy'] * parameters["frac_vehicles_crossing_adm2_regions"] * parameters['bus_fraction']
+    df_matrix *= scaling_factor / df_matrix.values.max()
     # Set diagonals to 1
     np.fill_diagonal(df_matrix.values, 1.0)
 
