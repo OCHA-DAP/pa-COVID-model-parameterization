@@ -152,6 +152,7 @@ Inputs/*/NPIs/*
 Outputs/*/Vulnerability/*
 Outputs/*/Figures/*
 Inputs/*/mobility/*
-Outputs/*/mobility/*
+Outputs/*/mobility/distances.csv
+Outputs/*/mobility/crossings.gpkg
 test.csv
 test.py
