@@ -116,8 +116,9 @@ def load_roads(country_iso3, config, parameters, df_borders):
     logger.info('Downloading roads file')
     save_dir =  os.path.join(config.INPUT_DIR, country_iso3, config.MOBILITY_DIR)
     Path(save_dir).mkdir(parents=True, exist_ok=True)
+
     download_filename = list(query_api(config.ROADS_HDX_ADDRESS.format(country_iso3=country_iso3.lower()),
-                                       save_dir, resource_format='zipped geopackage').values())[0]
+                                       save_dir, resource_format='Geopackage').values())[0]
     save_path = os.path.join(save_dir, config.ROADS_FILENAME.format(country_iso3=country_iso3.lower()))
     os.rename(os.path.join(save_dir, download_filename), save_path)
     logger.info('Reading in roads file')
@@ -179,6 +180,8 @@ def count_crossings(df_dist, df_roads, config):
     # For each road, add the crossings to the distance matrix
     for _, row in df_roads.iterrows():
         for crossing_pair in row['crossing_pairs']:
+            #the "highway" column indicates the type of road, and to each type of a road a weight is attached.
+            #hence here it is counted for each admin pair with crossings, how many of each type of road cross the boundary
             df_dist.loc[(df_dist['ADM_A'] == crossing_pair[0]) & (df_dist['ADM_B'] == crossing_pair[1]),
                         row["highway"]] += 1
 
