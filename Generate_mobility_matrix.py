@@ -13,9 +13,9 @@ def parse_args():
     parser.add_argument('country_iso3',
                         help='Country ISO3')
     parser.add_argument('-c', '--crossings', action='store_true',
-                        help='Read in road border crossings from file')
+                        help='Read in road border crossings from file. Else download')
     parser.add_argument('-d', '--distances', action='store_true',
-                        help='Read in distances between region centroids from file')
+                        help='Read in distances between region centroids from file. Else download')
     return parser.parse_args()
 
 
