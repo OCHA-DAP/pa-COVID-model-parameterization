@@ -21,3 +21,4 @@ path,path,"A non-specific path. Use highway=footway for paths mainly for walkers
 cycleway,cycleway,For designated cycleways. Add foot=* only if default-access-restrictions do not apply.,20,1,20
 lifecycle,proposed,"For planned roads, use with proposed=* and a value of the proposed highway value.",15,1,15
 lifecycle,construction,For roads under construction. Use construction=* to hold the value for the completed road.,15,1,15
+lifecycle,close, "The close value doesn't appear on the openstreetmap wiki. Assuming it indicates a closed road and thus doesn't have any speeds or lanes, 0, 0, 0
