@@ -67,6 +67,8 @@ covid:
   replace_dict:
     Al Jazirah: Aj Jazirah
     El Gazira: Aj Jazirah
+    El Jazirah: Aj Jazirah
+    Cental Darfur: Central Darfur
   hlx_dict:
     "#affected+infected+confirmed+fatalities": "#affected+infected+confirmed+total"
 contact_matrix:
