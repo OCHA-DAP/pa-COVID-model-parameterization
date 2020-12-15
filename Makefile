@@ -41,3 +41,8 @@ setup_graphs_no_download:
 		python Generate_graph.py $$iso3 ; \
 		python Check_output_quality.py $$iso3 ; \
 	done
+
+download_mobility:
+	for iso3 in ${country_list} ; do \
+	    python Generate_mobility_matrix.py $$iso3 ; \
+	done
