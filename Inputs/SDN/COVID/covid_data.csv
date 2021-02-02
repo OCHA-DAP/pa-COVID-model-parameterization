@@ -1,5 +1,24 @@
 Report Date,As of Date,State,Confirmed Cases,Source
 ,#date,#adm1+name,#affected+infected+confirmed+fatalities,#source+url
+,01/01/2021,Abyei PCA,,https://app.powerbi.com/view?r=eyJrIjoiNTJmYTlkZTgtOTgyOC00ZWY1LTlmZDAtNzQ1OTIxNDhjZDIzIiwidCI6IjBmOWUzNWRiLTU0NGYtNGY2MC1iZGNjLTVlYTQxNmU2ZGM3MCIsImMiOjh9
+,01/01/2021,Khartoum,"20,547",
+,01/01/2021,El Jazirah,"1,875",
+,01/01/2021,Red Sea,660,
+,01/01/2021,River Nile,635,
+,01/01/2021,Northern,444,
+,01/01/2021,Gedaref,462,
+,01/01/2021,Sennar,349,
+,01/01/2021,Kassala,313,
+,01/01/2021,North Kordofan,279,
+,01/01/2021,White Nile,240,
+,01/01/2021,North Darfur,157,
+,01/01/2021,West Kordofan,97,
+,01/01/2021,South Darfur,69,
+,01/01/2021,Blue Nile,45,
+,01/01/2021,West Darfur,47,
+,01/01/2021,South Kordofan,28,
+,01/01/2021,East Darfur,26,
+,01/01/2021,Cental Darfur,6,
 ,12/31/2020,Abyei PCA,,https://app.powerbi.com/view?r=eyJrIjoiNTJmYTlkZTgtOTgyOC00ZWY1LTlmZDAtNzQ1OTIxNDhjZDIzIiwidCI6IjBmOWUzNWRiLTU0NGYtNGY2MC1iZGNjLTVlYTQxNmU2ZGM3MCIsImMiOjh9
 ,12/31/2020,Khartoum,"20,093",
 ,12/31/2020,El Jazirah,"1,828",
