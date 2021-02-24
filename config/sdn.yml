@@ -70,7 +70,7 @@ covid:
     El Jazirah: Aj Jazirah
     Cental Darfur: Central Darfur
   hlx_dict:
-    "#affected+infected+confirmed+fatalities": "#affected+infected+confirmed+total"
+    "#affected+infected+confirmed": "#affected+infected+confirmed+total"
 contact_matrix:
   country: Ethiopia
   file_number: 1
