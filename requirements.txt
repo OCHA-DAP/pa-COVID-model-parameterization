@@ -5,7 +5,7 @@ matplotlib==3.2.1
 requests
 rasterio==1.1.4
 xlrd==1.2.0
-PyYAML==5.3.1
+PyYAML==5.4
 networkx==2.4
 geoplot==0.4.1
 hdx-python-api==4.5.8
